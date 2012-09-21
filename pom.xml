@@ -7,6 +7,8 @@
         <phpnarLatestRelease>0.1.1</phpnarLatestRelease>
         <phpextLatestRelease>0.1.0</phpextLatestRelease>
         <jphpLatestRelease>0.0.1</jphpLatestRelease>
+        <phpexecLatestRelease>0.1.0</phpexecLatestRelease>
+        <pearjavaLatestRelease>0.1.0</pearjavaLatestRelease>
         <phpmavenRootUrl>http://www.php-maven.org</phpmavenRootUrl>
         <phpmavenFsRoot>${project.basedir}</phpmavenFsRoot>
 
