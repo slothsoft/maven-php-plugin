@@ -55,6 +55,8 @@
 
 &lt;/script&gt;</google.analytics.header>
         <htmlBottom>&lt;b&gt;Copyright &#169; ${phpmavenForkYear}-${phpmavenCopyrightYear} PHP-Maven.org. All Rights Reserved.&lt;/b&gt;</htmlBottom>
+        
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <groupId>org.phpmaven.build</groupId>
