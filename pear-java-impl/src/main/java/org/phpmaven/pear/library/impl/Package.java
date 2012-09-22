@@ -193,6 +193,9 @@ public class Package implements IPackage {
                     " is not known.");
         }
         
+        this.pearUtility.executePearCmd("channel-update " + this.pearChannel.getName());
+        this.pearUtility.executePearCmd("clear-cache");
+        
         if (this.installedVersion != null) {
             if (version.getVersion() == null
                  || this.installedVersion.getVersion().getPearVersion().equals(

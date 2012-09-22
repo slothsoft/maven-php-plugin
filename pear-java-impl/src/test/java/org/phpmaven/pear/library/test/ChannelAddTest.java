@@ -40,7 +40,8 @@ public class ChannelAddTest extends AbstractTestCase {
      *
      * @throws Exception thrown on errors
      */
-    public void testChannelAdd() throws Exception {
+    @SuppressWarnings("unchecked")
+	public void testChannelAdd() throws Exception {
 		final File testDir = new File("target/test").getAbsoluteFile();
 		FileUtils.deleteDirectory(testDir);
 		testDir.mkdirs();

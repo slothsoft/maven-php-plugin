@@ -35,7 +35,6 @@ import java.util.zip.ZipFile;
 
 import junit.framework.Assert;
 
-import org.apache.commons.logging.Log;
 import org.codehaus.plexus.util.FileUtils;
 import org.codehaus.plexus.util.IOUtil;
 import org.junit.Test;
@@ -63,9 +62,10 @@ public class BaseTest extends AbstractTestCase {
      */
 	@Test
     public void testChannelXml() throws Exception {
+		unzipPearNet();
         final IPearUtility util = getPearUtility(false);
         
-        final File pearFolder = new File("pear.php.net").getAbsoluteFile();
+        final File pearFolder = new File("target/pear.php.net").getAbsoluteFile();
         final IPearChannel channel = util.channelDiscoverLocal(pearFolder);
         Assert.assertNotNull(channel);
         Assert.assertNotNull(channel.getPrimaryServer());
@@ -251,12 +251,13 @@ public class BaseTest extends AbstractTestCase {
      */
 	@Test
     public void testPackageInstallation() throws Exception {
-        final IPearChannel channel = getChannel(true);
-        final IPackage pkg = channel.getPackage("Auth");
-        final IPackageVersion version = pkg.getVersion("1.6.4");
+		final IPearUtility util = getPearUtility(true, true);
+        final IPearChannel channel = util.lookupChannel("pear");
+        final IPackage pkg = channel.getPackage("Validate_AT");
+        final IPackageVersion version = pkg.getVersion("0.5.2");
         Assert.assertNull(pkg.getInstalledVersion());
         version.install();
-        Assert.assertEquals("1.6.4", pkg.getInstalledVersion().getVersion().getPearVersion());
+        Assert.assertEquals("0.5.2", pkg.getInstalledVersion().getVersion().getPearVersion());
         
         Assert.assertTrue(
                 channel.getPearUtility().getPhpDir().getAbsolutePath().startsWith(
@@ -312,7 +313,7 @@ public class BaseTest extends AbstractTestCase {
         Assert.assertEquals("1.5.0-RC1", PackageHelper.convertPearVersionToMavenVersion("1.5.0RC1"));
         Assert.assertEquals("1.3.0-r3", PackageHelper.convertPearVersionToMavenVersion("1.3.0r3"));
         Assert.assertEquals("2.0.0-dev1", PackageHelper.convertPearVersionToMavenVersion("2.0.0dev1"));
-        Assert.assertEquals("1.2.2beta1", PackageHelper.convertPearVersionToMavenVersion("1.2.2-beta-1"));
+        Assert.assertEquals("1.2.2-beta-1", PackageHelper.convertPearVersionToMavenVersion("1.2.2beta1"));
         Assert.assertEquals("0.9.7-dev", PackageHelper.convertPearVersionToMavenVersion("0.9.7dev"));
         Assert.assertEquals("0.5.2-beta", PackageHelper.convertPearVersionToMavenVersion("0.5.2beta"));
         Assert.assertEquals("1.4-beta-1", PackageHelper.convertPearVersionToMavenVersion("1.4b1"));
@@ -408,24 +409,33 @@ public class BaseTest extends AbstractTestCase {
      */
     private IPearChannel getChannel(final boolean install)
         throws Exception {
+        unzipPearNet();
         final IPearUtility util = getPearUtility(install);
         
-        final File pearFolder = new File("pear.php.net").getAbsoluteFile();
+        final File pearFolder = new File("target/pear.php.net").getAbsoluteFile();
         final IPearChannel channel = util.channelDiscoverLocal(pearFolder);
         return channel;
+    }
+    
+    private void unzipPearNet() throws IOException {
+    	final File target = new File("target/pear.php.net");
+    	if (!target.exists()) {
+    		target.mkdirs();
+        	final File pearZip = new File(
+                    "target/test-classes/org/phpmaven/pear/library/test/pear.php.net.zip");
+        	unzip(pearZip, target.getParentFile());
+    	}
     }
     
     /**
      * Unpacks a zip file.
      *
-     * @param log Logging
      * @param zipFile the zip file
      * @param destDir the destination directory
      * @throws IOException if something goes wrong
      */
-    private void unzip(Log log, File zipFile, File destDir) throws IOException {
+    private void unzip(File zipFile, File destDir) throws IOException {
         final ZipFile zip = new ZipFile(zipFile);
-        log.debug("unzip " + zipFile.getAbsolutePath());
 
         final Enumeration<? extends ZipEntry> items = zip.entries();
         while (items.hasMoreElements()) {
@@ -476,7 +486,19 @@ public class BaseTest extends AbstractTestCase {
      * @return
      * @throws Exception
      */
-    private IPearUtility getPearUtility(final boolean install)
+	private IPearUtility getPearUtility(final boolean install)
+        throws Exception {
+		return this.getPearUtility(install, false);
+    }
+    
+    /**
+     * Returns the pear utility.
+     * @param install
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+	private IPearUtility getPearUtility(final boolean install, final boolean upgrade)
         throws Exception {
 		final File testDir = new File("target/test").getAbsoluteFile();
 		FileUtils.deleteDirectory(testDir);
@@ -489,7 +511,7 @@ public class BaseTest extends AbstractTestCase {
         }
         
         if (install) {
-            util.installPear(false);
+            util.installPear(upgrade);
         }
         return util;
     }

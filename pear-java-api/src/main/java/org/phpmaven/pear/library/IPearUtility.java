@@ -120,7 +120,7 @@ public interface IPearUtility {
     /**
      * Adds a pear channel.
      * 
-     * @param channel channel.xml file.
+     * @param channel path to channel.xml file.
      * @return the pear channel.
      * 
      * @throws PhpException thrown on php execution errors.
