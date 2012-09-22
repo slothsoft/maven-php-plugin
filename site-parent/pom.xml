@@ -3,6 +3,8 @@
     
     <properties>
         <phpmavenTagName>${project.version}</phpmavenTagName>
+        <phpmavenRootScmUrl>scm:git:git@github.com:php-maven/pear-java.git</phpmavenRootScmUrl>
+        <phpmavenRootScmUrlWeb>http://www.github.com/php-maven/pear-java</phpmavenRootScmUrlWeb>
     </properties>
 
     <parent>
