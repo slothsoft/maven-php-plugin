@@ -8,7 +8,7 @@
         <phpextLatestRelease>0.1.0</phpextLatestRelease>
         <jphpLatestRelease>0.0.1</jphpLatestRelease>
         <phpexecLatestRelease>0.1.3</phpexecLatestRelease>
-        <pearjavaLatestRelease>0.1.0</pearjavaLatestRelease>
+        <pearjavaLatestRelease><!-- error parsing file 'pom.xml' --></pearjavaLatestRelease>
         <phpmavenRootUrl>http://www.php-maven.org</phpmavenRootUrl>
         <phpmavenFsRoot>${project.basedir}</phpmavenFsRoot>
 
