@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.phpmaven.build.phpexec-java</groupId>
         <artifactId>generic-java-parent</artifactId>
-        <version>0.1.7-SNAPSHOT</version>
+        <version>0.1.7</version>
         <relativePath>../java-parent/pom.xml</relativePath>
     </parent>
 
