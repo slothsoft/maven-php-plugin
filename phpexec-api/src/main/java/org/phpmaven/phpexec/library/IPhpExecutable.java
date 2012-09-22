@@ -31,9 +31,16 @@ import java.io.OutputStream;
  * </p>
  * 
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
- * @since 0.1.0
+ * @since 0.1.4
  */
 public interface IPhpExecutable {
+	
+	/**
+	 * Sets the silent flag (controls logging).
+	 * @param silent true to be silent; useful if passwords are passed to the php executable
+	 * @since 0.1.5
+	 */
+	void setSilent(boolean silent);
     
     /**
      * Executes PHP with the given arguments and returns its output.

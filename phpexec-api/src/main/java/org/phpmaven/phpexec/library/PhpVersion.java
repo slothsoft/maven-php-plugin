@@ -25,7 +25,7 @@ package org.phpmaven.phpexec.library;
  * @author Christian Wiedemann
  * @author Tobias Sarnowski
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
- * @since 0.1.0
+ * @since 0.1.4
  */
 public enum PhpVersion {
     
