@@ -15,7 +15,7 @@
 
     <groupId>org.phpmaven.sites</groupId>
     <artifactId>phpexec-java-site</artifactId>
-    <version>0.1.7</version>
+    <version>0.1.8-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>${project.version}</name>
@@ -38,7 +38,6 @@
         <connection>${phpmavenRootScmUrl}</connection>
         <developerConnection>${phpmavenRootScmUrl}</developerConnection>
         <url>${phpmavenRootScmUrlWeb}</url>
-      <tag>phpexec-java-site-0.1.7</tag>
   </scm>
     
     <modules>
@@ -46,6 +45,7 @@
     	<module>java-parent</module>
     	<module>site-parent</module>
     	<module>phpexec-api</module>
+    	<module>phpexec-cli</module>
     </modules>
     
     <build>

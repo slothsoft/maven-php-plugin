@@ -22,6 +22,8 @@ package org.phpmaven.phpexec.library;
 import java.io.File;
 import java.io.OutputStream;
 
+import org.codehaus.plexus.util.cli.StreamConsumer;
+
 /**
  * An interface representing a php executable.
  * 
@@ -104,6 +106,31 @@ public interface IPhpExecutable {
      * @throws PhpException if the executions fails
      */
     int execute(String arguments, OutputStream stdout, OutputStream stderr) throws PhpException;
+    
+    /**
+     * Executes PHP with the given arguments and throws an IllegalStateException if the
+     * execution fails.
+     *
+     * @param arguments string of arguments for PHP (including the file-path and filename)
+     * @param file a hint which file will be processed
+     * @param stdout handler for stdout lines
+     * @return the returncode of PHP
+     * @throws PhpException if the execution failed
+     * @since 0.1.8
+     */
+    int execute(String arguments, File file, final StreamConsumer stdout) throws PhpException;
+    
+    /**
+     * Executes PHP with the given arguments.
+     *
+     * @param arguments string of arguments for PHP (including the file-path and filename)
+     * @param stdout handler for stdout lines
+     * @param stderr handler for stderr lines
+     * @return the return code of PHP
+     * @throws PhpException if the executions fails
+     * @since 0.1.8
+     */
+    int execute(String arguments, StreamConsumer stdout, StreamConsumer stderr) throws PhpException;
     
     /**
      * Returns the version of this php executable.

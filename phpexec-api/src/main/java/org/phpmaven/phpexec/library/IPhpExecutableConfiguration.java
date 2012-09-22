@@ -52,20 +52,6 @@ public interface IPhpExecutableConfiguration {
     void setExecutable(String executable);
 
     /**
-     * Returns the interpreter that will be used.
-     * 
-     * @return The php interpreter.
-     */
-    String getInterpreter();
-
-    /**
-     * Sets the php interpreter to be used.
-     * 
-     * @param interpreter the php interpreter.
-     */
-    void setInterpreter(String interpreter);
-
-    /**
      * Returns true if the php information cache can be used.
      * 
      * @return true if the cache can be used.
