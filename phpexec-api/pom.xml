@@ -13,7 +13,7 @@
     </parent>
 
     <groupId>org.phpmaven.phpexec-java</groupId>
-    <artifactId>library</artifactId>
+    <artifactId>phpexec-api</artifactId>
     <packaging>jar</packaging>
 
     <name>library:${project.version}</name>
