@@ -20,6 +20,7 @@
 package org.phpmaven.phpexec.cli;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -98,6 +99,15 @@ public class PhpExecutableConfiguration implements IPhpExecutableConfiguration {
      * error reporting constant.
      */
     private String errorReporting = "E_ALL";
+    
+    public PhpExecutableConfiguration() {
+    	try {
+    		this.temporaryScriptFile = File.createTempFile("snippet", "php");
+    		this.temporaryScriptFile.deleteOnExit();
+    	} catch (IOException ex) {
+    		// silently ignore
+    	}
+    }
 
     /**
      * {@inheritDoc}
