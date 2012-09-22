@@ -132,10 +132,10 @@ public class SerializedPhpParserTest extends TestCase {
      * @throws Exception thrown on errors.
      */
     public void testParseStringUtf8() throws Exception {
-        // Ã¤ is 2-byte: 0xc3 0xa4
-        // â‚¬ is 3-byte: 0xe2 0x82 0xac
+        // ä is 2-byte: 0xc3 0xa4
+        // € is 3-byte: 0xe2 0x82 0xac
         // 3 extra characters = 9 characters
-        assertPrimitive("s:9:\"strÃ¤â‚¬g\";", "strÃ¤â‚¬g");
+        assertPrimitive("s:9:\"strä€g\";", "strä€g");
     }
 
     // java does currently not support this 4-byte-character
@@ -144,9 +144,9 @@ public class SerializedPhpParserTest extends TestCase {
 //     * @throws Exception thrown on errors.
 //     */
 //    public void testParseStringUtf8With4Byte() throws Exception {
-//        // ð�„ž is 4-byte (violin key U+1D11E): 0xf0 0x9d 0x84 0x9e
+//        // 𝄞 is 4-byte (violin key U+1D11E): 0xf0 0x9d 0x84 0x9e
 //        // 3 extra characters = 9 characters
-//        assertPrimitive("s:9:\"strinð�„ž\";", "strinð�„ž");
+//        assertPrimitive("s:9:\"strin𝄞\";", "strin𝄞");
 //    }
 
     /**
@@ -201,10 +201,10 @@ public class SerializedPhpParserTest extends TestCase {
         String input = 
                 "a:2:{i:0;a:8:{s:5:\"class\";O:7:\"MyClass\":1:{s:5:\"pippo\";s:4:\"test\";}" +
                 "i:0;i:1;i:1;d:0.19999998807907104;i:2;b:1;i:3;b:0;i:4;N;i:5;a:1:{i:0;s:42:\"\"" +
-                ";\";\";\";\";ÃŽÃ‘TÃ‹RÃ‘Ã…TÃŒÃ”Ã±Ã�L\";\";\";\";\";\";}i:6;O:6:\"Object\":0:{}}i:1;a:8:{" +
+                ";\";\";\";\";ÎÑTËRÑÅTÌÔñÁL\";\";\";\";\";\";}i:6;O:6:\"Object\":0:{}}i:1;a:8:{" +
                 "s:5:\"class\";O:7:\"MyClass\":1:{s:5:\"pippo\";s:4:\"test\";}i:0;i:1;i:1;d:" +
                 "0.19999998807907104;i:2;b:1;i:3;b:0;i:4;N;i:5;a:1:{i:0;s:42:\"\";\";\";\";\";" +
-                "ÃŽÃ‘TÃ‹RÃ‘Ã…TÃŒÃ”Ã±Ã�L\";\";\";\";\";\";}i:6;O:6:\"Object\":0:{}}}";
+                "ÎÑTËRÑÅTÌÔñÁL\";\";\";\";\";\";}i:6;O:6:\"Object\":0:{}}}";
         new DeserializePhp(input).parse();
 
         // sample output of a yahoo web image search api call
@@ -259,7 +259,7 @@ public class SerializedPhpParserTest extends TestCase {
                 "i:50;s:11:\"resizedName\";N;s:7:\"thumb_x\";N;s:7:\"thumb_y\";N;s:11:\"thumb_width\";" +
                 "N;s:12:\"thumb_height\";N;s:9:\"raw_width\";i:150;s:10:\"raw_height\";i:50;s:7:\"version" +
                 "\";i:37;}s:7:\"preview\";" +
-                "N;s:7:\"caption\";s:6:\"supÃ©rb\";s:6:\"hidden\";N;s:9:\"highlight\";b:1;s:14:\"highlightImage" +
+                "N;s:7:\"caption\";s:6:\"supérb\";s:6:\"hidden\";N;s:9:\"highlight\";b:1;s:14:\"highlightImage" +
                 "\";O:5:\"image\":12:{s:4:\"name\";" +
                 "s:36:\"top_story_promo_transition.highlight\";s:4:\"type\";s:3:\"png\";s:5:\"width\";" +
                 "i:150;s:6:\"height\";i:50;" +
@@ -272,7 +272,7 @@ public class SerializedPhpParserTest extends TestCase {
                 "s:20:\"1156837966_352721747\";s:11:\"extraFields\";a:1:{s:11:\"Description\";s:0:\"\";}" +
                 "s:4:\"rank\";N;s:7:\"version\";i:37;s:7:\"emailMe\";N;}}";
         final Map results = (Map) new DeserializePhp(input, false).parse();
-        assertTrue(results.toString().indexOf("supÃ©rb") > 0);
+        assertTrue(results.toString().indexOf("supérb") > 0);
     }
     
     /**
