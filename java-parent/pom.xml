@@ -15,7 +15,7 @@
 
     <groupId>org.phpmaven.build.phpexec-java</groupId>
     <artifactId>generic-java-parent</artifactId>
-    <version>0.1.2-SNAPSHOT</version>
+    <version>0.1.2</version>
     <packaging>pom</packaging>
 
     <name>java-parent:${project.version}</name>
