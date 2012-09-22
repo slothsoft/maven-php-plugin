@@ -9,13 +9,13 @@
 
     <parent>
         <groupId>org.phpmaven.build</groupId>
-        <artifactId>generic-parent-tags</artifactId>
+        <artifactId>generic-parent-branches</artifactId>
         <version>1</version>
     </parent>
 
     <groupId>org.phpmaven.build.phpexec-java</groupId>
     <artifactId>generic-parent</artifactId>
-    <version>0.1.8-SNAPSHOT</version>
+    <version>0.1.8</version>
     <packaging>pom</packaging>
 
     <name>generic-parent:${project.version}</name>

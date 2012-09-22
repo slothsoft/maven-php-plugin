@@ -9,13 +9,13 @@
 
     <parent>
         <groupId>org.phpmaven.build</groupId>
-        <artifactId>site-parent-tags</artifactId>
+        <artifactId>site-parent-branches</artifactId>
         <version>1</version>
     </parent>
 
     <groupId>org.phpmaven.sites</groupId>
     <artifactId>phpexec-java-site</artifactId>
-    <version>0.1.8-SNAPSHOT</version>
+    <version>0.1.8</version>
     <packaging>pom</packaging>
 
     <name>${project.version}</name>
@@ -38,6 +38,7 @@
         <connection>${phpmavenRootScmUrl}</connection>
         <developerConnection>${phpmavenRootScmUrl}</developerConnection>
         <url>${phpmavenRootScmUrlWeb}</url>
+    <tag>phpexec-java-site-0.1.8</tag>
   </scm>
     
     <modules>
