@@ -15,7 +15,7 @@
 
     <groupId>org.phpmaven.build.phpexec-java</groupId>
     <artifactId>generic-site-parent</artifactId>
-    <version>0.1.6-SNAPSHOT</version>
+    <version>0.1.6</version>
     <packaging>pom</packaging>
 
     <name>site-parent:${project.version}</name>
