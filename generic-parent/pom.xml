@@ -9,7 +9,7 @@
 
     <parent>
         <groupId>org.phpmaven.build</groupId>
-        <artifactId>generic-parent-branches</artifactId>
+        <artifactId>generic-parent-tags</artifactId>
         <version>1</version>
     </parent>
 
