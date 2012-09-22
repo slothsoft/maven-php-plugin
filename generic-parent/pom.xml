@@ -3,6 +3,8 @@
     
     <properties>
         <phpmavenTagName>${project.version}</phpmavenTagName>
+        <phpmavenRootScmUrl>git@github.com:php-maven/phpexec-java.git</phpmavenRootScmUrl>
+        <phpmavenRootScmUrlWeb>http://www.github.com/php-maven/phpexec-java</phpmavenRootScmUrlWeb>
     </properties>
 
     <parent>
