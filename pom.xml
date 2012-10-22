@@ -15,7 +15,7 @@
 
     <groupId>org.phpmaven.sites</groupId>
     <artifactId>phpexec-java-site</artifactId>
-    <version>0.1.9-SNAPSHOT</version>
+    <version>0.1.10-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>${project.version}</name>
