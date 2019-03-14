@@ -10,7 +10,7 @@
         <groupId>org.phpmaven.build</groupId>
         <artifactId>common-parent</artifactId>
         <version>1</version>
-        <relativePath>../../build/common-parent/pom.xml</relativePath>
+        <relativePath>../../phpmaven-common-parent/pom.xml</relativePath>
     </parent>
 
     <artifactId>generic-parent-branches</artifactId>

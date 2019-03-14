@@ -36,7 +36,7 @@
     	<dependency>
     		<groupId>org.phpmaven.phpexec-java</groupId>
     		<artifactId>phpexec-api</artifactId>
-    		<version>0.1.9</version>
+    		<version>0.1.10-SNAPSHOT</version>
         	<scope>compile</scope>
     	</dependency>
     	<dependency>
