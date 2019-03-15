@@ -29,7 +29,6 @@
         <module>java-parent-branches</module>
         <module>generic-parent-tags</module>
         <module>generic-parent-branches</module>
-        <module>sitemap-plugin</module>
     </modules>
     
     <distributionManagement>

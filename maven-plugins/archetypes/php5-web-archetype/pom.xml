@@ -31,14 +31,5 @@
             <url>${phpmavenSitesUploadUrl}/${phpmavenTagType}/${phpmavenTagName}/archetypes/${project.artifactId}/</url>
         </site>
     </distributionManagement>
-    
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.phpmaven.sites</groupId>
-                <artifactId>sitemap-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
