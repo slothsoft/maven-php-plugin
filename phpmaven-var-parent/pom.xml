@@ -22,7 +22,6 @@
         <module>skin</module>
         <module>checkstyle</module>
         <module>java-resources</module>
-        <module>site-parent</module>
         <module>site-parent-tags</module>
         <module>site-parent-branches</module>
         <module>java-parent</module>
