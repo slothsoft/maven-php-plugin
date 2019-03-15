@@ -23,8 +23,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Assert;
-
+import org.junit.Rule;
 import org.junit.Test;
 import org.phpmaven.phpexec.cli.PhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
@@ -32,78 +31,83 @@ import org.phpmaven.phpexec.library.IPhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.PhpErrorException;
 import org.phpmaven.phpexec.library.PhpWarningException;
 
+import junit.framework.Assert;
+
 /**
  * test cases for PHP support.
- * 
+ *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
 public class IncludesTest {
 
-    /**
-     * Tests if the execution configuration can be created.
-     *
-     * @throws Exception thrown on errors
-     */
+	@Rule
+	public PhpExePresent phpExePresent = new PhpExePresent();
+
+	/**
+	 * Tests if the execution configuration can be created.
+	 *
+	 * @throws Exception thrown on errors
+	 */
 	@Test
-    public void testExisting() throws Exception {
+	public void testExisting() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
-        final File includeTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/empty-pom/includes-test.php");
-        execConfig.getIncludePath().add(
-                new File("target/test-classes/org/phpmaven/phpexec/test/empty-pom/includes").getAbsolutePath());
+		final File includeTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/empty-pom/includes-test.php");
+		execConfig.getIncludePath().add(
+				new File("target/test-classes/org/phpmaven/phpexec/test/empty-pom/includes").getAbsolutePath());
 
-        // assert that the environment variable is mapped correctly
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        Assert.assertEquals("SUCCESS_EXISTING\n", exec.execute(includeTestPhp));
-    }
+		// assert that the environment variable is mapped correctly
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		Assert.assertEquals("SUCCESS_EXISTING\n", exec.execute(includeTestPhp));
+	}
 
-    /**
-     * Tests if the execution configuration can be created.
-     *
-     * @throws Exception thrown on errors
-     */
+	/**
+	 * Tests if the execution configuration can be created.
+	 *
+	 * @throws Exception thrown on errors
+	 */
 	@Test
-    public void testExistingPut() throws Exception {
+	public void testExistingPut() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
-        final File includeTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/empty-pom/includes-test.php");
-        final List<String> includes = new ArrayList<String>();
-        includes.add(
-                new File("target/test-classes/org/phpmaven/phpexec/test/empty-pom/includes").getAbsolutePath());
-        execConfig.setIncludePath(includes);
+		final File includeTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/empty-pom/includes-test.php");
+		final List<String> includes = new ArrayList<String>();
+		includes.add(
+				new File("target/test-classes/org/phpmaven/phpexec/test/empty-pom/includes").getAbsolutePath());
+		execConfig.setIncludePath(includes);
 
-        // assert that the environment variable is mapped correctly
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        Assert.assertEquals("SUCCESS_EXISTING\n", exec.execute(includeTestPhp));
-    }
+		// assert that the environment variable is mapped correctly
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		Assert.assertEquals("SUCCESS_EXISTING\n", exec.execute(includeTestPhp));
+	}
 
-    /**
-     * Tests if the execution configuration can be created.
-     *
-     * @throws Exception thrown on errors
-     */
+	/**
+	 * Tests if the execution configuration can be created.
+	 *
+	 * @throws Exception thrown on errors
+	 */
 	@Test
-    public void testFailing() throws Exception {
+	public void testFailing() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
-        final File includeTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/empty-pom/includes-test.php");
+		final File includeTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/empty-pom/includes-test.php");
 
-        // assert that the environment variable is mapped correctly
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        try {
-            // we will either expect a php warning or a php error.
-            // depends on php.ini and php version.
-            exec.execute(includeTestPhp);
-            Assert.fail("Exception expected");
-        } catch (PhpWarningException ex) {
-            // ignore; we expect this exception
-            Assert.assertTrue(ex.getMessage().contains("Warning: require_once(existing.php)"));
-        } catch (PhpErrorException ex) {
-            // ignore; we expect this exception
-            Assert.assertTrue(ex.getMessage().contains("Fatal error: require_once()"));
-        }
-    }
+		// assert that the environment variable is mapped correctly
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		try {
+			// we will either expect a php warning or a php error.
+			// depends on php.ini and php version.
+			exec.execute(includeTestPhp);
+			Assert.fail("Exception expected");
+		} catch (final PhpWarningException ex) {
+			// ignore; we expect this exception
+			Assert.assertTrue(ex.getMessage().contains("Warning: require_once(existing.php)"));
+		} catch (final PhpErrorException ex) {
+			// ignore; we expect this exception
+			Assert.assertTrue(ex.getMessage().contains("Fatal error: require_once()"));
+		}
+	}
 //
 //    /**
 //     * Tests if the execution configuration can be created.
@@ -129,5 +133,5 @@ public class IncludesTest {
 //        // TODO currently does not work because the php.exe returns non-zero error code at cli.
 //        // there should be no exception thrown.
 //    }
-    
+
 }

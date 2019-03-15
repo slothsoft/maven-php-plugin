@@ -1,6 +1,6 @@
 /**
  * Copyright 2010-2012 by PHP-maven.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -28,58 +28,62 @@ import org.phpmaven.test.AbstractTestCase;
 
 /**
  * test cases for PHP support.
- * 
+ *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
 public class DefineTest extends AbstractTestCase {
 
-    /**
-     * Tests if the execution configuration can be created.
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testDefines() throws Exception {
-        // look up the component factory
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        // create the execution config
-        final MavenSession session = this.createSimpleSession("exec/empty-pom");
-        final IPhpExecutableConfiguration execConfig = factory.lookup(
-                IPhpExecutableConfiguration.class,
-                IComponentFactory.EMPTY_CONFIG,
-                session);
+	/**
+	 * Tests if the execution configuration can be created.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	public void testDefines() throws Exception {
+		if (!isPhpPresent()) return;
 
-        final File defineTestPhp = new File(session.getCurrentProject().getBasedir(), "define-test.php");
-        execConfig.getPhpDefines().put("max_execution_time", "foo bar");
+		// look up the component factory
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		// create the execution config
+		final MavenSession session = this.createSimpleSession("exec/empty-pom");
+		final IPhpExecutableConfiguration execConfig = factory.lookup(
+				IPhpExecutableConfiguration.class,
+				IComponentFactory.EMPTY_CONFIG,
+				session);
 
-        // assert that the environment variable is mapped correctly
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        assertEquals("success: foo bar\n", exec.execute(defineTestPhp));
-    }
+		final File defineTestPhp = new File(session.getCurrentProject().getBasedir(), "define-test.php");
+		execConfig.getPhpDefines().put("max_execution_time", "foo bar");
 
-    /**
-     * Tests if the execution configuration can be created.
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testDefinesSet() throws Exception {
-        // look up the component factory
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        // create the execution config
-        final MavenSession session = this.createSimpleSession("exec/empty-pom");
-        final IPhpExecutableConfiguration execConfig = factory.lookup(
-                IPhpExecutableConfiguration.class,
-                IComponentFactory.EMPTY_CONFIG,
-                session);
+		// assert that the environment variable is mapped correctly
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		assertEquals("success: foo bar\n", exec.execute(defineTestPhp));
+	}
 
-        final File defineTestPhp = new File(session.getCurrentProject().getBasedir(), "define-test.php");
-        final Map<String, String> defines = new HashMap<String, String>();
-        defines.put("max_execution_time", "foo bar");
-        execConfig.setPhpDefines(defines);
+	/**
+	 * Tests if the execution configuration can be created.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	public void testDefinesSet() throws Exception {
+		if (!isPhpPresent()) return;
 
-        // assert that the environment variable is mapped correctly
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        assertEquals("success: foo bar\n", exec.execute(defineTestPhp));
-    }
-    
+		// look up the component factory
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		// create the execution config
+		final MavenSession session = this.createSimpleSession("exec/empty-pom");
+		final IPhpExecutableConfiguration execConfig = factory.lookup(
+				IPhpExecutableConfiguration.class,
+				IComponentFactory.EMPTY_CONFIG,
+				session);
+
+		final File defineTestPhp = new File(session.getCurrentProject().getBasedir(), "define-test.php");
+		final Map<String, String> defines = new HashMap<String, String>();
+		defines.put("max_execution_time", "foo bar");
+		execConfig.setPhpDefines(defines);
+
+		// assert that the environment variable is mapped correctly
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		assertEquals("success: foo bar\n", exec.execute(defineTestPhp));
+	}
+
 }

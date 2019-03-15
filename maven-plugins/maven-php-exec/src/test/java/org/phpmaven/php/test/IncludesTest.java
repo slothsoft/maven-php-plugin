@@ -1,6 +1,6 @@
 /**
  * Copyright 2010-2012 by PHP-maven.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -30,94 +30,100 @@ import org.phpmaven.test.AbstractTestCase;
 
 /**
  * test cases for PHP support.
- * 
+ *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
 public class IncludesTest extends AbstractTestCase {
 
-    /**
-     * Tests if the execution configuration can be created.
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testExisting() throws Exception {
-        // look up the component factory
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        // create the execution config
-        final MavenSession session = this.createSimpleSession("exec/empty-pom");
-        final IPhpExecutableConfiguration execConfig = factory.lookup(
-                IPhpExecutableConfiguration.class,
-                IComponentFactory.EMPTY_CONFIG,
-                session);
+	/**
+	 * Tests if the execution configuration can be created.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	public void testExisting() throws Exception {
+		if (!isPhpPresent()) return;
 
-        final File includeTestPhp = new File(session.getCurrentProject().getBasedir(), "includes-test.php");
-        execConfig.getIncludePath().add(
-                new File(session.getCurrentProject().getBasedir(), "includes").getAbsolutePath());
+		// look up the component factory
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		// create the execution config
+		final MavenSession session = this.createSimpleSession("exec/empty-pom");
+		final IPhpExecutableConfiguration execConfig = factory.lookup(
+				IPhpExecutableConfiguration.class,
+				IComponentFactory.EMPTY_CONFIG,
+				session);
 
-        // assert that the environment variable is mapped correctly
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        assertEquals("SUCCESS_EXISTING\n", exec.execute(includeTestPhp));
-    }
+		final File includeTestPhp = new File(session.getCurrentProject().getBasedir(), "includes-test.php");
+		execConfig.getIncludePath().add(
+				new File(session.getCurrentProject().getBasedir(), "includes").getAbsolutePath());
 
-    /**
-     * Tests if the execution configuration can be created.
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testExistingPut() throws Exception {
-        // look up the component factory
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        // create the execution config
-        final MavenSession session = this.createSimpleSession("exec/empty-pom");
-        final IPhpExecutableConfiguration execConfig = factory.lookup(
-                IPhpExecutableConfiguration.class,
-                IComponentFactory.EMPTY_CONFIG,
-                session);
+		// assert that the environment variable is mapped correctly
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		assertEquals("SUCCESS_EXISTING\n", exec.execute(includeTestPhp));
+	}
 
-        final File includeTestPhp = new File(session.getCurrentProject().getBasedir(), "includes-test.php");
-        final List<String> includes = new ArrayList<String>();
-        includes.add(
-                new File(session.getCurrentProject().getBasedir(), "includes").getAbsolutePath());
-        execConfig.setIncludePath(includes);
+	/**
+	 * Tests if the execution configuration can be created.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	public void testExistingPut() throws Exception {
+		if (!isPhpPresent()) return;
 
-        // assert that the environment variable is mapped correctly
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        assertEquals("SUCCESS_EXISTING\n", exec.execute(includeTestPhp));
-    }
+		// look up the component factory
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		// create the execution config
+		final MavenSession session = this.createSimpleSession("exec/empty-pom");
+		final IPhpExecutableConfiguration execConfig = factory.lookup(
+				IPhpExecutableConfiguration.class,
+				IComponentFactory.EMPTY_CONFIG,
+				session);
 
-    /**
-     * Tests if the execution configuration can be created.
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testFailing() throws Exception {
-        // look up the component factory
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        // create the execution config
-        final MavenSession session = this.createSimpleSession("exec/empty-pom");
-        final IPhpExecutableConfiguration execConfig = factory.lookup(
-                IPhpExecutableConfiguration.class,
-                IComponentFactory.EMPTY_CONFIG,
-                session);
+		final File includeTestPhp = new File(session.getCurrentProject().getBasedir(), "includes-test.php");
+		final List<String> includes = new ArrayList<String>();
+		includes.add(
+				new File(session.getCurrentProject().getBasedir(), "includes").getAbsolutePath());
+		execConfig.setIncludePath(includes);
 
-        final File includeTestPhp = new File(session.getCurrentProject().getBasedir(), "includes-test.php");
+		// assert that the environment variable is mapped correctly
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		assertEquals("SUCCESS_EXISTING\n", exec.execute(includeTestPhp));
+	}
 
-        // assert that the environment variable is mapped correctly
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        try {
-            // we will either expect a php warning or a php error.
-            // depends on php.ini and php version.
-            exec.execute(includeTestPhp);
-            fail("Exception expected");
-        } catch (PhpWarningException ex) {
-            // ignore; we expect this exception
-            assertTrue(ex.getMessage().contains("Warning: require_once(existing.php)"));
-        } catch (PhpErrorException ex) {
-            // ignore; we expect this exception
-            assertTrue(ex.getMessage().contains("Fatal error: require_once()"));
-        }
-    }
+	/**
+	 * Tests if the execution configuration can be created.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	public void testFailing() throws Exception {
+		if (!isPhpPresent()) return;
+
+		// look up the component factory
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		// create the execution config
+		final MavenSession session = this.createSimpleSession("exec/empty-pom");
+		final IPhpExecutableConfiguration execConfig = factory.lookup(
+				IPhpExecutableConfiguration.class,
+				IComponentFactory.EMPTY_CONFIG,
+				session);
+
+		final File includeTestPhp = new File(session.getCurrentProject().getBasedir(), "includes-test.php");
+
+		// assert that the environment variable is mapped correctly
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		try {
+			// we will either expect a php warning or a php error.
+			// depends on php.ini and php version.
+			exec.execute(includeTestPhp);
+			fail("Exception expected");
+		} catch (final PhpWarningException ex) {
+			// ignore; we expect this exception
+			assertTrue(ex.getMessage().contains("Warning: require_once(existing.php)"));
+		} catch (final PhpErrorException ex) {
+			// ignore; we expect this exception
+			assertTrue(ex.getMessage().contains("Fatal error: require_once()"));
+		}
+	}
 //
 //    /**
 //     * Tests if the execution configuration can be created.
@@ -143,5 +149,5 @@ public class IncludesTest extends AbstractTestCase {
 //        // TODO currently does not work because the php.exe returns non-zero error code at cli.
 //        // there should be no exception thrown.
 //    }
-    
+
 }

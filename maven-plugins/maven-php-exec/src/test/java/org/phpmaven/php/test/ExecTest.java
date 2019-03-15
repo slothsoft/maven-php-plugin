@@ -1,6 +1,6 @@
 /**
  * Copyright 2010-2012 by PHP-maven.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -27,116 +27,124 @@ import org.phpmaven.test.AbstractTestCase;
 
 /**
  * test cases for various executions.
- * 
+ *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
 public class ExecTest extends AbstractTestCase {
 
-    /**
-     * Tests if the execution configuration can be created.
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testArgsWithConsumer() throws Exception {
-        // look up the component factory
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        // create the execution config
-        final MavenSession session = this.createSimpleSession("exec/empty-pom");
-        final IPhpExecutableConfiguration execConfig = factory.lookup(
-                IPhpExecutableConfiguration.class,
-                IComponentFactory.EMPTY_CONFIG,
-                session);
+	/**
+	 * Tests if the execution configuration can be created.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	public void testArgsWithConsumer() throws Exception {
+		if (!isPhpPresent()) return;
 
-        final File envTestPhp = new File(session.getCurrentProject().getBasedir(), "args-test.php");
+		// look up the component factory
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		// create the execution config
+		final MavenSession session = this.createSimpleSession("exec/empty-pom");
+		final IPhpExecutableConfiguration execConfig = factory.lookup(
+				IPhpExecutableConfiguration.class,
+				IComponentFactory.EMPTY_CONFIG,
+				session);
 
-        // assert that the environment variable is mapped correctly
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        assertEquals(0, exec.execute("\"" + envTestPhp.getAbsolutePath() + "\" JUNIT_ARG_TEST", envTestPhp,
-                new StreamConsumer() {
+		final File envTestPhp = new File(session.getCurrentProject().getBasedir(), "args-test.php");
 
-                    @Override
-                    public void consumeLine(String line) {
-                        // does nothing
-                    }
-                }));
-    }
+		// assert that the environment variable is mapped correctly
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		assertEquals(0, exec.execute("\"" + envTestPhp.getAbsolutePath() + "\" JUNIT_ARG_TEST", envTestPhp,
+				new StreamConsumer() {
 
-    /**
-     * Tests if the execution configuration can be created.
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testCode() throws Exception {
-        // look up the component factory
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        // create the execution config
-        final MavenSession session = this.createSimpleSession("exec/empty-pom");
-        final IPhpExecutableConfiguration execConfig = factory.lookup(
-                IPhpExecutableConfiguration.class,
-                IComponentFactory.EMPTY_CONFIG,
-                session);
+			@Override
+			public void consumeLine(String line) {
+				// does nothing
+			}
+		}));
+	}
 
-        // assert that the environment variable is mapped correctly
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        final String output = exec.executeCode("", "echo 'FOO';");
-        assertEquals("FOO\n", output);
-    }
+	/**
+	 * Tests if the execution configuration can be created.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	public void testCode() throws Exception {
+		if (!isPhpPresent()) return;
 
-    /**
-     * Tests if the execution configuration can be created.
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testCodeArgs() throws Exception {
-        // look up the component factory
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        // create the execution config
-        final MavenSession session = this.createSimpleSession("exec/empty-pom");
-        final IPhpExecutableConfiguration execConfig = factory.lookup(
-                IPhpExecutableConfiguration.class,
-                IComponentFactory.EMPTY_CONFIG,
-                session);
+		// look up the component factory
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		// create the execution config
+		final MavenSession session = this.createSimpleSession("exec/empty-pom");
+		final IPhpExecutableConfiguration execConfig = factory.lookup(
+				IPhpExecutableConfiguration.class,
+				IComponentFactory.EMPTY_CONFIG,
+				session);
 
-        // assert that the environment variable is mapped correctly
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        final String output = exec.executeCode("", "echo $argv[1];", "JUNIT_ARG_TEST");
-        assertEquals("JUNIT_ARG_TEST\n", output);
-    }
+		// assert that the environment variable is mapped correctly
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		final String output = exec.executeCode("", "echo 'FOO';");
+		assertEquals("FOO\n", output);
+	}
 
-    /**
-     * Tests if the execution configuration can be created.
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testArgsWithConsumer2() throws Exception {
-        // look up the component factory
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        // create the execution config
-        final MavenSession session = this.createSimpleSession("exec/empty-pom");
-        final IPhpExecutableConfiguration execConfig = factory.lookup(
-                IPhpExecutableConfiguration.class,
-                IComponentFactory.EMPTY_CONFIG,
-                session);
+	/**
+	 * Tests if the execution configuration can be created.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	public void testCodeArgs() throws Exception {
+		if (!isPhpPresent()) return;
 
-        final File envTestPhp = new File(session.getCurrentProject().getBasedir(), "args-test.php");
+		// look up the component factory
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		// create the execution config
+		final MavenSession session = this.createSimpleSession("exec/empty-pom");
+		final IPhpExecutableConfiguration execConfig = factory.lookup(
+				IPhpExecutableConfiguration.class,
+				IComponentFactory.EMPTY_CONFIG,
+				session);
 
-        // assert that the environment variable is mapped correctly
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        assertEquals(0, exec.execute("\"" + envTestPhp.getAbsolutePath() + "\" JUNIT_ARG_TEST",
-                new StreamConsumer() {
+		// assert that the environment variable is mapped correctly
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		final String output = exec.executeCode("", "echo $argv[1];", "JUNIT_ARG_TEST");
+		assertEquals("JUNIT_ARG_TEST\n", output);
+	}
 
-                    @Override
-                    public void consumeLine(String line) {
-                        // does nothing
-                    }
-                },
-                new StreamConsumer() {
-                    @Override
-                    public void consumeLine(String line) {
-                        // does nothing
-                    }
-                }));
-    }
-    
+	/**
+	 * Tests if the execution configuration can be created.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	public void testArgsWithConsumer2() throws Exception {
+		if (!isPhpPresent()) return;
+
+		// look up the component factory
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		// create the execution config
+		final MavenSession session = this.createSimpleSession("exec/empty-pom");
+		final IPhpExecutableConfiguration execConfig = factory.lookup(
+				IPhpExecutableConfiguration.class,
+				IComponentFactory.EMPTY_CONFIG,
+				session);
+
+		final File envTestPhp = new File(session.getCurrentProject().getBasedir(), "args-test.php");
+
+		// assert that the environment variable is mapped correctly
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		assertEquals(0, exec.execute("\"" + envTestPhp.getAbsolutePath() + "\" JUNIT_ARG_TEST",
+				new StreamConsumer() {
+
+			@Override
+			public void consumeLine(String line) {
+				// does nothing
+			}
+		},
+				new StreamConsumer() {
+			@Override
+			public void consumeLine(String line) {
+				// does nothing
+			}
+		}));
+	}
+
 }

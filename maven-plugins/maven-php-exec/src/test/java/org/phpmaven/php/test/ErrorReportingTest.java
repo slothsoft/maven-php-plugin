@@ -1,6 +1,6 @@
 /**
  * Copyright 2010-2012 by PHP-maven.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -26,101 +26,109 @@ import org.phpmaven.test.AbstractTestCase;
 
 /**
  * test cases for PHP error reporting support.
- * 
+ *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
 public class ErrorReportingTest extends AbstractTestCase {
 
-    /**
-     * Tests if the execution is aware of detecting error while setting error_reporting in the script.
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testFalse() throws Exception {
-        // look up the component factory
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        // create the execution config
-        final MavenSession session = this.createSimpleSession("exec/error-reporting");
-        final IPhpExecutableConfiguration execConfig = factory.lookup(
-                IPhpExecutableConfiguration.class,
-                IComponentFactory.EMPTY_CONFIG,
-                session);
+	/**
+	 * Tests if the execution is aware of detecting error while setting error_reporting in the script.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	public void testFalse() throws Exception {
+		if (!isPhpPresent()) return;
 
-        final File defineTestPhp = new File(session.getCurrentProject().getBasedir(), "false-test.php");
+		// look up the component factory
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		// create the execution config
+		final MavenSession session = this.createSimpleSession("exec/error-reporting");
+		final IPhpExecutableConfiguration execConfig = factory.lookup(
+				IPhpExecutableConfiguration.class,
+				IComponentFactory.EMPTY_CONFIG,
+				session);
 
-        // assert that the execution is aware of detecting the error
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        assertTrue(exec.execute(defineTestPhp).contains("some deprecated warning"));
-    }
+		final File defineTestPhp = new File(session.getCurrentProject().getBasedir(), "false-test.php");
 
-    /**
-     * Tests if the execution is aware of detecting error.
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testEALL() throws Exception {
-        // look up the component factory
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        // create the execution config
-        final MavenSession session = this.createSimpleSession("exec/error-reporting");
-        final IPhpExecutableConfiguration execConfig = factory.lookup(
-                IPhpExecutableConfiguration.class,
-                IComponentFactory.EMPTY_CONFIG,
-                session);
-        execConfig.setErrorReporting("E_ALL");
+		// assert that the execution is aware of detecting the error
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		assertTrue(exec.execute(defineTestPhp).contains("some deprecated warning"));
+	}
 
-        final File defineTestPhp = new File(session.getCurrentProject().getBasedir(), "test.php");
+	/**
+	 * Tests if the execution is aware of detecting error.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	public void testEALL() throws Exception {
+		if (!isPhpPresent()) return;
 
-        // assert that the execution is aware of detecting the error
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        assertTrue(exec.execute(defineTestPhp).contains("some deprecated warning"));
-    }
+		// look up the component factory
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		// create the execution config
+		final MavenSession session = this.createSimpleSession("exec/error-reporting");
+		final IPhpExecutableConfiguration execConfig = factory.lookup(
+				IPhpExecutableConfiguration.class,
+				IComponentFactory.EMPTY_CONFIG,
+				session);
+		execConfig.setErrorReporting("E_ALL");
 
-    /**
-     * Tests if the execution is aware of detecting error.
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testEALLandNotEUSERDEPRECATED() throws Exception {
-        // look up the component factory
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        // create the execution config
-        final MavenSession session = this.createSimpleSession("exec/error-reporting");
-        final IPhpExecutableConfiguration execConfig = factory.lookup(
-                IPhpExecutableConfiguration.class,
-                IComponentFactory.EMPTY_CONFIG,
-                session);
-        execConfig.setErrorReporting("E_ALL & !E_USER_DEPRECATED");
+		final File defineTestPhp = new File(session.getCurrentProject().getBasedir(), "test.php");
 
-        final File defineTestPhp = new File(session.getCurrentProject().getBasedir(), "test.php");
+		// assert that the execution is aware of detecting the error
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		assertTrue(exec.execute(defineTestPhp).contains("some deprecated warning"));
+	}
 
-        // assert that the execution is aware of detecting the error
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        assertEquals("", exec.execute(defineTestPhp));
-    }
+	/**
+	 * Tests if the execution is aware of detecting error.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	public void testEALLandNotEUSERDEPRECATED() throws Exception {
+		if (!isPhpPresent()) return;
 
-    /**
-     * Tests if the execution is aware of detecting error.
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testNULL() throws Exception {
-        // look up the component factory
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        // create the execution config
-        final MavenSession session = this.createSimpleSession("exec/error-reporting");
-        final IPhpExecutableConfiguration execConfig = factory.lookup(
-                IPhpExecutableConfiguration.class,
-                IComponentFactory.EMPTY_CONFIG,
-                session);
-        execConfig.setErrorReporting("0");
+		// look up the component factory
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		// create the execution config
+		final MavenSession session = this.createSimpleSession("exec/error-reporting");
+		final IPhpExecutableConfiguration execConfig = factory.lookup(
+				IPhpExecutableConfiguration.class,
+				IComponentFactory.EMPTY_CONFIG,
+				session);
+		execConfig.setErrorReporting("E_ALL & !E_USER_DEPRECATED");
 
-        final File defineTestPhp = new File(session.getCurrentProject().getBasedir(), "test.php");
+		final File defineTestPhp = new File(session.getCurrentProject().getBasedir(), "test.php");
 
-        // assert that the execution is aware of detecting the error
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        assertEquals("", exec.execute(defineTestPhp));
-    }
-    
+		// assert that the execution is aware of detecting the error
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		assertEquals("", exec.execute(defineTestPhp));
+	}
+
+	/**
+	 * Tests if the execution is aware of detecting error.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	public void testNULL() throws Exception {
+		if (!isPhpPresent()) return;
+
+		// look up the component factory
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		// create the execution config
+		final MavenSession session = this.createSimpleSession("exec/error-reporting");
+		final IPhpExecutableConfiguration execConfig = factory.lookup(
+				IPhpExecutableConfiguration.class,
+				IComponentFactory.EMPTY_CONFIG,
+				session);
+		execConfig.setErrorReporting("0");
+
+		final File defineTestPhp = new File(session.getCurrentProject().getBasedir(), "test.php");
+
+		// assert that the execution is aware of detecting the error
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		assertEquals("", exec.execute(defineTestPhp));
+	}
+
 }

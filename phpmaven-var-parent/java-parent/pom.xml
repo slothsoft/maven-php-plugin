@@ -88,7 +88,7 @@
                         </execution>
       	            </executions>
                 </plugin> -->
-                <!-- XXX: Removed for now; see if we need it
+                <!-- XXX [slothsoft]: Removed for now; see if we need it
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-remote-resources-plugin</artifactId>

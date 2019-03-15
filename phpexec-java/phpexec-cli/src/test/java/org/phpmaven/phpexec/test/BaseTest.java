@@ -19,75 +19,79 @@
 
 package org.phpmaven.phpexec.test;
 
-import junit.framework.Assert;
-
+import org.junit.Rule;
 import org.junit.Test;
 import org.phpmaven.phpexec.cli.PhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.phpexec.library.IPhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.PhpException;
 
+import junit.framework.Assert;
+
 /**
  * test cases for PHP support.
- * 
+ *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
 public class BaseTest {
 
-    /**
-     * Tests if the execution configuration can be created.
-     *
-     * @throws Exception thrown on errors
-     */
+	@Rule
+	public PhpExePresent phpExePresent = new PhpExePresent();
+
+	/**
+	 * Tests if the execution configuration can be created.
+	 *
+	 * @throws Exception thrown on errors
+	 */
 	@Test
-    public void testECCreation() throws Exception {
+	public void testECCreation() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
-        // assert that it is not null
+		// assert that it is not null
 		Assert.assertNotNull(execConfig);
-        // assert that we are able to create the executable
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        Assert.assertNotNull(exec.getStrVersion());
-        Assert.assertNotNull(exec.getVersion());
-    }
+		// assert that we are able to create the executable
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		Assert.assertNotNull(exec.getStrVersion());
+		Assert.assertNotNull(exec.getVersion());
+	}
 
-    /**
-     * Tests if the execution configuration can be created
-     * with an unknown executable set.
-     *
-     * @throws Exception thrown on errors
-     */
+	/**
+	 * Tests if the execution configuration can be created
+	 * with an unknown executable set.
+	 *
+	 * @throws Exception thrown on errors
+	 */
 	@Test
-    public void testUnknownExecutable() throws Exception {
+	public void testUnknownExecutable() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
-        execConfig.setExecutable("/foo/bar/php");
-        // assert that we are able to create the executable
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        try {
-            exec.getStrVersion();
-            Assert.fail("Exception expected");
-        // CHECKSTYLE:OFF
-        // checkstyle does not like empty catches
-        } catch (PhpException ex) {
-            // ignore; we expect this exception
-        }
-        // CHECKSTYLE:ON
-    }
+		execConfig.setExecutable("/foo/bar/php");
+		// assert that we are able to create the executable
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		try {
+			exec.getStrVersion();
+			Assert.fail("Exception expected");
+			// CHECKSTYLE:OFF
+			// checkstyle does not like empty catches
+		} catch (final PhpException ex) {
+			// ignore; we expect this exception
+		}
+		// CHECKSTYLE:ON
+	}
 
-    /**
-     * Tests if isUseCache is active per default.
-     * @throws Exception
-     */
+	/**
+	 * Tests if isUseCache is active per default.
+	 * @throws Exception
+	 */
 	@Test
-    public void testIsUseCacheActive() throws Exception {
+	public void testIsUseCacheActive() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
-        Assert.assertTrue(execConfig.isUseCache());
-        execConfig.setUseCache(false);
-        Assert.assertFalse(execConfig.isUseCache());
-    }
-    
-    // TODO: test additionalPhpParameters
-    // TODO: test flushPHPOutput
-    // TODO: test temporaryScriptFile
+		Assert.assertTrue(execConfig.isUseCache());
+		execConfig.setUseCache(false);
+		Assert.assertFalse(execConfig.isUseCache());
+	}
+
+	// TODO: test additionalPhpParameters
+	// TODO: test flushPHPOutput
+	// TODO: test temporaryScriptFile
 
 }

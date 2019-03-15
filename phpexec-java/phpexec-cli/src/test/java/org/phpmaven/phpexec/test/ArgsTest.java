@@ -21,35 +21,39 @@ package org.phpmaven.phpexec.test;
 
 import java.io.File;
 
-import junit.framework.Assert;
-
+import org.junit.Rule;
 import org.junit.Test;
 import org.phpmaven.phpexec.cli.PhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.phpexec.library.IPhpExecutableConfiguration;
 
+import junit.framework.Assert;
+
 /**
  * test cases for PHP support.
- * 
+ *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
 public class ArgsTest {
 
-    /**
-     * Tests if the execution configuration can be created.
-     *
-     * @throws Exception thrown on errors
-     */
+	@Rule
+	public PhpExePresent phpExePresent = new PhpExePresent();
+
+	/**
+	 * Tests if the execution configuration can be created.
+	 *
+	 * @throws Exception thrown on errors
+	 */
 	@Test
-    public void testArgs() throws Exception {
-        final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
+	public void testArgs() throws Exception {
+		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
-        final File envTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/empty-pom/args-test.php");
+		final File envTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/empty-pom/args-test.php");
 
-        // assert that the environment variable is mapped correctly
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        Assert.assertEquals("success\n", exec.execute("\"" + envTestPhp.getAbsolutePath() + "\" JUNIT_ARG_TEST", envTestPhp));
-    }
-    
+		// assert that the environment variable is mapped correctly
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		Assert.assertEquals("success\n", exec.execute("\"" + envTestPhp.getAbsolutePath() + "\" JUNIT_ARG_TEST", envTestPhp));
+	}
+
 }

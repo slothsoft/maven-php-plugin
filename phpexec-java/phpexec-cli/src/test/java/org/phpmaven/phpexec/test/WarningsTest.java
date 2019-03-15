@@ -19,39 +19,43 @@
 
 package org.phpmaven.phpexec.test;
 
-import junit.framework.Assert;
-
+import org.junit.Rule;
 import org.junit.Test;
 import org.phpmaven.phpexec.cli.PhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.phpexec.library.IPhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.PhpWarningException;
 
+import junit.framework.Assert;
+
 /**
  * test cases for detecting php warnings as warnings.
- * 
+ *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
 public class WarningsTest {
 
-    /**
-     * Tests if the execution is aware of detecting warnings.
-     *
-     * @throws Exception thrown on errors
-     */
+	@Rule
+	public PhpExePresent phpExePresent = new PhpExePresent();
+
+	/**
+	 * Tests if the execution is aware of detecting warnings.
+	 *
+	 * @throws Exception thrown on errors
+	 */
 	@Test
-    public void testFalse() throws Exception {
+	public void testFalse() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        try {
-        	exec.executeCode("", "echo \"Warning: Some Warning\n\";");
-        	Assert.fail("Expected exception not thrown");
-        }
-        catch (PhpWarningException ex) {
-        	// expected exception
-        }
-    }
-    
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		try {
+			exec.executeCode("", "echo \"Warning: Some Warning\n\";");
+			Assert.fail("Expected exception not thrown");
+		}
+		catch (final PhpWarningException ex) {
+			// expected exception
+		}
+	}
+
 }

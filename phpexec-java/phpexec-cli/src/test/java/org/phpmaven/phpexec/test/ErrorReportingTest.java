@@ -21,86 +21,90 @@ package org.phpmaven.phpexec.test;
 
 import java.io.File;
 
-import junit.framework.Assert;
-
+import org.junit.Rule;
 import org.junit.Test;
 import org.phpmaven.phpexec.cli.PhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.phpexec.library.IPhpExecutableConfiguration;
 
+import junit.framework.Assert;
+
 /**
  * test cases for PHP error reporting support.
- * 
+ *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
 public class ErrorReportingTest {
 
-    /**
-     * Tests if the execution is aware of detecting error while setting error_reporting in the script.
-     *
-     * @throws Exception thrown on errors
-     */
+	@Rule
+	public PhpExePresent phpExePresent = new PhpExePresent();
+
+	/**
+	 * Tests if the execution is aware of detecting error while setting error_reporting in the script.
+	 *
+	 * @throws Exception thrown on errors
+	 */
 	@Test
-    public void testFalse() throws Exception {
+	public void testFalse() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
-        final File defineTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/error-reporting/false-test.php");
+		final File defineTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/error-reporting/false-test.php");
 
-        // assert that the execution is aware of detecting the error
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        Assert.assertTrue(exec.execute(defineTestPhp).contains("some deprecated warning"));
-    }
+		// assert that the execution is aware of detecting the error
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		Assert.assertTrue(exec.execute(defineTestPhp).contains("some deprecated warning"));
+	}
 
-    /**
-     * Tests if the execution is aware of detecting error.
-     *
-     * @throws Exception thrown on errors
-     */
+	/**
+	 * Tests if the execution is aware of detecting error.
+	 *
+	 * @throws Exception thrown on errors
+	 */
 	@Test
-    public void testEALL() throws Exception {
+	public void testEALL() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
-        execConfig.setErrorReporting("E_ALL");
+		execConfig.setErrorReporting("E_ALL");
 
-        final File defineTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/error-reporting/test.php");
+		final File defineTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/error-reporting/test.php");
 
-        // assert that the execution is aware of detecting the error
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        Assert.assertTrue(exec.execute(defineTestPhp).contains("some deprecated warning"));
-    }
+		// assert that the execution is aware of detecting the error
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		Assert.assertTrue(exec.execute(defineTestPhp).contains("some deprecated warning"));
+	}
 
-    /**
-     * Tests if the execution is aware of detecting error.
-     *
-     * @throws Exception thrown on errors
-     */
+	/**
+	 * Tests if the execution is aware of detecting error.
+	 *
+	 * @throws Exception thrown on errors
+	 */
 	@Test
-    public void testEALLandNotEUSERDEPRECATED() throws Exception {
+	public void testEALLandNotEUSERDEPRECATED() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
-        execConfig.setErrorReporting("E_ALL & !E_USER_DEPRECATED");
+		execConfig.setErrorReporting("E_ALL & !E_USER_DEPRECATED");
 
-        final File defineTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/error-reporting/test.php");
+		final File defineTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/error-reporting/test.php");
 
-        // assert that the execution is aware of detecting the error
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        Assert.assertEquals("", exec.execute(defineTestPhp));
-    }
+		// assert that the execution is aware of detecting the error
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		Assert.assertEquals("", exec.execute(defineTestPhp));
+	}
 
-    /**
-     * Tests if the execution is aware of detecting error.
-     *
-     * @throws Exception thrown on errors
-     */
+	/**
+	 * Tests if the execution is aware of detecting error.
+	 *
+	 * @throws Exception thrown on errors
+	 */
 	@Test
-    public void testNULL() throws Exception {
+	public void testNULL() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 		execConfig.setErrorReporting("0");
 
-        final File defineTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/error-reporting/test.php");
+		final File defineTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/error-reporting/test.php");
 
-        // assert that the execution is aware of detecting the error
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        Assert.assertEquals("", exec.execute(defineTestPhp));
-    }
-    
+		// assert that the execution is aware of detecting the error
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		Assert.assertEquals("", exec.execute(defineTestPhp));
+	}
+
 }

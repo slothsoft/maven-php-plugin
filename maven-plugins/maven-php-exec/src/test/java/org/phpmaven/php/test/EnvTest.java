@@ -1,6 +1,6 @@
 /**
  * Copyright 2010-2012 by PHP-maven.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -28,58 +28,62 @@ import org.phpmaven.test.AbstractTestCase;
 
 /**
  * test cases for PHP support.
- * 
+ *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
 public class EnvTest extends AbstractTestCase {
 
-    /**
-     * Tests if the execution configuration can be created.
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testEnvVar() throws Exception {
-        // look up the component factory
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        // create the execution config
-        final MavenSession session = this.createSimpleSession("exec/empty-pom");
-        final IPhpExecutableConfiguration execConfig = factory.lookup(
-                IPhpExecutableConfiguration.class,
-                IComponentFactory.EMPTY_CONFIG,
-                session);
+	/**
+	 * Tests if the execution configuration can be created.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	public void testEnvVar() throws Exception {
+		if (!isPhpPresent()) return;
 
-        final File envTestPhp = new File(session.getCurrentProject().getBasedir(), "env-test.php");
-        execConfig.getEnv().put("JUNIT_ENV_TEST", "foo bar");
+		// look up the component factory
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		// create the execution config
+		final MavenSession session = this.createSimpleSession("exec/empty-pom");
+		final IPhpExecutableConfiguration execConfig = factory.lookup(
+				IPhpExecutableConfiguration.class,
+				IComponentFactory.EMPTY_CONFIG,
+				session);
 
-        // assert that the environment variable is mapped correctly
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        assertEquals("success: foo bar\n", exec.execute(envTestPhp));
-    }
+		final File envTestPhp = new File(session.getCurrentProject().getBasedir(), "env-test.php");
+		execConfig.getEnv().put("JUNIT_ENV_TEST", "foo bar");
 
-    /**
-     * Tests if the execution configuration can be created.
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testEnvVarSetter() throws Exception {
-        // look up the component factory
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        // create the execution config
-        final MavenSession session = this.createSimpleSession("exec/empty-pom");
-        final IPhpExecutableConfiguration execConfig = factory.lookup(
-                IPhpExecutableConfiguration.class,
-                IComponentFactory.EMPTY_CONFIG,
-                session);
+		// assert that the environment variable is mapped correctly
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		assertEquals("success: foo bar\n", exec.execute(envTestPhp));
+	}
 
-        final File envTestPhp = new File(session.getCurrentProject().getBasedir(), "env-test.php");
-        final Map<String, String> env = new HashMap<String, String>();
-        env.put("JUNIT_ENV_TEST", "foo bar");
-        execConfig.setEnv(env);
+	/**
+	 * Tests if the execution configuration can be created.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	public void testEnvVarSetter() throws Exception {
+		if (!isPhpPresent()) return;
 
-        // assert that the environment variable is mapped correctly
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        assertEquals("success: foo bar\n", exec.execute(envTestPhp));
-    }
-    
+		// look up the component factory
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		// create the execution config
+		final MavenSession session = this.createSimpleSession("exec/empty-pom");
+		final IPhpExecutableConfiguration execConfig = factory.lookup(
+				IPhpExecutableConfiguration.class,
+				IComponentFactory.EMPTY_CONFIG,
+				session);
+
+		final File envTestPhp = new File(session.getCurrentProject().getBasedir(), "env-test.php");
+		final Map<String, String> env = new HashMap<String, String>();
+		env.put("JUNIT_ENV_TEST", "foo bar");
+		execConfig.setEnv(env);
+
+		// assert that the environment variable is mapped correctly
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		assertEquals("success: foo bar\n", exec.execute(envTestPhp));
+	}
+
 }

@@ -23,55 +23,59 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import junit.framework.Assert;
-
+import org.junit.Rule;
 import org.junit.Test;
 import org.phpmaven.phpexec.cli.PhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.phpexec.library.IPhpExecutableConfiguration;
 
+import junit.framework.Assert;
+
 /**
  * test cases for PHP support.
- * 
+ *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
 public class DefineTest {
 
-    /**
-     * Tests if the execution configuration can be created.
-     *
-     * @throws Exception thrown on errors
-     */
+	@Rule
+	public PhpExePresent phpExePresent = new PhpExePresent();
+
+	/**
+	 * Tests if the execution configuration can be created.
+	 *
+	 * @throws Exception thrown on errors
+	 */
 	@Test
-    public void testDefines() throws Exception {
+	public void testDefines() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
-        final File defineTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/empty-pom/define-test.php");
-        execConfig.getPhpDefines().put("max_execution_time", "foo bar");
+		final File defineTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/empty-pom/define-test.php");
+		execConfig.getPhpDefines().put("max_execution_time", "foo bar");
 
-        // assert that the environment variable is mapped correctly
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        Assert.assertEquals("success: foo bar\n", exec.execute(defineTestPhp));
-    }
+		// assert that the environment variable is mapped correctly
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		Assert.assertEquals("success: foo bar\n", exec.execute(defineTestPhp));
+	}
 
-    /**
-     * Tests if the execution configuration can be created.
-     *
-     * @throws Exception thrown on errors
-     */
+	/**
+	 * Tests if the execution configuration can be created.
+	 *
+	 * @throws Exception thrown on errors
+	 */
 	@Test
-    public void testDefinesSet() throws Exception {
+	public void testDefinesSet() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
-        final File defineTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/empty-pom/define-test.php");
-        final Map<String, String> defines = new HashMap<String, String>();
-        defines.put("max_execution_time", "foo bar");
-        execConfig.setPhpDefines(defines);
+		final File defineTestPhp = new File("target/test-classes/org/phpmaven/phpexec/test/empty-pom/define-test.php");
+		final Map<String, String> defines = new HashMap<String, String>();
+		defines.put("max_execution_time", "foo bar");
+		execConfig.setPhpDefines(defines);
 
-        // assert that the environment variable is mapped correctly
-        final IPhpExecutable exec = execConfig.getPhpExecutable();
-        Assert.assertEquals("success: foo bar\n", exec.execute(defineTestPhp));
-    }
-    
+		// assert that the environment variable is mapped correctly
+		final IPhpExecutable exec = execConfig.getPhpExecutable();
+		Assert.assertEquals("success: foo bar\n", exec.execute(defineTestPhp));
+	}
+
 }
