@@ -14,6 +14,6 @@
 	<artifactId>php5-lib-archetype</artifactId>
 	<packaging>maven-archetype</packaging>
 
-	<name>PHP ARCHETYPE: PHP LIBRARY ${project.version}</name>
+	<name>PHP ARCHETYPE: PHP LIBRARY</name>
 
 </project>

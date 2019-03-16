@@ -14,6 +14,6 @@
 	<artifactId>php5-doctrine-archetype</artifactId>
 	<packaging>maven-archetype</packaging>
 
-	<name>PHP ARCHETYPE: PHP DOCTRINE ${project.version}</name>
+	<name>PHP ARCHETYPE: PHP DOCTRINE</name>
 
 </project>

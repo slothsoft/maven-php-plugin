@@ -14,6 +14,6 @@
 	<artifactId>php5-zend-archetype</artifactId>
 	<packaging>maven-archetype</packaging>
 
-	<name>PHP ARCHETYPE: PHP ZEND ${project.version}</name>
+	<name>PHP ARCHETYPE: PHP ZEND</name>
 
 </project>
