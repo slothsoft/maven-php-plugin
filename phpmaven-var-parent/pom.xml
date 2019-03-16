@@ -26,7 +26,6 @@
         <module>java-parent</module>
         <module>java-parent-tags</module>
         <module>generic-parent-tags</module>
-        <module>generic-parent-branches</module>
     </modules>
     
     <distributionManagement>
