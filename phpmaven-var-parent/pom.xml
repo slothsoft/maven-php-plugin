@@ -19,7 +19,6 @@
     </description>
     
     <modules>
-        <module>skin</module>
         <module>checkstyle</module>
         <module>java-resources</module>
         <module>site-parent-tags</module>
