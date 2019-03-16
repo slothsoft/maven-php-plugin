@@ -21,10 +21,7 @@
     <modules>
         <module>checkstyle</module>
         <module>java-resources</module>
-        <module>site-parent-tags</module>
         <module>java-parent</module>
-        <module>java-parent-tags</module>
-        <module>generic-parent-tags</module>
     </modules>
     
     <distributionManagement>
