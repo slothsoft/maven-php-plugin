@@ -9,7 +9,7 @@
 
 PHP-Maven uses the power of Maven 3 for building, reporting on and creating documentations of PHP projects. It adapts the Maven build lifecycle to the PHP world while fully supporting PHP 5. PHP-Maven uses [PHPUnit](http://www.phpunit.de/) for unit testing and [phpDocumentor](http://www.phpdoc.org/) for creating the project documentation.
 
-This project is forked from various repositorys by [php-maven](https://github.com/php-maven) and I'll see what I can do to get it working again. To see all my changes just take a look at the Git history of this repository.
+This project is forked from various repositorys by [php-maven](https://github.com/php-maven). To see all changes just take a look at the [Git history](https://github.com/slothsoft/maven-php-plugin/commits/master) of this repository or take a look at [this wiki page](https://github.com/slothsoft/maven-php-plugin/wiki/ForkUpdates).
 
 
 
@@ -23,13 +23,13 @@ You need at least **Java 6** or above to run the code. And probably PHP from wha
 
 ### Installing
 
-Maven Central?
+Link to Maven Central?
 
 
 
 ### Using the Framework
 
-Wiki?
+Link to Wiki?
      
 
 
