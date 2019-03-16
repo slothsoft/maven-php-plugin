@@ -43,7 +43,6 @@
   </scm>
     
     <modules>
-    	<module>site-parent</module>
     	<module>phpexec-api</module>
     	<module>phpexec-cli</module>
     </modules>
