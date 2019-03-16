@@ -26,7 +26,6 @@
         <module>site-parent-branches</module>
         <module>java-parent</module>
         <module>java-parent-tags</module>
-        <module>java-parent-branches</module>
         <module>generic-parent-tags</module>
         <module>generic-parent-branches</module>
     </modules>

@@ -7,9 +7,9 @@
 
     <parent>
         <groupId>org.phpmaven.build</groupId>
-        <artifactId>java-parent-branches</artifactId>
+        <artifactId>java-parent</artifactId>
         <version>1</version>
-        <relativePath>../../phpmaven-var-parent/java-parent-branches/pom.xml</relativePath>
+        <relativePath>../../phpmaven-var-parent/java-parent/pom.xml</relativePath>
     </parent>
 
     <groupId>org.phpmaven.phpexec-java</groupId>
