@@ -44,7 +44,6 @@
     
     <modules>
     	<module>generic-parent</module>
-    	<module>java-parent</module>
     	<module>site-parent</module>
     	<module>pear-java-api</module>
     	<module>pear-java-impl</module>

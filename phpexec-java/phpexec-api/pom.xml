@@ -6,14 +6,15 @@
     </properties>
 
     <parent>
-        <groupId>org.phpmaven.build.phpexec-java</groupId>
-        <artifactId>generic-java-parent</artifactId>
-        <version>0.1.10-SNAPSHOT</version>
-        <relativePath>../java-parent/pom.xml</relativePath>
+        <groupId>org.phpmaven.build</groupId>
+        <artifactId>java-parent-branches</artifactId>
+        <version>1</version>
+        <relativePath>../../phpmaven-var-parent/java-parent-branches/pom.xml</relativePath>
     </parent>
 
     <groupId>org.phpmaven.phpexec-java</groupId>
     <artifactId>phpexec-api</artifactId>
+    <version>0.1.10-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>library:${project.version}</name>

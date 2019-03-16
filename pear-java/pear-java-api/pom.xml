@@ -6,14 +6,15 @@
     </properties>
 
     <parent>
-        <groupId>org.phpmaven.build.pear-java</groupId>
-        <artifactId>generic-java-parent</artifactId>
-        <version>0.1.1-SNAPSHOT</version>
-        <relativePath>../java-parent/pom.xml</relativePath>
+        <groupId>org.phpmaven.build</groupId>
+        <artifactId>java-parent-branches</artifactId>
+        <version>1</version>
+        <relativePath>../../phpmaven-var-parent/java-parent-branches/pom.xml</relativePath>
     </parent>
 
     <groupId>org.phpmaven.pear-java</groupId>
     <artifactId>pear-java-api</artifactId>
+    <version>0.1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>library:${project.version}</name>

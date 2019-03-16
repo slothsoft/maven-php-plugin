@@ -44,7 +44,6 @@
     
     <modules>
     	<module>generic-parent</module>
-    	<module>java-parent</module>
     	<module>site-parent</module>
     	<module>phpexec-api</module>
     	<module>phpexec-cli</module>
