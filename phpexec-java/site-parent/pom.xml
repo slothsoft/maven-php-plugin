@@ -8,10 +8,10 @@
     </properties>
 
     <parent>
-        <groupId>org.phpmaven.build</groupId>
-        <artifactId>site-parent-branches</artifactId>
-        <version>1</version>
-        <relativePath>../../phpmaven-var-parent/site-parent-branches/pom.xml</relativePath>
+		<groupId>org.phpmaven.build</groupId>
+		<artifactId>common-parent</artifactId>
+		<version>1</version>
+		<relativePath>../../phpmaven-common-parent/pom.xml</relativePath>
     </parent>
 
     <groupId>org.phpmaven.build.phpexec-java</groupId>
