@@ -63,7 +63,6 @@
     		<id>maven-php-include-defaults</id>
     		<modules>
         		<module>site-parent</module>
-        		<module>generic-parent</module>
     			<module>archetypes</module>
 		        <module>maven-php-jettycgi</module>
 		        <module>phpmaven-testtool</module>
