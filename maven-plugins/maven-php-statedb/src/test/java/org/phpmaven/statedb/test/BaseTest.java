@@ -31,6 +31,7 @@ import org.phpmaven.test.AbstractTestCase;
  */
 public class BaseTest extends AbstractTestCase {
 
+
 	/**
 	 * Tests if the state db can be created.
 	 *
@@ -80,6 +81,8 @@ public class BaseTest extends AbstractTestCase {
 
 		db.reload();
 		Assertions.assertEquals("persistence", db.get("foo", "bar", "baz", String.class));
+
+		db.remove("foo", "bar", "baz"); // not perfect but will do
 	}
 
 }

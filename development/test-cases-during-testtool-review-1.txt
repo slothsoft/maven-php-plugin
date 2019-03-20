@@ -1,0 +1,42 @@
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.501 sec
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.296 sec
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.232 sec
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.147 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 sec
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.044 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 sec
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
+Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.095 sec
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.02 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.02 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 sec
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.061 sec
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.041 sec
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.038 sec
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 sec
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.02 sec
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.121 sec
+Tests run: 71, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.047 sec
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
+Tests run: 19, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.507 sec
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.486 sec
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 54.836 sec
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 3
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+--------------------------------------------------------------------------
+Tests run: 216, Failures: 0, Errors: 0, Skipped: 6

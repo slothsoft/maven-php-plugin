@@ -19,22 +19,12 @@
 	<version>2.0.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>phpmaven-testtool:${project.version}</name>
+	<name>phpmaven-testtool</name>
 
 	<description>
         A Maven plugin for dependency management and quality assurance in PHP projects. Uses
         the default Maven lifecycle to provide multiple php features.
     </description>
-
-	<url>${phpmavenRootUrl}/${phpmavenTagType}/${phpmavenTagName}/phpmaven-testtool/</url>
-
-	<distributionManagement>
-		<site>
-			<id>upload-${phpmavenSitesId}</id>
-			<name>${phpmavenSitesName}</name>
-			<url>${phpmavenSitesUploadUrl}/${phpmavenTagType}/${phpmavenTagName}/phpmaven-testtool/</url>
-		</site>
-	</distributionManagement>
 
 	<dependencies>
 		<!-- Tests -->
@@ -116,25 +106,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-				<configuration>
-					<reportPlugins>
-						<plugin>
-							<groupId>org.codehaus.mojo</groupId>
-							<artifactId>cobertura-maven-plugin</artifactId>
-							<version>2.5.1</version>
-							<configuration>
-								<formats>
-									<format>xml</format>
-									<format>html</format>
-								</formats>
-							</configuration>
-						</plugin>
-					</reportPlugins>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
