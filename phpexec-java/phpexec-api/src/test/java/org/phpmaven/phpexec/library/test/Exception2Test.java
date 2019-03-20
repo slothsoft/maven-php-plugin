@@ -21,59 +21,58 @@ package org.phpmaven.phpexec.library.test;
 
 import java.io.File;
 
-import junit.framework.Assert;
-
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.phpmaven.phpexec.library.PhpCoreException;
 import org.phpmaven.phpexec.library.PhpExecutionException;
 
 /**
  * test cases for PHP support.
- * 
+ *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 0.1.8
  */
 public class Exception2Test {
 
-    /**
-     * Tests some things on php execution exception.
-     *
-     * @throws Exception thrown on errors
-     */
+	/**
+	 * Tests some things on php execution exception.
+	 *
+	 * @throws Exception thrown on errors
+	 */
 	@Test
-    public void testExecException() throws Exception {
-        PhpExecutionException ex = new PhpExecutionException(null, "FOO");
-        Assert.assertEquals("\nFOO", ex.getMessage());
-        final File fooFile = new File("foo.php");
-        ex = new PhpExecutionException(fooFile, "FOO");
-        Assert.assertTrue(ex.getMessage().contains("FOO"));
-        Assert.assertTrue(ex.getMessage().contains(fooFile.getAbsolutePath()));
-    }
-    
-    /**
-     * Tests some things on php core exception.
-     *
-     * @throws Exception thrown on errors
-     */
-	@Test
-    public void testCoreException() throws Exception {
-        // constructors for code coverage
-        PhpCoreException ex = new PhpCoreException();
-        ex = new PhpCoreException("FOO", new Exception());
-        ex = new PhpCoreException(new Exception());
+	public void testExecException() throws Exception {
+		PhpExecutionException ex = new PhpExecutionException(null, "FOO");
+		Assertions.assertEquals("\nFOO", ex.getMessage());
+		final File fooFile = new File("foo.php");
+		ex = new PhpExecutionException(fooFile, "FOO");
+		Assertions.assertTrue(ex.getMessage().contains("FOO"));
+		Assertions.assertTrue(ex.getMessage().contains(fooFile.getAbsolutePath()));
+	}
 
-        ex = new PhpCoreException("some meaningful error");
-        Assert.assertNull(ex.getAppendedOutput());
-        Assert.assertEquals("some meaningful error", ex.getMessage());
-        ex.appendOutput("FOOBAR");
-        Assert.assertEquals("FOOBAR", ex.getAppendedOutput());
-        Assert.assertTrue(ex.getMessage().contains("FOOBAR"));
-        Assert.assertTrue(ex.getMessage().contains("some meaningful error"));
-        ex.appendOutput("BAZ");
-        Assert.assertEquals("BAZ", ex.getAppendedOutput());
-        Assert.assertFalse(ex.getMessage().contains("FOOBAR"));
-        Assert.assertTrue(ex.getMessage().contains("BAZ"));
-        Assert.assertTrue(ex.getMessage().contains("some meaningful error"));
-    }
+	/**
+	 * Tests some things on php core exception.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	@Test
+	public void testCoreException() throws Exception {
+		// constructors for code coverage
+		PhpCoreException ex = new PhpCoreException();
+		ex = new PhpCoreException("FOO", new Exception());
+		ex = new PhpCoreException(new Exception());
+
+		ex = new PhpCoreException("some meaningful error");
+		Assertions.assertNull(ex.getAppendedOutput());
+		Assertions.assertEquals("some meaningful error", ex.getMessage());
+		ex.appendOutput("FOOBAR");
+		Assertions.assertEquals("FOOBAR", ex.getAppendedOutput());
+		Assertions.assertTrue(ex.getMessage().contains("FOOBAR"));
+		Assertions.assertTrue(ex.getMessage().contains("some meaningful error"));
+		ex.appendOutput("BAZ");
+		Assertions.assertEquals("BAZ", ex.getAppendedOutput());
+		Assertions.assertFalse(ex.getMessage().contains("FOOBAR"));
+		Assertions.assertTrue(ex.getMessage().contains("BAZ"));
+		Assertions.assertTrue(ex.getMessage().contains("some meaningful error"));
+	}
 
 }

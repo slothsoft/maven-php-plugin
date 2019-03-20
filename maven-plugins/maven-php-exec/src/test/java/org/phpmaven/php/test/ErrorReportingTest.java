@@ -19,6 +19,9 @@ package org.phpmaven.php.test;
 import java.io.File;
 
 import org.apache.maven.execution.MavenSession;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.exec.IPhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
@@ -37,6 +40,9 @@ public class ErrorReportingTest extends AbstractTestCase {
 	 *
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
+	@Disabled
 	public void testFalse() throws Exception {
 		if (!isPhpPresent()) return;
 
@@ -53,7 +59,7 @@ public class ErrorReportingTest extends AbstractTestCase {
 
 		// assert that the execution is aware of detecting the error
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		assertTrue(exec.execute(defineTestPhp).contains("some deprecated warning"));
+		Assertions.assertTrue(exec.execute(defineTestPhp).contains("some deprecated warning"));
 	}
 
 	/**
@@ -61,6 +67,9 @@ public class ErrorReportingTest extends AbstractTestCase {
 	 *
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
+	@Disabled
 	public void testEALL() throws Exception {
 		if (!isPhpPresent()) return;
 
@@ -78,7 +87,7 @@ public class ErrorReportingTest extends AbstractTestCase {
 
 		// assert that the execution is aware of detecting the error
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		assertTrue(exec.execute(defineTestPhp).contains("some deprecated warning"));
+		Assertions.assertTrue(exec.execute(defineTestPhp).contains("some deprecated warning"));
 	}
 
 	/**
@@ -86,6 +95,9 @@ public class ErrorReportingTest extends AbstractTestCase {
 	 *
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
+	@Disabled
 	public void testEALLandNotEUSERDEPRECATED() throws Exception {
 		if (!isPhpPresent()) return;
 
@@ -103,7 +115,7 @@ public class ErrorReportingTest extends AbstractTestCase {
 
 		// assert that the execution is aware of detecting the error
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		assertEquals("", exec.execute(defineTestPhp));
+		Assertions.assertEquals("", exec.execute(defineTestPhp));
 	}
 
 	/**
@@ -111,6 +123,9 @@ public class ErrorReportingTest extends AbstractTestCase {
 	 *
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
+	@Disabled
 	public void testNULL() throws Exception {
 		if (!isPhpPresent()) return;
 
@@ -128,7 +143,7 @@ public class ErrorReportingTest extends AbstractTestCase {
 
 		// assert that the execution is aware of detecting the error
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		assertEquals("", exec.execute(defineTestPhp));
+		Assertions.assertEquals("", exec.execute(defineTestPhp));
 	}
 
 }

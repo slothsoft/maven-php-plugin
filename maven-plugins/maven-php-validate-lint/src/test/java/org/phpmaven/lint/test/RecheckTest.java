@@ -1,6 +1,6 @@
 /**
  * Copyright 2010-2012 by PHP-maven.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -25,6 +25,8 @@ import java.util.Map;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.monitor.logging.DefaultLog;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.lint.ILintChecker;
 import org.phpmaven.lint.ILintExecution;
@@ -32,124 +34,130 @@ import org.phpmaven.test.AbstractTestCase;
 
 /**
  * Base test cases for the line check.
- * 
+ *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.3
  */
 public class RecheckTest extends AbstractTestCase {
 
-    /**
-     * Tests if validation is ok.
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testValidationOk() throws Exception {
-        final MavenSession session = this.createSimpleSession("lint/empty-pom");
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        final DefaultLog logger = new DefaultLog(new ConsoleLogger());
-        
-        ILintChecker checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
-        checker.addFileToCheck(new File(session.getCurrentProject().getBasedir(), "success.php"));
-        Iterable<ILintExecution> result = checker.run(logger);
-        assertFalse(result.iterator().hasNext());
+	/**
+	 * Tests if validation is ok.
+	 *
+	 * @throws Exception thrown on errors
+	 */
 
-        // second check makes use of state db
-        checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
-        checker.addFileToCheck(new File(session.getCurrentProject().getBasedir(), "success.php"));
-        result = checker.run(logger);
-        assertFalse(result.iterator().hasNext());
-    }
+	@Test
+	public void testValidationOk() throws Exception {
+		final MavenSession session = this.createSimpleSession("lint/empty-pom");
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		final DefaultLog logger = new DefaultLog(new ConsoleLogger());
 
-    /**
-     * Tests if validation is failing on parse errors.
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testValidationFailed() throws Exception {
-        final MavenSession session = this.createSimpleSession("lint/empty-pom");
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        final DefaultLog logger = new DefaultLog(new ConsoleLogger());
-        final File failedFile = new File(session.getCurrentProject().getBasedir(), "failed.php");
-        
-        ILintChecker checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
-        checker.addFileToCheck(failedFile);
-        Iterable<ILintExecution> result = checker.run(logger);
-        Iterator<ILintExecution> iter = result.iterator();
-        assertTrue(iter.hasNext());
-        ILintExecution failure = iter.next();
-        assertFalse(iter.hasNext());
-        assertEquals(failedFile, failure.getFile());
-        assertNotNull(failure.getException());
-        
-        // second check makes use of state db
-        checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
-        checker.addFileToCheck(failedFile);
-        result = checker.run(logger);
-        iter = result.iterator();
-        assertTrue(iter.hasNext());
-        failure = iter.next();
-        assertFalse(iter.hasNext());
-        assertEquals(failedFile, failure.getFile());
-        assertNotNull(failure.getException());
-    }
+		ILintChecker checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
+		checker.addFileToCheck(new File(session.getCurrentProject().getBasedir(), "success.php"));
+		Iterable<ILintExecution> result = checker.run(logger);
+		Assertions.assertFalse(result.iterator().hasNext());
 
-    /**
-     * Tests if validation is failing with succeeding files and parse errors.
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testMultiFailure() throws Exception {
-        final MavenSession session = this.createSimpleSession("lint/empty-pom");
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        final DefaultLog logger = new DefaultLog(new ConsoleLogger());
-        final File failedFile = new File(session.getCurrentProject().getBasedir(), "multiple/failed.php");
-        final File failed2File = new File(session.getCurrentProject().getBasedir(), "multiple/failed2.php");
-        
-        ILintChecker checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
-        checker.addFileToCheck(new File(session.getCurrentProject().getBasedir(), "multiple/success.php"));
-        checker.addFileToCheck(failedFile);
-        checker.addFileToCheck(failed2File);
-        Iterable<ILintExecution> result = checker.run(logger);
-        Map<File, ILintExecution> failures = new HashMap<File, ILintExecution>();
-        for (final ILintExecution failure : result) {
-            failures.put(failure.getFile(), failure);
-        }
-        assertEquals(2, failures.size());
-        assertNotNull(failures.get(failedFile));
-        assertNotNull(failures.get(failed2File));
-        
-        // second check makes use of state db
-        checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
-        checker.addFileToCheck(new File(session.getCurrentProject().getBasedir(), "multiple/success.php"));
-        checker.addFileToCheck(failedFile);
-        checker.addFileToCheck(failed2File);
-        result = checker.run(logger);
-        failures = new HashMap<File, ILintExecution>();
-        for (final ILintExecution failure : result) {
-            failures.put(failure.getFile(), failure);
-        }
-        assertEquals(2, failures.size());
-        assertNotNull(failures.get(failedFile));
-        assertNotNull(failures.get(failed2File));
-        
-        // third check to test override of the state db with new source file
-        final FileOutputStream fos = new FileOutputStream(failedFile);
-        fos.write("<?php echo 'FOO';".getBytes());
-        fos.flush();
-        fos.close();
-        failedFile.setLastModified(failedFile.lastModified() + 1000); // ensure the last modified is changed and causes a recheck
-        checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
-        checker.addFileToCheck(new File(session.getCurrentProject().getBasedir(), "multiple/success.php"));
-        checker.addFileToCheck(failedFile);
-        checker.addFileToCheck(failed2File);
-        result = checker.run(logger);
-        failures = new HashMap<File, ILintExecution>();
-        for (final ILintExecution failure : result) {
-            failures.put(failure.getFile(), failure);
-        }
-        assertEquals(1, failures.size());
-        assertNull(failures.get(failedFile));
-        assertNotNull(failures.get(failed2File));
-    }
+		// second check makes use of state db
+		checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
+		checker.addFileToCheck(new File(session.getCurrentProject().getBasedir(), "success.php"));
+		result = checker.run(logger);
+		Assertions.assertFalse(result.iterator().hasNext());
+	}
+
+	/**
+	 * Tests if validation is failing on parse errors.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+
+	@Test
+	public void testValidationFailed() throws Exception {
+		final MavenSession session = this.createSimpleSession("lint/empty-pom");
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		final DefaultLog logger = new DefaultLog(new ConsoleLogger());
+		final File failedFile = new File(session.getCurrentProject().getBasedir(), "failed.php");
+
+		ILintChecker checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
+		checker.addFileToCheck(failedFile);
+		Iterable<ILintExecution> result = checker.run(logger);
+		Iterator<ILintExecution> iter = result.iterator();
+		Assertions.assertTrue(iter.hasNext());
+		ILintExecution failure = iter.next();
+		Assertions.assertFalse(iter.hasNext());
+		Assertions.assertEquals(failedFile, failure.getFile());
+		Assertions.assertNotNull(failure.getException());
+
+		// second check makes use of state db
+		checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
+		checker.addFileToCheck(failedFile);
+		result = checker.run(logger);
+		iter = result.iterator();
+		Assertions.assertTrue(iter.hasNext());
+		failure = iter.next();
+		Assertions.assertFalse(iter.hasNext());
+		Assertions.assertEquals(failedFile, failure.getFile());
+		Assertions.assertNotNull(failure.getException());
+	}
+
+	/**
+	 * Tests if validation is failing with succeeding files and parse errors.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+
+	@Test
+	public void testMultiFailure() throws Exception {
+		final MavenSession session = this.createSimpleSession("lint/empty-pom");
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		final DefaultLog logger = new DefaultLog(new ConsoleLogger());
+		final File failedFile = new File(session.getCurrentProject().getBasedir(), "multiple/failed.php");
+		final File failed2File = new File(session.getCurrentProject().getBasedir(), "multiple/failed2.php");
+
+		ILintChecker checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
+		checker.addFileToCheck(new File(session.getCurrentProject().getBasedir(), "multiple/success.php"));
+		checker.addFileToCheck(failedFile);
+		checker.addFileToCheck(failed2File);
+		Iterable<ILintExecution> result = checker.run(logger);
+		Map<File, ILintExecution> failures = new HashMap<File, ILintExecution>();
+		for (final ILintExecution failure : result) {
+			failures.put(failure.getFile(), failure);
+		}
+		Assertions.assertEquals(2, failures.size());
+		Assertions.assertNotNull(failures.get(failedFile));
+		Assertions.assertNotNull(failures.get(failed2File));
+
+		// second check makes use of state db
+		checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
+		checker.addFileToCheck(new File(session.getCurrentProject().getBasedir(), "multiple/success.php"));
+		checker.addFileToCheck(failedFile);
+		checker.addFileToCheck(failed2File);
+		result = checker.run(logger);
+		failures = new HashMap<File, ILintExecution>();
+		for (final ILintExecution failure : result) {
+			failures.put(failure.getFile(), failure);
+		}
+		Assertions.assertEquals(2, failures.size());
+		Assertions.assertNotNull(failures.get(failedFile));
+		Assertions.assertNotNull(failures.get(failed2File));
+
+		// third check to test override of the state db with new source file
+		final FileOutputStream fos = new FileOutputStream(failedFile);
+		fos.write("<?php echo 'FOO';".getBytes());
+		fos.flush();
+		fos.close();
+		failedFile.setLastModified(failedFile.lastModified() + 1000); // ensure the last modified is changed and causes a recheck
+		checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
+		checker.addFileToCheck(new File(session.getCurrentProject().getBasedir(), "multiple/success.php"));
+		checker.addFileToCheck(failedFile);
+		checker.addFileToCheck(failed2File);
+		result = checker.run(logger);
+		failures = new HashMap<File, ILintExecution>();
+		for (final ILintExecution failure : result) {
+			failures.put(failure.getFile(), failure);
+		}
+		Assertions.assertEquals(1, failures.size());
+		Assertions.assertNull(failures.get(failedFile));
+		Assertions.assertNotNull(failures.get(failed2File));
+	}
 
 }

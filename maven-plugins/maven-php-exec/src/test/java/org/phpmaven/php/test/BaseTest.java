@@ -17,6 +17,9 @@
 package org.phpmaven.php.test;
 
 import org.apache.maven.execution.MavenSession;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.exec.IPhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
@@ -36,6 +39,9 @@ public class BaseTest extends AbstractTestCase {
 	 *
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
+	@Disabled
 	public void testECCreation() throws Exception {
 		if (!isPhpPresent()) return;
 
@@ -48,11 +54,11 @@ public class BaseTest extends AbstractTestCase {
 				IComponentFactory.EMPTY_CONFIG,
 				session);
 		// assert that it is not null
-		assertNotNull(execConfig);
+		Assertions.assertNotNull(execConfig);
 		// assert that we are able to create the executable
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		assertNotNull(exec.getStrVersion());
-		assertNotNull(exec.getVersion());
+		Assertions.assertNotNull(exec.getStrVersion());
+		Assertions.assertNotNull(exec.getVersion());
 	}
 
 	/**
@@ -61,6 +67,9 @@ public class BaseTest extends AbstractTestCase {
 	 *
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
+	@Disabled
 	public void testUnknownExecutable() throws Exception {
 		if (!isPhpPresent()) return;
 
@@ -77,7 +86,7 @@ public class BaseTest extends AbstractTestCase {
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
 		try {
 			exec.getStrVersion();
-			fail("Exception expected");
+			Assertions.fail("Exception expected");
 			// CHECKSTYLE:OFF
 			// checkstyle does not like empty catches
 		} catch (final PhpException ex) {
@@ -92,6 +101,9 @@ public class BaseTest extends AbstractTestCase {
 	 *
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
+	@Disabled
 	public void testUnknownInterpreter() throws Exception {
 		if (!isPhpPresent()) return;
 
@@ -103,12 +115,12 @@ public class BaseTest extends AbstractTestCase {
 				IPhpExecutableConfiguration.class,
 				IComponentFactory.EMPTY_CONFIG,
 				session);
-		assertEquals("PHP_EXE", execConfig.getInterpreter());
+		Assertions.assertEquals("PHP_EXE", execConfig.getInterpreter());
 		execConfig.setInterpreter("foo-bar-php");
 		// assert that we are able to create the executable
 		try {
 			execConfig.getPhpExecutable();
-			fail("Exception expected");
+			Assertions.fail("Exception expected");
 			// CHECKSTYLE:OFF
 			// checkstyle does not like empty catches
 		} catch (final IllegalStateException ex) {
@@ -121,6 +133,9 @@ public class BaseTest extends AbstractTestCase {
 	 * Tests if isUseCache is active per default.
 	 * @throws Exception
 	 */
+
+	@Test
+	@Disabled
 	public void testIsUseCacheActive() throws Exception {
 		if (!isPhpPresent()) return;
 
@@ -132,9 +147,9 @@ public class BaseTest extends AbstractTestCase {
 				IPhpExecutableConfiguration.class,
 				IComponentFactory.EMPTY_CONFIG,
 				session);
-		assertTrue(execConfig.isUseCache());
+		Assertions.assertTrue(execConfig.isUseCache());
 		execConfig.setUseCache(false);
-		assertFalse(execConfig.isUseCache());
+		Assertions.assertFalse(execConfig.isUseCache());
 	}
 
 	// TODO: test additionalPhpParameters

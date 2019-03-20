@@ -43,7 +43,6 @@ import org.apache.maven.lifecycle.internal.LifecycleDependencyResolver;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.plugin.Mojo;
 import org.apache.maven.plugin.PluginParameterExpressionEvaluator;
-import org.apache.maven.plugin.testing.AbstractMojoTestCase;
 import org.apache.maven.project.DefaultProjectBuildingRequest;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.project.ProjectBuilder;
@@ -52,6 +51,7 @@ import org.apache.maven.settings.building.DefaultSettingsBuildingRequest;
 import org.apache.maven.settings.building.SettingsBuilder;
 import org.apache.maven.settings.building.SettingsBuildingRequest;
 import org.apache.maven.settings.building.SettingsBuildingResult;
+import org.codehaus.plexus.PlexusContainer;
 import org.codehaus.plexus.component.configurator.ComponentConfigurator;
 import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluator;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
@@ -60,6 +60,9 @@ import org.codehaus.plexus.util.cli.CommandLineException;
 import org.codehaus.plexus.util.cli.CommandLineUtils;
 import org.codehaus.plexus.util.cli.Commandline;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.sonatype.aether.RepositorySystemSession;
 import org.sonatype.aether.impl.internal.SimpleLocalRepositoryManager;
 import org.sonatype.aether.util.DefaultRepositorySystemSession;
@@ -73,9 +76,39 @@ import org.sonatype.aether.util.graph.transformer.NearestVersionConflictResolver
  * Abstract base class for testing the modules.
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz
  * @since 2.0.0
  */
-public abstract class AbstractTestCase extends AbstractMojoTestCase {
+
+public abstract class AbstractTestCase {
+
+	private final MojoTestCase mojoTest = new MojoTestCase();
+
+	@BeforeEach
+	public void setUp() throws Exception {
+		this.mojoTest.setUp();
+	}
+
+	@AfterEach
+	public void tearDown() throws Exception {
+		this.mojoTest.tearDown();
+	}
+
+	public PlexusContainer getContainer() {
+		return this.mojoTest.getContainer();
+	}
+
+	public <T> T lookup(Class<T> componentClass) throws Exception {
+		return this.mojoTest.lookup(componentClass);
+	}
+
+	public Mojo lookupMojo(String goal, String pluginPom) throws Exception {
+		return this.mojoTest.lookupMojo(goal, pluginPom);
+	}
+
+	public <T> T lookup(Class<T> componentClass, String roleHint) throws Exception {
+		return this.mojoTest.lookup(componentClass, roleHint);
+	}
 
 	// XXX [slothsoft]: These tests should probably work locally at least
 
@@ -132,9 +165,10 @@ public abstract class AbstractTestCase extends AbstractMojoTestCase {
 	 */
 	protected <T extends Mojo> T createConfiguredMojo(Class<T> clazz, MavenSession session, String groupId, String artifactId, String version, String goal, Xpp3Dom config) throws Exception {
 		final PlexusConfiguration plexusConfig = new XmlPlexusConfiguration(config);
-		final T result = clazz.cast(lookupMojo(groupId, artifactId, version, goal, plexusConfig));
+		final T result = clazz.cast(this.mojoTest.lookupMojo(groupId, artifactId, version, goal, plexusConfig));
 
-		final ExpressionEvaluator evaluator = new PluginParameterExpressionEvaluator( session, newMojoExecution(goal) );
+		final ExpressionEvaluator evaluator = new PluginParameterExpressionEvaluator(session,
+				this.mojoTest.newMojoExecution(goal));
 
 		Xpp3Dom configuration = null;
 		final Plugin plugin = session.getCurrentProject().getPlugin( groupId + ":" + artifactId );
@@ -146,7 +180,7 @@ public abstract class AbstractTestCase extends AbstractMojoTestCase {
 		{
 			configuration = new Xpp3Dom( "configuration" );
 		}
-		configuration = Xpp3Dom.mergeXpp3Dom( newMojoExecution(goal).getConfiguration(), configuration );
+		configuration = Xpp3Dom.mergeXpp3Dom(this.mojoTest.newMojoExecution(goal).getConfiguration(), configuration);
 
 		final PlexusConfiguration pluginConfiguration = new XmlPlexusConfiguration( configuration );
 
@@ -160,7 +194,8 @@ public abstract class AbstractTestCase extends AbstractMojoTestCase {
 		final ProjectBuildingRequest buildingRequest = new DefaultProjectBuildingRequest();
 		buildingRequest.setProcessPlugins(false);
 		buildingRequest.setResolveDependencies(false);
-		final MavenProject project = lookup(ProjectBuilder.class).build(projectFile, buildingRequest).getProject();
+		final MavenProject project = this.mojoTest.lookup(ProjectBuilder.class).build(projectFile, buildingRequest)
+				.getProject();
 		return project;
 	}
 
@@ -218,7 +253,7 @@ public abstract class AbstractTestCase extends AbstractMojoTestCase {
 				new NearestVersionConflictResolver(),
 				new JavaDependencyContextRefiner() ));
 		final MavenExecutionRequest request = new DefaultMavenExecutionRequest();
-		final MavenExecutionRequestPopulator populator = lookup(MavenExecutionRequestPopulator.class);
+		final MavenExecutionRequestPopulator populator = this.mojoTest.lookup(MavenExecutionRequestPopulator.class);
 		populator.populateDefaults(request);
 
 		final SettingsBuildingRequest settingsRequest = new DefaultSettingsBuildingRequest();
@@ -226,12 +261,13 @@ public abstract class AbstractTestCase extends AbstractMojoTestCase {
 		settingsRequest.setUserSettingsFile(MavenCli.DEFAULT_USER_SETTINGS_FILE);
 		settingsRequest.setSystemProperties(request.getSystemProperties());
 		settingsRequest.setUserProperties(request.getUserProperties());
-		final SettingsBuilder settingsBuilder = lookup(SettingsBuilder.class);
+		final SettingsBuilder settingsBuilder = this.mojoTest.lookup(SettingsBuilder.class);
 		final SettingsBuildingResult settingsResult = settingsBuilder.build(settingsRequest);
-		final MavenExecutionRequestPopulator executionRequestPopulator = lookup(MavenExecutionRequestPopulator.class);
+		final MavenExecutionRequestPopulator executionRequestPopulator = this.mojoTest
+				.lookup(MavenExecutionRequestPopulator.class);
 		executionRequestPopulator.populateFromSettings(request, settingsResult.getEffectiveSettings());
 
-		final ArtifactRepositoryLayout layout = lookup(ArtifactRepositoryLayout.class);
+		final ArtifactRepositoryLayout layout = this.mojoTest.lookup(ArtifactRepositoryLayout.class);
 		final ArtifactRepositoryPolicy policy = new ArtifactRepositoryPolicy();
 		final MavenArtifactRepository repos = new MavenArtifactRepository(
 				"local",
@@ -281,7 +317,8 @@ public abstract class AbstractTestCase extends AbstractMojoTestCase {
 		final MavenExecutionRequest request = data.executionRequest;
 
 		final File projectFile = new File(testDir, "pom.xml");
-		final MavenProject project = lookup(ProjectBuilder.class).build(projectFile, buildingRequest).getProject();
+		final MavenProject project = this.mojoTest.lookup(ProjectBuilder.class).build(projectFile, buildingRequest)
+				.getProject();
 
 		final MavenSession session = new MavenSession(getContainer(), buildingRequest.getRepositorySession(), request, result);
 		session.setCurrentProject(project);
@@ -328,7 +365,8 @@ public abstract class AbstractTestCase extends AbstractMojoTestCase {
 		scopesToResolve.add(Artifact.SCOPE_COMPILE);
 		scopesToResolve.add(Artifact.SCOPE_TEST);
 		final List<String> scopesToCollect = new ArrayList<String>();
-		final LifecycleDependencyResolver lifeCycleDependencyResolver = lookup(LifecycleDependencyResolver.class);
+		final LifecycleDependencyResolver lifeCycleDependencyResolver = this.mojoTest
+				.lookup(LifecycleDependencyResolver.class);
 		session.getCurrentProject().setArtifacts(null);
 		lifeCycleDependencyResolver.resolveProjectDependencies(session.getCurrentProject(), scopesToCollect,
 				scopesToResolve, session, false,
@@ -336,12 +374,14 @@ public abstract class AbstractTestCase extends AbstractMojoTestCase {
 		session.getCurrentProject().setArtifactFilter(new CumulativeScopeArtifactFilter(scopesToResolve));
 	}
 
+	// TODO [slothsoft]: maybe these belong in util class
+
 	protected void assertIterableCount(Iterable<?> iter, int count) {
 		int result = 0;
 		for (@SuppressWarnings("unused") final Object elm : iter) {
 			result++;
 		}
-		assertEquals(count, result);
+		Assertions.assertEquals(count, result);
 	}
 
 	protected <T> void assertIterableContains(Iterable<T> iter, T element) {
@@ -353,7 +393,7 @@ public abstract class AbstractTestCase extends AbstractMojoTestCase {
 			}
 		}
 		if (!found) {
-			fail("Element " + element + " not found.");
+			Assertions.fail("Element " + element + " not found.");
 		}
 	}
 

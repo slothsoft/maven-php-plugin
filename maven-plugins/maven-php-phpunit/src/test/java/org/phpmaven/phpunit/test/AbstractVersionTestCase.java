@@ -1,6 +1,6 @@
 /**
  * Copyright 2010-2012 by PHP-maven.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -23,6 +23,7 @@ import org.apache.maven.execution.MavenSession;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.monitor.logging.DefaultLog;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
+import org.junit.jupiter.api.Assertions;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.phar.IPharPackager;
 import org.phpmaven.phar.IPharPackagerConfiguration;
@@ -30,113 +31,113 @@ import org.phpmaven.test.AbstractTestCase;
 
 /**
  * test cases for PHPUNIT support.
- * 
+ *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
 public abstract class AbstractVersionTestCase extends AbstractTestCase {
 
-    /**
-     * Package.
-     */
-    protected static final class Pkg {
-        
-        /**
-         * Groupid.
-         */
-        private String groupId;
-        
-        /**
-         * Artifactid.
-         */
-        private String artifactId;
-        
-        /**
-         * version.
-         */
-        private String version;
+	/**
+	 * Package.
+	 */
+	protected static final class Pkg {
 
-        /**
-         * Constructor to create a package.
-         * @param groupId group id.
-         * @param artifactId artifact id.
-         * @param version version.
-         */
-        public Pkg(String groupId, String artifactId, String version) {
-            this.groupId = groupId;
-            this.artifactId = artifactId;
-            this.version = version;
-        }
+		/**
+		 * Groupid.
+		 */
+		private final String groupId;
 
-        /**
-         * The group id.
-         * @return the groupId
-         */
-        public String getGroupId() {
-            return this.groupId;
-        }
+		/**
+		 * Artifactid.
+		 */
+		private final String artifactId;
 
-        /**
-         * The artifact id.
-         * @return the artifactId
-         */
-        public String getArtifactId() {
-            return this.artifactId;
-        }
+		/**
+		 * version.
+		 */
+		private final String version;
 
-        /**
-         * The version.
-         * @return the version
-         */
-        public String getVersion() {
-            return this.version;
-        }
-        
-    }
-    
-    /**
-     * Prepare maven with php dependencies.
-     * @param v verifier
-     * @param session maven session.
-     * @param packages packages to be installed
-     * @throws Exception 
-     */
-    protected void prepareMaven(MavenSession session, Pkg[] packages) throws Exception {
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        final IPharPackagerConfiguration config = factory.lookup(
-                IPharPackagerConfiguration.class,
-                IComponentFactory.EMPTY_CONFIG,
-                session);
-        final IPharPackager packager = config.getPharPackager();
-        final DefaultLog logger = new DefaultLog(new ConsoleLogger());
-    	
-        session.getCurrentProject().getModel().getDependencies().clear();
+		/**
+		 * Constructor to create a package.
+		 * @param groupId group id.
+		 * @param artifactId artifact id.
+		 * @param version version.
+		 */
+		public Pkg(String groupId, String artifactId, String version) {
+			this.groupId = groupId;
+			this.artifactId = artifactId;
+			this.version = version;
+		}
 
-        for (final Pkg p : packages) {
-        	final Dependency dep = new Dependency();
-        	dep.setGroupId(p.getGroupId());
-        	dep.setArtifactId(p.getArtifactId());
-        	dep.setVersion(p.getVersion());
-        	dep.setType("phar");
-        	dep.setScope(Artifact.SCOPE_TEST);
-        	session.getCurrentProject().getModel().getDependencies().add(dep);
-        }
-        
-        this.resolveProjectDependencies(session);
-        
-        for (final Pkg p : packages) {
-            final File pharPackage = new File(this.getLocalReposDir(),
-                    p.getGroupId().replace(".", "/") + 
-                    "/" + p.getArtifactId() +
-                    "/" + p.getVersion() + 
-                    "/" + p.getArtifactId() + "-" + p.getVersion() + ".phar");
-            assertTrue(pharPackage.exists());
-            packager.extractPharTo(
-                    pharPackage,
-                    new File(session.getCurrentProject().getBasedir(), "target/php-test-deps"),
-                    logger);
-        }
-        
-    }
+		/**
+		 * The group id.
+		 * @return the groupId
+		 */
+		public String getGroupId() {
+			return this.groupId;
+		}
+
+		/**
+		 * The artifact id.
+		 * @return the artifactId
+		 */
+		public String getArtifactId() {
+			return this.artifactId;
+		}
+
+		/**
+		 * The version.
+		 * @return the version
+		 */
+		public String getVersion() {
+			return this.version;
+		}
+
+	}
+
+	/**
+	 * Prepare maven with php dependencies.
+	 * @param v verifier
+	 * @param session maven session.
+	 * @param packages packages to be installed
+	 * @throws Exception
+	 */
+	protected void prepareMaven(MavenSession session, Pkg[] packages) throws Exception {
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		final IPharPackagerConfiguration config = factory.lookup(
+				IPharPackagerConfiguration.class,
+				IComponentFactory.EMPTY_CONFIG,
+				session);
+		final IPharPackager packager = config.getPharPackager();
+		final DefaultLog logger = new DefaultLog(new ConsoleLogger());
+
+		session.getCurrentProject().getModel().getDependencies().clear();
+
+		for (final Pkg p : packages) {
+			final Dependency dep = new Dependency();
+			dep.setGroupId(p.getGroupId());
+			dep.setArtifactId(p.getArtifactId());
+			dep.setVersion(p.getVersion());
+			dep.setType("phar");
+			dep.setScope(Artifact.SCOPE_TEST);
+			session.getCurrentProject().getModel().getDependencies().add(dep);
+		}
+
+		this.resolveProjectDependencies(session);
+
+		for (final Pkg p : packages) {
+			final File pharPackage = new File(this.getLocalReposDir(),
+					p.getGroupId().replace(".", "/") +
+					"/" + p.getArtifactId() +
+					"/" + p.getVersion() +
+					"/" + p.getArtifactId() + "-" + p.getVersion() + ".phar");
+			Assertions.assertTrue(pharPackage.exists());
+			packager.extractPharTo(
+					pharPackage,
+					new File(session.getCurrentProject().getBasedir(), "target/php-test-deps"),
+					logger);
+		}
+
+	}
 
 }

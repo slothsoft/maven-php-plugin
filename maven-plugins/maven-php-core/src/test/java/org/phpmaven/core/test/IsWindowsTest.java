@@ -1,6 +1,6 @@
 /**
  * Copyright 2010-2012 by PHP-maven.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,45 +16,46 @@
 
 package org.phpmaven.core.test;
 
-import junit.framework.TestCase;
-
+import org.junit.jupiter.api.Assertions;
 import org.phpmaven.core.ExecutionUtils;
+
+import junit.framework.TestCase;
 
 
 /**
  * Test case for the isWindows method.
- * 
+ *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.1
  */
 public class IsWindowsTest extends TestCase {
 
-    /**
-     * Tests isWindows.
-     * @throws Exception thrown on errors
-     */
-    public void testIsWindows() throws Exception {
-        final String oldOs = System.getProperty("os.name");
-        try {
-            System.setProperty("os.name", "Windows");
-            assertTrue(ExecutionUtils.isWindows());
-        } finally {
-            System.setProperty("os.name", oldOs);
-        }
-    }
+	/**
+	 * Tests isWindows.
+	 * @throws Exception thrown on errors
+	 */
+	public void testIsWindows() throws Exception {
+		final String oldOs = System.getProperty("os.name");
+		try {
+			System.setProperty("os.name", "Windows");
+			Assertions.assertTrue(ExecutionUtils.isWindows());
+		} finally {
+			System.setProperty("os.name", oldOs);
+		}
+	}
 
-    /**
-     * Tests isNotWindows.
-     * @throws Exception thrown on errors
-     */
-    public void testIsNotWindows() throws Exception {
-        final String oldOs = System.getProperty("os.name");
-        try {
-            System.setProperty("os.name", "Unix/Linux");
-            assertFalse(ExecutionUtils.isWindows());
-        } finally {
-            System.setProperty("os.name", oldOs);
-        }
-    }
+	/**
+	 * Tests isNotWindows.
+	 * @throws Exception thrown on errors
+	 */
+	public void testIsNotWindows() throws Exception {
+		final String oldOs = System.getProperty("os.name");
+		try {
+			System.setProperty("os.name", "Unix/Linux");
+			Assertions.assertFalse(ExecutionUtils.isWindows());
+		} finally {
+			System.setProperty("os.name", oldOs);
+		}
+	}
 
 }

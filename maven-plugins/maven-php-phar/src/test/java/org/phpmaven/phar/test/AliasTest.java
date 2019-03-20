@@ -21,6 +21,8 @@ import java.io.File;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.monitor.logging.DefaultLog;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.exec.IPhpExecutableConfiguration;
 import org.phpmaven.phar.IPharPackager;
@@ -42,6 +44,8 @@ public class AliasTest extends AbstractTestCase {
 	 *
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
 	public void testAlias() throws Exception {
 		if (!isPhpPresent()) return;
 
@@ -67,7 +71,7 @@ public class AliasTest extends AbstractTestCase {
 		request.setAlias("p.phar");
 		request.addFile("/some/file.php", new File(session.getCurrentProject().getBasedir(), "testphar.php"));
 		request.addDirectory("/", new File(session.getCurrentProject().getBasedir(), "phar1"));
-		assertEquals(
+		Assertions.assertEquals(
 				new File(session.getCurrentProject().getBasedir(), "target").getAbsolutePath(),
 				request.getTargetDirectory().getAbsolutePath());
 		request.setTargetDirectory(session.getCurrentProject().getBasedir());
@@ -76,7 +80,7 @@ public class AliasTest extends AbstractTestCase {
 		// package
 		final DefaultLog logger = new DefaultLog(new ConsoleLogger());
 		exec.packagePhar(request, logger);
-		assertTrue(pharFile.exists());
+		Assertions.assertTrue(pharFile.exists());
 
 		final IPhpExecutableConfiguration phpConfig = factory.lookup(
 				IPhpExecutableConfiguration.class,
@@ -86,7 +90,7 @@ public class AliasTest extends AbstractTestCase {
 
 		// check the phar
 		final IPhpExecutable phpExec = phpConfig.getPhpExecutable();
-		assertEquals("INSIDE FILE.PHP\n", phpExec.execute(new File(
+		Assertions.assertEquals("INSIDE FILE.PHP\n", phpExec.execute(new File(
 				session.getCurrentProject().getBasedir(), "alias.php")));
 	}
 
@@ -95,6 +99,8 @@ public class AliasTest extends AbstractTestCase {
 	 *
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
 	public void testJavaAlias() throws Exception {
 		if (!isPhpPresent()) return;
 		// look up the component factory
@@ -120,7 +126,7 @@ public class AliasTest extends AbstractTestCase {
 		request.setAlias("p.phar");
 		request.addFile("/some/file.php", new File(session.getCurrentProject().getBasedir(), "testphar.php"));
 		request.addDirectory("/", new File(session.getCurrentProject().getBasedir(), "phar1"));
-		assertEquals(
+		Assertions.assertEquals(
 				new File(session.getCurrentProject().getBasedir(), "target").getAbsolutePath(),
 				request.getTargetDirectory().getAbsolutePath());
 		request.setTargetDirectory(session.getCurrentProject().getBasedir());
@@ -129,7 +135,7 @@ public class AliasTest extends AbstractTestCase {
 		// package
 		final DefaultLog logger = new DefaultLog(new ConsoleLogger());
 		exec.packagePhar(request, logger);
-		assertTrue(pharFile.exists());
+		Assertions.assertTrue(pharFile.exists());
 
 		final IPhpExecutableConfiguration phpConfig = factory.lookup(
 				IPhpExecutableConfiguration.class,
@@ -139,7 +145,7 @@ public class AliasTest extends AbstractTestCase {
 
 		// check the phar
 		final IPhpExecutable phpExec = phpConfig.getPhpExecutable();
-		assertEquals("INSIDE FILE.PHP\n", phpExec.execute(new File(
+		Assertions.assertEquals("INSIDE FILE.PHP\n", phpExec.execute(new File(
 				session.getCurrentProject().getBasedir(), "alias.php")));
 	}
 
@@ -147,7 +153,7 @@ public class AliasTest extends AbstractTestCase {
 		if (someTxt.exists()) {
 			someTxt.delete();
 		}
-		assertFalse(someTxt.exists());
+		Assertions.assertFalse(someTxt.exists());
 	}
 
 }

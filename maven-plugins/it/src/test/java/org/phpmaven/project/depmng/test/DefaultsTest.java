@@ -1,6 +1,6 @@
 /**
  * Copyright 2010-2012 by PHP-maven.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,6 +20,7 @@ import java.util.List;
 
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.it.Verifier;
+import org.junit.jupiter.api.Assertions;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.exec.IPhpExecutableConfiguration;
 import org.phpmaven.project.IProjectPhpExecution;
@@ -27,61 +28,61 @@ import org.phpmaven.test.it.AbstractTestCase;
 
 /**
  * test cases for PHP project support with dependency management.
- * 
+ *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
 public class DefaultsTest extends AbstractTestCase {
 
-    /**
-     * Tests if the defaults are respected
-     *
-     * @throws Exception thrown on errors
-     */
-    public void testDefaults() throws Exception {
-        // look up the component factory
-        this.installPhpmavenProjectToRepos("maven-php-plugin");
-        this.installPhpParentPom();
-        
-        Verifier verifier = this.getPhpMavenVerifier("project/depmngdef/lib1");
-        
-        verifier.executeGoal("install");
-        verifier.verifyErrorFreeLog();
-        verifier.resetStreams();
-        verifier.assertArtifactPresent("org.phpmaven.test", "lib1", "0.0.1", "pom");
-        verifier.assertArtifactPresent("org.phpmaven.test", "lib1", "0.0.1", "phar");
-        
-        verifier = this.getPhpMavenVerifier("project/depmngdef/proj1");
-        
-        verifier.executeGoal("install");
-        verifier.verifyErrorFreeLog();
-        verifier.resetStreams();
-        verifier.assertArtifactPresent("org.phpmaven.test", "proj1", "0.0.1", "pom");
-        verifier.assertArtifactPresent("org.phpmaven.test", "proj1", "0.0.1", "phar");
-        verifier.assertFileNotPresent("target/php-deps/foobar.php");
-        final MavenSession session = this.createSessionForPhpMaven(
-                "project/depmng/proj1", false);
-        this.resolveProjectDependencies(session);
+	/**
+	 * Tests if the defaults are respected
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	public void testDefaults() throws Exception {
+		// look up the component factory
+		this.installPhpmavenProjectToRepos("maven-php-plugin");
+		this.installPhpParentPom();
 
-        final IComponentFactory factory = lookup(IComponentFactory.class);
-        final IProjectPhpExecution prjConfig = factory.lookup(
-                IProjectPhpExecution.class,
-                IComponentFactory.EMPTY_CONFIG,
-                session);
-        assertNotNull(prjConfig);
-        final IPhpExecutableConfiguration config = prjConfig.getExecutionConfiguration();
-        assertNotNull(config);
-        final List<String> includePath = config.getIncludePath();
-        boolean found = false;
-        for (final String path : includePath) {
-            if (path.startsWith("phar://") && (
-                    path.endsWith("org/phpmaven/test/lib1/0.0.1/lib1-0.0.1.phar/") ||
-                    path.endsWith("org\\phpmaven\\test\\lib1\\0.0.1\\lib1-0.0.1.phar/"))) {
-                found = true;
-                break;
-            }
-        }
-        assertTrue(found);
-    }
-   
+		Verifier verifier = this.getPhpMavenVerifier("project/depmngdef/lib1");
+
+		verifier.executeGoal("install");
+		verifier.verifyErrorFreeLog();
+		verifier.resetStreams();
+		verifier.assertArtifactPresent("org.phpmaven.test", "lib1", "0.0.1", "pom");
+		verifier.assertArtifactPresent("org.phpmaven.test", "lib1", "0.0.1", "phar");
+
+		verifier = this.getPhpMavenVerifier("project/depmngdef/proj1");
+
+		verifier.executeGoal("install");
+		verifier.verifyErrorFreeLog();
+		verifier.resetStreams();
+		verifier.assertArtifactPresent("org.phpmaven.test", "proj1", "0.0.1", "pom");
+		verifier.assertArtifactPresent("org.phpmaven.test", "proj1", "0.0.1", "phar");
+		verifier.assertFileNotPresent("target/php-deps/foobar.php");
+		final MavenSession session = this.createSessionForPhpMaven(
+				"project/depmng/proj1", false);
+		this.resolveProjectDependencies(session);
+
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		final IProjectPhpExecution prjConfig = factory.lookup(
+				IProjectPhpExecution.class,
+				IComponentFactory.EMPTY_CONFIG,
+				session);
+		Assertions.assertNotNull(prjConfig);
+		final IPhpExecutableConfiguration config = prjConfig.getExecutionConfiguration();
+		Assertions.assertNotNull(config);
+		final List<String> includePath = config.getIncludePath();
+		boolean found = false;
+		for (final String path : includePath) {
+			if (path.startsWith("phar://") && (
+					path.endsWith("org/phpmaven/test/lib1/0.0.1/lib1-0.0.1.phar/") ||
+					path.endsWith("org\\phpmaven\\test\\lib1\\0.0.1\\lib1-0.0.1.phar/"))) {
+				found = true;
+				break;
+			}
+		}
+		Assertions.assertTrue(found);
+	}
+
 }

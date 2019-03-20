@@ -22,6 +22,9 @@ import java.util.Set;
 
 import org.apache.maven.execution.MavenSession;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.exec.IPhpExecutableConfiguration;
 import org.phpmaven.project.IProjectPhpExecution;
@@ -40,6 +43,9 @@ public class BaseTest extends AbstractTestCase {
 	 *
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
+	@Disabled
 	public void testECCreation() throws Exception {
 		if (!isPhpPresent()) return;
 		// look up the component factory
@@ -52,7 +58,7 @@ public class BaseTest extends AbstractTestCase {
 				IComponentFactory.EMPTY_CONFIG,
 				session);
 		// assert that it is not null
-		assertNotNull(prjConfig);
+		Assertions.assertNotNull(prjConfig);
 
 		final String targetPhpDeps = new File(session.getCurrentProject().getBasedir(),
 				"target/php-deps").getAbsolutePath();
@@ -64,16 +70,16 @@ public class BaseTest extends AbstractTestCase {
 				"target/php-test-dependencies").getAbsolutePath();
 
 		// test the defaults
-		assertEquals(
+		Assertions.assertEquals(
 				targetPhpDeps,
 				prjConfig.getDepsDir().getAbsolutePath());
-		assertEquals(
+		Assertions.assertEquals(
 				targetPhpTestDeps,
 				prjConfig.getTestDepsDir().getAbsolutePath());
-		assertEquals(
+		Assertions.assertEquals(
 				targetPhpDeps,
 				prjConfig.getDepsDir(session.getCurrentProject()).getAbsolutePath());
-		assertEquals(
+		Assertions.assertEquals(
 				targetPhpTestDeps,
 				prjConfig.getTestDepsDir(session.getCurrentProject()).getAbsolutePath());
 
@@ -85,50 +91,50 @@ public class BaseTest extends AbstractTestCase {
 		final Xpp3Dom testDeps = new Xpp3Dom("testDependenciesDir");
 		testDeps.setValue("${project.basedir}/target/php-test-dependencies");
 		config.addChild(testDeps);
-		assertEquals(
+		Assertions.assertEquals(
 				targetPhpDependencies,
 				prjConfig.getDepsDir(config).getAbsolutePath());
-		assertEquals(
+		Assertions.assertEquals(
 				targetPhpTestDependencies,
 				prjConfig.getTestDepsDir(config).getAbsolutePath());
-		assertEquals(
+		Assertions.assertEquals(
 				targetPhpDependencies,
 				prjConfig.getDepsDir(config, session.getCurrentProject()).getAbsolutePath());
-		assertEquals(
+		Assertions.assertEquals(
 				targetPhpTestDependencies,
 				prjConfig.getTestDepsDir(config, session.getCurrentProject()).getAbsolutePath());
 
 		// test for the correct include path (normal include path)
 		IPhpExecutableConfiguration execConfig = prjConfig.getExecutionConfiguration();
 		Set<String> includes = new HashSet<String>(execConfig.getIncludePath());
-		assertTrue(includes.contains(targetPhpDeps));
+		Assertions.assertTrue(includes.contains(targetPhpDeps));
 		execConfig = prjConfig.getExecutionConfiguration(session.getCurrentProject());
 		includes = new HashSet<String>(execConfig.getIncludePath());
-		assertTrue(includes.contains(targetPhpDeps));
+		Assertions.assertTrue(includes.contains(targetPhpDeps));
 		execConfig = prjConfig.getExecutionConfiguration(config);
 		includes = new HashSet<String>(execConfig.getIncludePath());
-		assertTrue(includes.contains(targetPhpDependencies));
+		Assertions.assertTrue(includes.contains(targetPhpDependencies));
 		execConfig = prjConfig.getExecutionConfiguration(config, session.getCurrentProject());
 		includes = new HashSet<String>(execConfig.getIncludePath());
-		assertTrue(includes.contains(targetPhpDependencies));
+		Assertions.assertTrue(includes.contains(targetPhpDependencies));
 
 		// test for the correct include path (test include path)
 		execConfig = prjConfig.getTestExecutionConfiguration();
 		includes = new HashSet<String>(execConfig.getIncludePath());
-		assertTrue(includes.contains(targetPhpDeps));
-		assertTrue(includes.contains(targetPhpTestDeps));
+		Assertions.assertTrue(includes.contains(targetPhpDeps));
+		Assertions.assertTrue(includes.contains(targetPhpTestDeps));
 		execConfig = prjConfig.getTestExecutionConfiguration(session.getCurrentProject());
 		includes = new HashSet<String>(execConfig.getIncludePath());
-		assertTrue(includes.contains(targetPhpDeps));
-		assertTrue(includes.contains(targetPhpTestDeps));
+		Assertions.assertTrue(includes.contains(targetPhpDeps));
+		Assertions.assertTrue(includes.contains(targetPhpTestDeps));
 		execConfig = prjConfig.getTestExecutionConfiguration(config);
 		includes = new HashSet<String>(execConfig.getIncludePath());
-		assertTrue(includes.contains(targetPhpDependencies));
-		assertTrue(includes.contains(targetPhpTestDependencies));
+		Assertions.assertTrue(includes.contains(targetPhpDependencies));
+		Assertions.assertTrue(includes.contains(targetPhpTestDependencies));
 		execConfig = prjConfig.getTestExecutionConfiguration(config, session.getCurrentProject());
 		includes = new HashSet<String>(execConfig.getIncludePath());
-		assertTrue(includes.contains(targetPhpDependencies));
-		assertTrue(includes.contains(targetPhpTestDependencies));
+		Assertions.assertTrue(includes.contains(targetPhpDependencies));
+		Assertions.assertTrue(includes.contains(targetPhpTestDependencies));
 	}
 
 	/**
@@ -136,6 +142,9 @@ public class BaseTest extends AbstractTestCase {
 	 *
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
+	@Disabled
 	public void testIncludePathScenario() throws Exception {
 		if (!isPhpPresent()) return;
 		// look up the component factory
@@ -152,13 +161,13 @@ public class BaseTest extends AbstractTestCase {
 		final File test2Php = new File(session.getCurrentProject().getBasedir(), "test2.php");
 
 		final String result = prjConfig.getExecutionConfiguration().getPhpExecutable().execute(testPhp);
-		assertEquals("foobar", result.trim());
+		Assertions.assertEquals("foobar", result.trim());
 
 		final String resultTest = prjConfig.getTestExecutionConfiguration().getPhpExecutable().execute(testPhp);
-		assertEquals("foobar", resultTest.trim());
+		Assertions.assertEquals("foobar", resultTest.trim());
 
 		final String result2 = prjConfig.getTestExecutionConfiguration().getPhpExecutable().execute(test2Php);
-		assertEquals("testFoobar", result2.trim());
+		Assertions.assertEquals("testFoobar", result2.trim());
 	}
 
 }

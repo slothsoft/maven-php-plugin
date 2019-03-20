@@ -43,13 +43,14 @@
     </dependencyManagement>
     
     <build>
+    	<!-- XXX [slothsoft]: Not sure if we need this
         <extensions>
             <extension>
                 <groupId>org.phpmaven</groupId>
                 <artifactId>maven-php-plugin</artifactId>
                 <version>${phpmaven.plugin.version}</version>
             </extension>
-        </extensions>
+        </extensions> 
     
         <pluginManagement>
             <plugins>
@@ -57,7 +58,9 @@
                     <groupId>org.phpmaven</groupId>
                     <artifactId>maven-php-plugin</artifactId>
                     <version>${phpmaven.plugin.version}</version>
-                </plugin>
+                </plugin> -->
+        <pluginManagement>
+            <plugins>
                 <plugin>
                     <groupId>org.phpmaven</groupId>
                     <artifactId>maven-php-core</artifactId>
@@ -91,11 +94,6 @@
                 <plugin>
                     <groupId>org.phpmaven</groupId>
                     <artifactId>maven-php-validate-lint</artifactId>
-                    <version>${phpmaven.plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.phpmaven</groupId>
-                    <artifactId>maven-php-plugin</artifactId>
                     <version>${phpmaven.plugin.version}</version>
                 </plugin>
                 <plugin>

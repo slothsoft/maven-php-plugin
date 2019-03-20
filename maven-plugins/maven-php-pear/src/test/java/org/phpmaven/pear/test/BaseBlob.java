@@ -32,6 +32,9 @@ import org.apache.maven.monitor.logging.DefaultLog;
 import org.apache.maven.plugin.logging.Log;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
 import org.codehaus.plexus.util.IOUtil;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.pear.IMavenPearVersion;
 import org.phpmaven.pear.IPearConfiguration;
@@ -59,7 +62,10 @@ public class BaseBlob extends AbstractTestCase {
 	 *
 	 * @throws Exception thrown on errors
 	 */
-	public void ignoretestPUCreation() throws Exception {
+
+	@Test
+	@Disabled
+	public void testPUCreation() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
 		final MavenSession session = getSession();
@@ -68,32 +74,36 @@ public class BaseBlob extends AbstractTestCase {
 				IComponentFactory.EMPTY_CONFIG,
 				session);
 		// assert that it is not null
-		assertNotNull(pearConfig);
+		Assertions.assertNotNull(pearConfig);
 		// assert that we are able to create the util
 		final DefaultLog logger = new DefaultLog(new ConsoleLogger());
 		final IPearUtility util = pearConfig.getUtility(logger);
-		assertNotNull(util);
+		Assertions.assertNotNull(util);
 	}
 
 	/**
 	 * Tests if the packages can be installed and the files can be found.
 	 * @throws Exception exception
 	 */
-	public void ignoretestPackageInstallation() throws Exception {
+
+	@Test
+	@Disabled
+	public void testPackageInstallation() throws Exception {
 		final IPearChannel channel = getChannel(true);
 		final IPackage pkg = channel.getPackage("Validate_AT");
 		final IPackageVersion version = pkg.getVersion("0.5.2");
-		assertNull(pkg.getInstalledVersion());
+		Assertions.assertNull(pkg.getInstalledVersion());
 		version.install();
-		assertEquals("0.5.2", ((IMavenPearVersion)pkg.getInstalledVersion().getVersion()).getMavenVersion());
+		Assertions.assertEquals("0.5.2",
+				((IMavenPearVersion) pkg.getInstalledVersion().getVersion()).getMavenVersion());
 
-		assertTrue(
+		Assertions.assertTrue(
 				channel.getPearUtility().getPhpDir().getAbsolutePath().startsWith(
 						channel.getPearUtility().getInstallDir().getAbsolutePath()));
 		final Iterable<String> files = version.getPhpFiles();
 		for (final String fname : files) {
 			final File file = new File(channel.getPearUtility().getPhpDir(), fname);
-			assertTrue(file.exists());
+			Assertions.assertTrue(file.exists());
 		}
 	}
 
@@ -102,7 +112,10 @@ public class BaseBlob extends AbstractTestCase {
 	 *
 	 * @throws Exception
 	 */
-	public void ignoretestVersionMapping() throws Exception {
+
+	@Test
+	@Disabled
+	public void testVersionMapping() throws Exception {
 		final IPearChannel channel = getChannel(false);
 
 		channel.initializePackages(true, true);
@@ -112,48 +125,48 @@ public class BaseBlob extends AbstractTestCase {
 
 		pkg = channel.getPackage("Archive_Tar");
 		version = pkg.getVersion("0.10-b1");
-		assertEquals("0.10-b1", version.getVersion().getPearVersion());
-		assertEquals("0.10-beta-1", ((IMavenPearVersion)version.getVersion()).getMavenVersion());
+		Assertions.assertEquals("0.10-b1", version.getVersion().getPearVersion());
+		Assertions.assertEquals("0.10-beta-1", ((IMavenPearVersion) version.getVersion()).getMavenVersion());
 
 		pkg = channel.getPackage("Auth");
 		version = pkg.getVersion("1.5.0RC1");
-		assertEquals("1.5.0RC1", version.getVersion().getPearVersion());
-		assertEquals("1.5.0-RC1", ((IMavenPearVersion)version.getVersion()).getMavenVersion());
+		Assertions.assertEquals("1.5.0RC1", version.getVersion().getPearVersion());
+		Assertions.assertEquals("1.5.0-RC1", ((IMavenPearVersion) version.getVersion()).getMavenVersion());
 
 		pkg = channel.getPackage("Auth");
 		version = pkg.getVersion("1.3.0r3");
-		assertEquals("1.3.0r3", version.getVersion().getPearVersion());
-		assertEquals("1.3.0-r3", ((IMavenPearVersion)version.getVersion()).getMavenVersion());
+		Assertions.assertEquals("1.3.0r3", version.getVersion().getPearVersion());
+		Assertions.assertEquals("1.3.0-r3", ((IMavenPearVersion) version.getVersion()).getMavenVersion());
 
 		pkg = channel.getPackage("Auth_PrefManager2");
 		version = pkg.getVersion("2.0.0dev1");
-		assertEquals("2.0.0dev1", version.getVersion().getPearVersion());
-		assertEquals("2.0.0-dev1", ((IMavenPearVersion)version.getVersion()).getMavenVersion());
+		Assertions.assertEquals("2.0.0dev1", version.getVersion().getPearVersion());
+		Assertions.assertEquals("2.0.0-dev1", ((IMavenPearVersion) version.getVersion()).getMavenVersion());
 
 		pkg = channel.getPackage("Benchmark");
 		version = pkg.getVersion("1.2.2beta1");
-		assertEquals("1.2.2beta1", version.getVersion().getPearVersion());
-		assertEquals("1.2.2-beta-1", ((IMavenPearVersion)version.getVersion()).getMavenVersion());
+		Assertions.assertEquals("1.2.2beta1", version.getVersion().getPearVersion());
+		Assertions.assertEquals("1.2.2-beta-1", ((IMavenPearVersion) version.getVersion()).getMavenVersion());
 
 		pkg = channel.getPackage("CodeGen_MySQL_UDF");
 		version = pkg.getVersion("0.9.7dev");
-		assertEquals("0.9.7dev", version.getVersion().getPearVersion());
-		assertEquals("0.9.7-dev", ((IMavenPearVersion)version.getVersion()).getMavenVersion());
+		Assertions.assertEquals("0.9.7dev", version.getVersion().getPearVersion());
+		Assertions.assertEquals("0.9.7-dev", ((IMavenPearVersion) version.getVersion()).getMavenVersion());
 
 		pkg = channel.getPackage("Console_ProgressBar");
 		version = pkg.getVersion("0.5.2beta");
-		assertEquals("0.5.2beta", version.getVersion().getPearVersion());
-		assertEquals("0.5.2-beta", ((IMavenPearVersion)version.getVersion()).getMavenVersion());
+		Assertions.assertEquals("0.5.2beta", version.getVersion().getPearVersion());
+		Assertions.assertEquals("0.5.2-beta", ((IMavenPearVersion) version.getVersion()).getMavenVersion());
 
 		pkg = channel.getPackage("DB");
 		version = pkg.getVersion("1.4b1");
-		assertEquals("1.4b1", version.getVersion().getPearVersion());
-		assertEquals("1.4-beta-1", ((IMavenPearVersion)version.getVersion()).getMavenVersion());
+		Assertions.assertEquals("1.4b1", version.getVersion().getPearVersion());
+		Assertions.assertEquals("1.4-beta-1", ((IMavenPearVersion) version.getVersion()).getMavenVersion());
 
 		pkg = channel.getPackage("Date");
 		version = pkg.getVersion("1.5.0a1");
-		assertEquals("1.5.0a1", version.getVersion().getPearVersion());
-		assertEquals("1.5.0-alpha-1", ((IMavenPearVersion)version.getVersion()).getMavenVersion());
+		Assertions.assertEquals("1.5.0a1", version.getVersion().getPearVersion());
+		Assertions.assertEquals("1.5.0-alpha-1", ((IMavenPearVersion) version.getVersion()).getMavenVersion());
 	}
 
 	/**

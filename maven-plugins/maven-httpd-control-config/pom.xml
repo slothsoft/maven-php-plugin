@@ -14,6 +14,7 @@
 
     <groupId>org.phpmaven</groupId>
     <artifactId>maven-httpd-control-config</artifactId>
+    <version>2.0.3-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>maven-httpd-control-config:${project.version}</name>

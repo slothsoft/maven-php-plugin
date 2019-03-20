@@ -19,6 +19,7 @@ package org.phpmaven.pear.test;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.monitor.logging.DefaultLog;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.pear.IPearConfiguration;
 import org.phpmaven.pear.library.IPearUtility;
@@ -50,6 +51,8 @@ public class ChannelAddBlob extends AbstractTestCase {
 	 *
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
 	public void ignoretestChannelAdd() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);

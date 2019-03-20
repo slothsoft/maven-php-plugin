@@ -21,6 +21,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.maven.execution.MavenSession;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.exec.IPhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
@@ -39,6 +42,9 @@ public class DefineTest extends AbstractTestCase {
 	 *
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
+	@Disabled
 	public void testDefines() throws Exception {
 		if (!isPhpPresent()) return;
 
@@ -56,7 +62,7 @@ public class DefineTest extends AbstractTestCase {
 
 		// assert that the environment variable is mapped correctly
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		assertEquals("success: foo bar\n", exec.execute(defineTestPhp));
+		Assertions.assertEquals("success: foo bar\n", exec.execute(defineTestPhp));
 	}
 
 	/**
@@ -64,6 +70,9 @@ public class DefineTest extends AbstractTestCase {
 	 *
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
+	@Disabled
 	public void testDefinesSet() throws Exception {
 		if (!isPhpPresent()) return;
 
@@ -83,7 +92,7 @@ public class DefineTest extends AbstractTestCase {
 
 		// assert that the environment variable is mapped correctly
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		assertEquals("success: foo bar\n", exec.execute(defineTestPhp));
+		Assertions.assertEquals("success: foo bar\n", exec.execute(defineTestPhp));
 	}
 
 }

@@ -19,6 +19,8 @@ package org.phpmaven.php.test;
 import java.io.File;
 
 import org.apache.maven.execution.MavenSession;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.exec.IPhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
@@ -37,6 +39,8 @@ public class ArgsTest extends AbstractTestCase {
 	 *
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
 	public void testArgs() throws Exception {
 		if (!isPhpPresent()) return;
 
@@ -53,7 +57,7 @@ public class ArgsTest extends AbstractTestCase {
 
 		// assert that the environment variable is mapped correctly
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		assertEquals("success\n", exec.execute("\"" + envTestPhp.getAbsolutePath() + "\" JUNIT_ARG_TEST", envTestPhp));
+		Assertions.assertEquals("success\n", exec.execute("\"" + envTestPhp.getAbsolutePath() + "\" JUNIT_ARG_TEST", envTestPhp));
 	}
 
 }

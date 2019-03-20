@@ -18,6 +18,7 @@ package org.phpmaven.exec;
 
 import org.phpmaven.core.BuildPluginConfiguration;
 import org.phpmaven.core.IComponentFactory;
+import org.phpmaven.phpexec.library.IPhpExecutable;
 
 /**
  * A php executable configuration.
