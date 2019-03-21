@@ -17,9 +17,9 @@
 package org.phpmaven.core.test;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.core.ExecutionUtils;
 
-import junit.framework.TestCase;
 
 
 /**
@@ -28,12 +28,14 @@ import junit.framework.TestCase;
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.1
  */
-public class IsWindowsTest extends TestCase {
+public class IsWindowsTest {
 
 	/**
 	 * Tests isWindows.
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
 	public void testIsWindows() throws Exception {
 		final String oldOs = System.getProperty("os.name");
 		try {
@@ -48,6 +50,8 @@ public class IsWindowsTest extends TestCase {
 	 * Tests isNotWindows.
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
 	public void testIsNotWindows() throws Exception {
 		final String oldOs = System.getProperty("os.name");
 		try {
