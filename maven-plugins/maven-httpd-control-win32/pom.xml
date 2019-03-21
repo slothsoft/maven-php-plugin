@@ -1,10 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
-    <properties>
-        <phpmavenTagName>${project.version}</phpmavenTagName>
-    </properties>
-
     <parent>
         <groupId>org.phpmaven.build</groupId>
         <artifactId>java-parent</artifactId>
@@ -17,7 +13,7 @@
     <version>2.0.3-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>maven-httpd-control-win32:${project.version}</name>
+    <name>maven-httpd-control-win32</name>
 
     <description>
         A Maven plugin for dependency management and quality assurance in PHP projects. Uses
@@ -25,16 +21,6 @@
         
         httpd webserver plugin.
     </description>
-    
-    <url>${phpmavenRootUrl}/${phpmavenTagType}/${phpmavenTagName}/maven-httpd-control-win32/</url>
-    
-    <distributionManagement>
-        <site>
-            <id>upload-${phpmavenSitesId}</id>
-            <name>${phpmavenSitesName}</name>
-            <url>${phpmavenSitesUploadUrl}/${phpmavenTagType}/${phpmavenTagName}/maven-httpd-control-win32/</url>
-        </site>
-    </distributionManagement>
     
     <dependencies>
     	<dependency>
@@ -52,19 +38,6 @@
   
   <build>
       <plugins>
-      	  <plugin>
-      	      <groupId>org.apache.maven.plugins</groupId>
-      	      <artifactId>maven-site-plugin</artifactId>
-      	      <configuration>
-      	      	<reportPlugins>
-      	      		<reportPlugin>
-      	      			<groupId>org.apache.maven.plugins</groupId>
-      	      			<artifactId>maven-plugin-plugin</artifactId>
-      	      			<version>3.6</version>
-      	      		</reportPlugin>
-      	      	</reportPlugins>
-      	      </configuration>
-      	  </plugin>
           <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-source-plugin</artifactId>
