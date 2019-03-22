@@ -5,9 +5,8 @@
 
 	<parent>
 		<groupId>org.phpmaven.build</groupId>
-		<artifactId>common-parent</artifactId>
+		<artifactId>var</artifactId>
 		<version>1</version>
-		<relativePath>../../phpmaven-common-parent/pom.xml</relativePath>
 	</parent>
 
 	<groupId>org.phpmaven.build</groupId>

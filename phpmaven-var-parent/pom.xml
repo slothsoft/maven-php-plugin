@@ -4,13 +4,14 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.phpmaven.build</groupId>
-		<artifactId>common-parent</artifactId>
-		<version>1</version>
-		<relativePath>../phpmaven-common-parent/pom.xml</relativePath>
+		<groupId>de.slothsoft</groupId>
+		<artifactId>everything</artifactId>
+		<version>0.0.7-SNAPSHOT</version>
 	</parent>
 
+	<groupId>org.phpmaven.build</groupId>
 	<artifactId>var</artifactId>
+	<version>1</version>
 	<packaging>pom</packaging>
 
 	<name>Maven PHP Build aggregator</name>

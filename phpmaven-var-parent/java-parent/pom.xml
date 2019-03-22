@@ -4,12 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<!-- XXX [slothsoft]: Do we have projects that are no Java projects? Check! 
-			Else merge. -->
 		<groupId>org.phpmaven.build</groupId>
-		<artifactId>common-parent</artifactId>
+		<artifactId>var</artifactId>
 		<version>1</version>
-		<relativePath>../../phpmaven-common-parent/pom.xml</relativePath>
 	</parent>
 
 	<artifactId>java-parent</artifactId>
