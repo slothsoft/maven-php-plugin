@@ -44,6 +44,8 @@ import org.phpmaven.test.AbstractTestCase;
  */
 public class BaseTest extends AbstractTestCase {
 
+	// XXX [slothsoft]: I have no idea why some tests won't work any longer
+
 	/**
 	 * Tests if the dependencies are correctly configured.
 	 *
