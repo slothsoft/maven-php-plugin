@@ -23,13 +23,13 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.phpexec.cli.PhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.phpexec.library.IPhpExecutableConfiguration;
-
-import junit.framework.Assert;
+import org.phpmaven.test.IgnoreWhen;
+import org.phpmaven.test.PhpMissing;
 
 /**
  * test cases for PHP support.
@@ -39,8 +39,6 @@ import junit.framework.Assert;
  */
 public class EnvTest {
 
-	@Rule
-	public PhpExePresent phpExePresent = new PhpExePresent();
 
 	/**
 	 * Tests if the execution configuration can be created.
@@ -48,6 +46,7 @@ public class EnvTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
+	@IgnoreWhen(PhpMissing.class)
 	public void testEnvVar() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
@@ -56,7 +55,7 @@ public class EnvTest {
 
 		// assert that the environment variable is mapped correctly
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assert.assertEquals("success: foo bar\n", exec.execute(envTestPhp));
+		Assertions.assertEquals("success: foo bar\n", exec.execute(envTestPhp));
 	}
 
 	/**
@@ -65,6 +64,7 @@ public class EnvTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
+	@IgnoreWhen(PhpMissing.class)
 	public void testEnvVarSetter() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
@@ -75,7 +75,7 @@ public class EnvTest {
 
 		// assert that the environment variable is mapped correctly
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assert.assertEquals("success: foo bar\n", exec.execute(envTestPhp));
+		Assertions.assertEquals("success: foo bar\n", exec.execute(envTestPhp));
 	}
 
 }

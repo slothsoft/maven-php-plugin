@@ -20,9 +20,8 @@ package org.phpmaven.phpexec.library.test;
 
 import java.io.File;
 
-import junit.framework.Assert;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.phpexec.library.PhpCoreException;
 import org.phpmaven.phpexec.library.PhpErrorException;
 import org.phpmaven.phpexec.library.PhpException;
@@ -39,45 +38,45 @@ public class ExceptionTest {
 	public void testCoreExceptionConstructors() {
 		// testing for code coverage
 		PhpException exc = null;
-		
+
 		exc = new PhpCoreException();
-		Assert.assertNotNull(exc);
-		
+		Assertions.assertNotNull(exc);
+
 		exc = new PhpCoreException("foo");
-		Assert.assertNotNull(exc);
-		
+		Assertions.assertNotNull(exc);
+
 		exc = new PhpCoreException(exc);
-		Assert.assertNotNull(exc);
-		
+		Assertions.assertNotNull(exc);
+
 		exc = new PhpCoreException("foo", exc);
-		Assert.assertNotNull(exc);
+		Assertions.assertNotNull(exc);
 	}
 
 	@Test
 	public void testErrorExceptionConstructors() {
 		// testing for code coverage
 		PhpException exc = null;
-		
+
 		exc = new PhpErrorException(new File("foo.php"), "foo");
-		Assert.assertNotNull(exc);
+		Assertions.assertNotNull(exc);
 	}
 
 	@Test
 	public void testExecutionExceptionConstructors() {
 		// testing for code coverage
 		PhpException exc = null;
-		
+
 		exc = new PhpExecutionException(new File("foo.php"), "foo");
-		Assert.assertNotNull(exc);
+		Assertions.assertNotNull(exc);
 	}
 
 	@Test
 	public void testWarningExceptionConstructors() {
 		// testing for code coverage
 		PhpException exc = null;
-		
+
 		exc = new PhpWarningException(new File("foo.php"), "foo");
-		Assert.assertNotNull(exc);
+		Assertions.assertNotNull(exc);
 	}
 
 }

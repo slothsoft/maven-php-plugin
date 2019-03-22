@@ -21,8 +21,8 @@ package org.phpmaven.phpexec.library.test;
 
 import java.io.File;
 
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.phpexec.library.PhpCoreException;
 import org.phpmaven.phpexec.library.PhpExecutionException;
 

@@ -45,9 +45,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 import java.util.Map;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.phpexec.library.DeserializePhp;
 
-import junit.framework.TestCase;
 
 /**
  * Test case.
@@ -56,12 +56,14 @@ import junit.framework.TestCase;
  * @author Martin Eisengardt <martin.eisengardt@googlemail.com>
  * @since 0.1.7
  */
-public class SerializedPhpParserTest extends TestCase {
+public class SerializedPhpParserTest {
 
 	/**
 	 * Tests parsing NULL.
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
 	public void testParseNull() throws Exception {
 		final String input = "N;";
 		final DeserializePhp serializedPhpParser = new DeserializePhp(input);
@@ -73,15 +75,17 @@ public class SerializedPhpParserTest extends TestCase {
 	 * Tests illegal string.
 	 * @throws Exception thrown on errors.
 	 */
+
+	@Test
 	public void testIllegal() throws Exception {
 		try {
 			final String input = "A;";
 			final DeserializePhp serializedPhpParser = new DeserializePhp(input);
 			serializedPhpParser.parse();
-			fail("Expected exception not thrown");
+			Assertions.fail("Expected exception not thrown");
 		} catch (final IllegalStateException ex) {
 			if (!ex.getMessage().startsWith("Encountered unknown type")) {
-				fail("Expected exception message not thrown: " + ex.getMessage());
+				Assertions.fail("Expected exception message not thrown: " + ex.getMessage());
 			}
 		}
 	}
@@ -90,6 +94,8 @@ public class SerializedPhpParserTest extends TestCase {
 	 * Tests parsing integers.
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
 	public void testParseInteger() throws Exception {
 		assertPrimitive("i:123;", 123);
 	}
@@ -98,6 +104,7 @@ public class SerializedPhpParserTest extends TestCase {
 	 * Tests parsing floats.
 	 * @throws Exception thrown on errors
 	 */
+	@Test
 	public void testParseFloat() throws Exception {
 		assertPrimitive("d:123.123;", 123.123d);
 	}
@@ -114,6 +121,7 @@ public class SerializedPhpParserTest extends TestCase {
 	 * Tests parsing booleans.
 	 * @throws Exception thrown on errors.
 	 */
+	@Test
 	public void testParseBoolean() throws Exception {
 		assertPrimitive("b:1;", Boolean.TRUE);
 		assertPrimitive("b:0;", Boolean.FALSE);
@@ -124,6 +132,7 @@ public class SerializedPhpParserTest extends TestCase {
 	 * Tests parsing strings.
 	 * @throws Exception thrown on errors.
 	 */
+	@Test
 	public void testParseString() throws Exception {
 		assertPrimitive("s:6:\"string\";", "string");
 	}
@@ -132,6 +141,7 @@ public class SerializedPhpParserTest extends TestCase {
 	 * Tests parsing strings with multi-byte utf8 characters.
 	 * @throws Exception thrown on errors.
 	 */
+	@Test
 	public void testParseStringUtf8() throws Exception {
 		// ä is 2-byte: 0xc3 0xa4
 		// € is 3-byte: 0xe2 0x82 0xac
@@ -155,26 +165,28 @@ public class SerializedPhpParserTest extends TestCase {
 	 * @throws Exception throw on errors.
 	 */
 	@SuppressWarnings("rawtypes")
+	@Test
 	public void testParseArray() throws Exception {
 		final String input = "a:1:{i:1;i:2;}";
 		final DeserializePhp serializedPhpParser = new DeserializePhp(input);
 		final Object result = serializedPhpParser.parse();
-		assertTrue(result instanceof Map);
-		assertEquals(1, ((Map) result).size());
-		assertEquals(2, ((Map) result).get(1));
+		Assertions.assertTrue(result instanceof Map);
+		Assertions.assertEquals(1, ((Map) result).size());
+		Assertions.assertEquals(2, ((Map) result).get(1));
 	}
 
 	/**
 	 * Tests parsing objects.
 	 * @throws Exception thrown on errors
 	 */
+	@Test
 	public void testParseObject() throws Exception {
 		final String input = "O:8:\"TypeName\":1:{s:3:\"foo\";s:3:\"bar\";}";
 		final DeserializePhp serializedPhpParser = new DeserializePhp(input);
 		final Object result = serializedPhpParser.parse();
-		assertTrue(result instanceof DeserializePhp.PhpObject);
-		assertEquals(1, ((DeserializePhp.PhpObject) result).attributes.size());
-		assertEquals("bar", ((DeserializePhp.PhpObject) result).attributes.get("foo"));
+		Assertions.assertTrue(result instanceof DeserializePhp.PhpObject);
+		Assertions.assertEquals(1, ((DeserializePhp.PhpObject) result).attributes.size());
+		Assertions.assertEquals("bar", ((DeserializePhp.PhpObject) result).attributes.get("foo"));
 
 	}
 
@@ -182,15 +194,16 @@ public class SerializedPhpParserTest extends TestCase {
 	 * Tests parsing objects.
 	 * @throws Exception thrown on errors
 	 */
+	@Test
 	public void testParseObjectAcceptedAttributes() throws Exception {
 		final String input = "O:8:\"TypeName\":2:{s:3:\"foo\";s:3:\"bar\";s:3:\"baz\";s:6:\"foobar\";}";
 		final DeserializePhp serializedPhpParser = new DeserializePhp(input);
 		serializedPhpParser.setAcceptedAttributeNameRegex("foo");
 		final Object result = serializedPhpParser.parse();
-		assertTrue(result instanceof DeserializePhp.PhpObject);
-		assertEquals(1, ((DeserializePhp.PhpObject) result).attributes.size());
-		assertEquals("bar", ((DeserializePhp.PhpObject) result).attributes.get("foo"));
-		assertNull(((DeserializePhp.PhpObject) result).attributes.get("baz"));
+		Assertions.assertTrue(result instanceof DeserializePhp.PhpObject);
+		Assertions.assertEquals(1, ((DeserializePhp.PhpObject) result).attributes.size());
+		Assertions.assertEquals("bar", ((DeserializePhp.PhpObject) result).attributes.get("foo"));
+		Assertions.assertNull(((DeserializePhp.PhpObject) result).attributes.get("baz"));
 	}
 
 	/**
@@ -198,6 +211,7 @@ public class SerializedPhpParserTest extends TestCase {
 	 * @throws Exception thrown on errors.
 	 */
 	@SuppressWarnings("rawtypes")
+	@Test
 	public void testParseComplexDataStructure() throws Exception {
 		String input =
 				"a:2:{i:0;a:8:{s:5:\"class\";O:7:\"MyClass\":1:{s:5:\"pippo\";s:4:\"test\";}" +
@@ -231,7 +245,7 @@ public class SerializedPhpParserTest extends TestCase {
 				"s:9:\"Thumbnail\";a:3:{s:3:\"Url\";s:42:\"http://sp1.mm-a2.yimg.com/image/2295545420\";" +
 				"s:6:\"Height\";s:3:\"111\";s:5:\"Width\";s:3:\"150\";}}}}}";
 		final Map results = (Map) new DeserializePhp(input).parse();
-		assertEquals(2, ((Map) ((Map) results.get("ResultSet")).get("Result")).size());
+		Assertions.assertEquals(2, ((Map) ((Map) results.get("ResultSet")).get("Result")).size());
 	}
 
 	/**
@@ -240,7 +254,7 @@ public class SerializedPhpParserTest extends TestCase {
 	 * @param expected the expected value
 	 */
 	private void assertPrimitive(String input, Object expected) {
-		assertEquals(expected, new DeserializePhp(input).parse());
+		Assertions.assertEquals(expected, new DeserializePhp(input).parse());
 	}
 
 	/**
@@ -248,6 +262,7 @@ public class SerializedPhpParserTest extends TestCase {
 	 * @throws Exception thrown on errors.
 	 */
 	@SuppressWarnings("rawtypes")
+	@Test
 	public void testParseStructureWithSpecialChars() throws Exception {
 		final String input = "a:1:{i:0;O:9:\"albumitem\":19:{s:5:\"image\";O:5:\"image\":12:{s:4:\"name\";" +
 				"s:26:\"top_story_promo_transition\";s:4:\"type\";s:3:\"png\";s:5:\"width\";i:640;" +
@@ -273,7 +288,7 @@ public class SerializedPhpParserTest extends TestCase {
 				"s:20:\"1156837966_352721747\";s:11:\"extraFields\";a:1:{s:11:\"Description\";s:0:\"\";}" +
 				"s:4:\"rank\";N;s:7:\"version\";i:37;s:7:\"emailMe\";N;}}";
 		final Map results = (Map) new DeserializePhp(input, false).parse();
-		assertTrue(results.toString().indexOf("supérb") > 0);
+		Assertions.assertTrue(results.toString().indexOf("supérb") > 0);
 	}
 
 	/**
@@ -281,6 +296,7 @@ public class SerializedPhpParserTest extends TestCase {
 	 * @throws Exception thrown on errors.
 	 */
 	@SuppressWarnings("rawtypes")
+	@Test
 	public void testAcceptedAttributeNames() throws Exception {
 		// sample output of a yahoo web image search api call
 		final String input = "a:1:{s:9:\"ResultSet\";a:4:{s:21:\"totalResultsAvailable\";s:7:\"1177824\";s:20:" +
@@ -309,9 +325,9 @@ public class SerializedPhpParserTest extends TestCase {
 		serializedPhpParser.setAcceptedAttributeNameRegex("ResultSet|totalResultsReturned");
 		final Object result = serializedPhpParser.parse();
 		// available
-		assertEquals(2, ((Map) ((Map) result).get("ResultSet")).get("totalResultsReturned"));
+		Assertions.assertEquals(2, ((Map) ((Map) result).get("ResultSet")).get("totalResultsReturned"));
 		// not available
-		assertNull(((Map) ((Map) result).get("ResultSet")).get("totalResultsAvailable"));
+		Assertions.assertNull(((Map) ((Map) result).get("ResultSet")).get("totalResultsAvailable"));
 	}
 
 }

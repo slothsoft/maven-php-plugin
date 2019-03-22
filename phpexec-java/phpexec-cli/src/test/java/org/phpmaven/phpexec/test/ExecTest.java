@@ -22,13 +22,13 @@ package org.phpmaven.phpexec.test;
 import java.io.File;
 
 import org.codehaus.plexus.util.cli.StreamConsumer;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.phpexec.cli.PhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.phpexec.library.IPhpExecutableConfiguration;
-
-import junit.framework.Assert;
+import org.phpmaven.test.IgnoreWhen;
+import org.phpmaven.test.PhpMissing;
 
 /**
  * test cases for various executions.
@@ -38,8 +38,6 @@ import junit.framework.Assert;
  */
 public class ExecTest {
 
-	@Rule
-	public PhpExePresent phpExePresent = new PhpExePresent();
 
 	/**
 	 * Tests if the execution configuration can be created.
@@ -47,6 +45,7 @@ public class ExecTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
+	@IgnoreWhen(PhpMissing.class)
 	public void testArgsWithConsumer() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
@@ -54,7 +53,7 @@ public class ExecTest {
 
 		// assert that the environment variable is mapped correctly
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assert.assertEquals(0, exec.execute("\"" + envTestPhp.getAbsolutePath() + "\" JUNIT_ARG_TEST", envTestPhp,
+		Assertions.assertEquals(0, exec.execute("\"" + envTestPhp.getAbsolutePath() + "\" JUNIT_ARG_TEST", envTestPhp,
 				new StreamConsumer() {
 
 			@Override
@@ -70,13 +69,14 @@ public class ExecTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
+	@IgnoreWhen(PhpMissing.class)
 	public void testCode() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
 		// assert that the environment variable is mapped correctly
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
 		final String output = exec.executeCode("", "echo 'FOO';");
-		Assert.assertEquals("FOO\n", output);
+		Assertions.assertEquals("FOO\n", output);
 	}
 
 	/**
@@ -85,13 +85,14 @@ public class ExecTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
+	@IgnoreWhen(PhpMissing.class)
 	public void testCodeArgs() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
 		// assert that the environment variable is mapped correctly
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
 		final String output = exec.executeCode("", "echo $argv[1];", "JUNIT_ARG_TEST");
-		Assert.assertEquals("JUNIT_ARG_TEST\n", output);
+		Assertions.assertEquals("JUNIT_ARG_TEST\n", output);
 	}
 
 	/**
@@ -100,6 +101,7 @@ public class ExecTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
+	@IgnoreWhen(PhpMissing.class)
 	public void testArgsWithConsumer2() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
@@ -107,7 +109,7 @@ public class ExecTest {
 
 		// assert that the environment variable is mapped correctly
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assert.assertEquals(0, exec.execute("\"" + envTestPhp.getAbsolutePath() + "\" JUNIT_ARG_TEST",
+		Assertions.assertEquals(0, exec.execute("\"" + envTestPhp.getAbsolutePath() + "\" JUNIT_ARG_TEST",
 				new StreamConsumer() {
 
 			@Override
