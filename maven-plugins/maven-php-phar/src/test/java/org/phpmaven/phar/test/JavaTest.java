@@ -33,6 +33,8 @@ import org.phpmaven.phar.IPharPackagerConfiguration;
 import org.phpmaven.phar.IPharPackagingRequest;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.test.AbstractTestCase;
+import org.phpmaven.test.IgnoreWhen;
+import org.phpmaven.test.PhpMissing;
 
 /**
  * test cases for the Java-variant PHAR packager.
@@ -50,9 +52,8 @@ public class JavaTest extends AbstractTestCase {
 
 	@Test
 	@Disabled
+	@IgnoreWhen(PhpMissing.class)
 	public void testECCreation() throws Exception {
-		if (!isPhpPresent()) return;
-
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
 		// create the execution config
@@ -83,9 +84,8 @@ public class JavaTest extends AbstractTestCase {
 
 	@Test
 	@Disabled
+	@IgnoreWhen(PhpMissing.class)
 	public void testLargePhar() throws Exception {
-		if (!isPhpPresent()) return;
-
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
 		// create the execution config
@@ -138,9 +138,8 @@ public class JavaTest extends AbstractTestCase {
 
 	@Test
 	@Disabled
+	@IgnoreWhen(PhpMissing.class)
 	public void testPackage() throws Exception {
-		if (!isPhpPresent()) return;
-
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
 		// create the execution config

@@ -29,6 +29,8 @@ import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.exec.IPhpExecutableConfiguration;
 import org.phpmaven.project.IProjectPhpExecution;
 import org.phpmaven.test.AbstractTestCase;
+import org.phpmaven.test.IgnoreWhen;
+import org.phpmaven.test.PhpMissing;
 
 /**
  * test cases for PHP legacy project support.
@@ -46,8 +48,8 @@ public class BaseTest extends AbstractTestCase {
 
 	@Test
 	@Disabled
+	@IgnoreWhen(PhpMissing.class)
 	public void testECCreation() throws Exception {
-		if (!isPhpPresent()) return;
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
 		// create the execution config
@@ -145,8 +147,8 @@ public class BaseTest extends AbstractTestCase {
 
 	@Test
 	@Disabled
+	@IgnoreWhen(PhpMissing.class)
 	public void testIncludePathScenario() throws Exception {
-		if (!isPhpPresent()) return;
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
 		// create the execution config

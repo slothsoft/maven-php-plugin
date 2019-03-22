@@ -30,6 +30,8 @@ import org.phpmaven.phar.IPharPackagerConfiguration;
 import org.phpmaven.phar.IPharPackagingRequest;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.test.AbstractTestCase;
+import org.phpmaven.test.IgnoreWhen;
+import org.phpmaven.test.PhpMissing;
 
 /**
  * test cases for the PHAR packager supporting alias.
@@ -46,9 +48,8 @@ public class AliasTest extends AbstractTestCase {
 	 */
 
 	@Test
+	@IgnoreWhen(PhpMissing.class)
 	public void testAlias() throws Exception {
-		if (!isPhpPresent()) return;
-
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
 		// create the execution config
@@ -101,8 +102,8 @@ public class AliasTest extends AbstractTestCase {
 	 */
 
 	@Test
+	@IgnoreWhen(PhpMissing.class)
 	public void testJavaAlias() throws Exception {
-		if (!isPhpPresent()) return;
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
 		// create the execution config
