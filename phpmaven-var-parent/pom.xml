@@ -22,7 +22,6 @@
     </description>
 
 	<modules>
-		<module>checkstyle</module>
 		<module>java-resources</module>
 	</modules>
 
