@@ -8,6 +8,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
+		<module>archetypes</module>
 		<module>maven-plugins</module>
 		<module>pear-java</module>
 		<module>phpexec-java</module>

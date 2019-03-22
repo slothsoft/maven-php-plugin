@@ -35,7 +35,6 @@
 		<profile>
 			<id>maven-php-include-defaults</id>
 			<modules>
-				<module>archetypes</module>
 				<module>maven-php-jettycgi</module>
 				<module>phpmaven-testtool</module>
 				<module>maven-php-core</module>
