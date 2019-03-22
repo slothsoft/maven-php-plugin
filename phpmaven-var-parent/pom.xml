@@ -24,7 +24,6 @@
 	<modules>
 		<module>checkstyle</module>
 		<module>java-resources</module>
-		<module>java-parent</module>
 	</modules>
 
 </project>

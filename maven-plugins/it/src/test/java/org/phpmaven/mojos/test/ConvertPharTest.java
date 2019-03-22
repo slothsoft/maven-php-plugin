@@ -21,6 +21,8 @@ import java.util.List;
 
 import org.apache.maven.it.Verifier;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.test.it.AbstractTestCase;
 
 /**
@@ -29,6 +31,7 @@ import org.phpmaven.test.it.AbstractTestCase;
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
+@Disabled
 public class ConvertPharTest extends AbstractTestCase {
 
 	/**
@@ -36,6 +39,8 @@ public class ConvertPharTest extends AbstractTestCase {
 	 *
 	 * @throws Exception
 	 */
+
+	@Test
 	public void testGoal() throws Exception {
 		final Verifier verifierDep1 = this.getPhpMavenVerifier("mojos-phar/phar-with-dep1-folders");
 

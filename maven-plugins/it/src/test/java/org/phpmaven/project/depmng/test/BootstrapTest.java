@@ -20,6 +20,8 @@ import java.util.List;
 
 import org.apache.maven.it.Verifier;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.test.it.AbstractTestCase;
 
 /**
@@ -28,6 +30,7 @@ import org.phpmaven.test.it.AbstractTestCase;
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
+@Disabled
 public class BootstrapTest extends AbstractTestCase {
 
 	/**
@@ -35,6 +38,8 @@ public class BootstrapTest extends AbstractTestCase {
 	 *
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
 	public void testBootstrap() throws Exception {
 		// look up the component factory
 		this.installPhpmavenProjectToRepos("maven-php-plugin");

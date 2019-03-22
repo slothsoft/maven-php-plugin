@@ -21,6 +21,8 @@ import java.util.List;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.it.Verifier;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.exec.IPhpExecutableConfiguration;
 import org.phpmaven.project.IProjectPhpExecution;
@@ -32,6 +34,7 @@ import org.phpmaven.test.it.AbstractTestCase;
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
+@Disabled
 public class DefaultsTest extends AbstractTestCase {
 
 	/**
@@ -39,6 +42,8 @@ public class DefaultsTest extends AbstractTestCase {
 	 *
 	 * @throws Exception thrown on errors
 	 */
+
+	@Test
 	public void testDefaults() throws Exception {
 		// look up the component factory
 		this.installPhpmavenProjectToRepos("maven-php-plugin");

@@ -1,6 +1,6 @@
 /**
  * Copyright 2010-2012 by PHP-maven.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -17,41 +17,46 @@
 package org.phpmaven.mojos.test;
 
 import org.apache.maven.it.Verifier;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.test.it.AbstractTestCase;
 
 /**
  * Testcase for php-maven mojos being present.
- * 
+ *
  * Tests: http://maven.apache.org/plugin-developers/plugin-testing.html
- * 
+ *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.1
  */
+@Disabled
 public class PhpUnitMultipomTest extends AbstractTestCase {
 
-    /**
-     * tests the goal "package" with multipom referring each other.
-     *
-     * @throws Exception 
-     */
-    public void testPackage() throws Exception {
-        final Verifier verifierDep1 = this.getPhpMavenVerifier("mojos-phpunit/test-multipom");
-        
-        // delete the pom from previous runs
-        verifierDep1.deleteArtifact("org.sample.my-php-lib", "my-php-module-one", "1.0-SNAPSHOT", "pom");
-        verifierDep1.deleteArtifact("org.sample.my-php-lib", "my-php-module-two", "1.0-SNAPSHOT", "pom");
-        verifierDep1.deleteArtifact("org.sample.my-php-lib", "my-php-module-one", "1.0-SNAPSHOT", "phar");
-        verifierDep1.deleteArtifact("org.sample.my-php-lib", "my-php-module-two", "1.0-SNAPSHOT", "phar");
+	/**
+	 * tests the goal "package" with multipom referring each other.
+	 *
+	 * @throws Exception
+	 */
 
-        // execute testing
-        verifierDep1.executeGoal("package");
+	@Test
+	public void testPackage() throws Exception {
+		final Verifier verifierDep1 = this.getPhpMavenVerifier("mojos-phpunit/test-multipom");
 
-        // verify no error was thrown
-        verifierDep1.verifyErrorFreeLog();
+		// delete the pom from previous runs
+		verifierDep1.deleteArtifact("org.sample.my-php-lib", "my-php-module-one", "1.0-SNAPSHOT", "pom");
+		verifierDep1.deleteArtifact("org.sample.my-php-lib", "my-php-module-two", "1.0-SNAPSHOT", "pom");
+		verifierDep1.deleteArtifact("org.sample.my-php-lib", "my-php-module-one", "1.0-SNAPSHOT", "phar");
+		verifierDep1.deleteArtifact("org.sample.my-php-lib", "my-php-module-two", "1.0-SNAPSHOT", "phar");
 
-        // reset the streams
-        verifierDep1.resetStreams();
-    }
+		// execute testing
+		verifierDep1.executeGoal("package");
+
+		// verify no error was thrown
+		verifierDep1.verifyErrorFreeLog();
+
+		// reset the streams
+		verifierDep1.resetStreams();
+	}
 
 
 }

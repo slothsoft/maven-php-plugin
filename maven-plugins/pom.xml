@@ -22,48 +22,27 @@
     </description>
 
 	<modules>
+		<module>maven-php-jettycgi</module>
+		<module>phpmaven-testtool</module>
+		<module>maven-php-core</module>
+		<module>maven-httpd-control-api</module>
+		<module>maven-httpd-control-config</module>
+		<module>maven-httpd-control-ix</module>
+		<module>maven-httpd-control-win32</module>
+		<module>maven-httpd-plugin</module>
+		<module>maven-php-exec</module>
+		<module>maven-php-statedb</module>
+		<module>maven-php-dependency</module>
+		<module>maven-php-project</module>
+		<module>maven-php-phar</module>
+		<module>maven-php-phpunit</module>
+		<module>maven-php-phpdoc</module>
+		<module>maven-php-pear</module>
+		<module>maven-php-validate-lint</module>
+		<module>maven-php-plugin</module>
+		<module>it</module>
 	</modules>
 
-	<profiles>
-		<profile>
-			<id>maven-php-include-it</id>
-			<modules>
-				<module>it</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>maven-php-include-defaults</id>
-			<modules>
-				<module>maven-php-jettycgi</module>
-				<module>phpmaven-testtool</module>
-				<module>maven-php-core</module>
-				<module>maven-httpd-control-api</module>
-				<module>maven-httpd-control-config</module>
-				<module>maven-httpd-control-ix</module>
-				<module>maven-httpd-control-win32</module>
-				<module>maven-httpd-plugin</module>
-				<module>maven-php-exec</module>
-				<module>maven-php-statedb</module>
-				<module>maven-php-dependency</module>
-				<module>maven-php-project</module>
-				<module>maven-php-phar</module>
-				<module>maven-php-phpunit</module>
-				<module>maven-php-phpdoc</module>
-				<module>maven-php-pear</module>
-				<module>maven-php-validate-lint</module>
-				<module>maven-php-plugin</module>
-			</modules>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-		</profile>
-		<profile>
-			<id>maven-php-include-php-parent-pom</id>
-			<modules>
-				<module>php-parent-pom</module>
-			</modules>
-		</profile>
-	</profiles>
 
 	<build>
 		<plugins>

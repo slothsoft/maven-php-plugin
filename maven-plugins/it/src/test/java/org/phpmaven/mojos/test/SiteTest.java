@@ -23,6 +23,8 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 import org.apache.maven.it.Verifier;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.test.it.AbstractTestCase;
 
 /**
@@ -31,6 +33,7 @@ import org.phpmaven.test.it.AbstractTestCase;
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
+@Disabled
 public class SiteTest extends AbstractTestCase {
 
 	/**
@@ -38,6 +41,8 @@ public class SiteTest extends AbstractTestCase {
 	 *
 	 * @throws Exception
 	 */
+
+	@Test
 	public void testSiteOnClean() throws Exception {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-all");
 
@@ -76,6 +81,8 @@ public class SiteTest extends AbstractTestCase {
 	 *
 	 * @throws Exception
 	 */
+
+	@Test
 	public void testSiteDuplicateTests() throws Exception {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-all");
 
@@ -109,6 +116,8 @@ public class SiteTest extends AbstractTestCase {
 	 *
 	 * @throws Exception
 	 */
+
+	@Test
 	public void testSiteClover() throws Exception {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-clover");
 
@@ -140,6 +149,8 @@ public class SiteTest extends AbstractTestCase {
 	 *
 	 * @throws Exception
 	 */
+
+	@Test
 	public void testSiteBootstrap() throws Exception {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-bootstrap");
 
@@ -167,6 +178,8 @@ public class SiteTest extends AbstractTestCase {
 	 *
 	 * @throws Exception
 	 */
+
+	@Test
 	public void testSite() throws Exception {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-all");
 
@@ -206,6 +219,8 @@ public class SiteTest extends AbstractTestCase {
 	 *
 	 * @throws Exception
 	 */
+
+	@Test
 	public void testSitePhpdocPear() throws Exception {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-phpdoc-pear");
 
@@ -235,6 +250,8 @@ public class SiteTest extends AbstractTestCase {
 	 *
 	 * @throws Exception
 	 */
+
+	@Test
 	public void testSitePhpdocPearDeprecated() throws Exception {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-phpdoc-dep");
 
@@ -274,6 +291,8 @@ public class SiteTest extends AbstractTestCase {
 	 *
 	 * @throws Exception
 	 */
+
+	@Test
 	public void testSitePhpdocPearIgnoreDeprecated() throws Exception {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-phpdoc-ndep");
 
@@ -315,6 +334,8 @@ public class SiteTest extends AbstractTestCase {
 	 *
 	 * @throws Exception
 	 */
+
+	@Test
 	public void testSitePhpdocPearIgnoreDeprecated2() throws Exception {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-phpdoc-ndep2");
 

@@ -21,6 +21,8 @@ import java.util.List;
 
 import org.apache.maven.it.Verifier;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.phpmaven.test.it.AbstractTestCase;
 
 /**
@@ -29,6 +31,7 @@ import org.phpmaven.test.it.AbstractTestCase;
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
+@Disabled
 public class PharSupportTest extends AbstractTestCase {
 
 
@@ -37,6 +40,8 @@ public class PharSupportTest extends AbstractTestCase {
 	 *
 	 * @throws Exception
 	 */
+
+	@Test
 	public void testGoalTestWithSimplePhar() throws Exception {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-phar/phar-simple");
 
@@ -62,6 +67,8 @@ public class PharSupportTest extends AbstractTestCase {
 	 *
 	 * @throws Exception
 	 */
+
+	@Test
 	public void testListFiles() throws Exception {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-phar/phar-simple");
 
@@ -104,6 +111,8 @@ public class PharSupportTest extends AbstractTestCase {
 	 *
 	 * @throws Exception
 	 */
+
+	@Test
 	public void testGoalTestWithAutoprepend() throws Exception {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-phar/phar-autoprepend");
 
@@ -129,6 +138,8 @@ public class PharSupportTest extends AbstractTestCase {
 	 *
 	 * @throws Exception
 	 */
+
+	@Test
 	public void testGoalTestWithDependencies() throws Exception {
 		final Verifier verifierDep1 = this.getPhpMavenVerifier("mojos-phar/phar-with-dep1");
 
@@ -174,6 +185,8 @@ public class PharSupportTest extends AbstractTestCase {
 	 *
 	 * @throws Exception
 	 */
+
+	@Test
 	public void testGoalTestWithDependenciesInFolders() throws Exception {
 		final Verifier verifierDep1 = this.getPhpMavenVerifier("mojos-phar/phar-with-dep1-folders");
 
