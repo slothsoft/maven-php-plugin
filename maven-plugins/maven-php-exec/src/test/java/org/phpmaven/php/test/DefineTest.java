@@ -28,6 +28,8 @@ import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.exec.IPhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.test.AbstractTestCase;
+import org.phpmaven.test.IgnoreWhen;
+import org.phpmaven.test.PhpMissing;
 
 /**
  * test cases for PHP support.
@@ -44,10 +46,8 @@ public class DefineTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
+	@IgnoreWhen(PhpMissing.class)
 	public void testDefines() throws Exception {
-		if (!isPhpPresent()) return;
-
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
 		// create the execution config
@@ -73,9 +73,8 @@ public class DefineTest extends AbstractTestCase {
 
 	@Test
 	@Disabled
+	@IgnoreWhen(PhpMissing.class)
 	public void testDefinesSet() throws Exception {
-		if (!isPhpPresent()) return;
-
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
 		// create the execution config

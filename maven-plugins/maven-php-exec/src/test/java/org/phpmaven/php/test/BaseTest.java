@@ -25,6 +25,8 @@ import org.phpmaven.exec.IPhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.phpexec.library.PhpException;
 import org.phpmaven.test.AbstractTestCase;
+import org.phpmaven.test.IgnoreWhen;
+import org.phpmaven.test.PhpMissing;
 
 /**
  * test cases for PHP support.
@@ -34,6 +36,7 @@ import org.phpmaven.test.AbstractTestCase;
  */
 public class BaseTest extends AbstractTestCase {
 
+
 	/**
 	 * Tests if the execution configuration can be created.
 	 *
@@ -42,9 +45,8 @@ public class BaseTest extends AbstractTestCase {
 
 	@Test
 	@Disabled
+	@IgnoreWhen(PhpMissing.class)
 	public void testECCreation() throws Exception {
-		if (!isPhpPresent()) return;
-
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
 		// create the execution config
@@ -70,9 +72,8 @@ public class BaseTest extends AbstractTestCase {
 
 	@Test
 	@Disabled
+	@IgnoreWhen(PhpMissing.class)
 	public void testUnknownExecutable() throws Exception {
-		if (!isPhpPresent()) return;
-
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
 		// create the execution config
@@ -104,9 +105,8 @@ public class BaseTest extends AbstractTestCase {
 
 	@Test
 	@Disabled
+	@IgnoreWhen(PhpMissing.class)
 	public void testUnknownInterpreter() throws Exception {
-		if (!isPhpPresent()) return;
-
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
 		// create the execution config
@@ -136,9 +136,8 @@ public class BaseTest extends AbstractTestCase {
 
 	@Test
 	@Disabled
+	@IgnoreWhen(PhpMissing.class)
 	public void testIsUseCacheActive() throws Exception {
-		if (!isPhpPresent()) return;
-
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
 		// create the execution config
