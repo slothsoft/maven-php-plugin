@@ -27,6 +27,7 @@ import org.phpmaven.test.AbstractTestCase;
  * test cases for statedb support.
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 2.0.0
  */
 public class BaseTest extends AbstractTestCase {

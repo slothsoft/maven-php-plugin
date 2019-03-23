@@ -73,7 +73,7 @@ import org.sonatype.aether.util.graph.transformer.NearestVersionConflictResolver
  * Abstract base class for testing the modules.
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
- * @author Stef Schulz
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 2.0.0
  */
 

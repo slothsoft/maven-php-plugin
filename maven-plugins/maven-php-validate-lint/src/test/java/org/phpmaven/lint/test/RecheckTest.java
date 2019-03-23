@@ -36,6 +36,7 @@ import org.phpmaven.test.AbstractTestCase;
  * Base test cases for the line check.
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 2.0.3
  */
 public class RecheckTest extends AbstractTestCase {

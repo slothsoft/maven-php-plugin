@@ -27,6 +27,7 @@ import org.phpmaven.test.AbstractTestCase;
  * Test case for the IComponentFactory class.
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 2.0.1
  */
 public class LookupServiceTest extends AbstractTestCase {

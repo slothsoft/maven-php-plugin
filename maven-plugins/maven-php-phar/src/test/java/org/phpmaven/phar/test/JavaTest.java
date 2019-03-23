@@ -40,6 +40,7 @@ import org.phpmaven.test.PhpMissing;
  * test cases for the Java-variant PHAR packager.
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 2.0.0
  */
 public class JavaTest extends AbstractTestCase {

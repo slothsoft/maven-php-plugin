@@ -16,22 +16,32 @@
 
 package org.phpmaven.pear.test;
 
+import java.io.File;
+
+import org.apache.maven.artifact.repository.ArtifactRepositoryPolicy;
+import org.apache.maven.artifact.repository.MavenArtifactRepository;
+import org.apache.maven.artifact.repository.layout.ArtifactRepositoryLayout;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.monitor.logging.DefaultLog;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.phpmaven.core.IComponentFactory;
+import org.phpmaven.pear.IMavenPearUtility;
 import org.phpmaven.pear.IPearConfiguration;
-import org.phpmaven.pear.library.IPearUtility;
 import org.phpmaven.test.AbstractTestCase;
 
 /**
- * test cases for adding a local channel.
+ * test cases for installing pear modules from maven repositories.
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 2.0.0
  */
-public class ChannelAddBlob extends AbstractTestCase {
+
+@Disabled
+public class LocalInstallTest extends AbstractTestCase {
 
 	// XXX [slothsoft]: ignoring tests is not okay
 
@@ -42,18 +52,26 @@ public class ChannelAddBlob extends AbstractTestCase {
 	 */
 	private MavenSession getSession() throws Exception {
 		// create the execution config
-		final MavenSession session = this.createSessionForPhpMaven("pear/local-add");
+		final MavenSession session = this.createSessionForPhpMaven("pear/local-install");
+		final ArtifactRepositoryLayout layout = lookup(ArtifactRepositoryLayout.class);
+		final ArtifactRepositoryPolicy policy = new ArtifactRepositoryPolicy();
+		final MavenArtifactRepository phpMavenRepos = new MavenArtifactRepository(
+				"php-maven",
+				"http://repos.php-maven.org/releases",
+				layout,
+				policy,
+				policy);
+		session.getRequest().getRemoteRepositories().add(phpMavenRepos);
 		return session;
 	}
 
 	/**
-	 * Tests if we can add a channel locally.
+	 * Tests if the a pear package can be installed via maven repository.
 	 *
 	 * @throws Exception thrown on errors
 	 */
-
 	@Test
-	public void ignoretestChannelAdd() throws Exception {
+	public void ignoretestLocalInstall() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
 		final MavenSession session = getSession();
@@ -63,11 +81,14 @@ public class ChannelAddBlob extends AbstractTestCase {
 				session);
 		// assert that we are able to create the util
 		final DefaultLog logger = new DefaultLog(new ConsoleLogger());
-		final IPearUtility util = pearConfig.getUtility(logger);
+		final IMavenPearUtility util = pearConfig.getUtility(logger);
 
 		util.installPear(false);
-		util.initChannels(false);
-		util.channelAdd("pear-dummy.php-maven.org", null, "Dummy test channel");
+		util.installFromMavenRepository("net.php", "XML_fo2pdf", "0.98");
+
+		Assertions.assertTrue(new File(util.getPhpDir(), "XML/fo2pdf.php").exists());
+		Assertions.assertTrue(new File(util.getDocDir(), "XML_fo2pdf/README.fo2pdf").exists());
+		Assertions.assertTrue(new File(util.getDocDir(), "XML_fo2pdf/simple.fo").exists());
 	}
 
 }

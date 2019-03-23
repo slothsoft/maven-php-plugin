@@ -1,0 +1,16 @@
+[WARNING] Tests run: 6, Failures: 0, Errors: 0, Skipped: 2
+[WARNING] Tests run: 68, Failures: 0, Errors: 0, Skipped: 2
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0
+[WARNING] Tests run: 32, Failures: 0, Errors: 0, Skipped: 2
+[WARNING] Tests run: 32, Failures: 0, Errors: 0, Skipped: 29
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[WARNING] Tests run: 2, Failures: 0, Errors: 0, Skipped: 2
+[WARNING] Tests run: 8, Failures: 0, Errors: 0, Skipped: 6
+[WARNING] Tests run: 5, Failures: 0, Errors: 0, Skipped: 2
+[WARNING] Tests run: 9, Failures: 0, Errors: 0, Skipped: 9
+[WARNING] Tests run: 12, Failures: 0, Errors: 0, Skipped: 4
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
+[WARNING] Tests run: 7, Failures: 0, Errors: 0, Skipped: 7
+[WARNING] Tests run: 16, Failures: 0, Errors: 0, Skipped: 16
+--------------------------------------------------------------------------
+[WARNING] Tests run: 225, Failures: 0, Errors: 0, Sich mkipped: 81

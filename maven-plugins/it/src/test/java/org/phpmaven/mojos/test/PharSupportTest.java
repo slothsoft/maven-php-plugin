@@ -29,6 +29,7 @@ import org.phpmaven.test.it.AbstractTestCase;
  * Testing the phar support.
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 2.0.0
  */
 @Disabled

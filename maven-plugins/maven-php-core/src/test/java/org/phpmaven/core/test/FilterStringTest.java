@@ -31,6 +31,7 @@ import org.phpmaven.test.AbstractTestCase;
  * <p>Test the getBuildConfig methods.</p>
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 2.0.0
  */
 public class FilterStringTest extends AbstractTestCase {

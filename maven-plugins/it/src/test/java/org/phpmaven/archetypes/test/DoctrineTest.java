@@ -25,6 +25,7 @@ import org.phpmaven.test.it.AbstractTestCase;
  * Tests the php5-doctrine-archetype.
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 2.0.0
  */
 

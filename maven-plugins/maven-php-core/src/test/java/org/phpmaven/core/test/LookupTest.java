@@ -33,6 +33,7 @@ import org.phpmaven.test.AbstractTestCase;
  * <p>Test the lookup methods.</p>
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 2.0.0
  */
 public class LookupTest extends AbstractTestCase {

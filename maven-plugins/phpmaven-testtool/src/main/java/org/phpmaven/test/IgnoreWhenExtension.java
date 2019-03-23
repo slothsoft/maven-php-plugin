@@ -10,6 +10,10 @@ import org.junit.jupiter.api.extension.ConditionEvaluationResult;
 import org.junit.jupiter.api.extension.ExecutionCondition;
 import org.junit.jupiter.api.extension.ExtensionContext;
 
+/**
+ * @author Stef Schulz <s.schulz@slothsoft.de>
+ */
+
 public class IgnoreWhenExtension implements ExecutionCondition {
 
 	private static final ConditionEvaluationResult ENABLED_BY_DEFAULT = enabled("@IgnoreWhen is not present");

@@ -30,6 +30,7 @@ import org.phpmaven.phpexec.library.PhpExecutionException;
  * test cases for PHP support.
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 0.1.8
  */
 public class Exception2Test {

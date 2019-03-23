@@ -1,5 +1,9 @@
 package org.phpmaven.test;
 
+/**
+ * @author Stef Schulz <s.schulz@slothsoft.de>
+ */
+
 public class PhpMissing implements IgnoreWhenCondition {
 
 	private static boolean phpExePresent;

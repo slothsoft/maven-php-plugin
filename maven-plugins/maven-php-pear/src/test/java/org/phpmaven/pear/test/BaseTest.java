@@ -50,10 +50,11 @@ import com.google.common.base.Preconditions;
  * test cases for the pear support.
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 2.0.0
  */
 
-public class BaseBlob extends AbstractTestCase {
+public class BaseTest extends AbstractTestCase {
 
 	// XXX [slothsoft]: ignoring tests is not okay
 

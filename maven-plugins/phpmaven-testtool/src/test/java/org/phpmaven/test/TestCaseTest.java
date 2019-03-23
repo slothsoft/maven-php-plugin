@@ -8,6 +8,10 @@ import org.junit.jupiter.api.Test;
 
 import junit.framework.Assert;
 
+/**
+ * @author Stef Schulz <s.schulz@slothsoft.de>
+ */
+
 public class TestCaseTest extends AbstractTestCase {
 
 	@Test

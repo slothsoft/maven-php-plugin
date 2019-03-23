@@ -51,6 +51,7 @@ import org.phpmaven.phpexec.library.PhpException;
  * test cases for the pear support.
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 0.1.0
  */
 

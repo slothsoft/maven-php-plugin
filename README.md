@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/slothsoft/maven-php-plugin.svg?branch=master)](https://travis-ci.org/slothsoft/maven-php-plugin) [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
 
-- **Author:** [php-maven](https://github.com/php-maven), fork maintained by [Stef Schulz](mailto:s.schulz@slothsoft.de)
+- **Author:** [Martin Eisengardt](mailto:Martin.Eisengardt@googlemail.com) (from [php-maven](https://github.com/php-maven)), fork maintained by [Stef Schulz](mailto:s.schulz@slothsoft.de)
 - **Repository:** <https://github.com/slothsoft/maven-php-plugin>
 - **Open Issues:** <https://github.com/slothsoft/maven-php-plugin/issues>
 - **Wiki:** <https://github.com/slothsoft/maven-php-plugin/wiki>

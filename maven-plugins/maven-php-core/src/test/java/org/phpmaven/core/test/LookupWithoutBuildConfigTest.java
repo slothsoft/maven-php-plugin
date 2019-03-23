@@ -32,6 +32,7 @@ import org.phpmaven.test.AbstractTestCase;
  * <p>Test the lookup methods with role-hints and without build configuration.</p>
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 2.0.1
  */
 public class LookupWithoutBuildConfigTest extends AbstractTestCase {

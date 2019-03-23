@@ -30,6 +30,7 @@ import org.phpmaven.phpexec.library.PhpWarningException;
 
 /**
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 0.1.0
  */
 public class ExceptionTest {

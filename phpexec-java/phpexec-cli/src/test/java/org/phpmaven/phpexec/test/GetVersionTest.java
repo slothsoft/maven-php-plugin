@@ -32,6 +32,7 @@ import org.phpmaven.phpexec.library.PhpVersion;
  * test cases for PHP version detection.
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 2.0.0
  */
 public class GetVersionTest {

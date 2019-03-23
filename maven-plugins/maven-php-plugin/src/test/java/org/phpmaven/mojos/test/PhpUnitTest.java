@@ -40,6 +40,7 @@ import org.phpmaven.test.AbstractTestCase;
  * Tests: http://maven.apache.org/plugin-developers/plugin-testing.html
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 2.0.0
  */
 @Disabled

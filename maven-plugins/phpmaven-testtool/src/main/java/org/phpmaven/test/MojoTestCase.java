@@ -11,6 +11,10 @@ import org.codehaus.plexus.PlexusContainer;
 import org.codehaus.plexus.component.configurator.ComponentConfigurationException;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 
+/**
+ * @author Stef Schulz <s.schulz@slothsoft.de>
+ */
+
 class MojoTestCase extends AbstractMojoTestCase {
 
 	@Override

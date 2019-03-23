@@ -30,6 +30,7 @@ import org.phpmaven.test.AbstractTestCase;
  * Testing the lint check.
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 2.0.0
  */
 @Disabled

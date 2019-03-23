@@ -30,6 +30,7 @@ import org.phpmaven.test.AbstractTestCase;
  * Test extraction with reverse index jars
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 2.0.0
  */
 @Disabled

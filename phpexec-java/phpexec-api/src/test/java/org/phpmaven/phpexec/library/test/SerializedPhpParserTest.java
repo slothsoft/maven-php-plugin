@@ -54,6 +54,7 @@ import org.phpmaven.phpexec.library.DeserializePhp;
  *
  * @author http://code.google.com/p/serialized-php-parser/
  * @author Martin Eisengardt <martin.eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 0.1.7
  */
 public class SerializedPhpParserTest {

@@ -5,6 +5,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+/**
+ * @author Stef Schulz <s.schulz@slothsoft.de>
+ */
+
 public class IgnoreWhenTest {
 
 	private static boolean testExecuteCalled = false;

@@ -478,5 +478,26 @@
 			</build>
 		</profile>
 	</profiles>
+	
+	<licenses>
+		<license>
+			<name>Apache License 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>meisengardt</id>
+			<name>Martin Eisengardt</name>
+			<email>Martin.Eisengardt@googlemail.com</email>
+		</developer>
+		<developer>
+			<id>sschulz</id>
+			<name>Stef Schulz</name>
+			<email>s.schulz@slothsoft.de</email>
+		</developer>
+	</developers>
 
 </project>

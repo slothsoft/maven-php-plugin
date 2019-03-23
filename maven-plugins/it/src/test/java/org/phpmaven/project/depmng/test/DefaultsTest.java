@@ -32,6 +32,7 @@ import org.phpmaven.test.it.AbstractTestCase;
  * test cases for PHP project support with dependency management.
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 2.0.0
  */
 @Disabled

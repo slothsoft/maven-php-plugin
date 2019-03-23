@@ -33,6 +33,7 @@ import org.phpmaven.phpexec.cli.PhpExecutableConfiguration;
  * test cases for adding a local channel.
  *
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author Stef Schulz <s.schulz@slothsoft.de>
  * @since 0.1.0
  */
 public class ChannelAddTest {
