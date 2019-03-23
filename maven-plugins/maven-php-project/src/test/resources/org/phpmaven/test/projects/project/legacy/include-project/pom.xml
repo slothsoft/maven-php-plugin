@@ -10,7 +10,7 @@
 
 	<parent>
 		<groupId>de.slothsoft.phpmaven</groupId>
-		<artifactId>site</artifactId>
+		<artifactId>maven-plugins</artifactId>
 		<version>0.9.0-SNAPSHOT</version>
 	</parent>
 	<packaging>php</packaging>

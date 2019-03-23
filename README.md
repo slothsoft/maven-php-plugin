@@ -17,8 +17,7 @@ This project is forked from various repositories by [php-maven](https://github.c
 
 ### Prerequisites
 
-You need at least **Java 6** or above to run the code. And probably PHP from what I can tell.
-
+You need at least **Java 6** to run or use this framework. You also must have **PHP** on your `PATH`, so that the command `php -v` returns something useful.
 
 
 ### Installing
@@ -26,11 +25,19 @@ You need at least **Java 6** or above to run the code. And probably PHP from wha
 Link to Maven Central?
 
 
-
 ### Using the Framework
 
 Link to Wiki?
      
+
+##  Versions
+
+
+| Version       | Changes       |
+| ------------- | ------------- |
+| [1.0.0](https://github.com/slothsoft/maven-php-plugin/milestone/2?closed=1) | first stable release |
+| [0.9.0](https://github.com/slothsoft/maven-php-plugin/milestone/1?closed=1) | first try to get the framework to work again; contains a bunch of commented out test cases |
+
 
 
 ## License
