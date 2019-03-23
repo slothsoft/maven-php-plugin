@@ -32,7 +32,8 @@ import org.codehaus.plexus.util.xml.Xpp3Dom;
 /**
  * The extended component configurator allowing xpp3dom conversion.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
+ * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 2.0.0
  */
 @Component(role = ComponentConfigurator.class, hint = "php-maven", instantiationStrategy = "per-lookup")

@@ -23,7 +23,7 @@ import org.phpmaven.phpunit.IPhpunitEntry;
 /**
  * A folder entry for phpunit requests.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 public class PhpunitFolderEntry implements IPhpunitEntry {

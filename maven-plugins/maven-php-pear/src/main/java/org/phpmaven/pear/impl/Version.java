@@ -22,7 +22,7 @@ import org.phpmaven.pear.IMavenPearVersion;
 /**
  * A single version number.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 public class Version extends org.phpmaven.pear.library.impl.Version implements IMavenPearVersion {

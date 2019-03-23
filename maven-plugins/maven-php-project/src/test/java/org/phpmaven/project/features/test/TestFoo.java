@@ -22,7 +22,7 @@ import org.phpmaven.project.IPhpFeature;
 /**
  * Simple test foo feature
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.3
  */
 @Component(role = IPhpFeature.class, hint = "test-foo", instantiationStrategy = "per-lookup")

@@ -55,7 +55,8 @@ import org.sonatype.aether.RepositorySystemSession;
 /**
  * The component lookup factory for components that are configured via pom.xml.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
+ * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 2.0.0
  */
 @Component(role = IComponentFactory.class, instantiationStrategy = "per-lookup")

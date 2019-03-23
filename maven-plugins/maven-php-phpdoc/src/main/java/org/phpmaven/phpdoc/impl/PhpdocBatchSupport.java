@@ -42,7 +42,7 @@ import org.phpmaven.phpexec.library.PhpWarningException;
 /**
  * Implementation of phpdoc support invoking the phpdoc batch.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 @Component(role = IPhpdocSupport.class, instantiationStrategy = "per-lookup", hint = "PHP_EXE")

@@ -23,7 +23,7 @@ import org.phpmaven.phpdoc.IPhpdocEntry;
 /**
  * A folder entry for phpdoc requests.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 public class PhpdocFolderEntry implements IPhpdocEntry {

@@ -29,8 +29,8 @@ import org.phpmaven.test.AbstractTestCase;
 /**
  * test cases for PHP project support with features.
  *
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
- * @author Stef Schulz <s.schulz@slothsoft.de>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
+ * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 2.0.0
  */
 public class BaseTest extends AbstractTestCase {

@@ -27,7 +27,7 @@ import org.codehaus.plexus.util.FileUtils;
 /**
  * Helper class for reading configuration files.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.1
  */
 public final class ConfigUtils {

@@ -25,7 +25,7 @@ import java.io.File;
 /**
  * Symbolizes an error, printed out by a PHP execution.
  *
- * @author Martin Eisengardt <Martin.Eisengardtgooglemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 0.1.0
  */
 public class PhpWarningException extends PhpExecutionException {

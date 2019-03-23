@@ -34,7 +34,7 @@ import org.phpmaven.httpd.control.IApacheConfigVHost;
 /**
  * Abstract config tool for apache versions 2.0 - 2.4.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.1
  */
 abstract class AbstractConfigTool extends AbstractConfigCommon implements IApacheConfig {

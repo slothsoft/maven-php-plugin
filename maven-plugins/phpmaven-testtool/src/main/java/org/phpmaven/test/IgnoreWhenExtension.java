@@ -11,7 +11,7 @@ import org.junit.jupiter.api.extension.ExecutionCondition;
 import org.junit.jupiter.api.extension.ExtensionContext;
 
 /**
- * @author Stef Schulz <s.schulz@slothsoft.de>
+ * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  */
 
 public class IgnoreWhenExtension implements ExecutionCondition {

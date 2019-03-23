@@ -31,8 +31,8 @@ import org.phpmaven.test.AbstractTestCase;
  *
  * <p>Test the lookup methods with role-hints and with build configuration filter.</p>
  *
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
- * @author Stef Schulz <s.schulz@slothsoft.de>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
+ * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 2.0.1
  */
 public class LookupWithFilterTest extends AbstractTestCase {

@@ -64,7 +64,7 @@ import java.util.regex.Pattern;
  * the attribute "foo" = "bar".
  * 
  * @author http://code.google.com/p/serialized-php-parser/
- * @author Martin Eisengardt <martin.eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 0.1.7
  */
 public class DeserializePhp {

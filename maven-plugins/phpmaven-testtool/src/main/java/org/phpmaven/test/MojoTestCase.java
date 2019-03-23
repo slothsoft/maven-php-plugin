@@ -12,7 +12,7 @@ import org.codehaus.plexus.component.configurator.ComponentConfigurationExceptio
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 
 /**
- * @author Stef Schulz <s.schulz@slothsoft.de>
+ * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  */
 
 class MojoTestCase extends AbstractMojoTestCase {

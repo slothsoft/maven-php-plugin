@@ -23,7 +23,7 @@ import java.util.HashMap;
  * 
  * Key is the target scope of the dependencies.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.3
  */
 public class DependencyState extends HashMap<String, DependencyInformation> {

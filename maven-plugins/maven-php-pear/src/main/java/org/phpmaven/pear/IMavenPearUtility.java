@@ -23,7 +23,7 @@ import org.phpmaven.phpexec.library.PhpException;
 /**
  * The pear utility (extended version for maven).
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 public interface IMavenPearUtility extends IPearUtility {

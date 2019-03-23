@@ -36,7 +36,7 @@ import org.apache.http.util.EntityUtils;
 /**
  * A helper class.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 0.1.0
  */
 final class Helper {

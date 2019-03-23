@@ -32,7 +32,7 @@ import java.util.Map;
  * Additional command line options, PHP.INI options and environment variables can be set.
  * </p>
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 0.1.6
  */
 public interface IPhpExecutableConfiguration {

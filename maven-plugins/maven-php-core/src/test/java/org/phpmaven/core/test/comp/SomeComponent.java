@@ -27,7 +27,7 @@ import org.phpmaven.core.ConfigurationParameter;
 /**
  * A sample component.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 @Component(role = ISomeComponent.class, instantiationStrategy = "per-lookup")

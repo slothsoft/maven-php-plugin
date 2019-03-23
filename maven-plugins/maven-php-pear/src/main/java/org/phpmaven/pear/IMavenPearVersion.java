@@ -25,7 +25,7 @@ import org.phpmaven.pear.library.IVersion;
  * The package version supports mapping between pear versions and maven versions.
  * </p>
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 public interface IMavenPearVersion extends IVersion {

@@ -27,7 +27,7 @@ import org.phpmaven.phpexec.library.IPhpExecutable;
 /**
  * A simple cache to re-use information of php executables.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 0.1.8
  */
 final class ExecCache {

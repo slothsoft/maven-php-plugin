@@ -28,7 +28,7 @@ import org.phpmaven.core.IService;
  * To support additional services create a plexus service implementation.
  * </p>
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 public interface IPhpdocService extends IService {

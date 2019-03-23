@@ -21,7 +21,7 @@ import org.phpmaven.dependency.IActionIgnore;
 /**
  * Ignore action
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.1
  */
 public class Ignore implements IActionIgnore {

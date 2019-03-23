@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author Stef Schulz <s.schulz@slothsoft.de>
+ * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  */
 
 public class IgnoreWhenTest {

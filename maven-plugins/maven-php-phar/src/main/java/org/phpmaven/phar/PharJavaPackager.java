@@ -39,7 +39,7 @@ import org.phpmaven.phpexec.library.PhpException;
 /**
  * Phar packager implementation to use php-exe.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 @Component(role = IPharPackager.class, hint = "JAVA", instantiationStrategy = "per-lookup")

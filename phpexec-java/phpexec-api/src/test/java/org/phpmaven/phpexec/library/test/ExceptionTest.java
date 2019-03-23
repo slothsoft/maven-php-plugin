@@ -29,8 +29,8 @@ import org.phpmaven.phpexec.library.PhpExecutionException;
 import org.phpmaven.phpexec.library.PhpWarningException;
 
 /**
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
- * @author Stef Schulz <s.schulz@slothsoft.de>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
+ * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 0.1.0
  */
 public class ExceptionTest {

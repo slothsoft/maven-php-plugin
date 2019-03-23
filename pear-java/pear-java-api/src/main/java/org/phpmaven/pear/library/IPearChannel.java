@@ -28,7 +28,7 @@ import org.phpmaven.phpexec.library.PhpException;
  * See <a href="http://pear.php.net/manual/en/guide.migrating.channels.xml.php">Channel.xml description</a>.
  * </p>
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 0.1.0
  */
 public interface IPearChannel {

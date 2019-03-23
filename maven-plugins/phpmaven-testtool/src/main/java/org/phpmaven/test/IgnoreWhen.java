@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
- * @author Stef Schulz <s.schulz@slothsoft.de>
+ * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  */
 
 @Retention(RetentionPolicy.RUNTIME)

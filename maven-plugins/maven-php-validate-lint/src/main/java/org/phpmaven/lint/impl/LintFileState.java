@@ -23,7 +23,7 @@ import org.phpmaven.phpexec.library.PhpException;
 /**
  * The lint file state
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.3
  */
 public class LintFileState implements Serializable {

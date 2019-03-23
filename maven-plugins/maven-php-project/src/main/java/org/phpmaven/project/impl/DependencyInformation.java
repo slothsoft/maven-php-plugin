@@ -21,7 +21,7 @@ import java.util.HashMap;
 
 /**
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.3
  */
 public class DependencyInformation extends HashMap<String, DependencyArtifact> {

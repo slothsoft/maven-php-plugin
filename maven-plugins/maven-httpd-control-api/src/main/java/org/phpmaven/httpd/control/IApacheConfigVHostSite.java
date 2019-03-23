@@ -23,7 +23,7 @@ package org.phpmaven.httpd.control;
  * 
  * Receive a new instance through IApacheConfig.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.1
  */
 public interface IApacheConfigVHostSite extends IApacheConfigCommon {

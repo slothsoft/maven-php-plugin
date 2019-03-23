@@ -26,7 +26,7 @@ import org.phpmaven.phpexec.library.PhpException;
 /**
  * A phar packager used to package, extract and read phars.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 public interface IPharPackager {

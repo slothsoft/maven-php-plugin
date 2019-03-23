@@ -30,7 +30,7 @@ import org.phpmaven.core.IComponentFactory;
 /**
  * Implementation of the phar packager configuration.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 @Component(role = IPharPackagerConfiguration.class, instantiationStrategy = "per-lookup")

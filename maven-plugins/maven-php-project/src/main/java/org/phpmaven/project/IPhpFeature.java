@@ -20,7 +20,7 @@ package org.phpmaven.project;
  * A single php feature helping to customize the project; will be used by frameworks to enable additional processing
  * and custiomize the php-maven behaviour.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.3
  */
 public interface IPhpFeature {

@@ -29,7 +29,7 @@ import org.phpmaven.phpexec.library.PhpException;
  * Create an instance via {@link IComponentFactory} and {@link IPhpunitConfiguration#getPhpunitSupport()}.
  * </p>
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 public interface IPhpunitSupport {

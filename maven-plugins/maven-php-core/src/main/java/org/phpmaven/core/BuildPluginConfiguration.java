@@ -31,7 +31,7 @@ import java.lang.annotation.Target;
  *   provides the component.
  * </p>
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 @Retention(RetentionPolicy.RUNTIME)

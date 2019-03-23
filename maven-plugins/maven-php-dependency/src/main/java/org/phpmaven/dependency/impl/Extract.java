@@ -22,7 +22,7 @@ import org.phpmaven.dependency.IActionExtract;
 /**
  * Extract action
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.1
  */
 public class Extract implements IActionExtract {

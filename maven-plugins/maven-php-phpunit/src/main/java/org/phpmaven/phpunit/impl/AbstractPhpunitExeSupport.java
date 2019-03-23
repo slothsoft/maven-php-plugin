@@ -45,7 +45,7 @@ import org.xml.sax.SAXException;
 /**
  * Phpunit support for all phpunit versions.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 public abstract class AbstractPhpunitExeSupport extends AbstractPhpunitSupport {

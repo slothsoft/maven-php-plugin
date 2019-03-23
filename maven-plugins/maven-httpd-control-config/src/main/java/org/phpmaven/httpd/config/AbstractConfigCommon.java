@@ -27,7 +27,7 @@ import org.phpmaven.httpd.control.IApacheConfigDirectory;
 /**
  * Abstract config container that can contain and build configuration contents.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.1
  */
 abstract class AbstractConfigCommon extends AbstractConfigContainer implements IApacheConfigCommon {

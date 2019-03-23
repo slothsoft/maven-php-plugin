@@ -24,7 +24,7 @@ import org.phpmaven.phpexec.library.PhpException;
 /**
  * A single pear package.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 0.1.0
  */
 public interface IPackage {

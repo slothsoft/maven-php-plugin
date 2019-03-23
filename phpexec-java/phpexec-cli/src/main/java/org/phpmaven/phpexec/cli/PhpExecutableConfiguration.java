@@ -40,7 +40,7 @@ import org.phpmaven.phpexec.library.PhpVersion;
  * You can declare a path to an existing executable if it is not found via PATH variable.
  * Additional command line options, PHP.INI options and environment variables can be set.</p>
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 0.1.8
  */
 public class PhpExecutableConfiguration implements IPhpExecutableConfiguration {

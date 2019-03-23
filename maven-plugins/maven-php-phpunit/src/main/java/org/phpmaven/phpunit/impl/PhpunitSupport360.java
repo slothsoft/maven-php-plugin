@@ -22,7 +22,7 @@ import org.phpmaven.phpunit.IPhpunitSupport;
 /**
  * Phpunit support for > 3.6.0.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 @Component(role = IPhpunitSupport.class, instantiationStrategy = "per-lookup", hint = "PHP_EXE_V3.6.0")

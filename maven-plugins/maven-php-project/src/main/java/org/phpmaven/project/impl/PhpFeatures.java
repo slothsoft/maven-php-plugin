@@ -34,7 +34,7 @@ import org.phpmaven.project.IPhpFeatures;
 /**
  * The php features implementation.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.3
  */
 @Component(role = IPhpFeatures.class, instantiationStrategy = "per-lookup")

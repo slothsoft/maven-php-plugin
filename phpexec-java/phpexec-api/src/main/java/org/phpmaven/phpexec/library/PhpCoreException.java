@@ -23,7 +23,7 @@ package org.phpmaven.phpexec.library;
 /**
  * Something with the basic PHP execution went wrong.
  *
- * @author Martin Eisengardt <Martin.Eisengardtgooglemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 0.1.0
  */
 public class PhpCoreException extends PhpException {

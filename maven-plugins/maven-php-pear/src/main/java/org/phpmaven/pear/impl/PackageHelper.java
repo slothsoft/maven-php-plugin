@@ -21,7 +21,7 @@ import org.phpmaven.pear.library.impl.Package;
 /**
  * Package helper to access the maven conversion functions.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 public class PackageHelper extends Package {

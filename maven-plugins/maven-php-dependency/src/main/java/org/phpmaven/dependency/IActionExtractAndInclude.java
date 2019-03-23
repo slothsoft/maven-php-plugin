@@ -37,7 +37,7 @@ package org.phpmaven.dependency;
  * <p>This example will extract the "/my/local/path/inside/phar" into the "target/anotherPath" folder and
  * will add "target/anotherPath/special" onto php include path.</p>
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.1
  */
 public interface IActionExtractAndInclude extends IAction {

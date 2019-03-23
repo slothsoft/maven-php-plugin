@@ -29,7 +29,7 @@ import org.phpmaven.dependency.IDependencyConfiguration;
 /**
  * Dependency configuration.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.1
  */
 @Component(role = IDependencyConfiguration.class, instantiationStrategy = "per-lookup")

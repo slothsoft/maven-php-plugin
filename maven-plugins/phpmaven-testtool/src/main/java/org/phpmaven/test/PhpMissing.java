@@ -1,7 +1,7 @@
 package org.phpmaven.test;
 
 /**
- * @author Stef Schulz <s.schulz@slothsoft.de>
+ * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  */
 
 public class PhpMissing implements IgnoreWhenCondition {

@@ -38,7 +38,7 @@ import org.phpmaven.core.IComponentFactory;
  * You can declare a path to an existing executable if it is not found via PATH variable.
  * Additional command line options, PHP.INI options and environment variables can be set.</p>
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 @Component(role = IPhpExecutableConfiguration.class, instantiationStrategy = "per-lookup")

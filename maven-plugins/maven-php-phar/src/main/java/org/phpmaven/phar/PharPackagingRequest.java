@@ -30,7 +30,7 @@ import org.phpmaven.core.ConfigurationParameter;
 /**
  * Implementation of a phar packaging request.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 @Component(role = IPharPackagingRequest.class, instantiationStrategy = "per-lookup")

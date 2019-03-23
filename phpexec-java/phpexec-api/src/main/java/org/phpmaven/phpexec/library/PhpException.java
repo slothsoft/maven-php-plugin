@@ -26,7 +26,7 @@ package org.phpmaven.phpexec.library;
  * This is the base exception for all possible failures during php execution.
  * </p>
  *
- * @author Martin Eisengardt <Martin.Eisengardtgooglemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 0.1.0
  */
 public abstract class PhpException extends Exception {

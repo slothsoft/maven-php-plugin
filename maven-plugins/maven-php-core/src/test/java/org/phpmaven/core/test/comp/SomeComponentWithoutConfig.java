@@ -24,7 +24,7 @@ import org.codehaus.plexus.component.annotations.Component;
 /**
  * A sample component.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.1
  */
 @Component(role = ISomeComponentHint.class, hint = "without-config", instantiationStrategy = "per-lookup")

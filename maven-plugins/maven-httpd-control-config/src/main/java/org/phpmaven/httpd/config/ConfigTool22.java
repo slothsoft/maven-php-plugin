@@ -24,7 +24,7 @@ import org.phpmaven.httpd.control.IApacheService.APACHE_VERSION;
 /**
  * Abstract config tool for apache versions 2.0 - 2.4.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.1
  */
 @Component(role = IApacheConfig.class, instantiationStrategy = "per-lookup", hint = "V2.2")

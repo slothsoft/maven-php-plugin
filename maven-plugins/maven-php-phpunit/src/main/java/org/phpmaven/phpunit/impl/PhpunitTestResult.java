@@ -29,7 +29,7 @@ import org.phpmaven.phpunit.IPhpunitTestResult;
 /**
  * Implementation of phpunit test result.
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
 @Component(role = IPhpunitTestResult.class, instantiationStrategy = "per-lookup")

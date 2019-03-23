@@ -24,7 +24,7 @@ package org.phpmaven.phpexec.library;
  *
  * @author Christian Wiedemann
  * @author Tobias Sarnowski
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 0.1.4
  */
 public enum PhpVersion {

@@ -83,7 +83,7 @@ import org.phpmaven.core.IComponentFactory;
  * This example will set the dependency org.mygroup:MyLib to be placed on the include path rather than being extracted.
  * </p>
  * 
- * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.1
  */
 @BuildPluginConfiguration(groupId = "org.phpmaven", artifactId = "maven-php-dependency")
