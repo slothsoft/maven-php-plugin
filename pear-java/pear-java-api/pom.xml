@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.phpmaven.sites</groupId>
+		<groupId>de.slothsoft.phpmaven.pear</groupId>
 		<artifactId>pear-java-site</artifactId>
 		<version>0.9.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>org.phpmaven.pear-java</groupId>
+	<groupId>de.slothsoft.phpmaven.pear</groupId>
 	<artifactId>pear-java-api</artifactId>
 
 	<name>pear-java-api</name>
@@ -20,7 +20,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.phpmaven.phpexec-java</groupId>
+			<groupId>de.slothsoft.phpmaven.phpexec</groupId>
 			<artifactId>phpexec-api</artifactId>
 		</dependency>
 		<dependency>

@@ -85,8 +85,6 @@ public class BaseTest extends AbstractTestCase {
 	@Disabled
 	@IgnoreWhen(PhpMissing.class)
 	public void testLargePhar() throws Exception {
-		if (!isPhpPresent()) return;
-
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
 		// create the execution config

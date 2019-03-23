@@ -2,8 +2,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.slothsoft</groupId>
-	<artifactId>everything</artifactId>
+	<groupId>de.slothsoft.phpmaven</groupId>
+	<artifactId>build</artifactId>
 	<version>0.9.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
@@ -28,102 +28,102 @@
 			<!-- REACTOR PROJECTS -->
 
 			<dependency>
-				<groupId>org.phpmaven</groupId>
+				<groupId>de.slothsoft.phpmaven</groupId>
 				<artifactId>maven-httpd-control-api</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven</groupId>
+				<groupId>de.slothsoft.phpmaven</groupId>
 				<artifactId>maven-httpd-control-config</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven</groupId>
+				<groupId>de.slothsoft.phpmaven</groupId>
 				<artifactId>maven-httpd-control-ix</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven</groupId>
+				<groupId>de.slothsoft.phpmaven</groupId>
 				<artifactId>maven-httpd-control-win32</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven</groupId>
+				<groupId>de.slothsoft.phpmaven</groupId>
 				<artifactId>maven-php-core</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven</groupId>
+				<groupId>de.slothsoft.phpmaven</groupId>
 				<artifactId>maven-php-dependency</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven</groupId>
+				<groupId>de.slothsoft.phpmaven</groupId>
 				<artifactId>maven-php-exec</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven</groupId>
+				<groupId>de.slothsoft.phpmaven</groupId>
 				<artifactId>maven-php-pear</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven</groupId>
+				<groupId>de.slothsoft.phpmaven</groupId>
 				<artifactId>maven-php-phar</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven</groupId>
+				<groupId>de.slothsoft.phpmaven</groupId>
 				<artifactId>maven-php-phpdoc</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven</groupId>
+				<groupId>de.slothsoft.phpmaven</groupId>
 				<artifactId>maven-php-phpunit</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven</groupId>
+				<groupId>de.slothsoft.phpmaven</groupId>
 				<artifactId>maven-php-plugin</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven</groupId>
+				<groupId>de.slothsoft.phpmaven</groupId>
 				<artifactId>maven-php-project</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven</groupId>
+				<groupId>de.slothsoft.phpmaven</groupId>
 				<artifactId>maven-php-statedb</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven</groupId>
+				<groupId>de.slothsoft.phpmaven</groupId>
 				<artifactId>maven-php-validate-lint</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven.pear-java</groupId>
+				<groupId>de.slothsoft.phpmaven.pear</groupId>
 				<artifactId>pear-java-api</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven.pear-java</groupId>
+				<groupId>de.slothsoft.phpmaven.pear</groupId>
 				<artifactId>pear-java-impl</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven.phpexec-java</groupId>
+				<groupId>de.slothsoft.phpmaven.phpexec</groupId>
 				<artifactId>phpexec-api</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven.phpexec-java</groupId>
+				<groupId>de.slothsoft.phpmaven.phpexec</groupId>
 				<artifactId>phpexec-cli</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.phpmaven</groupId>
+				<groupId>de.slothsoft.phpmaven</groupId>
 				<artifactId>phpmaven-testtool</artifactId>
 				<version>${project.version}</version>
 			</dependency>

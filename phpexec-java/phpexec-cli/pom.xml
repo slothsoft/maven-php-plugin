@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.phpmaven.sites</groupId>
+		<groupId>de.slothsoft.phpmaven.phpexec</groupId>
 		<artifactId>phpexec-java-site</artifactId>
 		<version>0.9.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>org.phpmaven.phpexec-java</groupId>
+	<groupId>de.slothsoft.phpmaven.phpexec</groupId>
 	<artifactId>phpexec-cli</artifactId>
 
 	<name>phpexec-cli</name>
@@ -20,7 +20,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.phpmaven.phpexec-java</groupId>
+			<groupId>de.slothsoft.phpmaven.phpexec</groupId>
 			<artifactId>phpexec-api</artifactId>
 		</dependency>
 		<dependency>
@@ -29,7 +29,7 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.phpmaven</groupId>
+			<groupId>de.slothsoft.phpmaven</groupId>
 			<artifactId>phpmaven-testtool</artifactId>
 			<scope>test</scope>
 		</dependency>

@@ -43,6 +43,7 @@ import org.apache.maven.lifecycle.internal.LifecycleDependencyResolver;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.plugin.Mojo;
 import org.apache.maven.plugin.PluginParameterExpressionEvaluator;
+import org.apache.maven.plugin.testing.AbstractMojoTestCase;
 import org.apache.maven.project.DefaultProjectBuildingRequest;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.project.ProjectBuilder;
@@ -51,18 +52,12 @@ import org.apache.maven.settings.building.DefaultSettingsBuildingRequest;
 import org.apache.maven.settings.building.SettingsBuilder;
 import org.apache.maven.settings.building.SettingsBuildingRequest;
 import org.apache.maven.settings.building.SettingsBuildingResult;
-import org.codehaus.plexus.PlexusContainer;
 import org.codehaus.plexus.component.configurator.ComponentConfigurator;
 import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluator;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 import org.codehaus.plexus.configuration.xml.XmlPlexusConfiguration;
-import org.codehaus.plexus.util.cli.CommandLineException;
-import org.codehaus.plexus.util.cli.CommandLineUtils;
-import org.codehaus.plexus.util.cli.Commandline;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.sonatype.aether.RepositorySystemSession;
 import org.sonatype.aether.impl.internal.SimpleLocalRepositoryManager;
 import org.sonatype.aether.util.DefaultRepositorySystemSession;
@@ -80,52 +75,35 @@ import org.sonatype.aether.util.graph.transformer.NearestVersionConflictResolver
  * @since 2.0.0
  */
 
-public abstract class AbstractTestCase {
+public abstract class AbstractTestCase extends AbstractMojoTestCase {
 
 	private final MojoTestCase mojoTest = new MojoTestCase();
 
-	@BeforeEach
-	public void setUp() throws Exception {
-		this.mojoTest.setUp();
-	}
-
-	@AfterEach
-	public void tearDown() throws Exception {
-		this.mojoTest.tearDown();
-	}
-
-	public PlexusContainer getContainer() {
-		return this.mojoTest.getContainer();
-	}
-
-	public <T> T lookup(Class<T> componentClass) throws Exception {
-		return this.mojoTest.lookup(componentClass);
-	}
-
-	public Mojo lookupMojo(String goal, String pluginPom) throws Exception {
-		return this.mojoTest.lookupMojo(goal, pluginPom);
-	}
-
-	public <T> T lookup(Class<T> componentClass, String roleHint) throws Exception {
-		return this.mojoTest.lookup(componentClass, roleHint);
-	}
-
-	// XXX [slothsoft]: These tests should probably work locally at least
-
-	private Boolean phpExePresent;
-
-	public synchronized boolean isPhpPresent() {
-		if (this.phpExePresent == null) {
-			try {
-				final Commandline commandLine = new Commandline("php");
-				CommandLineUtils.executeCommandLine(commandLine, null, null, null);
-				this.phpExePresent = Boolean.FALSE; // supposed to be true
-			} catch (final CommandLineException e) {
-				this.phpExePresent = Boolean.FALSE;
-			}
-		}
-		return this.phpExePresent.booleanValue();
-	}
+//	@BeforeEach
+//	public void setUp() throws Exception {
+//		this.mojoTest.setUp();
+//	}
+//
+//	@AfterEach
+//	public void tearDown() throws Exception {
+//		this.mojoTest.tearDown();
+//	}
+//
+//	public PlexusContainer getContainer() {
+//		return this.mojoTest.getContainer();
+//	}
+//
+//	public <T> T lookup(Class<T> componentClass) throws Exception {
+//		return this.mojoTest.lookup(componentClass);
+//	}
+//
+//	public Mojo lookupMojo(String goal, String pluginPom) throws Exception {
+//		return this.mojoTest.lookupMojo(goal, pluginPom);
+//	}
+//
+//	public <T> T lookup(Class<T> componentClass, String roleHint) throws Exception {
+//		return this.mojoTest.lookup(componentClass, roleHint);
+//	}
 
 	/**
 	 * Local repository directory.

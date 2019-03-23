@@ -73,8 +73,6 @@ public class ErrorReportingTest extends AbstractTestCase {
 	@Disabled
 	@IgnoreWhen(PhpMissing.class)
 	public void testEALL() throws Exception {
-		if (!isPhpPresent()) return;
-
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
 		// create the execution config

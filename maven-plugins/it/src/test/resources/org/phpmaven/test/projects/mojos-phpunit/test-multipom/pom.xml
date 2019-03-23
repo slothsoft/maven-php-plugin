@@ -40,7 +40,7 @@
                 <version>2.2.1</version>
                 <dependencies>
                     <dependency>
-                        <groupId>org.phpmaven</groupId>
+                        <groupId>de.slothsoft.phpmaven</groupId>
                         <artifactId>maven-php-plugin</artifactId>
                         <version>${phpmaven.version}</version>
                     </dependency>
@@ -76,7 +76,7 @@
     <reporting>
         <plugins>
             <plugin>
-                <groupId>org.phpmaven</groupId>
+                <groupId>de.slothsoft.phpmaven</groupId>
                 <artifactId>maven-php-plugin</artifactId>
                 <version>${phpmaven.version}</version>
             </plugin>
