@@ -35,26 +35,27 @@ import org.phpmaven.exec.IPhpExecutableConfiguration;
  * 
  * <p>
  * Configuration of the phar tooling can be done via either the goal you are executing
- * or via plugin configuration. Example of a configuration via build plugin:<br />
+ * or via plugin configuration. Example of a configuration via build plugin:<br>
  * <pre>
- * &lt;build><br />
- * &nbsp;&nbsp;...<br />
- * &nbsp;&nbsp;&lt;plugins><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;...<br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&lt;plugin><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId>org.phpmaven&lt;/groupId><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId>maven-php-phar&lt;/artifactId><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;configuration><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;executableConfig><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;executable>/some/php.exe&lt;/executable><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/executableConfig><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/configuration><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&lt;/plugin><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;...<br />
- * &nbsp;&nbsp;&lt;/plugins><br />
- * &nbsp;&nbsp;...<br />
- * &lt/build><br />
+ * &lt;build&gt;<br>
+ * &nbsp;&nbsp;...<br>
+ * &nbsp;&nbsp;&lt;plugins&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;...<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&lt;plugin&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;org.phpmaven&lt;/groupId&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;maven-php-phar&lt;/artifactId&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;configuration&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;executableConfig&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;executable&gt;/some/php.exe&lt;/executable&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/executableConfig&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/configuration&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&lt;/plugin&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;...<br>
+ * &nbsp;&nbsp;&lt;/plugins&gt;<br>
+ * &nbsp;&nbsp;...<br>
+ * &lt;/build&gt;<br>
  * </pre>
+ * <p>
  * This example will use an alternative php executable for all phar actions.
  * </p>
  * 
@@ -62,7 +63,7 @@ import org.phpmaven.exec.IPhpExecutableConfiguration;
  * Available options:
  * </p>
  * 
- * <table border="1">
+ * <table border="1" summary="Commands">
  * <tr><th>Name</th><th>Command line option</th><th>Property</th><th>Default</th><th>Description</th></tr>
  * <tr>
  *   <td>executableConfig</td>

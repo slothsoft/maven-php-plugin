@@ -85,7 +85,7 @@ public class ExtendedComponentConfigurator extends BasicComponentConfigurator {
 
         /**
          * Converts this config to a xpp3dom node.
-         * @param childConf config.
+         * @param xmlPlexus config.
          * @return xpp3dom node.
          */
         private Xpp3Dom toXpp3Dom(XmlPlexusConfiguration xmlPlexus) {

@@ -93,7 +93,7 @@ public class ProcessResourcesPearMojo extends AbstractMojo
     private File tgzFile;
     
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public void execute() throws MojoExecutionException
     {
@@ -152,10 +152,6 @@ public class ProcessResourcesPearMojo extends AbstractMojo
         }
     }
 
-    /**
-     * @param version
-     * @throws MojoExecutionException 
-     */
     private void fetchPackage(IPackageVersion version) throws MojoExecutionException {
         this.getLog().info("copying content");
         this.fetchPackage(version, new File(this.getProject().getBuild().getOutputDirectory()), IPackageVersion.FILE_ROLE_PHP);
@@ -168,12 +164,6 @@ public class ProcessResourcesPearMojo extends AbstractMojo
         this.fetchPackageXml(version, this.packageXmlFile);
     }
 
-    /**
-     * Fetch tgz
-     * @param version
-     * @param file
-     * @throws MojoExecutionException 
-     */
     private void fetchTgz(IPackageVersion version, File file) throws MojoExecutionException {
         this.getLog().info("copying original pear tgz to " + file.getAbsolutePath());
         
@@ -184,12 +174,6 @@ public class ProcessResourcesPearMojo extends AbstractMojo
         }
     }
 
-    /**
-     * Fetch package xml
-     * @param version
-     * @param file
-     * @throws MojoExecutionException 
-     */
     private void fetchPackageXml(IPackageVersion version, File file) throws MojoExecutionException {
         this.getLog().info("copying original package xml to " + file.getAbsolutePath());
         
@@ -200,12 +184,6 @@ public class ProcessResourcesPearMojo extends AbstractMojo
         }
     }
 
-    /**
-     * @param version
-     * @param outputDir 
-     * @param role 
-     * @throws MojoExecutionException 
-     */
     private void fetchPackage(IPackageVersion version, File outputDir, String role) throws MojoExecutionException {
         this.getLog().info("copying content for role " + role);
         

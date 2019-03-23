@@ -197,37 +197,53 @@ public interface IPhpExecutableConfiguration {
      * Error reporting constants.
      */
     enum ERROR_REPORTING {
-        /** E_ERROR {@see http://www.php.net/manual/en/errorfunc.constants.php}. */
+        /** E_ERROR 
+         * @see <a href="http://www.php.net/manual/en/errorfunc.constants.php">http://www.php.net</a> */
         E_ERROR(1),
-        /** E_WARNING {@see http://www.php.net/manual/en/errorfunc.constants.php}. */
+        /** E_WARNING 
+         * @see <a href="http://www.php.net/manual/en/errorfunc.constants.php">http://www.php.net</a> */
         E_WARNING(2),
-        /** E_PARSE {@see http://www.php.net/manual/en/errorfunc.constants.php}. */
+        /** E_PARSE 
+         * @see <a href="http://www.php.net/manual/en/errorfunc.constants.php">http://www.php.net</a> */
         E_PARSE(4),
-        /** E_NOTICE {@see http://www.php.net/manual/en/errorfunc.constants.php}. */
+        /** E_NOTICE 
+         * @see <a href="http://www.php.net/manual/en/errorfunc.constants.php">http://www.php.net</a> */
         E_NOTICE(8),
-        /** E_CORE_ERROR {@see http://www.php.net/manual/en/errorfunc.constants.php}. */
+        /** E_CORE_ERROR 
+         * @see <a href="http://www.php.net/manual/en/errorfunc.constants.php">http://www.php.net</a> */
         E_CORE_ERROR(16),
-        /** E_CORE_WARNING {@see http://www.php.net/manual/en/errorfunc.constants.php}. */
+        /** E_CORE_WARNING 
+         * @see <a href="http://www.php.net/manual/en/errorfunc.constants.php">http://www.php.net</a> */
         E_CORE_WARNING(32),
-        /** E_COMPILE_ERROR {@see http://www.php.net/manual/en/errorfunc.constants.php}. */
+        /** E_COMPILE_ERROR 
+         * @see <a href="http://www.php.net/manual/en/errorfunc.constants.php">http://www.php.net</a> */
         E_COMPILE_ERROR(64),
-        /** E_COMPILE_WARNING {@see http://www.php.net/manual/en/errorfunc.constants.php}. */
+        /** E_COMPILE_WARNING 
+         * @see <a href="http://www.php.net/manual/en/errorfunc.constants.php">http://www.php.net</a> */
         E_COMPILE_WARNING(128),
-        /** E_USER_ERROR {@see http://www.php.net/manual/en/errorfunc.constants.php}. */
+        /** E_USER_ERROR 
+         * @see <a href="http://www.php.net/manual/en/errorfunc.constants.php">http://www.php.net</a> */
         E_USER_ERROR(256),
-        /** E_USER_WARNING {@see http://www.php.net/manual/en/errorfunc.constants.php}. */
+        /** E_USER_WARNING 
+         * @see <a href="http://www.php.net/manual/en/errorfunc.constants.php">http://www.php.net</a> */
         E_USER_WARNING(512),
-        /** E_USER_NOTICE {@see http://www.php.net/manual/en/errorfunc.constants.php}. */
+        /** E_USER_NOTICE 
+         * @see <a href="http://www.php.net/manual/en/errorfunc.constants.php">http://www.php.net</a> */
         E_USER_NOTICE(1024),
-        /** E_STRICT {@see http://www.php.net/manual/en/errorfunc.constants.php}. */
+        /** E_STRICT 
+         * @see <a href="http://www.php.net/manual/en/errorfunc.constants.php">http://www.php.net</a> */
         E_STRICT(2048),
-        /** E_RECOVERABLE_ERROR {@see http://www.php.net/manual/en/errorfunc.constants.php}. */
+        /** E_RECOVERABLE_ERROR 
+         * @see <a href="http://www.php.net/manual/en/errorfunc.constants.php">http://www.php.net</a> */
         E_RECOVERABLE_ERROR(4096),
-        /** E_DEPRECATED {@see http://www.php.net/manual/en/errorfunc.constants.php}. */
+        /** E_DEPRECATED 
+         * @see <a href="http://www.php.net/manual/en/errorfunc.constants.php">http://www.php.net</a> */
         E_DEPRECATED(8192),
-        /** E_USER_DEPRECATED {@see http://www.php.net/manual/en/errorfunc.constants.php}. */
+        /** E_USER_DEPRECATED 
+         * @see <a href="http://www.php.net/manual/en/errorfunc.constants.php">http://www.php.net</a> */
         E_USER_DEPRECATED(16384),
-        /** E_ALL {@see http://www.php.net/manual/en/errorfunc.constants.php}. */
+        /** E_ALL 
+         * @see <a href="http://www.php.net/manual/en/errorfunc.constants.php">http://www.php.net</a> */
         E_ALL(32767);
         
         /**
@@ -237,7 +253,7 @@ public interface IPhpExecutableConfiguration {
         
         /**
          * Constructor.
-         * @param num
+         * @param num a number
          */
         private ERROR_REPORTING(int num) {
             this.num = num;

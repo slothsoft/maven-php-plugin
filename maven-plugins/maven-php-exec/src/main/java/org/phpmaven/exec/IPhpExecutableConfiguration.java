@@ -35,24 +35,25 @@ import org.phpmaven.phpexec.library.IPhpExecutable;
  * 
  * <p>
  * Configuration of the php executable can be done via either the goal you are executing
- * or via plugin configuration. Example of a configuration via build plugin:<br />
+ * or via plugin configuration. Example of a configuration via build plugin:<br>
  * <pre>
- * &lt;build><br />
- * &nbsp;&nbsp;...<br />
- * &nbsp;&nbsp;&lt;plugins><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;...<br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&lt;plugin><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId>org.phpmaven&lt;/groupId><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId>maven-php-exec&lt;/artifactId><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;configuration><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;executable>/path/to/my/php.exe&lt;/executable><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/configuration><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&lt;/plugin><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;...<br />
- * &nbsp;&nbsp;&lt;/plugins><br />
- * &nbsp;&nbsp;...<br />
- * &lt/build><br />
+ * &lt;build&gt;<br>
+ * &nbsp;&nbsp;...<br>
+ * &nbsp;&nbsp;&lt;plugins&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;...<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&lt;plugin&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;org.phpmaven&lt;/groupId&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;maven-php-exec&lt;/artifactId&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;configuration&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;executable&gt;/path/to/my/php.exe&lt;/executable&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/configuration&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&lt;/plugin&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;...<br>
+ * &nbsp;&nbsp;&lt;/plugins&gt;<br>
+ * &nbsp;&nbsp;...<br>
+ * &lt;/build&gt;<br>
  * </pre>
+ * <p>
  * This example will use an alternative php executable.
  * </p>
  * 
@@ -65,7 +66,7 @@ import org.phpmaven.phpexec.library.IPhpExecutable;
  * Available options:
  * </p>
  * 
- * <table border="1">
+ * <table border="1" summary="Commands">
  * <tr><th>Name</th><th>Command line option</th><th>Property</th><th>Default</th><th>Description</th></tr>
  * <tr>
  *   <td>executable</td>
@@ -99,7 +100,7 @@ import org.phpmaven.phpexec.library.IPhpExecutable;
  *   <td>-</td>
  *   <td>(none)</td>
  *   <td>Additional environment variables that are set during php invocation:
- *       &lt;env>&lt;myVar>Value&lt;/myVar>&lt;/env>
+ *       &lt;env&gt;&lt;myVar&gt;Value&lt;/myVar&gt;&lt;/env&gt;
  *   </td>
  * </tr>
  * <tr>
@@ -108,7 +109,7 @@ import org.phpmaven.phpexec.library.IPhpExecutable;
  *   <td>-</td>
  *   <td>(none)</td>
  *   <td>Additional defines that will be declared with command line option -d. Usage:
- *       &lt;phpDefines>&lt;myVar>Value&lt;/myVar>&lt;/phpDefines>
+ *       &lt;phpDefines&gt;&lt;myVar&gt;Value&lt;/myVar&gt;&lt;/phpDefines&gt;
  *   </td>
  * </tr>
  * <tr>
@@ -118,7 +119,7 @@ import org.phpmaven.phpexec.library.IPhpExecutable;
  *   <td>(none)</td>
  *   <td>Additional include paths that will be used by php. Notice: The include path within a php project
  *       will be always set from the maven-php-plugin mojos. You do not need to add target/classes manually.
- *       Usage: &lt;includePath>&lt;param>/path/to/additional/php/files&lt;/param>&lt;/includePath>
+ *       Usage: &lt;includePath&gt;&lt;param&gt;/path/to/additional/php/files&lt;/param&gt;&lt;/includePath&gt;
  *   </td>
  * </tr>
  * <tr>
@@ -161,13 +162,14 @@ import org.phpmaven.phpexec.library.IPhpExecutable;
  *   <td>-Dphp.error.reporting=</td>
  *   <td>php.error.reporting</td>
  *   <td>NONE</td>
- *   <td>Overwrite error reporting of php ({@see http://www.php.net/error_reporting}). You can use the term "NONE"
+ *   <td>Overwrite error reporting of php. You can use the term "NONE"
  *       to use the original value of php.ini as well as numeric values or the well known php constants
- *       (f.e. "E_ALL & ~E_NOTICE")
+ *       (f.e. "E_ALL &amp; ~E_NOTICE")
  *   </td>
  * </tr>
  * </table>
  * 
+ * @see <a href="http://www.php.net/error_reporting">http://www.php.net</a>
  * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */

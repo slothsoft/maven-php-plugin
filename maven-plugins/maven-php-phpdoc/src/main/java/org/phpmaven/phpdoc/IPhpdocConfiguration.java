@@ -36,24 +36,25 @@ import org.phpmaven.exec.IPhpExecutableConfiguration;
  * 
  * <p>
  * Configuration of the phpdoc tooling can be done via either the goal you are executing
- * or via phpdoc configuration. Example of a configuration via build plugin:<br />
+ * or via phpdoc configuration. Example of a configuration via build plugin:<br>
  * <pre>
- * &lt;build><br />
- * &nbsp;&nbsp;...<br />
- * &nbsp;&nbsp;&lt;plugins><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;...<br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&lt;plugin><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId>org.phpmaven&lt;/groupId><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId>maven-php-phpdoc&lt;/artifactId><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;configuration><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;arguments>--verbose&lt;/arguments><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/configuration><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&lt;/plugin><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;...<br />
- * &nbsp;&nbsp;&lt;/plugins><br />
- * &nbsp;&nbsp;...<br />
- * &lt/build><br />
+ * &lt;build&gt;<br>
+ * &nbsp;&nbsp;...<br>
+ * &nbsp;&nbsp;&lt;plugins&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;...<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&lt;plugin&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;org.phpmaven&lt;/groupId&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;maven-php-phpdoc&lt;/artifactId&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;configuration&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;arguments&gt;--verbose&lt;/arguments&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/configuration&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&lt;/plugin&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;...<br>
+ * &nbsp;&nbsp;&lt;/plugins&gt;<br>
+ * &nbsp;&nbsp;...<br>
+ * &lt;/build&gt;<br>
  * </pre>
+ * <p>
  * This example will output verbose information on phpunit.
  * </p>
  * 
@@ -61,7 +62,7 @@ import org.phpmaven.exec.IPhpExecutableConfiguration;
  * Available options:
  * </p>
  * 
- * <table border="1">
+ * <table border="1" summary="Commands">
  * <tr><th>Name</th><th>Command line option</th><th>Property</th><th>Default</th><th>Description</th></tr>
  * <tr>
  *   <td>executableConfig</td>

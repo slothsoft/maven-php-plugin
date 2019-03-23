@@ -61,8 +61,10 @@ public class DependencyHelper {
      * @param version version
      * @param type type
      * @param classifier classifier
+     * @param reposSystem the repos system
+     * @param session the session
      * @return the resolved artifact
-     * @throws PhpException thrown on resolve errors
+     * @throws MojoExecutionException thrown on resolve errors
      */
     private static Artifact resolveArtifact(
     		String groupId, String artifactId, String version, String type, String classifier, RepositorySystem reposSystem,

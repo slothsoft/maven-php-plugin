@@ -61,8 +61,8 @@ public class StateDatabase implements IStateDatabase {
     
     /**
      * Ensures initialization.
-     * @throws IOException
-     * @throws ClassNotFoundException 
+     * @throws IOException for any error
+     * @throws ClassNotFoundException for any error
      */
     private void init() throws IOException, ClassNotFoundException {
         if (this.database == null) {

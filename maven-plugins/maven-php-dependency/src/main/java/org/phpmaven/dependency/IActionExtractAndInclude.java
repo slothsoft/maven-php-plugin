@@ -25,13 +25,13 @@ package org.phpmaven.dependency;
  * include path is relative to target path. Example:</p>
  * 
  * <pre>
- * &nbsp;&nbsp;&lt;actions><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&lt;extract><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;pharPath>/my/local/path/inside/phar&lt;/pharPath><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;targetPath>${project.build.directory}/anotherPath&lt;/targetPath><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;includePath>/special&lt;/includePath><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&lt;/extract><br />
- * &nbsp;&nbsp;&lt;/actions><br />
+ * &nbsp;&nbsp;&lt;actions&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&lt;extract&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;pharPath&gt;/my/local/path/inside/phar&lt;/pharPath&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;targetPath&gt;${project.build.directory}/anotherPath&lt;/targetPath&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;includePath&gt;/special&lt;/includePath&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&lt;/extract&gt;<br>
+ * &nbsp;&nbsp;&lt;/actions&gt;<br>
  * </pre>
  * 
  * <p>This example will extract the "/my/local/path/inside/phar" into the "target/anotherPath" folder and

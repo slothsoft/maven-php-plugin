@@ -28,9 +28,6 @@ import org.apache.maven.plugin.MojoExecutionException;
 public class ProcessTestResourcesPearMojo extends AbstractMojo
 {
 
-    /**
-     * @inheritDoc
-     */
     public void execute() throws MojoExecutionException
     {
     	// does nothing; testing pear is undefined

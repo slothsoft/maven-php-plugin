@@ -161,12 +161,13 @@ public class ComponentFactory implements IComponentFactory {
 
     /**
      * Configure the component.
-     * @param configuration
-     * @param mavenProject
-     * @param result
-     * @param realm
-     * @param session
-     * @throws PlexusConfigurationException
+     * @param configuration the configuration.
+     * @param mavenProject the Maven project
+     * @param result the result
+     * @param realm the class realm.
+     * @param session the Maven session
+     * @throws ComponentLookupException thrown on errors
+     * @throws PlexusConfigurationException thrown on configuration errors
      */
     private <T> void configure(Xpp3Dom[] configuration,
             MavenProject mavenProject, final T result, final ClassRealm realm, MavenSession session)
@@ -291,6 +292,7 @@ public class ComponentFactory implements IComponentFactory {
      * @param configuration the configuration.
      * @param expressionEvaluator the expression evaluator.
      * @param realm the class realm.
+     * @throws ComponentLookupException thrown on errors
      * @throws PlexusConfigurationException thrown on configuration errors
      */
     private void populatePluginFields(Object component, PlexusConfiguration configuration,

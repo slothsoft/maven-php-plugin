@@ -40,25 +40,26 @@ import org.phpmaven.exec.IPhpExecutableConfiguration;
  * 
  * <p>
  * Configuration of the php projects executable can be done via either the goal you are executing
- * or via plugin configuration. Example of a configuration via build plugin:<br />
+ * or via plugin configuration. Example of a configuration via build plugin:<br>
  * <pre>
- * &lt;build><br />
- * &nbsp;&nbsp;...<br />
- * &nbsp;&nbsp;&lt;plugins><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;...<br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&lt;plugin><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId>org.phpmaven&lt;/groupId><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId>maven-php-project&lt;/artifactId><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;configuration><br />
+ * &lt;build&gt;<br>
+ * &nbsp;&nbsp;...<br>
+ * &nbsp;&nbsp;&lt;plugins&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;...<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&lt;plugin&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;org.phpmaven&lt;/groupId&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;maven-php-project&lt;/artifactId&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;configuration&gt;<br>
  * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- * &lt;dependenciesDir>${project.build.directory}/php-dependencies&lt;/dependenciesDir><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/configuration><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&lt;/plugin><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;...<br />
- * &nbsp;&nbsp;&lt;/plugins><br />
- * &nbsp;&nbsp;...<br />
- * &lt/build><br />
+ * &lt;dependenciesDir&gt;${project.build.directory}/php-dependencies&lt;/dependenciesDir&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/configuration&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&lt;/plugin&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;...<br>
+ * &nbsp;&nbsp;&lt;/plugins&gt;<br>
+ * &nbsp;&nbsp;...<br>
+ * &lt;/build&gt;<br>
  * </pre>
+ * <p>
  * This example will use an alternative folder to extract the php dependencies to.
  * </p>
  * 
@@ -66,7 +67,7 @@ import org.phpmaven.exec.IPhpExecutableConfiguration;
  * Available options:
  * </p>
  * 
- * <table border="1">
+ * <table border="1" summary="Commands">
  * <tr><th>Name</th><th>Command line option</th><th>Property</th><th>Default</th><th>Description</th></tr>
  * <tr>
  *   <td>dependenciesDir</td>

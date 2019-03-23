@@ -126,119 +126,119 @@ public interface IPackageVersion {
     /**
      * Sets the releasing developer.
      * @param developerNick releasing developer.
-     * @throws PhpException 
+     * @throws PhpException thrown on php execution errors
      */
     void setReleasingDeveloper(String developerNick) throws PhpException;
     
     /**
      * Returns the summary.
      * @return summary.
-     * @throws PhpException 
+     * @throws PhpException thrown on php execution errors
      */
     String getSummary() throws PhpException;
     
     /**
      * Sets the summary.
      * @param summary Summary.
-     * @throws PhpException 
+     * @throws PhpException thrown on php execution errors
      */
     void setSummary(String summary) throws PhpException;
     
     /**
      * Returns the description.
      * @return description.
-     * @throws PhpException 
+     * @throws PhpException thrown on php execution errors
      */
     String getDescription() throws PhpException;
     
     /**
      * Sets the description.
      * @param description description.
-     * @throws PhpException 
+     * @throws PhpException thrown on php execution errors
      */
     void setDescription(String description) throws PhpException;
     
     /**
      * Returns the release date.
      * @return release date.
-     * @throws PhpException 
+     * @throws PhpException thrown on php execution errors
      */
     String getReleaseDate() throws PhpException;
     
     /**
      * Sets the release date.
      * @param date release date.
-     * @throws PhpException 
+     * @throws PhpException thrown on php execution errors
      */
     void setReleaseDate(String date) throws PhpException;
     
     /**
      * Returns the release notes.
      * @return release notes.
-     * @throws PhpException 
+     * @throws PhpException thrown on php execution errors
      */
     String getReleaseNotes() throws PhpException;
     
     /**
      * Sets the release notes.
      * @param notes release notes.
-     * @throws PhpException 
+     * @throws PhpException thrown on php execution errors
      */
     void setReleaseNotes(String notes) throws PhpException;
     
     /**
      * Returns the file size in bytes.
      * @return file size.
-     * @throws PhpException 
+     * @throws PhpException thrown on php execution errors
      */
     int getFileSize() throws PhpException;
     
     /**
      * Sets the file size.
      * @param bytes file size.
-     * @throws PhpException 
+     * @throws PhpException thrown on php execution errors
      */
     void setFileSize(int bytes) throws PhpException;
     
     /**
      * Returns the url to download.
      * @return url.
-     * @throws PhpException 
+     * @throws PhpException thrown on php execution errors
      */
     String getUrl() throws PhpException;
     
     /**
      * Sets the url.
      * @param url download url.
-     * @throws PhpException 
+     * @throws PhpException thrown on php execution errors
      */
     void setUrl(String url) throws PhpException;
     
     /**
      * Returns the api version.
      * @return api version
-     * @throws PhpException 
+     * @throws PhpException thrown on php execution errors
      */
     IVersion getApiVersion() throws PhpException;
     
     /**
      * Sets the api version.
      * @param version api version.
-     * @throws PhpException 
+     * @throws PhpException thrown on php execution errors
      */
     void setApiVersion(IVersion version) throws PhpException;
     
     /**
      * Returns the required dependencies.
      * @return required dependencies.
-     * @throws PhpException 
+     * @throws PhpException thrown on php execution errors
      */
     Iterable<IDependency> getRequiredDependencies() throws PhpException;
     
     /**
      * Returns the optional dependencies.
      * @return optional dependencies.
-     * @throws PhpException 
+     * @throws PhpException thrown on php execution errors
      */
     Iterable<IDependency> getOptionalDependencies() throws PhpException;
     
@@ -246,7 +246,7 @@ public interface IPackageVersion {
      * Adds a new dependency.
      * @param dep dependency.
      * @param isOptional true for optional dependencies; false for required dependencies.
-     * @throws PhpException 
+     * @throws PhpException thrown on php execution errors
      */
     void addDependency(IDependency dep, boolean isOptional) throws PhpException;
 

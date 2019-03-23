@@ -42,13 +42,13 @@ public interface IPearUtility {
      * 
      * @param installDir the install dir.
      * @param config the php executable config to be used.
-     * 
+     * @param proxies the proxies
      * @throws IllegalStateException thrown if the php executable cannot be created
      */
     void configure(File installDir, IPhpExecutableConfiguration config, Iterable<IPearProxy> proxies);
     
     /**
-     * Initialized the known channels and ensures that there is a pear installation at {@link #installDir}.
+     * Initialized the known channels and ensures that there is a pear installation at {@link #getInstallDir()}.
      * @param readRemote true to read the remote channels
      * @throws PhpException thrown if something is wrong.
      */

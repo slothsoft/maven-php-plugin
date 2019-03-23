@@ -40,9 +40,9 @@ class ConfigFileLineSection extends AbstractConfigContainer implements IConfigFi
     
     /**
      * Constructor.
-     * @param sectionName
-     * @param sectionData
-     * @param tool
+     * @param sectionName the section name
+     * @param sectionData the section data
+     * @param tool the tool
      */
     public ConfigFileLineSection(String sectionName, String sectionData, AbstractConfigTool tool) {
         this.sectionName = sectionName;

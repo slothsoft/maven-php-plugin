@@ -39,6 +39,7 @@ public interface IPhpFeatures {
 	/**
 	 * Returns the features implementing given interface/ extending given class.
 	 * @param clazz the class to be implemented or extended
+	 * @param <T> type of features
 	 * @return the features for this project
 	 */
 	<T extends IPhpFeature> Iterable<T> getFeatures(Class<T> clazz);

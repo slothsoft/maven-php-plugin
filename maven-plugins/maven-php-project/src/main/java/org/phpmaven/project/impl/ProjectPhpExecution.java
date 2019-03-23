@@ -249,7 +249,9 @@ public class ProjectPhpExecution implements IProjectPhpExecution {
      * @param mojoConfig the mojo configuration.
      * @param project the project.
      * @param mavenSession the maven session.
+     * @param depConfig the dependency config
      * @throws ExpressionEvaluationException thrown on maven property errors
+     * @throws MojoExecutionException thrown on maven property errors
      */
     private void addIncludes(
             IPhpExecutableConfiguration execConfig,
@@ -290,12 +292,13 @@ public class ProjectPhpExecution implements IProjectPhpExecution {
 
     /**
      * Adds additional include paths from dependency config.
-     * @param execConfig
-     * @param project
-     * @param targetScope
-     * @param depConfig
-     * @param depsDir
-     * @throws ExpressionEvaluationException 
+     * @param execConfig the exec config
+     * @param project the project
+     * @param targetScope the target scope
+     * @param depConfig the dependency config
+     * @param depsDir the depdency dir
+     * @throws ExpressionEvaluationException on error
+     * @throws MojoExecutionException on error
      */
     private void addFromDepConfig(
         IPhpExecutableConfiguration execConfig,
@@ -374,6 +377,7 @@ public class ProjectPhpExecution implements IProjectPhpExecution {
      * @param execConfig executable config.
      * @param project project.
      * @param targetScope target scope.
+     * @param depConfig the dependency config
      * @throws ExpressionEvaluationException thrown on errors.
      * @since 2.0.1
      */
@@ -442,11 +446,13 @@ public class ProjectPhpExecution implements IProjectPhpExecution {
     /**
      * Adds the test includes to the executable configuration.
      * @param execConfig executable configuration.
-     * @param buildConfig 
-     * @param mojoConfig 
+     * @param buildConfig the build config
+     * @param mojoConfig the mojo config
      * @param project the project.
      * @param mavenSession the maven session.
+     * @param depConfig the dependency config
      * @throws ExpressionEvaluationException thrown on maven property errors
+     * @throws MojoExecutionException thrown on maven property errors
      */
     private void addTestIncludes(
             IPhpExecutableConfiguration execConfig,

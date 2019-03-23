@@ -36,6 +36,8 @@ class VHost extends ConfigFileLineDirective implements IApacheConfigVHost {
 
     /**
      * Constructor.
+     * @param name the name
+     * @param tool the tool
      */
     public VHost(String name, AbstractConfigTool tool) {
         super("NameVirtualHost");

@@ -113,12 +113,12 @@ public final class PhpExecutable implements IPhpExecutable {
     private File temporaryScriptFile;
 
     /**
-     * The used PHP version (cached after initial call of {@link #getPhpVersion()}.
+     * The used PHP version (cached after initial call of {@link #getVersion()}.
      */
     private PhpVersion phpVersion;
     
     /**
-     * The used PHP version (cached after initial call of {@link #getPhpVersion()}.
+     * The used PHP version (cached after initial call of {@link #getVersion()}.
      */
     private String strPhpVersion;
 

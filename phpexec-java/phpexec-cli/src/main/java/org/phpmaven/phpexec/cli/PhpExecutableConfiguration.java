@@ -280,8 +280,8 @@ public class PhpExecutableConfiguration implements IPhpExecutableConfiguration {
 
         /**
          * Constructor.
-         * @param cache
-         * @param result
+         * @param cache the cache
+         * @param result the result
          */
         private CachedExecutable(IPhpExecutable cache, IPhpExecutable result) {
             this.cache = cache;

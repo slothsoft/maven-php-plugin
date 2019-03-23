@@ -125,7 +125,7 @@ abstract class AbstractConfigContainer {
     
     /**
      * Removes a directive from file.
-     * @param line line to be removed.
+     * @param key line to be removed.
      */
     void removeDirective(String key) {
         final List<IConfigFileLineDirective> directiveList = this.directives.get(key);
@@ -191,7 +191,7 @@ abstract class AbstractConfigContainer {
     
     /**
      * Adds a directive.
-     * @param key key
+     * @param directive directive
      * @return directive object
      */
     IConfigFileLineDirective addDirective(IConfigFileLineDirective directive) {
@@ -237,10 +237,10 @@ abstract class AbstractConfigContainer {
 
     /**
      * Consumes a line.
-     * @param sectionPattern
-     * @param tokenizer
-     * @param line
-     * @param trimmed
+     * @param container the container
+     * @param tokenizer the tokenizer
+     * @param line the line
+     * @param trimmed the trimmed
      */
     private void consumeLine(final StringTokenizer tokenizer, final AbstractConfigContainer container, final String line, final String trimmed) {
         if (trimmed.startsWith("#") || trimmed.length() == 0) {

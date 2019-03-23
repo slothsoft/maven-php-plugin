@@ -34,6 +34,9 @@ class Port extends ConfigFileLineDirective implements IApacheConfigPort {
 
     /**
      * Constructor.
+     * 
+     * @param port the port
+     * @param tool the tool
      */
     public Port(int port, AbstractConfigTool tool) {
         super("Listen");

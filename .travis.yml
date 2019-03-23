@@ -3,3 +3,4 @@ jdk:
 - oraclejdk8
 php:
   - '5.4'
+script: ./mvnw clean test javadoc:javadoc

@@ -45,7 +45,7 @@ abstract class AbstractPhpdocSupport implements IPhpdocSupport {
      * @param log log
      * @param request request
      * @param phpDocConfigFile phpdoc config file
-     * @param generatedPhpDocConfigFile 
+     * @param generatedPhpDocConfigFile the generated php doc config file 
      * @throws IOException io exception
      * @throws PhpCoreException php core exception
      */
@@ -83,7 +83,7 @@ abstract class AbstractPhpdocSupport implements IPhpdocSupport {
      * @param log log
      * @param request request
      * @param phpDocConfigFile phpdoc config file
-     * @param generatedPhpDocConfigFile 
+     * @param generatedPhpDocConfigFile the generated php doc config file 
      * @throws IOException io exception
      * @throws PhpCoreException php core exception
      */
@@ -133,7 +133,7 @@ abstract class AbstractPhpdocSupport implements IPhpdocSupport {
      *
      * @param properties the properties to use
      * @param preFileContent templates
-     * @param generatedPhpDocConfigFile
+     * @param generatedPhpDocConfigFile the generated php doc config file 
      * @throws IOException if something goes wrong while writing
      */
     private void writePropFile(Properties properties, String preFileContent, File generatedPhpDocConfigFile)

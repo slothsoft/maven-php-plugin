@@ -162,7 +162,7 @@ public class PackageVersion implements IPackageVersion {
     
     /**
      * The name of the extension if this is a php extension.
-     * @return name of the extension or {@code null} for php modules.
+     * Return name of the extension or {@code null} for php modules.
      */
     private String providesExtension;
 
@@ -659,7 +659,7 @@ public class PackageVersion implements IPackageVersion {
      * @param dom the dom
      * @param baseInstallDir the base install dir
      * @param defaultRole the default role
-     * @param namePrefix
+     * @param namePrefix the name prefix
      */
     private void fetchFile(
             Map<String, Map<String, InstallableFile>> files, Xpp3Dom dom, String baseInstallDir,
@@ -724,7 +724,7 @@ public class PackageVersion implements IPackageVersion {
      * @param dom the dom
      * @param baseInstallDir the base install dir
      * @param defaultRole the default role
-     * @param namePrefix
+     * @param namePrefix the name prefix
      */
     private void fetchDir(
             Map<String, Map<String, InstallableFile>> files, Xpp3Dom dom, String baseInstallDir,
@@ -795,7 +795,7 @@ public class PackageVersion implements IPackageVersion {
      * processes the file contents node.
      * @param files files
      * @param child child dom node
-     * @throws PhpCoreException 
+     * @throws PhpCoreException on error
      */
     private void processContents(Map<String, Map<String, InstallableFile>> files, Xpp3Dom child) throws PhpCoreException {
         for (final Xpp3Dom fchild : child.getChildren()) {

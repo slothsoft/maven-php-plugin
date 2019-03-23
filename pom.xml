@@ -312,6 +312,58 @@
 						<encoding>${project.build.sourceEncoding}</encoding>
 						<show>private</show>
 						<aggregate>false</aggregate>
+
+						<!-- for Java 8+ we need to ignore these tags -->
+						<tags>
+							<tag>
+								<name>component</name>
+								<placement>X</placement>
+							</tag>
+							<tag>
+								<name>execute</name>
+								<placement>X</placement>
+							</tag>
+							<tag>
+								<name>goal</name>
+								<placement>X</placement>
+							</tag>
+							<tag>
+								<name>license</name>
+								<placement>X</placement>
+							</tag>
+							<tag>
+								<name>noinspection</name>
+								<placement>X</placement>
+							</tag>
+							<tag>
+								<name>optional</name>
+								<placement>X</placement>
+							</tag>
+							<tag>
+								<name>parameter</name>
+								<placement>X</placement>
+							</tag>
+							<tag>
+								<name>phase</name>
+								<placement>X</placement>
+							</tag>
+							<tag>
+								<name>readonly</name>
+								<placement>X</placement>
+							</tag>
+							<tag>
+								<name>required</name>
+								<placement>X</placement>
+							</tag>
+							<tag>
+								<name>requiresDependencyResolution</name>
+								<placement>X</placement>
+							</tag>
+							<tag>
+								<name>requiresProject</name>
+								<placement>X</placement>
+							</tag>
+						</tags>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -478,7 +530,7 @@
 			</build>
 		</profile>
 	</profiles>
-	
+
 	<licenses>
 		<license>
 			<name>Apache License 2.0</name>

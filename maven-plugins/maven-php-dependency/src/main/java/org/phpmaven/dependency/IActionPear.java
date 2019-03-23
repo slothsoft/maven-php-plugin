@@ -23,9 +23,9 @@ package org.phpmaven.dependency;
  * <p>There is no additional configuration needed for this action. Example:</p>
  * 
  * <pre>
- * &nbsp;&nbsp;&lt;actions><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&lt;pear/><br />
- * &nbsp;&nbsp;&lt;/actions><br />
+ * &nbsp;&nbsp;&lt;actions&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&lt;pear/&gt;<br>
+ * &nbsp;&nbsp;&lt;/actions&gt;<br>
  * </pre>
  * 
  * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>

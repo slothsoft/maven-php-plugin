@@ -48,8 +48,8 @@ class Db implements Serializable {
     
     /**
      * Write object
-     * @param out
-     * @throws IOException
+     * @param out the output stream
+     * @throws IOException an error
      */
     private void writeObject(java.io.ObjectOutputStream out)
             throws IOException {
@@ -59,9 +59,9 @@ class Db implements Serializable {
     
     /**
      * Read object
-     * @param in
-     * @throws IOException
-     * @throws ClassNotFoundException
+     * @param in the input stream
+     * @throws IOException an error
+     * @throws ClassNotFoundException an error
      */
     @SuppressWarnings("unchecked")
     private void readObject(java.io.ObjectInputStream in)

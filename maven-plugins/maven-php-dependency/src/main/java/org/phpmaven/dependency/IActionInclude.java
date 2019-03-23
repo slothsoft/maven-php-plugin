@@ -24,9 +24,9 @@ package org.phpmaven.dependency;
  * You can specify a relative path inside the phar file. Example:</p>
  * 
  * <pre>
- * &nbsp;&nbsp;&lt;actions><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&lt;include>&lt;pharPath>/my/local/path&lt;/pharPath>&lt;/include><br />
- * &nbsp;&nbsp;&lt;/actions><br />
+ * &nbsp;&nbsp;&lt;actions&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&lt;include&gt;&lt;pharPath&gt;/my/local/path&lt;/pharPath&gt;&lt;/include&gt;<br>
+ * &nbsp;&nbsp;&lt;/actions&gt;<br>
  * </pre>
  * 
  * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>

@@ -59,7 +59,7 @@ public class PearConfiguration implements IPearConfiguration {
 		private final Proxy proxy;
 
 		/**
-		 * @param proxy
+		 * @param proxy the proxy
 		 */
 		private ProxyWrapper(Proxy proxy) {
 			this.proxy = proxy;

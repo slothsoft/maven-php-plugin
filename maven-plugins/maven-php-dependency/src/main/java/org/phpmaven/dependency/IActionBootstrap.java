@@ -23,9 +23,9 @@ package org.phpmaven.dependency;
  * <p>There is no additional configuration needed for this action but the dependency configuration needs information about a bootstrap file. Example:</p>
  * 
  * <pre>
- * &nbsp;&nbsp;&lt;actions><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&lt;bootstrap/><br />
- * &nbsp;&nbsp;&lt;/actions><br />
+ * &nbsp;&nbsp;&lt;actions&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&lt;bootstrap/&gt;<br>
+ * &nbsp;&nbsp;&lt;/actions&gt;<br>
  * </pre>
  * 
  * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>

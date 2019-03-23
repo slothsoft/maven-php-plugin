@@ -35,24 +35,25 @@ import org.phpmaven.core.IComponentFactory;
  * 
  * <p>
  * Configuration of the apache executable can be done via either the goal you are executing
- * or via plugin configuration. Example of a configuration via build plugin:<br />
+ * or via plugin configuration. Example of a configuration via build plugin:<br>
  * <pre>
- * &lt;build><br />
- * &nbsp;&nbsp;...<br />
- * &nbsp;&nbsp;&lt;plugins><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;...<br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&lt;plugin><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId>org.phpmaven&lt;/groupId><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId>maven-httpd-control-api&lt;/artifactId><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;configuration><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;executable>/path/to/my/httpd.exe&lt;/executable><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/configuration><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&lt;/plugin><br />
- * &nbsp;&nbsp;&nbsp;&nbsp;...<br />
- * &nbsp;&nbsp;&lt;/plugins><br />
- * &nbsp;&nbsp;...<br />
- * &lt/build><br />
+ * &lt;build&gt;<br>
+ * &nbsp;&nbsp;...<br>
+ * &nbsp;&nbsp;&lt;plugins&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;...<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&lt;plugin&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;org.phpmaven&lt;/groupId&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;maven-httpd-control-api&lt;/artifactId&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;configuration&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;executable&gt;/path/to/my/httpd.exe&lt;/executable&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/configuration&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&lt;/plugin&gt;<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;...<br>
+ * &nbsp;&nbsp;&lt;/plugins&gt;<br>
+ * &nbsp;&nbsp;...<br>
+ * &lt;/build&gt;<br>
  * </pre>
+ * <p>
  * This example will use an alternative httpd executable.
  * </p>
  * 
@@ -65,7 +66,7 @@ import org.phpmaven.core.IComponentFactory;
  * Available options:
  * </p>
  * 
- * <table border="1">
+ * <table border="1" summary="Commands">
  * <tr><th>Name</th><th>Command line option</th><th>Property</th><th>Default</th><th>Description</th></tr>
  * <tr>
  *   <td>executable</td>
@@ -125,9 +126,9 @@ public interface IApacheService {
      * Returns the apache controller that fits the default configuration.
      * @param log the logger
      * @return apache controller.
-     * @throws MojoExecutionException 
-     * @throws PlexusConfigurationException 
-     * @throws ComponentLookupException 
+     * @throws MojoExecutionException for any error
+     * @throws PlexusConfigurationException for any error
+     * @throws ComponentLookupException for any error
      */
     IApacheController getController(Log log)
         throws MojoExecutionException, ComponentLookupException, PlexusConfigurationException;
@@ -137,9 +138,9 @@ public interface IApacheService {
      * @param log the logger
      * @param version the apache version
      * @return apache controller.
-     * @throws MojoExecutionException 
-     * @throws PlexusConfigurationException 
-     * @throws ComponentLookupException 
+     * @throws MojoExecutionException for any error
+     * @throws PlexusConfigurationException for any error
+     * @throws ComponentLookupException for any error
      */
     IApacheController getController(Log log, APACHE_VERSION version)
         throws MojoExecutionException, ComponentLookupException, PlexusConfigurationException;
@@ -148,9 +149,9 @@ public interface IApacheService {
      * Returns the apache config tool that fits the default configuration.
      * @param log the logger
      * @return apache config tool.
-     * @throws MojoExecutionException 
-     * @throws PlexusConfigurationException 
-     * @throws ComponentLookupException 
+     * @throws MojoExecutionException for any error
+     * @throws PlexusConfigurationException for any error
+     * @throws ComponentLookupException for any error
      */
     IApacheConfig getConfigTool(Log log)
         throws MojoExecutionException, ComponentLookupException, PlexusConfigurationException;
@@ -160,9 +161,9 @@ public interface IApacheService {
      * @param log the logger
      * @param version the apache version
      * @return apache config tool.
-     * @throws MojoExecutionException 
-     * @throws PlexusConfigurationException 
-     * @throws ComponentLookupException 
+     * @throws MojoExecutionException for any error
+     * @throws PlexusConfigurationException for any error
+     * @throws ComponentLookupException for any error
      */
     IApacheConfig getConfigTool(Log log, APACHE_VERSION version)
         throws MojoExecutionException, ComponentLookupException, PlexusConfigurationException;

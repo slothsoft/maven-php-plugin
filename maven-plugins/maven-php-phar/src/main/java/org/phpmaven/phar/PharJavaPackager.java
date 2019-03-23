@@ -241,9 +241,9 @@ public class PharJavaPackager implements IPharPackager {
 
     /**
      * Writes 4 bytes in little endian order.
-     * @param baos
-     * @param v
-     * @throws IOException 
+     * @param baos the baos
+     * @param v a color maybe?
+     * @throws IOException  if an I/O error occurs
      */
     private void writeIntLE(OutputStream baos, int v) throws IOException {
         baos.write((v >>>  0) & 0xFF);
@@ -254,9 +254,9 @@ public class PharJavaPackager implements IPharPackager {
 
     /**
      * Writes 4 bytes in little endian order.
-     * @param baos
-     * @param v
-     * @throws IOException 
+     * @param baos the baos
+     * @param v a color maybe?
+     * @throws IOException  if an I/O error occurs
      */
     private void writeIntLE(OutputStream baos, long v) throws IOException {
         baos.write((int) ((v >>>  0) & 0xFF));

@@ -291,8 +291,8 @@ public abstract class AbstractPharMojo extends AbstractMojo {
     /**
      * Returns true if child is a child of parent; platform independent.
      * 
-     * @param possibleChild
-     * @param parent
+     * @param possibleChild the possible child
+     * @param parent the parent
      * @return true if parent is a (deep) parent of possibleChild
      */
     private boolean isParent(File possibleChild, File parent) {

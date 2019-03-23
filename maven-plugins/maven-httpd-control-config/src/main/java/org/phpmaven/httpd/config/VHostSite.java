@@ -37,8 +37,8 @@ class VHostSite extends AbstractConfigCommon implements IApacheConfigVHostSite, 
 
     /**
      * Constructor.
-     * @param name
-     * @param tool
+     * @param name the name
+     * @param tool the tool
      */
     public VHostSite(String name, AbstractConfigTool tool) {
         this.name = name;

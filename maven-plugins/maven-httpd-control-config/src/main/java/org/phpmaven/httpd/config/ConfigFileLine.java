@@ -30,7 +30,7 @@ class ConfigFileLine implements IConfigFileLine {
     
     /**
      * Constructor.
-     * @param text
+     * @param text the text
      */
     public ConfigFileLine(String text) {
         this.text = text;

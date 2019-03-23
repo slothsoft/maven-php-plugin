@@ -178,10 +178,12 @@ public class PhpProject implements IPhpProject {
 	}
 
 	/**
-	 * @param bootstrapInfo
-	 * @param targetDir
-	 * @param sourceScope
-	 * @param bootstrapFile
+	 * @param log the log
+	 * @param bootstrapInfo the bootstrap info
+	 * @param targetDir the bootstrap info
+	 * @param sourceScope the source scope
+	 * @param bootstrapFile the bootstrap file
+	 * @throws PhpException on error
 	 */
 	private void invokeBootstrap(Log log, BootstrapInfo bootstrapInfo, File targetDir,
 			String sourceScope, File bootstrapFile) throws PhpException {
@@ -217,10 +219,6 @@ public class PhpProject implements IPhpProject {
 		}
 	}
 
-	/**
-	 * @param info
-	 * @param dep
-	 */
 	private void performBootstrap(Log log, final DependencyInformation info,
 			final Artifact dep, BootstrapInfo bootstrapInfo) {
 		final String depKey = getDepKey(dep);
@@ -246,14 +244,6 @@ public class PhpProject implements IPhpProject {
 		bootstrapInfo.add(fileInfo);
 	}
 
-	/**
-	 * @param log
-	 * @param targetDir
-	 * @param dep
-	 * @param packedElements
-	 * @param info 
-	 * @throws IOException
-	 */
 	private void performClassic(final Log log, File targetDir,
 			final Artifact dep, final List<String> packedElements, DependencyInformation info)
 			throws IOException {
@@ -283,15 +273,6 @@ public class PhpProject implements IPhpProject {
 		}
 	}
 
-	/**
-	 * @param log
-	 * @param dep
-	 * @param packedElements
-	 * @param action
-	 * @param info 
-	 * @throws IOException
-	 * @throws PhpCoreException
-	 */
 	private void performExtractAndInclude(final Log log, final Artifact dep,
 			final List<String> packedElements, final IAction action, DependencyInformation info)
 			throws IOException, PhpCoreException {
@@ -337,15 +318,6 @@ public class PhpProject implements IPhpProject {
 		}
 	}
 
-	/**
-	 * @param log
-	 * @param dep
-	 * @param packedElements
-	 * @param action
-	 * @param info 
-	 * @throws IOException
-	 * @throws PhpCoreException
-	 */
 	private void performExtraction(final Log log, final Artifact dep,
 			final List<String> packedElements, final IAction action, DependencyInformation info)
 			throws IOException, PhpCoreException {
@@ -388,12 +360,6 @@ public class PhpProject implements IPhpProject {
 		}
 	}
 
-	/**
-	 * @param log
-	 * @param dep
-	 * @param info 
-	 * @throws PhpCoreException
-	 */
 	private void performPearInstall(final Log log, final Artifact dep, DependencyInformation info)
 			throws PhpCoreException {
 		log.info(dep.getFile().getAbsolutePath() + " will be installed through pear");

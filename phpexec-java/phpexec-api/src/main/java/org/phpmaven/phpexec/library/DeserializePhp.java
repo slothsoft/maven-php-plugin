@@ -51,7 +51,7 @@ import java.util.regex.Pattern;
  * Deserializes a serialized PHP data structure into corresponding Java objects. It supports
  * the integer, float, boolean, string primitives that are mapped to their Java
  * equivalent, plus arrays that are parsed into <code>Map</code> instances and objects
- * that are represented by {@link SerializedPhpParser.PhpObject} instances.
+ * that are represented by SerializedPhpParser.PhpObject instances.
  * <p>
  * Example of use:
  * <pre>

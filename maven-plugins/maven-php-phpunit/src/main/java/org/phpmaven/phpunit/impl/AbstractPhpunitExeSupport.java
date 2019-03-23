@@ -76,7 +76,6 @@ public abstract class AbstractPhpunitExeSupport extends AbstractPhpunitSupport {
 
     /**
      * Returns the IPhpunitTestRequest.
-     * @return IPhpunitTestRequest
      */
     private IPhpunitTestRequest testRequest;
     
@@ -260,14 +259,14 @@ public abstract class AbstractPhpunitExeSupport extends AbstractPhpunitSupport {
     /**
      * Parses the XML output.
      *
-     * @param toTest 
-     * @param xmlFile 
-     * @param result 
-     * @param textFile 
-     * @param coverageFile 
-     * @throws SAXException 
-     * @throws IOException 
-     * @throws ParserConfigurationException 
+     * @param toTest the file to test
+     * @param xmlFile the xml file
+     * @param result the result
+     * @param textFile the test file
+     * @param coverageFile the coverage file
+     * @throws SAXException on error
+     * @throws IOException on error
+     * @throws ParserConfigurationException on error
      */
     protected void parseResultingXML(File toTest, File xmlFile, final IPhpunitTestResult result,
             final File textFile, final File coverageFile)

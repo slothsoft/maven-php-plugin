@@ -32,7 +32,7 @@ import org.phpmaven.core.IComponentFactory;
  * Available configuration options:
  * </p>
  * 
- * <table border="1">
+ * <table border="1" summary="summary">
  * <tr><th>Name</th><th>Command line option</th><th>Property</th><th>Default</th><th>Description</th></tr>
  * <tr>
  *   <td>targetDirectory</td>
@@ -113,7 +113,7 @@ import org.phpmaven.core.IComponentFactory;
  *   <td>-</td>
  *   <td>-</td>
  *   <td>-</td>
- *   <td>List of arbitrary elements that will be added to the phar metadata.<p>Usage: &lt;metadata&gt;&lt;myMetadataKey&gt;Value&lt;/myMetadataKey&gt;&lt/metadata&gt;
+ *   <td>List of arbitrary elements that will be added to the phar metadata.<p>Usage: &lt;metadata&gt;&lt;myMetadataKey&gt;Value&lt;/myMetadataKey&gt;&lt;/metadata&gt;
  *   </td>
  * </tr>
  * <tr>
@@ -139,7 +139,7 @@ public interface IPharPackagingRequest {
      * This is a template. The following variables/phrases will be replaced.
      * </p>
      * 
-     * <table broder="1">
+     * <table border="1" summary="summary">
      * <tr><th>name</th><th>description</th></tr>
      * <tr>
      *   <td>$:{pharfilepath}</td>
@@ -187,7 +187,7 @@ public interface IPharPackagingRequest {
      * into a phar file. The following variables/phrases will be replaced.
      * </p>
      * 
-     * <table broder="1">
+     * <table border="1" summary="summary">
      * <tr><th>name</th><th>description</th></tr>
      * <tr>
      *   <td>$:{pkgdir}</td>
@@ -218,7 +218,7 @@ public interface IPharPackagingRequest {
      * into a phar file. The following variables/phrases will be replaced.
      * </p>
      * 
-     * <table broder="1">
+     * <table border="1" summary="summary">
      * <tr><th>name</th><th>description</th></tr>
      * <tr>
      *   <td>$:{filename}</td>

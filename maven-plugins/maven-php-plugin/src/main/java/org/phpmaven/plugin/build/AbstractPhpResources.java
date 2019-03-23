@@ -137,7 +137,7 @@ public abstract class AbstractPhpResources extends AbstractPhpWalkMojo {
     /**
      * Checks a file if it should be excluded from processing.
      *
-     * @param file
+     * @param file the file
      * @return if the file should be excluded from validation
      */
     private boolean isExcluded(File file) {

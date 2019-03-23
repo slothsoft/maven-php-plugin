@@ -23,7 +23,8 @@ class ConfigDirectory extends AbstractConfigCommon implements IApacheConfigDirec
 
     /**
      * Constructor.
-     * @param directory
+     * @param directory the directory
+     * @param tool the tool
      */
     public ConfigDirectory(String directory, AbstractConfigTool tool) {
         if (directory.startsWith("\"") && directory.endsWith("\"")) {

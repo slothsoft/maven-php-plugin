@@ -20,7 +20,7 @@ import org.codehaus.plexus.component.annotations.Component;
 import org.phpmaven.phpunit.IPhpunitSupport;
 
 /**
- * Phpunit support for <= 3.3.9.
+ * Phpunit support for &lt;= 3.3.9.
  * 
  * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
