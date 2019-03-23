@@ -12,6 +12,7 @@
 		<module>maven-plugins</module>
 		<module>pear-java</module>
 		<module>phpexec-java</module>
+		<module>phpmaven-var-parent</module>
 	</modules>
 
 	<properties>
