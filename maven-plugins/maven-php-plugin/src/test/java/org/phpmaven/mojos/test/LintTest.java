@@ -20,6 +20,7 @@ import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.phpmaven.plugin.build.PhpResources;
 import org.phpmaven.plugin.build.PhpTestResources;
@@ -31,71 +32,72 @@ import org.phpmaven.test.AbstractTestCase;
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
-public class LintTest extends AbstractTestCase {
+@Disabled
+ public class LintTest extends AbstractTestCase {
 
-	/**
-	 * Tests the goal "compile" with simple error within the sources.
-	 *
-	 * @throws Exception
-	 */
+	 /**
+	  * Tests the goal "compile" with simple error within the sources.
+	  *
+	  * @throws Exception
+	  */
 
-	@Test
-	public void testSimpleFailure() throws Exception {
-		final MavenSession session = this.createSimpleSession("mojos-lint/check-lint");
+	 @Test
+	 public void testSimpleFailure() throws Exception {
+		 final MavenSession session = this.createSimpleSession("mojos-lint/check-lint");
 
-		final PhpResources resourcesMojo = this.createConfiguredMojo(
-				PhpResources.class, session,
-				"org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
-				"resources",
-				new Xpp3Dom("configuration"));
-		try {
-			resourcesMojo.execute();
-			Assertions.fail("Build failure expected");
-		} catch (final MojoExecutionException ex) {
-			Assertions.assertEquals("Lint check failures.", ex.getMessage());
-		}
-	}
+		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+				 PhpResources.class, session,
+				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "resources",
+				 new Xpp3Dom("configuration"));
+		 try {
+			 resourcesMojo.execute();
+			 Assertions.fail("Build failure expected");
+		 } catch (final MojoExecutionException ex) {
+			 Assertions.assertEquals("Lint check failures.", ex.getMessage());
+		 }
+	 }
 
-	/**
-	 * tests the goal "compile" with simple error in test class.
-	 * Will expected to work because compile does not look at the test classes.
-	 *
-	 * @throws Exception
-	 */
+	 /**
+	  * tests the goal "compile" with simple error in test class.
+	  * Will expected to work because compile does not look at the test classes.
+	  *
+	  * @throws Exception
+	  */
 
-	@Test
-	public void testCompileOkWithTestFailure() throws Exception {
-		final MavenSession session = this.createSimpleSession("mojos-lint/check-linttests");
+	 @Test
+	 public void testCompileOkWithTestFailure() throws Exception {
+		 final MavenSession session = this.createSimpleSession("mojos-lint/check-linttests");
 
-		final PhpResources resourcesMojo = this.createConfiguredMojo(
-				PhpResources.class, session,
-				"org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
-				"resources",
-				new Xpp3Dom("configuration"));
-		resourcesMojo.execute();
-	}
+		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+				 PhpResources.class, session,
+				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "resources",
+				 new Xpp3Dom("configuration"));
+		 resourcesMojo.execute();
+	 }
 
-	/**
-	 * tests the goal "test-compile" with simple error in test class.
-	 *
-	 * @throws Exception
-	 */
+	 /**
+	  * tests the goal "test-compile" with simple error in test class.
+	  *
+	  * @throws Exception
+	  */
 
-	@Test
-	public void testSimpletestFailure() throws Exception {
-		final MavenSession session = this.createSimpleSession("mojos-lint/check-linttests");
+	 @Test
+	 public void testSimpletestFailure() throws Exception {
+		 final MavenSession session = this.createSimpleSession("mojos-lint/check-linttests");
 
-		final PhpTestResources resourcesMojo = this.createConfiguredMojo(
-				PhpTestResources.class, session,
-				"org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
-				"testResources",
-				new Xpp3Dom("configuration"));
-		try {
-			resourcesMojo.execute();
-			Assertions.fail("Build failure expected");
-		} catch (final MojoExecutionException ex) {
-			Assertions.assertEquals("Lint check failures.", ex.getMessage());
-		}
-	}
+		 final PhpTestResources resourcesMojo = this.createConfiguredMojo(
+				 PhpTestResources.class, session,
+				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "testResources",
+				 new Xpp3Dom("configuration"));
+		 try {
+			 resourcesMojo.execute();
+			 Assertions.fail("Build failure expected");
+		 } catch (final MojoExecutionException ex) {
+			 Assertions.assertEquals("Lint check failures.", ex.getMessage());
+		 }
+	 }
 
-}
+ }

@@ -25,6 +25,7 @@ import org.codehaus.plexus.logging.console.ConsoleLogger;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.Xpp3DomBuilder;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.phar.IPharPackagerConfiguration;
@@ -37,76 +38,77 @@ import org.phpmaven.test.AbstractTestCase;
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
-public class ConvertPharTest extends AbstractTestCase {
+@Disabled
+ public class ConvertPharTest extends AbstractTestCase {
 
-	/**
-	 * tests the goal "convert-phar"
-	 *
-	 * @throws Exception
-	 */
+	 /**
+	  * tests the goal "convert-phar"
+	  *
+	  * @throws Exception
+	  */
 
-	@Test
-	public void testGoal() throws Exception {
-		final MavenSession session = this.createSimpleSession("mojos-phar/convert-phar");
-		final File phar = new File(session.getCurrentProject().getBasedir(), "phar-with-dep1-folders-0.0.1.phar");
-		final File phar2 = new File(session.getCurrentProject().getBasedir(), "phar-with-dep1-folders-0.0.1-2.phar");
-		final File zip = new File(session.getCurrentProject().getBasedir(), "phar-with-dep1-folders-0.0.1.zip");
-		final File jar = new File(session.getCurrentProject().getBasedir(), "phar-with-dep1-folders-0.0.1.jar");
+	 @Test
+	 public void testGoal() throws Exception {
+		 final MavenSession session = this.createSimpleSession("mojos-phar/convert-phar");
+		 final File phar = new File(session.getCurrentProject().getBasedir(), "phar-with-dep1-folders-0.0.1.phar");
+		 final File phar2 = new File(session.getCurrentProject().getBasedir(), "phar-with-dep1-folders-0.0.1-2.phar");
+		 final File zip = new File(session.getCurrentProject().getBasedir(), "phar-with-dep1-folders-0.0.1.zip");
+		 final File jar = new File(session.getCurrentProject().getBasedir(), "phar-with-dep1-folders-0.0.1.jar");
 
-		Assertions.assertTrue(phar.exists());
-		Assertions.assertFalse(phar2.exists());
-		Assertions.assertFalse(zip.exists());
-		Assertions.assertFalse(jar.exists());
+		 Assertions.assertTrue(phar.exists());
+		 Assertions.assertFalse(phar2.exists());
+		 Assertions.assertFalse(zip.exists());
+		 Assertions.assertFalse(jar.exists());
 
-		Xpp3Dom config = Xpp3DomBuilder.build(new StringReader(
-				"<configuration>" +
-						"<from>"+phar.getAbsolutePath()+"</from>" +
-						"<to>"+zip.getAbsolutePath()+"</to>" +
-				"</configuration>"));
-		ConvertPharMojo convertMojo = this.createConfiguredMojo(
-				ConvertPharMojo.class, session,
-				"org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
-				"convert-phar",
-				config);
-		convertMojo.execute();
+		 Xpp3Dom config = Xpp3DomBuilder.build(new StringReader(
+				 "<configuration>" +
+						 "<from>"+phar.getAbsolutePath()+"</from>" +
+						 "<to>"+zip.getAbsolutePath()+"</to>" +
+				 "</configuration>"));
+		 ConvertPharMojo convertMojo = this.createConfiguredMojo(
+				 ConvertPharMojo.class, session,
+				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "convert-phar",
+				 config);
+		 convertMojo.execute();
 
-		config = Xpp3DomBuilder.build(new StringReader(
-				"<configuration>" +
-						"<from>"+zip.getAbsolutePath()+"</from>" +
-						"<to>"+jar.getAbsolutePath()+"</to>" +
-				"</configuration>"));
-		convertMojo = this.createConfiguredMojo(
-				ConvertPharMojo.class, session,
-				"org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
-				"convert-phar",
-				config);
-		convertMojo.execute();
+		 config = Xpp3DomBuilder.build(new StringReader(
+				 "<configuration>" +
+						 "<from>"+zip.getAbsolutePath()+"</from>" +
+						 "<to>"+jar.getAbsolutePath()+"</to>" +
+				 "</configuration>"));
+		 convertMojo = this.createConfiguredMojo(
+				 ConvertPharMojo.class, session,
+				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "convert-phar",
+				 config);
+		 convertMojo.execute();
 
-		Assertions.assertTrue(jar.exists());
+		 Assertions.assertTrue(jar.exists());
 
-		config = Xpp3DomBuilder.build(new StringReader(
-				"<configuration>" +
-						"<from>"+jar.getAbsolutePath()+"</from>" +
-						"<to>"+phar2.getAbsolutePath()+"</to>" +
-				"</configuration>"));
-		convertMojo = this.createConfiguredMojo(
-				ConvertPharMojo.class, session,
-				"org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
-				"convert-phar",
-				config);
-		convertMojo.execute();
+		 config = Xpp3DomBuilder.build(new StringReader(
+				 "<configuration>" +
+						 "<from>"+jar.getAbsolutePath()+"</from>" +
+						 "<to>"+phar2.getAbsolutePath()+"</to>" +
+				 "</configuration>"));
+		 convertMojo = this.createConfiguredMojo(
+				 ConvertPharMojo.class, session,
+				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "convert-phar",
+				 config);
+		 convertMojo.execute();
 
-		Assertions.assertTrue(phar2.exists());
+		 Assertions.assertTrue(phar2.exists());
 
-		// list files
-		final IPharPackagerConfiguration pharConfig = lookup(IComponentFactory.class).lookup(
-				IPharPackagerConfiguration.class, IComponentFactory.EMPTY_CONFIG, session);
-		final Iterable<String> files = pharConfig.getPharPackager().listFiles(phar2, new DefaultLog(new ConsoleLogger()));
+		 // list files
+		 final IPharPackagerConfiguration pharConfig = lookup(IComponentFactory.class).lookup(
+				 IPharPackagerConfiguration.class, IComponentFactory.EMPTY_CONFIG, session);
+		 final Iterable<String> files = pharConfig.getPharPackager().listFiles(phar2, new DefaultLog(new ConsoleLogger()));
 
-		assertIterableCount(files, 3);
-		assertIterableContains(files, File.separatorChar + "folderA" + File.separatorChar + "MyClassA.php");
-		assertIterableContains(files, File.separatorChar + "folderB" + File.separatorChar + "MyClassB.php");
-		assertIterableContains(files, File.separatorChar + "META-INF" + File.separatorChar + "MANIFEST.MF");
-	}
+		 assertIterableCount(files, 3);
+		 assertIterableContains(files, File.separatorChar + "folderA" + File.separatorChar + "MyClassA.php");
+		 assertIterableContains(files, File.separatorChar + "folderB" + File.separatorChar + "MyClassB.php");
+		 assertIterableContains(files, File.separatorChar + "META-INF" + File.separatorChar + "MANIFEST.MF");
+	 }
 
-}
+ }

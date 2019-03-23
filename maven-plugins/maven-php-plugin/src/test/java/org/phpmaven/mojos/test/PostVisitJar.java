@@ -21,6 +21,7 @@ import java.io.FileInputStream;
 
 import org.apache.maven.execution.MavenSession;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.phpmaven.plugin.build.FileHelper;
 import org.phpmaven.test.AbstractTestCase;
@@ -31,24 +32,25 @@ import org.phpmaven.test.AbstractTestCase;
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
-public class PostVisitJar extends AbstractTestCase {
+@Disabled
+ public class PostVisitJar extends AbstractTestCase {
 
-	/**
-	 * tests the extraction of a reverse-index jar.
-	 *
-	 * @throws Exception
-	 */
+	 /**
+	  * tests the extraction of a reverse-index jar.
+	  *
+	  * @throws Exception
+	  */
 
-	@Test
-	public void testExtract() throws Exception {
-		final MavenSession session = this.createSimpleSession("post-visit");
-		final File pvJar = new File(session.getCurrentProject().getBasedir(), "postvisit.jar");
-		final File fileDir = new File(session.getCurrentProject().getBasedir(), "files");
+	 @Test
+	 public void testExtract() throws Exception {
+		 final MavenSession session = this.createSimpleSession("post-visit");
+		 final File pvJar = new File(session.getCurrentProject().getBasedir(), "postvisit.jar");
+		 final File fileDir = new File(session.getCurrentProject().getBasedir(), "files");
 
-		FileHelper.unjar(new FileInputStream(pvJar), fileDir.getParentFile());
+		 FileHelper.unjar(new FileInputStream(pvJar), fileDir.getParentFile());
 
-		Assertions.assertTrue(fileDir.exists());
-		Assertions.assertTrue(new File(fileDir, "folderA/folderC/fileC.txt").exists());
-	}
+		 Assertions.assertTrue(fileDir.exists());
+		 Assertions.assertTrue(new File(fileDir, "folderA/folderC/fileC.txt").exists());
+	 }
 
-}
+ }

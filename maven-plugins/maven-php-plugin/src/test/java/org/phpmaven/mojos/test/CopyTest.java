@@ -21,6 +21,7 @@ import java.io.File;
 import org.apache.maven.execution.MavenSession;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.phpmaven.plugin.build.PhpResources;
 import org.phpmaven.plugin.build.PhpTestResources;
@@ -32,46 +33,47 @@ import org.phpmaven.test.AbstractTestCase;
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
-public class CopyTest extends AbstractTestCase {
+@Disabled
+ public class CopyTest extends AbstractTestCase {
 
-	/**
-	 * tests the goal "compile" with sources.
-	 *
-	 * @throws Exception
-	 */
+	 /**
+	  * tests the goal "compile" with sources.
+	  *
+	  * @throws Exception
+	  */
 
-	@Test
-	public void testCompile() throws Exception {
-		final MavenSession session = this.createSimpleSession("mojos-compile/source-copy");
+	 @Test
+	 public void testCompile() throws Exception {
+		 final MavenSession session = this.createSimpleSession("mojos-compile/source-copy");
 
-		final PhpResources resourcesMojo = this.createConfiguredMojo(
-				PhpResources.class, session,
-				"org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
-				"resources",
-				new Xpp3Dom("configuration"));
-		resourcesMojo.execute();
+		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+				 PhpResources.class, session,
+				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "resources",
+				 new Xpp3Dom("configuration"));
+		 resourcesMojo.execute();
 
-		Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/classes/MyClass.php").exists());
-	}
+		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/classes/MyClass.php").exists());
+	 }
 
-	/**
-	 * tests the goal "test-compile" with sources.
-	 *
-	 * @throws Exception
-	 */
+	 /**
+	  * tests the goal "test-compile" with sources.
+	  *
+	  * @throws Exception
+	  */
 
-	@Test
-	public void testTestCompile() throws Exception {
-		final MavenSession session = this.createSimpleSession("mojos-compile/source-copy");
+	 @Test
+	 public void testTestCompile() throws Exception {
+		 final MavenSession session = this.createSimpleSession("mojos-compile/source-copy");
 
-		final PhpTestResources resourcesMojo = this.createConfiguredMojo(
-				PhpTestResources.class, session,
-				"org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
-				"testResources",
-				new Xpp3Dom("configuration"));
-		resourcesMojo.execute();
+		 final PhpTestResources resourcesMojo = this.createConfiguredMojo(
+				 PhpTestResources.class, session,
+				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "testResources",
+				 new Xpp3Dom("configuration"));
+		 resourcesMojo.execute();
 
-		Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/test-classes/FooTest.php").exists());
-	}
+		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/test-classes/FooTest.php").exists());
+	 }
 
-}
+ }

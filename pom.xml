@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.slothsoft</groupId>
 	<artifactId>everything</artifactId>
-	<version>0.0.7-SNAPSHOT</version>
+	<version>0.9.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<modules>
@@ -17,14 +17,259 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java-version>1.6</java-version>
+
+		<archetype-packaging-version>2.2</archetype-packaging-version>
+		<maven-version>3.0.4</maven-version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+
+			<!-- REACTOR PROJECTS -->
+
+			<dependency>
+				<groupId>org.phpmaven</groupId>
+				<artifactId>maven-httpd-control-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven</groupId>
+				<artifactId>maven-httpd-control-config</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven</groupId>
+				<artifactId>maven-httpd-control-ix</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven</groupId>
+				<artifactId>maven-httpd-control-win32</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven</groupId>
+				<artifactId>maven-php-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven</groupId>
+				<artifactId>maven-php-dependency</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven</groupId>
+				<artifactId>maven-php-exec</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven</groupId>
+				<artifactId>maven-php-pear</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven</groupId>
+				<artifactId>maven-php-phar</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven</groupId>
+				<artifactId>maven-php-phpdoc</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven</groupId>
+				<artifactId>maven-php-phpunit</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven</groupId>
+				<artifactId>maven-php-plugin</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven</groupId>
+				<artifactId>maven-php-project</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven</groupId>
+				<artifactId>maven-php-statedb</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven</groupId>
+				<artifactId>maven-php-validate-lint</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven.pear-java</groupId>
+				<artifactId>pear-java-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven.pear-java</groupId>
+				<artifactId>pear-java-impl</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven.phpexec-java</groupId>
+				<artifactId>phpexec-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven.phpexec-java</groupId>
+				<artifactId>phpexec-cli</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.phpmaven</groupId>
+				<artifactId>phpmaven-testtool</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<!-- EASYMOCK -->
+
+			<dependency>
+				<groupId>org.easymock</groupId>
+				<artifactId>easymock</artifactId>
+				<version>3.1</version>
+			</dependency>
+
+			<!-- APACHE COMMONS (and Co.) -->
+
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.4</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>4.1.3</version>
+			</dependency>
+
+			<!-- APACHE MAVEN -->
+
+			<dependency>
+				<groupId>org.apache.maven</groupId>
+				<artifactId>maven-compat</artifactId>
+				<version>${maven-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven</groupId>
+				<artifactId>maven-core</artifactId>
+				<version>${maven-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven</groupId>
+				<artifactId>maven-embedder</artifactId>
+				<version>${maven-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven</groupId>
+				<artifactId>maven-model</artifactId>
+				<version>${maven-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven</groupId>
+				<artifactId>maven-plugin-api</artifactId>
+				<version>${maven-version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.maven.doxia</groupId>
+				<artifactId>doxia-sink-api</artifactId>
+				<version>1.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.maven.plugin-testing</groupId>
+				<artifactId>maven-plugin-testing-harness</artifactId>
+				<version>2.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.maven.reporting</groupId>
+				<artifactId>maven-reporting-api</artifactId>
+				<version>3.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven.reporting</groupId>
+				<artifactId>maven-reporting-impl</artifactId>
+				<version>2.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.maven.shared</groupId>
+				<artifactId>maven-verifier</artifactId>
+				<version>1.3</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-file</artifactId>
+				<version>2.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-http</artifactId>
+				<version>2.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-provider-api</artifactId>
+				<version>2.2</version>
+			</dependency>
+
+
+			<!-- CODEHAUS PLEXUS -->
+
+			<dependency>
+				<groupId>org.codehaus.plexus</groupId>
+				<artifactId>plexus-utils</artifactId>
+				<version>3.0</version>
+			</dependency>
+
+			<!-- JUNIT -->
+
 			<dependency>
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter-engine</artifactId>
 				<version>5.1.0</version>
+			</dependency>
+
+			<!-- MORTBAY JETTY -->
+
+			<dependency>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>servlet-api-2.5</artifactId>
+				<version>6.1.10</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-util</artifactId>
+				<version>6.1.10</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- SONATYPE -->
+
+			<dependency>
+				<groupId>org.sonatype.aether</groupId>
+				<artifactId>aether-connector-wagon</artifactId>
+				<version>1.13.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.sonatype.aether</groupId>
+				<artifactId>aether-util</artifactId>
+				<version>1.13.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.sonatype.sisu</groupId>
+				<artifactId>sisu-guava</artifactId>
+				<version>0.9.9</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -47,11 +292,8 @@
 			<plugins>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.22.0</version>
-					<configuration>
-						<argLine>-Xms400m -Xmx400m</argLine>
-					</configuration>
+					<artifactId>maven-archetype-plugin</artifactId>
+					<version>2.2</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -61,6 +303,20 @@
 						<source>${java-version}</source>
 						<target>${java-version}</target>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.8</version>
+					<configuration>
+						<show>private</show>
+						<aggregate>false</aggregate>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jxr-plugin</artifactId>
+					<version>2.3</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -78,12 +334,34 @@
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>2.8</version>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.3.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.5</version>
 					<configuration>
-						<show>private</show>
-						<aggregate>false</aggregate>
+						<encoding>${project.build.sourceEncoding}</encoding>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-plugin-plugin</artifactId>
+					<version>3.6.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.22.0</version>
+					<configuration>
+						<argLine>-Xms400m -Xmx400m</argLine>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.plexus</groupId>
+					<artifactId>plexus-component-metadata</artifactId>
+					<version>1.5.5</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -91,18 +369,49 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.5</version>
+				<artifactId>maven-javadoc-plugin</artifactId>
 				<configuration>
-					<encoding>${project.build.sourceEncoding}</encoding>
+					<show>private</show>
 				</configuration>
+				<executions>
+					<execution>
+						<id>aggregate</id>
+						<goals>
+							<goal>aggregate</goal>
+						</goals>
+						<phase>site</phase>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>aggregate</id>
+						<goals>
+							<goal>aggregate</goal>
+						</goals>
+						<phase>site</phase>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
-				<version>2.3.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-remote-resources-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

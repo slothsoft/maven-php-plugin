@@ -23,6 +23,7 @@ import org.apache.maven.monitor.logging.DefaultLog;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.phar.IPharPackagerConfiguration;
@@ -36,43 +37,44 @@ import org.phpmaven.test.AbstractTestCase;
  * @author Martin Eisengardt <Martin.Eisengardt@googlemail.com>
  * @since 2.0.0
  */
-public class PharSupportTest extends AbstractTestCase {
+@Disabled
+ public class PharSupportTest extends AbstractTestCase {
 
 
-	/**
-	 * tests the phar packaging with simple content
-	 *
-	 * @throws Exception
-	 */
+	 /**
+	  * tests the phar packaging with simple content
+	  *
+	  * @throws Exception
+	  */
 
-	@Test
-	public void testGoalTestWithSimplePhar() throws Exception {
-		final MavenSession session = this.createSimpleSession("mojos-phar/phar-support");
+	 @Test
+	 public void testGoalTestWithSimplePhar() throws Exception {
+		 final MavenSession session = this.createSimpleSession("mojos-phar/phar-support");
 
-		final PhpResources resourcesMojo = this.createConfiguredMojo(
-				PhpResources.class, session,
-				"org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
-				"resources",
-				new Xpp3Dom("configuration"));
-		resourcesMojo.execute();
+		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+				 PhpResources.class, session,
+				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "resources",
+				 new Xpp3Dom("configuration"));
+		 resourcesMojo.execute();
 
-		final PhpPhar pharMojo = this.createConfiguredMojo(
-				PhpPhar.class, session,
-				"org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
-				"phar",
-				new Xpp3Dom("configuration"));
-		pharMojo.execute();
+		 final PhpPhar pharMojo = this.createConfiguredMojo(
+				 PhpPhar.class, session,
+				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "phar",
+				 new Xpp3Dom("configuration"));
+		 pharMojo.execute();
 
-		final File phar = new File(session.getCurrentProject().getBasedir(), "target/phar-simple-0.0.1.phar");
-		Assertions.assertTrue(phar.exists());
+		 final File phar = new File(session.getCurrentProject().getBasedir(), "target/phar-simple-0.0.1.phar");
+		 Assertions.assertTrue(phar.exists());
 
-		// list files
-		final IPharPackagerConfiguration pharConfig = lookup(IComponentFactory.class).lookup(
-				IPharPackagerConfiguration.class, IComponentFactory.EMPTY_CONFIG, session);
-		final Iterable<String> files = pharConfig.getPharPackager().listFiles(phar, new DefaultLog(new ConsoleLogger()));
+		 // list files
+		 final IPharPackagerConfiguration pharConfig = lookup(IComponentFactory.class).lookup(
+				 IPharPackagerConfiguration.class, IComponentFactory.EMPTY_CONFIG, session);
+		 final Iterable<String> files = pharConfig.getPharPackager().listFiles(phar, new DefaultLog(new ConsoleLogger()));
 
-		assertIterableCount(files, 1);
-		assertIterableContains(files, File.separatorChar + "MyClass.php");
-	}
+		 assertIterableCount(files, 1);
+		 assertIterableContains(files, File.separatorChar + "MyClass.php");
+	 }
 
-}
+ }

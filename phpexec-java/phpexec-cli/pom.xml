@@ -6,13 +6,11 @@
 	<parent>
 		<groupId>org.phpmaven.sites</groupId>
 		<artifactId>phpexec-java-site</artifactId>
-		<version>0.1.10-SNAPSHOT</version>
+		<version>0.9.0-SNAPSHOT</version>
 	</parent>
 
 	<groupId>org.phpmaven.phpexec-java</groupId>
 	<artifactId>phpexec-cli</artifactId>
-	<version>0.1.10-SNAPSHOT</version>
-	<packaging>jar</packaging>
 
 	<name>phpexec-cli</name>
 
@@ -24,42 +22,17 @@
 		<dependency>
 			<groupId>org.phpmaven.phpexec-java</groupId>
 			<artifactId>phpexec-api</artifactId>
-			<version>0.1.10-SNAPSHOT</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.1.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.phpmaven</groupId>
 			<artifactId>phpmaven-testtool</artifactId>
-			<version>2.0.3-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>cobertura-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-remote-resources-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>
