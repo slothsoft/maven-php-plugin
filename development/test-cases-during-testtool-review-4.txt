@@ -9,9 +9,8 @@
 [WARNING] Tests run: 5, Failures: 0, Errors: 0, Skipped: 2
 [WARNING] Tests run: 9, Failures: 0, Errors: 0, Skipped: 9
 [WARNING] Tests run: 12, Failures: 0, Errors: 0, Skipped: 4
-[WARNING] Tests run: 5, Failures: 0, Errors: 0, Skipped: 5
 [INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
 [WARNING] Tests run: 7, Failures: 0, Errors: 0, Skipped: 7
 [WARNING] Tests run: 16, Failures: 0, Errors: 0, Skipped: 16
 --------------------------------------------------------------------------
-[WARNING] Tests run: 230, Failures: 0, Errors: 0, Sich mkipped: 86
+[WARNING] Tests run: 225, Failures: 0, Errors: 0, Sich mkipped: 81

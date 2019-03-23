@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>de.slothsoft.phpmaven.pear</groupId>
-	<artifactId>build</artifactId>
+	<artifactId>pear-java</artifactId>
 	<packaging>pom</packaging>
 
 	<name>pear-java-site</name>

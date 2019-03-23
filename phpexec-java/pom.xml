@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>de.slothsoft.phpmaven.phpexec</groupId>
-	<artifactId>build</artifactId>
+	<artifactId>phpexec-java</artifactId>
 	<packaging>pom</packaging>
 
 	<name>phpexec-java-site</name>
