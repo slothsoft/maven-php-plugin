@@ -12,12 +12,12 @@
 		<module>maven-plugins</module>
 		<module>pear-java</module>
 		<module>phpexec-java</module>
-		<module>phpmaven-var-parent</module>
 	</modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java-version>1.6</java-version>
+		<rootDirectory>${session.executionRootDirectory}</rootDirectory>
 
 		<archetype-packaging-version>2.2</archetype-packaging-version>
 		<maven-version>3.0.4</maven-version>
@@ -489,6 +489,34 @@
 			<plugin>
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>
+			</plugin>
+
+			<!-- Copy the LICENSE and NOTICE files -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-license-and-notice</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/classes/META-INF</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${rootDirectory}/</directory>
+									<includes>
+										<include>LICENSE</include>
+										<include>NOTICE</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
