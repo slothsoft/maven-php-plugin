@@ -48,7 +48,7 @@ import org.phpmaven.test.AbstractTestCase;
 
 		 final PhpResources resourcesMojo = this.createConfiguredMojo(
 				 PhpResources.class, session,
-				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 try {
@@ -72,7 +72,7 @@ import org.phpmaven.test.AbstractTestCase;
 
 		 final PhpResources resourcesMojo = this.createConfiguredMojo(
 				 PhpResources.class, session,
-				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
@@ -90,7 +90,7 @@ import org.phpmaven.test.AbstractTestCase;
 
 		 final PhpTestResources resourcesMojo = this.createConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 try {

@@ -44,7 +44,7 @@ import org.phpmaven.phpexec.library.PhpException;
  * @since 2.0.0
  */
 @Component(role = IPharPackager.class, hint = "PHP_EXE", instantiationStrategy = "per-lookup")
-@BuildPluginConfiguration(groupId = "org.phpmaven", artifactId = "php-maven-phar", filter = {
+@BuildPluginConfiguration(groupId = "de.slothsoft.phpmaven", artifactId = "php-maven-phar", filter = {
         "packager", "pharConfig" })
 public class PharPackager implements IPharPackager {
 
@@ -167,7 +167,7 @@ public class PharPackager implements IPharPackager {
         throws ComponentLookupException, PlexusConfigurationException {
         /*Xpp3Dom executableConfig = this.factory.getBuildConfig(
                 this.session.getCurrentProject(),
-                "org.phpmaven",
+                "de.slothsoft.phpmaven",
                 "maven-php-phar");
         if (executableConfig != null) {
             executableConfig = executableConfig.getChild("executableConfig");

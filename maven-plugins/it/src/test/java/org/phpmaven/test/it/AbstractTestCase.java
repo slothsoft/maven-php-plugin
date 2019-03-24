@@ -496,7 +496,7 @@ public abstract class AbstractTestCase extends AbstractMojoTestCase {
         final MavenProject project = lookup(ProjectBuilder.class).build(projectFile, buildingRequest).getProject();
         
         for (final Dependency dep : project.getDependencies()) {
-            if ("org.phpmaven".equals(dep.getGroupId())) {
+            if ("de.slothsoft.phpmaven".equals(dep.getGroupId())) {
                 this.installLocalProject(reposPath, new File(root).getParent() + "/" + dep.getArtifactId(), false);
             }
         }

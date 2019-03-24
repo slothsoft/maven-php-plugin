@@ -45,8 +45,8 @@ public class UnpackPharTest extends AbstractTestCase {
 		final Verifier verifierDep1 = this.getPhpMavenVerifier("mojos-phar/phar-with-dep1-folders");
 
 		// delete the pom from previous runs
-		verifierDep1.deleteArtifact("org.phpmaven.test", "phar-with-dep1-folders", "0.0.1", "pom");
-		verifierDep1.deleteArtifact("org.phpmaven.test", "phar-with-dep1-folders", "0.0.1", "phar");
+		verifierDep1.deleteArtifact("de.slothsoft.phpmaven.test", "phar-with-dep1-folders", "0.0.1", "pom");
+		verifierDep1.deleteArtifact("de.slothsoft.phpmaven.test", "phar-with-dep1-folders", "0.0.1", "phar");
 
 		// execute testing
 		verifierDep1.executeGoal("package");
@@ -65,7 +65,7 @@ public class UnpackPharTest extends AbstractTestCase {
 		verifierDep1.addCliOption("-Dphar="+phar.getAbsolutePath());
 		verifierDep1.addCliOption("-Dtarget="+new File(phar.getParent(), "extracted").getAbsolutePath());
 
-		verifierDep1.executeGoal("org.phpmaven:maven-php-plugin:extract-phar");
+		verifierDep1.executeGoal("de.slothsoft.phpmaven:maven-php-plugin:extract-phar");
 
 		// verify no error was thrown
 		verifierDep1.verifyErrorFreeLog();

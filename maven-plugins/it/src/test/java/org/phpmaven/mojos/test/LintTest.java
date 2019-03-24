@@ -43,8 +43,8 @@ public class LintTest extends AbstractTestCase {
 		final Verifier verifier = getPhpMavenVerifier("mojos-lint/check-lint");
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "check-lint", "0.0.1", "pom");
-		verifier.deleteArtifact("org.phpmaven.test", "check-lint", "0.0.1", "phar");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "check-lint", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "check-lint", "0.0.1", "phar");
 
 		try {
 			verifier.executeGoal("compile");
@@ -69,8 +69,8 @@ public class LintTest extends AbstractTestCase {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-lint/check-linttests");
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "check-linttests", "0.0.1", "pom");
-		verifier.deleteArtifact("org.phpmaven.test", "check-linttests", "0.0.1", "phar");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "check-linttests", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "check-linttests", "0.0.1", "phar");
 
 		verifier.executeGoal("compile");
 		verifier.verifyErrorFreeLog();
@@ -88,8 +88,8 @@ public class LintTest extends AbstractTestCase {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-lint/check-linttests");
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "check-linttests", "0.0.1", "pom");
-		verifier.deleteArtifact("org.phpmaven.test", "check-linttests", "0.0.1", "phar");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "check-linttests", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "check-linttests", "0.0.1", "phar");
 
 		try {
 			verifier.executeGoal("test-compile");

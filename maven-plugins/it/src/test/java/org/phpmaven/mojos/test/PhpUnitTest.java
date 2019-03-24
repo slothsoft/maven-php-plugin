@@ -46,8 +46,8 @@ public class PhpUnitTest extends AbstractTestCase {
 		this.installPhpParentPom();
 
 		// delete the pom from previous runs
-		verifierDep1.deleteArtifact("org.phpmaven.test", "test-with-dep1", "0.0.1", "pom");
-		verifierDep1.deleteArtifact("org.phpmaven.test", "test-with-dep1", "0.0.1", "phar");
+		verifierDep1.deleteArtifact("de.slothsoft.phpmaven.test", "test-with-dep1", "0.0.1", "pom");
+		verifierDep1.deleteArtifact("de.slothsoft.phpmaven.test", "test-with-dep1", "0.0.1", "phar");
 
 		// execute testing
 		verifierDep1.executeGoal("install");
@@ -58,8 +58,8 @@ public class PhpUnitTest extends AbstractTestCase {
 		// reset the streams
 		verifierDep1.resetStreams();
 
-		verifierDep1.assertArtifactPresent("org.phpmaven.test", "test-with-dep1", "0.0.1", "pom");
-		verifierDep1.assertArtifactPresent("org.phpmaven.test", "test-with-dep1", "0.0.1", "phar");
+		verifierDep1.assertArtifactPresent("de.slothsoft.phpmaven.test", "test-with-dep1", "0.0.1", "pom");
+		verifierDep1.assertArtifactPresent("de.slothsoft.phpmaven.test", "test-with-dep1", "0.0.1", "phar");
 
 		final Verifier verifierDep2 = this.getPhpMavenVerifier("mojos-phpunit/test-with-dep2");
 
@@ -85,7 +85,7 @@ public class PhpUnitTest extends AbstractTestCase {
 		this.installPhpParentPom();
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "test-autoprepend", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "test-autoprepend", "0.0.1", "pom");
 
 		// execute testing
 		verifier.executeGoal("test");
@@ -109,7 +109,7 @@ public class PhpUnitTest extends AbstractTestCase {
 		this.installPhpParentPom();
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "test-bootstrap", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "test-bootstrap", "0.0.1", "pom");
 
 		// execute testing
 		verifier.executeGoal("test");
@@ -134,7 +134,7 @@ public class PhpUnitTest extends AbstractTestCase {
 		this.installPhpParentPom();
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "test-bootstrap", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "test-bootstrap", "0.0.1", "pom");
 
 		// execute testing
 		verifier.executeGoal("test");
@@ -158,7 +158,7 @@ public class PhpUnitTest extends AbstractTestCase {
 		this.installPhpParentPom();
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "test-oktests", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "test-oktests", "0.0.1", "pom");
 
 		// execute testing
 		verifier.executeGoal("test");
@@ -182,7 +182,7 @@ public class PhpUnitTest extends AbstractTestCase {
 		this.installPhpParentPom();
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "test-oktests-multiple", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "test-oktests-multiple", "0.0.1", "pom");
 
 		// execute testing
 		verifier.executeGoal("test");
@@ -206,7 +206,7 @@ public class PhpUnitTest extends AbstractTestCase {
 //        final Verifier verifier = new Verifier( testDir.getAbsolutePath() );
 //
 //        // delete the pom from previous runs
-//        verifier.deleteArtifact( "org.phpmaven.test", "test-oktests-multiple", "0.0.1", "pom" );
+//        verifier.deleteArtifact( "de.slothsoft.phpmaven.test", "test-oktests-multiple", "0.0.1", "pom" );
 //        verifier.setSystemProperty("singleTestInvocation", "true");
 //
 //        // execute testing
@@ -231,7 +231,7 @@ public class PhpUnitTest extends AbstractTestCase {
 		this.installPhpParentPom();
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "test-notests", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "test-notests", "0.0.1", "pom");
 
 		// execute testing
 		verifier.executeGoal("test");
@@ -254,7 +254,7 @@ public class PhpUnitTest extends AbstractTestCase {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-phpunit/test-notests");
 		this.installPhpParentPom();
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "test-notest", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "test-notest", "0.0.1", "pom");
 
 		// execute testing
 		verifier.addCliOption("-DfailIfNoTests");
@@ -281,7 +281,7 @@ public class PhpUnitTest extends AbstractTestCase {
 		this.installPhpParentPom();
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "test-failing", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "test-failing", "0.0.1", "pom");
 
 		// execute testing
 		verifier.addCliOption("-DskipTests");
@@ -307,7 +307,7 @@ public class PhpUnitTest extends AbstractTestCase {
 		this.installPhpParentPom();
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "test-failing", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "test-failing", "0.0.1", "pom");
 
 		// execute testing
 		verifier.addCliOption("-Dmaven.test.skip");
@@ -333,7 +333,7 @@ public class PhpUnitTest extends AbstractTestCase {
 		this.installPhpParentPom();
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "test-failing", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "test-failing", "0.0.1", "pom");
 
 		// execute testing
 		verifier.addCliOption("-Dmaven.test.failure.ignore");
@@ -357,7 +357,7 @@ public class PhpUnitTest extends AbstractTestCase {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-phpunit/test-failing");
 		this.installPhpParentPom();
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "test-failing", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "test-failing", "0.0.1", "pom");
 
 		// execute testing
 		try {

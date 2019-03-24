@@ -38,7 +38,7 @@ import org.phpmaven.project.IProjectPhpExecution;
  * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
-@BuildPluginConfiguration(groupId = "org.phpmaven", artifactId = "maven-php-phpunit", filter = {
+@BuildPluginConfiguration(groupId = "de.slothsoft.phpmaven", artifactId = "maven-php-phpunit", filter = {
         "phpunitService", "phpunitVersion"
         })
 public abstract class AbstractPhpunitSupport implements IPhpunitSupport {

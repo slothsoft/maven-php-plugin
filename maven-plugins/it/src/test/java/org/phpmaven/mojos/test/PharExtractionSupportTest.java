@@ -42,8 +42,8 @@ public class PharExtractionSupportTest extends AbstractTestCase {
 		final Verifier verifierDep1 = this.getPhpMavenVerifier("mojos-phar/phar-with-dep1-folders");
 
 		// delete the pom from previous runs
-		verifierDep1.deleteArtifact("org.phpmaven.test", "phar-with-dep1-folders", "0.0.1", "pom");
-		verifierDep1.deleteArtifact("org.phpmaven.test", "phar-with-dep1-folders", "0.0.1", "phar");
+		verifierDep1.deleteArtifact("de.slothsoft.phpmaven.test", "phar-with-dep1-folders", "0.0.1", "pom");
+		verifierDep1.deleteArtifact("de.slothsoft.phpmaven.test", "phar-with-dep1-folders", "0.0.1", "phar");
 
 		// execute testing
 		verifierDep1.executeGoal("install");
@@ -54,14 +54,14 @@ public class PharExtractionSupportTest extends AbstractTestCase {
 		// reset the streams
 		verifierDep1.resetStreams();
 
-		verifierDep1.assertArtifactPresent("org.phpmaven.test", "phar-with-dep1-folders", "0.0.1", "pom");
-		verifierDep1.assertArtifactPresent("org.phpmaven.test", "phar-with-dep1-folders", "0.0.1", "phar");
+		verifierDep1.assertArtifactPresent("de.slothsoft.phpmaven.test", "phar-with-dep1-folders", "0.0.1", "pom");
+		verifierDep1.assertArtifactPresent("de.slothsoft.phpmaven.test", "phar-with-dep1-folders", "0.0.1", "phar");
 
 		final Verifier verifierDep2 = this.getPhpMavenVerifier("mojos-phar/phar-with-dep2-folders-extraction");
 
 		// delete the pom from previous runs
-		verifierDep2.deleteArtifact("org.phpmaven.test", "phar-with-dep2-folders", "0.0.1", "pom");
-		verifierDep2.deleteArtifact("org.phpmaven.test", "phar-with-dep2-folders", "0.0.1", "phar");
+		verifierDep2.deleteArtifact("de.slothsoft.phpmaven.test", "phar-with-dep2-folders", "0.0.1", "pom");
+		verifierDep2.deleteArtifact("de.slothsoft.phpmaven.test", "phar-with-dep2-folders", "0.0.1", "phar");
 
 		// execute testing
 		verifierDep2.executeGoal("install");
@@ -72,8 +72,8 @@ public class PharExtractionSupportTest extends AbstractTestCase {
 		// reset the streams
 		verifierDep2.resetStreams();
 
-		verifierDep2.assertArtifactPresent("org.phpmaven.test", "phar-with-dep2-folders", "0.0.1", "pom");
-		verifierDep2.assertArtifactPresent("org.phpmaven.test", "phar-with-dep2-folders", "0.0.1", "phar");
+		verifierDep2.assertArtifactPresent("de.slothsoft.phpmaven.test", "phar-with-dep2-folders", "0.0.1", "pom");
+		verifierDep2.assertArtifactPresent("de.slothsoft.phpmaven.test", "phar-with-dep2-folders", "0.0.1", "phar");
 
 		verifierDep2.assertFilePresent("target/somepath/folderA/MyClassA.php");
 		verifierDep2.assertFilePresent("target/somepath/folderB/MyClassB.php");

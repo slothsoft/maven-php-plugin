@@ -56,8 +56,8 @@ public class BaseTest extends AbstractTestCase {
 		verifier.executeGoal("install");
 		verifier.verifyErrorFreeLog();
 		verifier.resetStreams();
-		verifier.assertArtifactPresent("org.phpmaven.test", "lib1", "0.0.1", "pom");
-		verifier.assertArtifactPresent("org.phpmaven.test", "lib1", "0.0.1", "phar");
+		verifier.assertArtifactPresent("de.slothsoft.phpmaven.test", "lib1", "0.0.1", "pom");
+		verifier.assertArtifactPresent("de.slothsoft.phpmaven.test", "lib1", "0.0.1", "phar");
 
 		// create the execution config
 		final MavenSession session = this.createSessionForPhpMaven(

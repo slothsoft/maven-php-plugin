@@ -68,7 +68,7 @@ import org.phpmaven.test.AbstractTestCase;
 				 "</configuration>"));
 		 ConvertPharMojo convertMojo = this.createConfiguredMojo(
 				 ConvertPharMojo.class, session,
-				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
 				 "convert-phar",
 				 config);
 		 convertMojo.execute();
@@ -80,7 +80,7 @@ import org.phpmaven.test.AbstractTestCase;
 				 "</configuration>"));
 		 convertMojo = this.createConfiguredMojo(
 				 ConvertPharMojo.class, session,
-				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
 				 "convert-phar",
 				 config);
 		 convertMojo.execute();
@@ -94,7 +94,7 @@ import org.phpmaven.test.AbstractTestCase;
 				 "</configuration>"));
 		 convertMojo = this.createConfiguredMojo(
 				 ConvertPharMojo.class, session,
-				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
 				 "convert-phar",
 				 config);
 		 convertMojo.execute();

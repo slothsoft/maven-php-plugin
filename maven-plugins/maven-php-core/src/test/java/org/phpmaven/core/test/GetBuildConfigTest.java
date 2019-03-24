@@ -51,7 +51,7 @@ public class GetBuildConfigTest extends AbstractTestCase {
 		final MavenSession session = createSimpleSession("core/pom-with-buildconfig-childoverwrite");
 		final Xpp3Dom dom = factory.getBuildConfig(
 				session.getCurrentProject(),
-				"org.phpmaven",
+				"de.slothsoft.phpmaven",
 				"maven-php-plugin-test");
 
 		Assertions.assertNotNull(dom);

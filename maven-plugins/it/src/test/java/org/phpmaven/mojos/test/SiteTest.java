@@ -48,8 +48,8 @@ public class SiteTest extends AbstractTestCase {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-all");
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "pom");
-		verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "phar");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "phar");
 		verifier.setAutoclean(true);
 
 		final List<String> goals = new ArrayList<String>();
@@ -88,8 +88,8 @@ public class SiteTest extends AbstractTestCase {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-all");
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "pom");
-		verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "phar");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "phar");
 		verifier.setAutoclean(true);
 
 		final List<String> goals = new ArrayList<String>();
@@ -123,8 +123,8 @@ public class SiteTest extends AbstractTestCase {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-clover");
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "pom");
-		verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "phar");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "phar");
 		verifier.setAutoclean(true);
 
 		final List<String> goals = new ArrayList<String>();
@@ -156,8 +156,8 @@ public class SiteTest extends AbstractTestCase {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-bootstrap");
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "pom");
-		verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "phar");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "phar");
 		verifier.setAutoclean(true);
 
 		final List<String> goals = new ArrayList<String>();
@@ -185,8 +185,8 @@ public class SiteTest extends AbstractTestCase {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-all");
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "pom");
-		verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "phar");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "phar");
 		verifier.setAutoclean(true);
 
 		final List<String> goals = new ArrayList<String>();
@@ -226,8 +226,8 @@ public class SiteTest extends AbstractTestCase {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-phpdoc-pear");
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "pom");
-		verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "phar");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "phar");
 		verifier.setAutoclean(true);
 
 		final List<String> goals = new ArrayList<String>();
@@ -257,8 +257,8 @@ public class SiteTest extends AbstractTestCase {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-phpdoc-dep");
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "pom");
-		verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "phar");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "phar");
 		verifier.setAutoclean(true);
 
 		final List<String> goals = new ArrayList<String>();
@@ -298,8 +298,8 @@ public class SiteTest extends AbstractTestCase {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-phpdoc-ndep");
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "pom");
-		verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "phar");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "phar");
 		verifier.setAutoclean(true);
 
 		final List<String> goals = new ArrayList<String>();
@@ -341,8 +341,8 @@ public class SiteTest extends AbstractTestCase {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-phpdoc-ndep2");
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "pom");
-		verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "phar");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "phar");
 		verifier.setAutoclean(true);
 
 		final List<String> goals = new ArrayList<String>();
@@ -384,8 +384,8 @@ public class SiteTest extends AbstractTestCase {
 //        final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-phpdoc2-alpha");
 //
 //        // delete the pom from previous runs
-//        verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "pom");
-//        verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "phar");
+//        verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "pom");
+//        verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "phar");
 //        verifier.setAutoclean(true);
 //
 //        final List<String> goals = new ArrayList<String>();
@@ -413,8 +413,8 @@ public class SiteTest extends AbstractTestCase {
 //        final Verifier verifier = this.getPhpMavenVerifier("mojos-sites/site-phpdoc2-alpha2");
 //
 //        // delete the pom from previous runs
-//        verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "pom");
-//        verifier.deleteArtifact("org.phpmaven.test", "site-all", "0.0.1", "phar");
+//        verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "pom");
+//        verifier.deleteArtifact("de.slothsoft.phpmaven.test", "site-all", "0.0.1", "phar");
 //        verifier.setAutoclean(true);
 //
 //        final List<String> goals = new ArrayList<String>();

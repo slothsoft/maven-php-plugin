@@ -46,7 +46,7 @@ public class LintChecker implements ILintChecker {
 	/**
 	 * 
 	 */
-	private static final String GROUPID = "org.phpmaven";
+	private static final String GROUPID = "de.slothsoft.phpmaven";
 
 	/**
      * Thread count.

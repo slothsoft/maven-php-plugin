@@ -173,7 +173,7 @@ import org.phpmaven.phpexec.library.IPhpExecutable;
  * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
  * @since 2.0.0
  */
-@BuildPluginConfiguration(groupId = "org.phpmaven", artifactId = "maven-php-exec")
+@BuildPluginConfiguration(groupId = "de.slothsoft.phpmaven", artifactId = "maven-php-exec")
 public interface IPhpExecutableConfiguration extends org.phpmaven.phpexec.library.IPhpExecutableConfiguration {
 	
     /**

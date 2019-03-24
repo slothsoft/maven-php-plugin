@@ -62,7 +62,7 @@ import org.phpmaven.test.AbstractTestCase;
 				 "</configuration>"));
 		 final UnpackPharMojo unpackMojo = this.createConfiguredMojo(
 				 UnpackPharMojo.class, session,
-				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
 				 "extract-phar",
 				 config);
 		 unpackMojo.execute();

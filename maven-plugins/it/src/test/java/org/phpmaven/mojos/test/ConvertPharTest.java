@@ -46,8 +46,8 @@ public class ConvertPharTest extends AbstractTestCase {
 		final Verifier verifierDep1 = this.getPhpMavenVerifier("mojos-phar/phar-with-dep1-folders");
 
 		// delete the pom from previous runs
-		verifierDep1.deleteArtifact("org.phpmaven.test", "phar-with-dep1-folders", "0.0.1", "pom");
-		verifierDep1.deleteArtifact("org.phpmaven.test", "phar-with-dep1-folders", "0.0.1", "phar");
+		verifierDep1.deleteArtifact("de.slothsoft.phpmaven.test", "phar-with-dep1-folders", "0.0.1", "pom");
+		verifierDep1.deleteArtifact("de.slothsoft.phpmaven.test", "phar-with-dep1-folders", "0.0.1", "phar");
 
 		// execute testing
 		verifierDep1.executeGoal("package");
@@ -68,7 +68,7 @@ public class ConvertPharTest extends AbstractTestCase {
 		verifierDep1.addCliOption("-Dto="+
 				phar.getAbsolutePath().substring(0, phar.getAbsolutePath().length() - 4) + "zip");
 
-		verifierDep1.executeGoal("org.phpmaven:maven-php-plugin:convert-phar");
+		verifierDep1.executeGoal("de.slothsoft.phpmaven:maven-php-plugin:convert-phar");
 
 		// verify no error was thrown
 		verifierDep1.verifyErrorFreeLog();
@@ -85,7 +85,7 @@ public class ConvertPharTest extends AbstractTestCase {
 		verifierDep1.addCliOption("-Dto="+
 				phar.getAbsolutePath().substring(0, phar.getAbsolutePath().length() - 4) + "jar");
 
-		verifierDep1.executeGoal("org.phpmaven:maven-php-plugin:convert-phar");
+		verifierDep1.executeGoal("de.slothsoft.phpmaven:maven-php-plugin:convert-phar");
 
 		// verify no error was thrown
 		verifierDep1.verifyErrorFreeLog();
@@ -102,7 +102,7 @@ public class ConvertPharTest extends AbstractTestCase {
 		verifierDep1.addCliOption("-Dto="+
 				phar.getAbsolutePath().substring(0, phar.getAbsolutePath().length() - 4) + "2.phar");
 
-		verifierDep1.executeGoal("org.phpmaven:maven-php-plugin:convert-phar");
+		verifierDep1.executeGoal("de.slothsoft.phpmaven:maven-php-plugin:convert-phar");
 
 		// verify no error was thrown
 		verifierDep1.verifyErrorFreeLog();
@@ -114,7 +114,7 @@ public class ConvertPharTest extends AbstractTestCase {
 
 		verifierDep1.getCliOptions().clear();
 		verifierDep1.addCliOption("-Dphar=target/phar-with-dep1-folders-0.0.1.2.phar");
-		verifierDep1.executeGoal("org.phpmaven:maven-php-plugin:list-phar-files");
+		verifierDep1.executeGoal("de.slothsoft.phpmaven:maven-php-plugin:list-phar-files");
 		@SuppressWarnings("unchecked")
 		final List<String> lines = verifierDep1.loadFile(verifierDep1.getBasedir(), verifierDep1.getLogFileName(), false);
 		boolean found1 = false;

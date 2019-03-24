@@ -175,7 +175,7 @@ public class ProjectPhpExecution implements IProjectPhpExecution {
             final Xpp3Dom mojoConfig, final MavenProject project, final MavenSession mavenSession)
         throws PlexusConfigurationException, ComponentLookupException {
         final List<Xpp3Dom> configs = new ArrayList<Xpp3Dom>();
-        final Xpp3Dom buildConfig = this.componentFactory.getBuildConfig(project, "org.phpmaven", "maven-php-project");
+        final Xpp3Dom buildConfig = this.componentFactory.getBuildConfig(project, "de.slothsoft.phpmaven", "maven-php-project");
         if (buildConfig != null && buildConfig.getChild("executableConfig") != null) {
             configs.add(buildConfig.getChild("executableConfig"));
         }
@@ -216,7 +216,7 @@ public class ProjectPhpExecution implements IProjectPhpExecution {
             final Xpp3Dom mojoConfig, final MavenProject project, final MavenSession mavenSession)
         throws PlexusConfigurationException, ComponentLookupException {
         final List<Xpp3Dom> configs = new ArrayList<Xpp3Dom>();
-        final Xpp3Dom buildConfig = this.componentFactory.getBuildConfig(project, "org.phpmaven", "maven-php-project");
+        final Xpp3Dom buildConfig = this.componentFactory.getBuildConfig(project, "de.slothsoft.phpmaven", "maven-php-project");
         if (buildConfig != null && buildConfig.getChild("executableConfig") != null) {
             configs.add(buildConfig.getChild("executableConfig"));
         }
@@ -573,7 +573,7 @@ public class ProjectPhpExecution implements IProjectPhpExecution {
      */
     private File getDepsDir(Xpp3Dom mojoConfig, MavenProject project, MavenSession mavenSession)
         throws ExpressionEvaluationException {
-        final Xpp3Dom buildConfig = this.componentFactory.getBuildConfig(project, "org.phpmaven", "maven-php-project");
+        final Xpp3Dom buildConfig = this.componentFactory.getBuildConfig(project, "de.slothsoft.phpmaven", "maven-php-project");
         File depsDir;
         if (buildConfig == null || buildConfig.getChild("dependenciesDir") == null) {
             depsDir = this.componentFactory.filterString(
@@ -605,7 +605,7 @@ public class ProjectPhpExecution implements IProjectPhpExecution {
      */
     private File getTestDepsDir(Xpp3Dom mojoConfig, MavenProject project, MavenSession mavenSession)
         throws ExpressionEvaluationException {
-        final Xpp3Dom buildConfig = this.componentFactory.getBuildConfig(project, "org.phpmaven", "maven-php-project");
+        final Xpp3Dom buildConfig = this.componentFactory.getBuildConfig(project, "de.slothsoft.phpmaven", "maven-php-project");
         File depsDir;
         if (buildConfig == null || buildConfig.getChild("testDependenciesDir") == null) {
             depsDir = this.componentFactory.filterString(

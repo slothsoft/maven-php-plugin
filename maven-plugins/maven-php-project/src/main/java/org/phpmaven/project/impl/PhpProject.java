@@ -72,7 +72,7 @@ public class PhpProject implements IPhpProject {
 	/**
 	 * 
 	 */
-	private static final String GROUPID = "org.phpmaven";
+	private static final String GROUPID = "de.slothsoft.phpmaven";
 
 	/**
 	 * the component factory

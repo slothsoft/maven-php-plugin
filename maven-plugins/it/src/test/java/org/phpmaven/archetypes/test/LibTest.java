@@ -43,7 +43,7 @@ public class LibTest extends AbstractTestCase {
 		this.installPhpParentPom();
 		this.installArchetypes();
 
-		verifier.addCliOption("-DarchetypeGroupId=org.phpmaven");
+		verifier.addCliOption("-DarchetypeGroupId=de.slothsoft.phpmaven");
 		verifier.addCliOption("-DarchetypeArtifactId=php5-lib-archetype");
 		verifier.addCliOption("-DarchetypeVersion=2.0.3-SNAPSHOT");
 		verifier.addCliOption("-DgroupId=org.sample");

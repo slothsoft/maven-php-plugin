@@ -42,8 +42,8 @@ public class CopyTest extends AbstractTestCase {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-compile/source-copy");
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "source-copy", "0.0.1", "pom");
-		verifier.deleteArtifact("org.phpmaven.test", "source-copy", "0.0.1", "phar");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "source-copy", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "source-copy", "0.0.1", "phar");
 		verifier.setAutoclean(true);
 
 		verifier.executeGoal("compile");
@@ -64,8 +64,8 @@ public class CopyTest extends AbstractTestCase {
 		final Verifier verifier = this.getPhpMavenVerifier("mojos-compile/source-copy");
 
 		// delete the pom from previous runs
-		verifier.deleteArtifact("org.phpmaven.test", "source-copy", "0.0.1", "pom");
-		verifier.deleteArtifact("org.phpmaven.test", "source-copy", "0.0.1", "phar");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "source-copy", "0.0.1", "pom");
+		verifier.deleteArtifact("de.slothsoft.phpmaven.test", "source-copy", "0.0.1", "phar");
 		verifier.setAutoclean(true);
 
 		verifier.executeGoal("test-compile");

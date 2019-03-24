@@ -54,14 +54,14 @@ import org.phpmaven.test.AbstractTestCase;
 
 		 final PhpResources resourcesMojo = this.createConfiguredMojo(
 				 PhpResources.class, session,
-				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
 
 		 final PhpPhar pharMojo = this.createConfiguredMojo(
 				 PhpPhar.class, session,
-				 "org.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
 				 "phar",
 				 new Xpp3Dom("configuration"));
 		 pharMojo.execute();

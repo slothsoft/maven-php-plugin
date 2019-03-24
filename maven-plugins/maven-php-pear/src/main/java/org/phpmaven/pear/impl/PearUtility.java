@@ -253,7 +253,7 @@ public class PearUtility  extends org.phpmaven.pear.library.impl.PearUtility imp
         final Build build = project.getBuild();
         if (build != null) {
             for (final Plugin plugin : build.getPlugins()) {
-                if ("org.phpmaven".equals(plugin.getGroupId()) &&
+                if ("de.slothsoft.phpmaven".equals(plugin.getGroupId()) &&
                         "maven-php-plugin".equals(plugin.getArtifactId())) {
                     final Xpp3Dom dom = (Xpp3Dom) plugin.getConfiguration();
                     final Xpp3Dom pearChannelsDom = dom.getChild("pearChannels");
