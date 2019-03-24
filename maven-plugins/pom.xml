@@ -12,7 +12,7 @@
 	<artifactId>maven-plugins</artifactId>
 	<packaging>pom</packaging>
 
-	<name>site</name>
+	<name>maven-plugins</name>
 
 	<description>
         A Maven plugin for dependency management and quality assurance in PHP projects. Uses
