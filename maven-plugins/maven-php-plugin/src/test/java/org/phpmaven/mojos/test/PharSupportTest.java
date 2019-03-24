@@ -38,7 +38,7 @@ import org.phpmaven.test.AbstractTestCase;
  * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 2.0.0
  */
-@Disabled
+
  public class PharSupportTest extends AbstractTestCase {
 
 
@@ -54,14 +54,14 @@ import org.phpmaven.test.AbstractTestCase;
 
 		 final PhpResources resourcesMojo = this.createConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
 
 		 final PhpPhar pharMojo = this.createConfiguredMojo(
 				 PhpPhar.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "phar",
 				 new Xpp3Dom("configuration"));
 		 pharMojo.execute();

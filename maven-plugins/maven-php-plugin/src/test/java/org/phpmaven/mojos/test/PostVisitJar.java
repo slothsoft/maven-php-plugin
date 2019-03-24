@@ -33,7 +33,7 @@ import org.phpmaven.test.AbstractTestCase;
  * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 2.0.0
  */
-@Disabled
+
  public class PostVisitJar extends AbstractTestCase {
 
 	 /**

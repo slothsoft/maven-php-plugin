@@ -35,7 +35,7 @@ import org.phpmaven.test.AbstractTestCase;
  * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 2.0.0
  */
-@Disabled
+
  public class UnpackPharTest extends AbstractTestCase {
 
 	 /**
@@ -62,7 +62,7 @@ import org.phpmaven.test.AbstractTestCase;
 				 "</configuration>"));
 		 final UnpackPharMojo unpackMojo = this.createConfiguredMojo(
 				 UnpackPharMojo.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extract-phar",
 				 config);
 		 unpackMojo.execute();

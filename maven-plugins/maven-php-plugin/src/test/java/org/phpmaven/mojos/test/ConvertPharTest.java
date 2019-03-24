@@ -39,7 +39,7 @@ import org.phpmaven.test.AbstractTestCase;
  * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 2.0.0
  */
-@Disabled
+
  public class ConvertPharTest extends AbstractTestCase {
 
 	 /**
@@ -68,7 +68,7 @@ import org.phpmaven.test.AbstractTestCase;
 				 "</configuration>"));
 		 ConvertPharMojo convertMojo = this.createConfiguredMojo(
 				 ConvertPharMojo.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "convert-phar",
 				 config);
 		 convertMojo.execute();
@@ -80,7 +80,7 @@ import org.phpmaven.test.AbstractTestCase;
 				 "</configuration>"));
 		 convertMojo = this.createConfiguredMojo(
 				 ConvertPharMojo.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "convert-phar",
 				 config);
 		 convertMojo.execute();
@@ -94,7 +94,7 @@ import org.phpmaven.test.AbstractTestCase;
 				 "</configuration>"));
 		 convertMojo = this.createConfiguredMojo(
 				 ConvertPharMojo.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "convert-phar",
 				 config);
 		 convertMojo.execute();

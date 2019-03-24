@@ -58,13 +58,13 @@ import org.phpmaven.test.AbstractTestCase;
 
 		 final PhpResources resourcesMojo = this.createConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
 		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
@@ -72,20 +72,20 @@ import org.phpmaven.test.AbstractTestCase;
 		 this.resolveProjectDependencies(session);
 		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
 		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
 		 final PhpTest test = this.createConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 test.execute();
@@ -103,13 +103,13 @@ import org.phpmaven.test.AbstractTestCase;
 
 		 final PhpResources resourcesMojo = this.createConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
 		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
@@ -117,13 +117,13 @@ import org.phpmaven.test.AbstractTestCase;
 		 this.resolveProjectDependencies(session);
 		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
 		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
@@ -134,7 +134,7 @@ import org.phpmaven.test.AbstractTestCase;
 				 "</configuration>"));
 		 final PhpTest test = this.createConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 config);
 		 test.execute();
@@ -153,13 +153,13 @@ import org.phpmaven.test.AbstractTestCase;
 
 		 final PhpResources resourcesMojo = this.createConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
 		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
@@ -167,20 +167,20 @@ import org.phpmaven.test.AbstractTestCase;
 		 this.resolveProjectDependencies(session);
 		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
 		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
 		 final PhpTest test = this.createConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 test.execute();
@@ -198,13 +198,13 @@ import org.phpmaven.test.AbstractTestCase;
 
 		 final PhpResources resourcesMojo = this.createConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
 		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
@@ -212,20 +212,20 @@ import org.phpmaven.test.AbstractTestCase;
 		 this.resolveProjectDependencies(session);
 		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
 		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
 		 final PhpTest test = this.createConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 test.execute();
@@ -243,13 +243,13 @@ import org.phpmaven.test.AbstractTestCase;
 
 		 final PhpResources resourcesMojo = this.createConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
 		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
@@ -257,20 +257,20 @@ import org.phpmaven.test.AbstractTestCase;
 		 this.resolveProjectDependencies(session);
 		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
 		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
 		 final PhpTest test = this.createConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 test.execute();
@@ -288,13 +288,13 @@ import org.phpmaven.test.AbstractTestCase;
 
 		 final PhpResources resourcesMojo = this.createConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
 		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
@@ -302,20 +302,20 @@ import org.phpmaven.test.AbstractTestCase;
 		 this.resolveProjectDependencies(session);
 		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
 		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
 		 final PhpTest test = this.createConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 test.execute();
@@ -334,13 +334,13 @@ import org.phpmaven.test.AbstractTestCase;
 
 		 final PhpResources resourcesMojo = this.createConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
 		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
@@ -348,20 +348,20 @@ import org.phpmaven.test.AbstractTestCase;
 		 this.resolveProjectDependencies(session);
 		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
 		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
 		 final PhpTest test = this.createConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 try {
@@ -385,13 +385,13 @@ import org.phpmaven.test.AbstractTestCase;
 
 		 final PhpResources resourcesMojo = this.createConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
 		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
@@ -399,20 +399,20 @@ import org.phpmaven.test.AbstractTestCase;
 		 this.resolveProjectDependencies(session);
 		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
 		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
 		 final PhpTest test = this.createConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 test.execute();
@@ -431,13 +431,13 @@ import org.phpmaven.test.AbstractTestCase;
 
 		 final PhpResources resourcesMojo = this.createConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
 		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
@@ -445,20 +445,20 @@ import org.phpmaven.test.AbstractTestCase;
 		 this.resolveProjectDependencies(session);
 		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
 		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
 		 final PhpTest test = this.createConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 test.execute();
@@ -477,13 +477,13 @@ import org.phpmaven.test.AbstractTestCase;
 
 		 final PhpResources resourcesMojo = this.createConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
 		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
@@ -491,20 +491,20 @@ import org.phpmaven.test.AbstractTestCase;
 		 this.resolveProjectDependencies(session);
 		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
 		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
 		 final PhpTest test = this.createConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 test.execute();
@@ -522,13 +522,13 @@ import org.phpmaven.test.AbstractTestCase;
 
 		 final PhpResources resourcesMojo = this.createConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
 		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
@@ -536,20 +536,20 @@ import org.phpmaven.test.AbstractTestCase;
 		 this.resolveProjectDependencies(session);
 		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
 		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
 		 final PhpTest test = this.createConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "2.0.3-SNAPSHOT",
+				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 try {
