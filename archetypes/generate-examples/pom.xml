@@ -1,0 +1,137 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>de.slothsoft.phpmaven.archetypes</groupId>
+		<artifactId>archetypes</artifactId>
+		<version>0.9.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>generate-examples</artifactId>
+	<name>generate-examples</name>
+	<packaging>pom</packaging>
+
+	<properties>
+		<mavenExecutable>mvn</mavenExecutable>
+		<exampleFolder>../../examples/</exampleFolder>
+	</properties>
+
+	<build>
+		<plugins>
+
+			<!-- Clean the example folders -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>clean-example-folders</id>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+						<phase>package</phase>
+						<configuration>
+							<filesets>
+								<fileset>
+									<directory>${exampleFolder}</directory>
+									<includes>
+										<include>**/*</include>
+									</includes>
+								</fileset>
+							</filesets>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Execute the archetypes -->
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+
+				<!-- General Configuration -->
+
+				<configuration>
+					<executable>"${mavenExecutable}"</executable>
+					<basedir>${exampleFolder}</basedir>
+					<arguments>
+						<argument>archetype:generate</argument>
+
+						<argument>-DarchetypeGroupId=de.slothsoft.phpmaven.archetypes</argument>
+						<argument>-DarchetypeVersion=${project.version}</argument>
+						<argument>-DgroupId=org.acme</argument>
+						<argument>-Dversion=0.1.2-SNAPSHOT</argument>
+						<argument>-DinteractiveMode=false</argument>
+					</arguments>
+				</configuration>
+
+				<!-- Create all the Archetypes -->
+
+				<executions>
+					<execution>
+						<id>php5-doctrine-archetype</id>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<phase>package</phase>
+						<configuration>
+							<arguments combine.children="append">
+								<argument>-DarchetypeArtifactId=php5-doctrine-archetype</argument>
+								<argument>-DartifactId=php5-doctrine</argument>
+								<argument>-Dpackage=org.acme.doctrine</argument>
+							</arguments>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>php5-lib-archetype</id>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<phase>package</phase>
+						<configuration>
+							<arguments combine.children="append">
+								<argument>-DarchetypeArtifactId=php5-lib-archetype</argument>
+								<argument>-DartifactId=php5-lib</argument>
+								<argument>-Dpackage=org.acme.lib</argument>
+							</arguments>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>php5-web-archetype</id>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<phase>package</phase>
+						<configuration>
+							<arguments combine.children="append">
+								<argument>-DarchetypeArtifactId=php5-web-archetype</argument>
+								<argument>-DartifactId=php5-web</argument>
+								<argument>-Dpackage=org.acme.web</argument>
+							</arguments>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>php5-zend-archetype</id>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<phase>package</phase>
+						<configuration>
+							<arguments combine.children="append">
+								<argument>-DarchetypeArtifactId=php5-zend-archetype</argument>
+								<argument>-DartifactId=php5-zend</argument>
+								<argument>-Dpackage=org.acme.zend</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

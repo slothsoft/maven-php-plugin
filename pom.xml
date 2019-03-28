@@ -9,6 +9,7 @@
 
 	<modules>
 		<module>archetypes</module>
+		<module>examples</module>
 		<module>maven-plugins</module>
 		<module>pear-java</module>
 		<module>phpexec-java</module>
@@ -299,6 +300,11 @@
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>2.3.2</version>
 					<configuration>
@@ -421,6 +427,11 @@
 					<configuration>
 						<argLine>-Xms400m -Xmx400m</argLine>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>1.6.0</version>
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.plexus</groupId>

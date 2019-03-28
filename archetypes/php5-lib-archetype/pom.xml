@@ -10,7 +10,6 @@
 		<version>0.9.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>de.slothsoft.phpmaven</groupId>
 	<artifactId>php5-lib-archetype</artifactId>
 	<packaging>maven-archetype</packaging>
 
