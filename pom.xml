@@ -9,7 +9,6 @@
 
 	<modules>
 		<module>archetypes</module>
-		<module>examples</module>
 		<module>maven-plugins</module>
 		<module>pear-java</module>
 		<module>phpexec-java</module>
