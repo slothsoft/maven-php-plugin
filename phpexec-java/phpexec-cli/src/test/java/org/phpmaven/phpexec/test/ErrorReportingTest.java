@@ -26,6 +26,7 @@ import org.junit.jupiter.api.Test;
 import org.phpmaven.phpexec.cli.PhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.phpexec.library.IPhpExecutableConfiguration;
+import org.phpmaven.phpexec.library.PhpErrorException;
 import org.phpmaven.test.IgnoreWhen;
 import org.phpmaven.test.PhpMissing;
 
@@ -38,7 +39,10 @@ import org.phpmaven.test.PhpMissing;
  */
 public class ErrorReportingTest {
 
-	// XXX [slothsoft]: I have no idea why the next two tests won't work any longer
+	// TODO [slothsoft]: The old testFalse() and testEALL() didn't expect an exception; I
+	// do (according to the API doc
+	// https://www.php.net/manual/de/function.trigger-error.php); so if this ever stops
+	// throwing an exception, I was wrong
 
 	/**
 	 * Tests if the execution is aware of detecting error while setting error_reporting in the script.
@@ -54,7 +58,7 @@ public class ErrorReportingTest {
 
 		// assert that the execution is aware of detecting the error
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assertions.assertTrue(exec.execute(defineTestPhp).contains("some deprecated warning"));
+		Assertions.assertThrows(PhpErrorException.class, () -> exec.execute(defineTestPhp));
 	}
 
 
@@ -73,7 +77,7 @@ public class ErrorReportingTest {
 
 		// assert that the execution is aware of detecting the error
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assertions.assertTrue(exec.execute(defineTestPhp).contains("some deprecated warning"));
+		Assertions.assertThrows(PhpErrorException.class, () -> exec.execute(defineTestPhp));
 	}
 
 	/**
