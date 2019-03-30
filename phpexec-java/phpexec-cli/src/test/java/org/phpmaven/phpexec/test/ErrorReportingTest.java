@@ -22,7 +22,6 @@ package org.phpmaven.phpexec.test;
 import java.io.File;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.phpmaven.phpexec.cli.PhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
@@ -47,7 +46,6 @@ public class ErrorReportingTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
-	@Disabled
 	@IgnoreWhen(PhpMissing.class)
 	public void testFalse() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
@@ -66,7 +64,6 @@ public class ErrorReportingTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
-	@Disabled
 	@IgnoreWhen(PhpMissing.class)
 	public void testEALL() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
