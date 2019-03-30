@@ -1,7 +1,0 @@
-
-mvn install:install-file -DgroupId=de.slothsoft.phars -Dpackaging=phar -Dfile=<path-to-file> -DartifactId=<artifactId> -Dversion=<version>
-
-mvn install:install-file -DgroupId=de.slothsoft.phars -Dpackaging=phar -Dfile=phpunit-7.5.8.phar -DartifactId=phpunit -Dversion=7.5.8
-
-
-mvn deploy:deploy-file -DgeneratePom=false -DrepositoryId=nexus -Durl=http://localhost:8081/nexus/content/repositories/releases -DpomFile=pom.xml -Dfile=target/project-1.0.0.jar
