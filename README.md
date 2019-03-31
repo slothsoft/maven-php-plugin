@@ -17,7 +17,7 @@ This project is forked from various repositories by [php-maven](https://github.c
 
 ### Prerequisites
 
-You need at least **Java 1.6** to run or use this framework. You also must have at least **PHP 5.4** on your `PATH`, so that the command `php -v` returns something useful.
+You need at least **Java 1.8** to run or use this framework. You also must have at least **PHP 5.4** on your `PATH`, so that the command `php -v` returns something useful.
 
 
 ### Installing
