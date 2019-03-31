@@ -21,7 +21,6 @@ import java.util.Iterator;
 
 import org.apache.maven.execution.MavenSession;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.dependency.IAction;
@@ -45,7 +44,6 @@ import org.phpmaven.test.AbstractTestCase;
  */
 public class BaseTest extends AbstractTestCase {
 
-	// XXX [slothsoft]: I have no idea why some tests won't work any longer
 
 	/**
 	 * Tests if the dependencies are correctly configured.
@@ -54,7 +52,6 @@ public class BaseTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
 	public void testBasic() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -166,7 +163,6 @@ public class BaseTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
 	public void testBootstrap() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
