@@ -116,7 +116,6 @@ public class BaseTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
-	@Disabled
 	public void testInstalledPackages() throws Exception {
 		final IPearChannel channel = getChannel(true);
 
@@ -171,7 +170,6 @@ public class BaseTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
-	@Disabled
 	public void testKnownPackagesFailed() throws Exception {
 		final IPearChannel channel = getChannel(true);
 
@@ -257,7 +255,6 @@ public class BaseTest {
 	 * @throws Exception exception
 	 */
 	@Test
-	@Disabled
 	public void testPackageInstallation() throws Exception {
 		final IPearUtility util = getPearUtility(true, true);
 		final IPearChannel channel = util.lookupChannel("pear");

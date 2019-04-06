@@ -38,8 +38,6 @@ import org.phpmaven.phpexec.cli.PhpExecutableConfiguration;
  */
 public class ChannelAddTest {
 
-	// XXX [slothsoft]: I have no idea why some tests won't work any longer
-
 	/**
 	 * Tests if we can add a channel locally.
 	 *
@@ -47,7 +45,6 @@ public class ChannelAddTest {
 	 */
 
 	@Test
-	@Disabled
 	@SuppressWarnings("unchecked")
 	public void testChannelAdd() throws Exception {
 		final File testDir = new File("target/test").getAbsoluteFile();
