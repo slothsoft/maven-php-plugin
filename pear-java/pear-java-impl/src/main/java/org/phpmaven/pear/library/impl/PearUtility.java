@@ -176,7 +176,7 @@ public class PearUtility implements IPearUtility {
         
         final IPhpExecutable php = this.getExec();
         final String result = php.executeCode("",
-                "error_reporting(E_ALL);\n" +
+                "error_reporting(E_ERROR | E_PARSE);\n" +
                 "Phar::loadPhar('" +
                 goPear.getAbsolutePath().replace("\\", "\\\\") + "', 'go-pear.phar');\n" +
                 "require_once 'phar://go-pear.phar/PEAR/Start/CLI.php';\n" +
