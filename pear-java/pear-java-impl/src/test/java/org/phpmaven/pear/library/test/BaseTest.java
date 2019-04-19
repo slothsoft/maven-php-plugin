@@ -36,7 +36,6 @@ import java.util.zip.ZipFile;
 import org.codehaus.plexus.util.FileUtils;
 import org.codehaus.plexus.util.IOUtil;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.phpmaven.pear.library.IMaintainer;
 import org.phpmaven.pear.library.IPackage;
@@ -108,8 +107,6 @@ public class BaseTest {
 		Assertions.assertNotNull(maintainers);
 	}
 
-	// XXX [slothsoft]: I have no idea why some tests won't work any longer
-
 	/**
 	 * Tests if the package infos can be fetched.
 	 *
@@ -145,23 +142,23 @@ public class BaseTest {
 
 		Assertions.assertEquals("Archive_Tar", pkgArchiveTar.getPackageName());
 		Assertions.assertNotNull(pkgArchiveTar.getInstalledVersion());
-		Assertions.assertEquals("1.3.7", pkgArchiveTar.getInstalledVersion().getVersion().getPearVersion());
+		Assertions.assertEquals("1.4.7", pkgArchiveTar.getInstalledVersion().getVersion().getPearVersion());
 
 		Assertions.assertEquals("Console_Getopt", pkgConsoleGetopt.getPackageName());
 		Assertions.assertNotNull(pkgConsoleGetopt.getInstalledVersion());
-		Assertions.assertEquals("1.3.0", pkgConsoleGetopt.getInstalledVersion().getVersion().getPearVersion());
+		Assertions.assertEquals("1.4.2", pkgConsoleGetopt.getInstalledVersion().getVersion().getPearVersion());
 
 		Assertions.assertEquals("PEAR", pkgPEAR.getPackageName());
 		Assertions.assertNotNull(pkgPEAR.getInstalledVersion());
-		Assertions.assertEquals("1.9.4", pkgPEAR.getInstalledVersion().getVersion().getPearVersion());
+		Assertions.assertEquals("1.10.9", pkgPEAR.getInstalledVersion().getVersion().getPearVersion());
 
 		Assertions.assertEquals("Structures_Graph", pkgStructuresGraph.getPackageName());
 		Assertions.assertNotNull(pkgStructuresGraph.getInstalledVersion());
-		Assertions.assertEquals("1.0.4", pkgStructuresGraph.getInstalledVersion().getVersion().getPearVersion());
+		Assertions.assertEquals("1.1.1", pkgStructuresGraph.getInstalledVersion().getVersion().getPearVersion());
 
 		Assertions.assertEquals("XML_Util", pkgXmlUtil.getPackageName());
 		Assertions.assertNotNull(pkgXmlUtil.getInstalledVersion());
-		Assertions.assertEquals("1.2.1", pkgXmlUtil.getInstalledVersion().getVersion().getPearVersion());
+		Assertions.assertEquals("1.4.3", pkgXmlUtil.getInstalledVersion().getVersion().getPearVersion());
 	}
 
 	/**

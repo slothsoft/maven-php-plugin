@@ -23,7 +23,6 @@ import java.io.File;
 import java.util.Collections;
 
 import org.codehaus.plexus.util.FileUtils;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.phpmaven.pear.library.IPearUtility;
 import org.phpmaven.pear.library.impl.PearUtility;

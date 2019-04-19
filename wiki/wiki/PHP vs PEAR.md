@@ -8,8 +8,9 @@ To fix this, [multiple PHP versions](https://windows.php.net/downloads/releases/
 
 | PHP        | PEAR 1.0.0    | PEAR 1.1.0    |
 | -----------| ------------- | ------------- |
-| 5.3.0      | x             | ✅             |
-| 5.6.40     | ✅             | x             |
-| 7.3.4      | ✅             | x             |
+| 5.3.0      | ✅             | ✖             |
+| 5.4.0      | ✅             | ✅             |
+| 5.6.40     | ✖             | ✅             |
+| 7.3.4      | ✖             | ✅             |
 
-The **conclusion** from these tests was:  
+The **conclusion** from these tests was: the minimum supported PHP version is 5.4.

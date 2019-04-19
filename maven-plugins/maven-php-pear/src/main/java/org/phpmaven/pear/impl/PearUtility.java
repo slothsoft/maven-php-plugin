@@ -60,6 +60,7 @@ import org.sonatype.aether.version.InvalidVersionSpecificationException;
  * Implementation of a pear utility via PHP.EXE and http-client.
  * 
  * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
+ * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 2.0.0
  */
 @Component(role = IMavenPearUtility.class, hint = "PHP_EXE", instantiationStrategy = "per-lookup")

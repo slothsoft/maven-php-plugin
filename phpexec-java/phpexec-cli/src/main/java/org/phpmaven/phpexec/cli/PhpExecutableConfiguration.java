@@ -41,6 +41,7 @@ import org.phpmaven.phpexec.library.PhpVersion;
  * Additional command line options, PHP.INI options and environment variables can be set.</p>
  * 
  * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
+ * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 0.1.8
  */
 public class PhpExecutableConfiguration implements IPhpExecutableConfiguration {
@@ -102,7 +103,7 @@ public class PhpExecutableConfiguration implements IPhpExecutableConfiguration {
     
     public PhpExecutableConfiguration() {
     	try {
-    		this.temporaryScriptFile = File.createTempFile("snippet", "php");
+    		this.temporaryScriptFile = File.createTempFile("snippet", ".php");
     		this.temporaryScriptFile.deleteOnExit();
     	} catch (IOException ex) {
     		// silently ignore

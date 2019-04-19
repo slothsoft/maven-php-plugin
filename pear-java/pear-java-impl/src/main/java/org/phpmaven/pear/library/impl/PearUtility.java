@@ -56,6 +56,7 @@ import org.phpmaven.phpexec.library.PhpWarningException;
  * Implementation of a pear utility via PHP.EXE and http-client.
  * 
  * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
+ * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 0.1.0
  */
 public class PearUtility implements IPearUtility {
