@@ -1,8 +1,11 @@
 language: java
 jdk:
 - oraclejdk8
-php:
-  - '5.4'
-  - '7.0'
-  - nightly
+
+matrix:
+  include:
+    - php: 5.4
+    - php: 7.0
+    - php: nightly
+
 script: mvn clean test javadoc:javadoc
