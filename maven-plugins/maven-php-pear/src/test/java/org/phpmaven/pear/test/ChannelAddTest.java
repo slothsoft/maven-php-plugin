@@ -19,7 +19,6 @@ package org.phpmaven.pear.test;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.monitor.logging.DefaultLog;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.pear.IPearConfiguration;
@@ -34,10 +33,7 @@ import org.phpmaven.test.AbstractTestCase;
  * @since 2.0.0
  */
 
-@Disabled
 public class ChannelAddTest extends AbstractTestCase {
-
-	// XXX [slothsoft]: ignoring tests is not okay
 
 	/**
 	 * Gets the maven session.

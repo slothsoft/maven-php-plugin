@@ -26,8 +26,15 @@ mvn install:install-file -DgroupId=de.slothsoft.phars -Dpackaging=phar -Dfile=ph
 mvn deploy:deploy-file -DgeneratePom=false -DrepositoryId=nexus -Durl=http://localhost:8081/nexus/content/repositories/releases -DpomFile=pom.xml -Dfile=target/project-1.0.0.jar
 ```
 
+
+
+# Uploaded PHARs
+
+- [PHPUnit](https://phar.phpunit.de/)
+
+
+
 # External Links
 
-- [PHPUnit Phars](https://phar.phpunit.de/)
 - [Guide to installing 3rd party JARs](https://maven.apache.org/guides/mini/guide-3rd-party-jars-local.html)
 - [How can I programmatically upload an artifact into Nexus 2?](https://support.sonatype.com/hc/en-us/articles/213465818-How-can-I-programmatically-upload-an-artifact-into-Nexus-2-)

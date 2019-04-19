@@ -40,10 +40,7 @@ import org.phpmaven.test.AbstractTestCase;
  * @since 2.0.0
  */
 
-@Disabled
 public class LocalInstallTest extends AbstractTestCase {
-
-	// XXX [slothsoft]: ignoring tests is not okay
 
 	/**
 	 * Gets the maven session.
@@ -53,24 +50,18 @@ public class LocalInstallTest extends AbstractTestCase {
 	private MavenSession getSession() throws Exception {
 		// create the execution config
 		final MavenSession session = this.createSessionForPhpMaven("pear/local-install");
-		final ArtifactRepositoryLayout layout = lookup(ArtifactRepositoryLayout.class);
-		final ArtifactRepositoryPolicy policy = new ArtifactRepositoryPolicy();
-		final MavenArtifactRepository phpMavenRepos = new MavenArtifactRepository(
-				"php-maven",
-				"http://repos.php-maven.org/releases",
-				layout,
-				policy,
-				policy);
-		session.getRequest().getRemoteRepositories().add(phpMavenRepos);
 		return session;
 	}
 
+	// FIXME [slothsoft]: I have no idea why some tests won't work any longer
+	
 	/**
 	 * Tests if the a pear package can be installed via maven repository.
 	 *
 	 * @throws Exception thrown on errors
 	 */
 	@Test
+	@Disabled
 	public void ignoretestLocalInstall() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);

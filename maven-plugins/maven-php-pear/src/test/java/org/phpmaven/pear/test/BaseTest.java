@@ -33,7 +33,6 @@ import org.apache.maven.plugin.logging.Log;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
 import org.codehaus.plexus.util.IOUtil;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.pear.IMavenPearVersion;
@@ -56,8 +55,6 @@ import com.google.common.base.Preconditions;
 
 public class BaseTest extends AbstractTestCase {
 
-	// XXX [slothsoft]: ignoring tests is not okay
-
 	/**
 	 * Tests if the pear utility can be created.
 	 *
@@ -65,7 +62,6 @@ public class BaseTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
 	public void testPUCreation() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -88,7 +84,6 @@ public class BaseTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
 	public void testPackageInstallation() throws Exception {
 		final IPearChannel channel = getChannel(true);
 		final IPackage pkg = channel.getPackage("Validate_AT");
@@ -115,7 +110,6 @@ public class BaseTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
 	public void testVersionMapping() throws Exception {
 		final IPearChannel channel = getChannel(false);
 
