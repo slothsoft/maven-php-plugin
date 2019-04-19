@@ -36,7 +36,7 @@ Link to Wiki?
 | Version       | Changes       |
 | ------------- | ------------- |
 | [1.0.0](https://github.com/slothsoft/maven-php-plugin/milestone/2?closed=1) | first stable release |
-| [0.9.0](https://github.com/slothsoft/maven-php-plugin/milestone/1?closed=1) | first try to get the framework to work again; contains a bunch of commented out test cases |
+| [0.9.0](https://github.com/slothsoft/maven-php-plugin/milestone/1?closed=1) | first try to get the framework to work again |
 
 
 

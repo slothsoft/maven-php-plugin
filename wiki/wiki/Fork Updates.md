@@ -80,6 +80,8 @@ goto:eof
 
 # Notable Other Changes
 
+_You can review [Milestone 0.9.0](https://github.com/slothsoft/maven-php-plugin/milestone/1?closed=1) to see all issues._
+
 | Change        | Reason        |
 | ------------- | ------------- |
 | Removed Cobertura and checkstyle  | no real code changes are planned and if they are, these tools or similar ones will be enabled again  |
@@ -87,8 +89,8 @@ goto:eof
 | removed distribution management  | these plug-ins will be released into Maven Central in the future  |
 | decluttered all the _pom.xml_ files <br> (removed everything I don't know or care for)  | to make them easier to maintain / review  |
 | modified Maven parent structure  | makes versions easier to maintain, since they're supposed to be stored in one single file (the uppermost _pom.xml_)  |
-| changed version to 0.9  | these projects need a re-release, but something might have been broken during the update process, so it's not a 1.0.0 (yet?)  |
+| changed version to 0.9  | these projects need a re-release, but something might have been broken during the update process, so it's not a 1.0.0 (yet)  |
 | changed group ID  | this project should be released to Maven Central, but Slothsoft can only release into the group `de.slothsoft` per definition  |
 | added `@author` | to comply with the [Apache License 2.0](https://github.com/php-maven/phpmaven-common-parent/blob/master/LICENSE) 4 (b) _"You must cause any modified files to carry prominent notices stating that You changed the files."_ | 
-| added [archetype examples](https://github.com/slothsoft/maven-php-plugin/tree/master/examples) and [generator for them](https://github.com/slothsoft/maven-php-plugin/tree/master/archetypes/generate-examples) | to link from them from the documentation; for change traceability; as blueprint for creating new projects; to debug archetypes  |
+| added [archetype examples](https://github.com/slothsoft/maven-php-plugin/tree/master/examples) and a [generator for them](https://github.com/slothsoft/maven-php-plugin/tree/master/archetypes/generate-examples) | to link to them from the documentation; for change traceability; as blueprint for creating new projects; to debug archetypes  |
 
