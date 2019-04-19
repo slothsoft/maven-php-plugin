@@ -3,4 +3,6 @@ jdk:
 - oraclejdk8
 php:
   - '5.4'
+  - '7.0'
+  - nightly
 script: mvn clean test javadoc:javadoc
