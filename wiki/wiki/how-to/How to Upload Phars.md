@@ -1,6 +1,6 @@
 After merging all kinds of projects together it turned out some of the Maven dependencies to PHARs were missing. They were uploaded into the package `de.slothsoft.phars` as well.
 
-_(See [#17 Upload PHARs](https://github.com/slothsoft/maven-php-plugin/issues/17).)_
+_(See [#17 Upload PHARs](https://github.com/slothsoft/maven-php-plugin/issues/17) for the struggle on what the packaging type "phar" meant.)_
 
 
 
@@ -9,7 +9,7 @@ _(See [#17 Upload PHARs](https://github.com/slothsoft/maven-php-plugin/issues/17
 To install a PHAR into a local repository, the following script was used:
 
 ```
-mvn install:install-file -DgroupId=de.slothsoft.phars -Dpackaging=phar -Dfile=<path-to-file> -DartifactId=<artifactId> -Dversion=<version>
+mvn install:install-file -DgroupId=<group-id> -Dpackaging=<packaging> -Dfile=<path-to-file> -DartifactId=<artifactId> -Dversion=<version>
 ```
 
 For example:
@@ -30,7 +30,20 @@ mvn deploy:deploy-file -DgeneratePom=false -DrepositoryId=nexus -Durl=http://loc
 
 # Uploaded PHARs
 
-- [PHPUnit](https://phar.phpunit.de/)
+## PHPUnit
+
+- **Source:** [PHPUnit](https://phar.phpunit.de/)
+- **Uploaded Versions:** 3.7.10 (the closest to the version used in the build), 7.5.8
+
+```xml
+<dependency>
+	<groupId>de.slothsoft.phars</groupId>
+	<artifactId>phpunit</artifactId>
+	<version>3.7.10</version>
+	<scope>test</scope>
+	<type>phar</type>
+</dependency>
+```
 
 
 

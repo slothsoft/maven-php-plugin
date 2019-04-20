@@ -12,4 +12,4 @@ The _README.md_ is updated automatically after a Maven build.
 
 # PHP Version
 
-The minimum PHP version is the lowest version to build against in the _.travis.yml_. However it should be defined in the  _README.md_, too.
+The minimum PHP version is the lowest version to build against in the _.travis.yml_. However it should be documented in the  _README.md_, too.
