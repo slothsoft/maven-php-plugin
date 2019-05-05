@@ -368,7 +368,9 @@ public final class PhpExecutable implements IPhpExecutable {
                     if (phpVersion == null && line.startsWith("PHP ")) {
                         strPhpVersion = line.substring(4, line.indexOf(" ", 4));
                         final String version = line.substring(4, 5);
-                        if ("6".equals(version)) {
+                        if ("7".equals(version)) {
+                            phpVersion = PhpVersion.PHP7;
+                        } else if ("6".equals(version)) {
                             phpVersion = PhpVersion.PHP6;
                         } else if ("5".equals(version)) {
                             phpVersion = PhpVersion.PHP5;

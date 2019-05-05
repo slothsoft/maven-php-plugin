@@ -155,6 +155,46 @@ public class GetVersionTest extends AbstractTestCase {
 
 		Assertions.assertEquals(PhpVersion.PHP6, execConfig.getPhpExecutable().getVersion());
 	}
+	
+
+	/**
+	 * Tests if the version can be detected.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+
+	@Test
+	@Disabled
+	@IgnoreWhen(PhpMissing.class)
+	public void testGetVersion7() throws Exception {
+		// look up the component factory
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		// create the execution config
+		final MavenSession session = this.createSimpleSession("exec/version");
+		final Xpp3Dom dom = new Xpp3Dom("configuration");
+		final Xpp3Dom exec = new Xpp3Dom("executable");
+		if (ExecutionUtils.isWindows()) {
+			exec.setValue(session.getCurrentProject().getBasedir() + "/php7.cmd");
+		} else {
+			// try chmod
+			final String[] cmd = {
+					"chmod",
+					"777",
+					new File(session.getCurrentProject().getBasedir(), "php7").getAbsolutePath()};
+			final Process p = Runtime.getRuntime().exec(cmd);
+			p.waitFor();
+			exec.setValue(session.getCurrentProject().getBasedir() + "/php7");
+		}
+		dom.addChild(exec);
+
+		final IPhpExecutableConfiguration execConfig = factory.lookup(
+				IPhpExecutableConfiguration.class,
+				new Xpp3Dom[]{dom},
+				session);
+
+
+		Assertions.assertEquals(PhpVersion.PHP7, execConfig.getPhpExecutable().getVersion());
+	}
 
 	/**
 	 * Tests if the version can be detected.
@@ -361,6 +401,48 @@ public class GetVersionTest extends AbstractTestCase {
 
 		Assertions.assertEquals(PhpVersion.PHP6, execConfig.getPhpExecutable().getVersion());
 	}
+	
+
+	/**
+	 * Tests if the version can be detected.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+
+	@Test
+	@Disabled
+	@IgnoreWhen(PhpMissing.class)
+	public void testGetVersion7NotCached() throws Exception {
+		// look up the component factory
+		final IComponentFactory factory = lookup(IComponentFactory.class);
+		// create the execution config
+		final MavenSession session = this.createSimpleSession("exec/version");
+		final Xpp3Dom dom = new Xpp3Dom("configuration");
+		final Xpp3Dom exec = new Xpp3Dom("executable");
+		if (ExecutionUtils.isWindows()) {
+			exec.setValue(session.getCurrentProject().getBasedir() + "/php7.cmd");
+		} else {
+			// try chmod
+			final String[] cmd = {
+					"chmod",
+					"777",
+					new File(session.getCurrentProject().getBasedir(), "php7").getAbsolutePath()};
+			final Process p = Runtime.getRuntime().exec(cmd);
+			p.waitFor();
+			exec.setValue(session.getCurrentProject().getBasedir() + "/php7");
+		}
+		dom.addChild(exec);
+
+		final IPhpExecutableConfiguration execConfig = factory.lookup(
+				IPhpExecutableConfiguration.class,
+				new Xpp3Dom[]{dom},
+				session);
+		execConfig.setUseCache(false);
+
+
+		Assertions.assertEquals(PhpVersion.PHP7, execConfig.getPhpExecutable().getVersion());
+	}
+
 
 	/**
 	 * Tests if the version can be detected.

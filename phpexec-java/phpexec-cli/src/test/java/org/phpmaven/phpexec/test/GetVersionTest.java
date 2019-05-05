@@ -123,6 +123,30 @@ public class GetVersionTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
+	public void testGetVersion7() throws Exception {
+		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
+		if (isWindows()) {
+			execConfig.setExecutable("target/test-classes/org/phpmaven/phpexec/test/version/php7.cmd");
+		} else {
+			// try chmod
+			final String[] cmd = {
+					"chmod",
+					"777",
+					new File("target/test-classes/org/phpmaven/phpexec/test/version/php7").getAbsolutePath()};
+			final Process p = Runtime.getRuntime().exec(cmd);
+			p.waitFor();
+			execConfig.setExecutable("target/test-classes/org/phpmaven/phpexec/test/version/php7");
+		}
+		Assertions.assertEquals(PhpVersion.PHP7, execConfig.getPhpExecutable().getVersion());
+	}
+
+
+	/**
+	 * Tests if the version can be detected.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	@Test
 	public void testGetVersionUnknown() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 		if (isWindows()) {
@@ -243,6 +267,29 @@ public class GetVersionTest {
 		Assertions.assertEquals(PhpVersion.PHP6, execConfig.getPhpExecutable().getVersion());
 	}
 
+	/**
+	 * Tests if the version can be detected.
+	 *
+	 * @throws Exception thrown on errors
+	 */
+	@Test
+	public void testGetVersion7NotCached() throws Exception {
+		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
+		if (isWindows()) {
+			execConfig.setExecutable("target/test-classes/org/phpmaven/phpexec/test/version/php7.cmd");
+		} else {
+			// try chmod
+			final String[] cmd = {
+					"chmod",
+					"777",
+					new File("target/test-classes/org/phpmaven/phpexec/test/version/php7").getAbsolutePath()};
+			final Process p = Runtime.getRuntime().exec(cmd);
+			p.waitFor();
+			execConfig.setExecutable("target/test-classes/org/phpmaven/phpexec/test/version/php7");
+		}
+		execConfig.setUseCache(false);
+		Assertions.assertEquals(PhpVersion.PHP7, execConfig.getPhpExecutable().getVersion());
+	}
 	/**
 	 * Tests if the version can be detected.
 	 *

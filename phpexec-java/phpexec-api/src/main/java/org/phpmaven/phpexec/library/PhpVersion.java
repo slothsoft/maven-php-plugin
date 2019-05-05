@@ -25,6 +25,7 @@ package org.phpmaven.phpexec.library;
  * @author Christian Wiedemann
  * @author Tobias Sarnowski
  * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
+ * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 0.1.4
  */
 public enum PhpVersion {
@@ -36,6 +37,8 @@ public enum PhpVersion {
     /** PHP version 5. */
     PHP5,
     /** PHP version 6. */
-    PHP6
+    PHP6,
+    /** PHP version 7. */
+    PHP7
     
 }

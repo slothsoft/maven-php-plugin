@@ -19,10 +19,14 @@ package org.phpmaven.plugin.build;
  *
  * @author Christian Wiedemann
  * @author Tobias Sarnowski
+ * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  */
 public enum PhpVersion {
     UNKNOWN,
     PHP4,
     PHP5,
-    PHP6
+    PHP6,
+    PHP7
+    
+    // FIXME [slothsoft]: is this enum in use?
 }
