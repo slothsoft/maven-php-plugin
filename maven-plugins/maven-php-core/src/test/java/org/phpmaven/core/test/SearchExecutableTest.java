@@ -22,8 +22,8 @@ import org.apache.maven.execution.MavenSession;
 import org.apache.maven.monitor.logging.DefaultLog;
 import org.apache.maven.plugin.logging.Log;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.ExecutionUtils;
 import org.phpmaven.test.AbstractTestCase;
 
@@ -57,9 +57,9 @@ public class SearchExecutableTest extends AbstractTestCase {
 			final File bar = new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "test1/folderB/bar");
 			final File baz = new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "test1/folderA/baz");
 
-			Assertions.assertEquals(foo.getAbsolutePath(), ExecutionUtils.searchExecutable(null,  "foo"));
-			Assertions.assertEquals(bar.getAbsolutePath(), ExecutionUtils.searchExecutable(null,  "bar"));
-			Assertions.assertEquals(baz.getAbsolutePath(), ExecutionUtils.searchExecutable(null,  "baz"));
+			Assert.assertEquals(foo.getAbsolutePath(), ExecutionUtils.searchExecutable(null,  "foo"));
+			Assert.assertEquals(bar.getAbsolutePath(), ExecutionUtils.searchExecutable(null,  "bar"));
+			Assert.assertEquals(baz.getAbsolutePath(), ExecutionUtils.searchExecutable(null,  "baz"));
 		} finally {
 			System.setProperty("os.name", oldOs);
 			System.setProperty("java.library.path", oldLib);
@@ -86,9 +86,9 @@ public class SearchExecutableTest extends AbstractTestCase {
 			final File bar = new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "test1/folderB/bar");
 			final File baz = new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "test1/folderA/baz");
 
-			Assertions.assertEquals(foo.getAbsolutePath(), ExecutionUtils.searchExecutable(null,  "foo"));
-			Assertions.assertEquals(bar.getAbsolutePath(), ExecutionUtils.searchExecutable(null,  "bar"));
-			Assertions.assertEquals(baz.getAbsolutePath(), ExecutionUtils.searchExecutable(null,  "baz"));
+			Assert.assertEquals(foo.getAbsolutePath(), ExecutionUtils.searchExecutable(null,  "foo"));
+			Assert.assertEquals(bar.getAbsolutePath(), ExecutionUtils.searchExecutable(null,  "bar"));
+			Assert.assertEquals(baz.getAbsolutePath(), ExecutionUtils.searchExecutable(null,  "baz"));
 		} finally {
 			System.setProperty("os.name", oldOs);
 			System.setProperty("java.library.path", oldLib);
@@ -117,9 +117,9 @@ public class SearchExecutableTest extends AbstractTestCase {
 
 			final Log log = new DefaultLog(new ConsoleLogger());
 
-			Assertions.assertEquals(foo.getAbsolutePath(), ExecutionUtils.searchExecutable(log,  "foo"));
-			Assertions.assertEquals(bar.getAbsolutePath(), ExecutionUtils.searchExecutable(log,  "bar"));
-			Assertions.assertEquals(baz.getAbsolutePath(), ExecutionUtils.searchExecutable(log,  "baz"));
+			Assert.assertEquals(foo.getAbsolutePath(), ExecutionUtils.searchExecutable(log,  "foo"));
+			Assert.assertEquals(bar.getAbsolutePath(), ExecutionUtils.searchExecutable(log,  "bar"));
+			Assert.assertEquals(baz.getAbsolutePath(), ExecutionUtils.searchExecutable(log,  "baz"));
 		} finally {
 			System.setProperty("os.name", oldOs);
 			System.setProperty("java.library.path", oldLib);
@@ -150,9 +150,9 @@ public class SearchExecutableTest extends AbstractTestCase {
 
 			final Log log = new DefaultLog(new ConsoleLogger());
 
-			Assertions.assertEquals(foo.getAbsolutePath(), ExecutionUtils.searchExecutable(log,  "foo"));
-			Assertions.assertEquals(bar.getAbsolutePath(), ExecutionUtils.searchExecutable(log,  "bar"));
-			Assertions.assertEquals(baz.getAbsolutePath(), ExecutionUtils.searchExecutable(log,  "baz"));
+			Assert.assertEquals(foo.getAbsolutePath(), ExecutionUtils.searchExecutable(log,  "foo"));
+			Assert.assertEquals(bar.getAbsolutePath(), ExecutionUtils.searchExecutable(log,  "bar"));
+			Assert.assertEquals(baz.getAbsolutePath(), ExecutionUtils.searchExecutable(log,  "baz"));
 		} finally {
 			System.setProperty("os.name", oldOs);
 			System.setProperty("java.library.path", oldLib);
@@ -177,7 +177,7 @@ public class SearchExecutableTest extends AbstractTestCase {
 
 			final File foo = new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "test2/folderA/foo");
 
-			Assertions.assertEquals(foo.getAbsolutePath(), ExecutionUtils.searchExecutable(null, foo.getAbsolutePath()));
+			Assert.assertEquals(foo.getAbsolutePath(), ExecutionUtils.searchExecutable(null, foo.getAbsolutePath()));
 		} finally {
 			System.setProperty("os.name", oldOs);
 			System.setProperty("java.library.path", oldLib);
@@ -200,7 +200,7 @@ public class SearchExecutableTest extends AbstractTestCase {
 					session.getCurrentProject().getBasedir().getAbsolutePath() + "/test2/folderA" + File.pathSeparator +
 					session.getCurrentProject().getBasedir().getAbsolutePath() + "/test2/folderB");
 
-			Assertions.assertNull(ExecutionUtils.searchExecutable(null, "foobarbaz"));
+			Assert.assertNull(ExecutionUtils.searchExecutable(null, "foobarbaz"));
 		} finally {
 			System.setProperty("os.name", oldOs);
 			System.setProperty("java.library.path", oldLib);

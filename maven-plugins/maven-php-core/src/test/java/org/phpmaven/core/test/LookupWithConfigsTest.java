@@ -21,8 +21,8 @@ import java.io.File;
 import org.apache.maven.execution.MavenSession;
 import org.codehaus.plexus.configuration.PlexusConfigurationException;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.core.test.comp.ISomeComponent;
 import org.phpmaven.test.AbstractTestCase;
@@ -57,13 +57,13 @@ public class LookupWithConfigsTest extends AbstractTestCase {
 		bar.setValue("MyBarValue");
 		dom.addChild(bar);
 		final ISomeComponent component = factory.lookup(ISomeComponent.class, dom, session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("OtherFoo", component.getFoo());
-		Assertions.assertEquals("MyBarValue", component.getBar());
+		Assert.assertEquals("OtherFoo", component.getFoo());
+		Assert.assertEquals("MyBarValue", component.getBar());
 	}
 
 	/**
@@ -90,13 +90,13 @@ public class LookupWithConfigsTest extends AbstractTestCase {
 		dom2.addChild(bar2);
 		final ISomeComponent component = factory.lookup(
 				ISomeComponent.class, new Xpp3Dom[]{dom, dom2}, session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("OtherFoo", component.getFoo());
-		Assertions.assertEquals("MyBarValue2", component.getBar());
+		Assert.assertEquals("OtherFoo", component.getFoo());
+		Assert.assertEquals("MyBarValue2", component.getBar());
 	}
 
 	/**
@@ -124,7 +124,7 @@ public class LookupWithConfigsTest extends AbstractTestCase {
 		try {
 			factory.lookup(
 					ISomeComponent.class, new Xpp3Dom[]{dom, dom2}, session);
-			Assertions.fail("Exception expected");
+			Assert.fail("Exception expected");
 			// CHECKSTYLE:OFF
 			// checkstyle does not like empty catches
 		} catch (final PlexusConfigurationException ex) {
@@ -156,7 +156,7 @@ public class LookupWithConfigsTest extends AbstractTestCase {
 		try {
 			factory.lookup(
 					ISomeComponent.class, new Xpp3Dom[]{dom}, session);
-			Assertions.fail("Exception expected");
+			Assert.fail("Exception expected");
 			// CHECKSTYLE:OFF
 			// checkstyle does not like empty catches
 		} catch (final PlexusConfigurationException ex) {

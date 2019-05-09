@@ -23,9 +23,10 @@ import java.util.Set;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.monitor.logging.DefaultLog;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Rule;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.exec.IPhpExecutableConfiguration;
 import org.phpmaven.phar.IPharPackager;
@@ -33,8 +34,7 @@ import org.phpmaven.phar.IPharPackagerConfiguration;
 import org.phpmaven.phar.IPharPackagingRequest;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.test.AbstractTestCase;
-import org.phpmaven.test.IgnoreWhen;
-import org.phpmaven.test.PhpMissing;
+import org.phpmaven.test.IgnoreIfPhpMissing;
 
 /**
  * test cases for the Java-variant PHAR packager.
@@ -45,6 +45,9 @@ import org.phpmaven.test.PhpMissing;
  */
 public class JavaTest extends AbstractTestCase {
 
+	@Rule
+	public IgnoreIfPhpMissing rule = new IgnoreIfPhpMissing();
+
 	/**
 	 * Tests if the execution configuration can be created.
 	 *
@@ -52,8 +55,7 @@ public class JavaTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testECCreation() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -64,17 +66,17 @@ public class JavaTest extends AbstractTestCase {
 				IComponentFactory.EMPTY_CONFIG,
 				session);
 		// assert that it is not null
-		Assertions.assertNotNull(pharConfig);
+		Assert.assertNotNull(pharConfig);
 		// assert that we are able to create the packager
 		pharConfig.setPackager("JAVA");
 		final IPharPackager exec = pharConfig.getPharPackager();
-		Assertions.assertNotNull(exec);
+		Assert.assertNotNull(exec);
 		// assert that we are able to create the request
 		final IPharPackagingRequest request = factory.lookup(
 				IPharPackagingRequest.class,
 				IComponentFactory.EMPTY_CONFIG,
 				session);
-		Assertions.assertNotNull(request);
+		Assert.assertNotNull(request);
 	}
 
 	/**
@@ -84,8 +86,7 @@ public class JavaTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testLargePhar() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -108,7 +109,7 @@ public class JavaTest extends AbstractTestCase {
 		request.setStub("die('HELLO STUB!');");
 		request.addFile("/some/file.php", new File(session.getCurrentProject().getBasedir(), "testphar.php"));
 		request.addDirectory("/", new File(session.getCurrentProject().getBasedir(), "phar1"));
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir(), "target").getAbsolutePath(),
 				request.getTargetDirectory().getAbsolutePath());
 		request.setTargetDirectory(session.getCurrentProject().getBasedir());
@@ -117,7 +118,7 @@ public class JavaTest extends AbstractTestCase {
 		// package
 		final DefaultLog logger = new DefaultLog(new ConsoleLogger());
 		exec.packagePhar(request, logger);
-		Assertions.assertTrue(pharFile.exists());
+		Assert.assertTrue(pharFile.exists());
 
 		final IPhpExecutableConfiguration phpConfig = factory.lookup(
 				IPhpExecutableConfiguration.class,
@@ -126,7 +127,7 @@ public class JavaTest extends AbstractTestCase {
 		phpConfig.setAdditionalPhpParameters("-d suhosin.executor.include.whitelist=\"phar\"");
 		// check the phar
 		final IPhpExecutable phpExec = phpConfig.getPhpExecutable();
-		Assertions.assertEquals("INSIDE FILE.PHP\n", phpExec.execute(new File(
+		Assert.assertEquals("INSIDE FILE.PHP\n", phpExec.execute(new File(
 				session.getCurrentProject().getBasedir(), "testphar.php")));
 	}
 
@@ -138,8 +139,7 @@ public class JavaTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testPackage() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -164,7 +164,7 @@ public class JavaTest extends AbstractTestCase {
 		request.setStub("die('HELLO STUB!');");
 		request.addFile("/some/file.php", new File(session.getCurrentProject().getBasedir(), "testphar.php"));
 		request.addDirectory("/", new File(session.getCurrentProject().getBasedir(), "phar1"));
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir(), "target").getAbsolutePath(),
 				request.getTargetDirectory().getAbsolutePath());
 		request.setTargetDirectory(session.getCurrentProject().getBasedir());
@@ -173,7 +173,7 @@ public class JavaTest extends AbstractTestCase {
 		// package
 		final DefaultLog logger = new DefaultLog(new ConsoleLogger());
 		javaExec.packagePhar(request, logger);
-		Assertions.assertTrue(pharFile.exists());
+		Assert.assertTrue(pharFile.exists());
 
 		final IPhpExecutableConfiguration phpConfig = factory.lookup(
 				IPhpExecutableConfiguration.class,
@@ -182,23 +182,23 @@ public class JavaTest extends AbstractTestCase {
 		phpConfig.setAdditionalPhpParameters("-d suhosin.executor.include.whitelist=\"phar\"");
 		// check the phar
 		final IPhpExecutable phpExec = phpConfig.getPhpExecutable();
-		Assertions.assertEquals("INSIDE FILE.PHP\n", phpExec.execute(new File(
+		Assert.assertEquals("INSIDE FILE.PHP\n", phpExec.execute(new File(
 				session.getCurrentProject().getBasedir(), "testphar.php")));
 
 		// read stub
 		// XXX: PHP seems to add an " ?>" at the end of the stub. Thats not a problem at all.
 		//      Have a look if this is a feature and not a "bug" that may be fixed in later php versions.
-		Assertions.assertEquals("<?php die('HELLO STUB!'); __HALT_COMPILER(); ?>\n", exec.readStub(pharFile, logger));
+		Assert.assertEquals("<?php die('HELLO STUB!'); __HALT_COMPILER(); ?>\n", exec.readStub(pharFile, logger));
 
 		// read contents
 		final Set<String> files = new HashSet<String>();
 		for (final String file : exec.listFiles(pharFile, logger)) {
 			files.add(file);
 		}
-		Assertions.assertEquals(3, files.size());
-		Assertions.assertTrue(files.contains("/data/some.txt") || files.contains("\\data\\some.txt"));
-		Assertions.assertTrue(files.contains("/includes1/file.php") || files.contains("\\includes1\\file.php"));
-		Assertions.assertTrue(files.contains("/some/file.php") || files.contains("\\some\\file.php"));
+		Assert.assertEquals(3, files.size());
+		Assert.assertTrue(files.contains("/data/some.txt") || files.contains("\\data\\some.txt"));
+		Assert.assertTrue(files.contains("/includes1/file.php") || files.contains("\\includes1\\file.php"));
+		Assert.assertTrue(files.contains("/some/file.php") || files.contains("\\some\\file.php"));
 
 		// test extraction
 		final File someTxt = new File(session.getCurrentProject().getBasedir(), "testdir/data/some.txt");
@@ -211,16 +211,16 @@ public class JavaTest extends AbstractTestCase {
 				pharFile,
 				new File(session.getCurrentProject().getBasedir(), "testdir"),
 				logger);
-		Assertions.assertTrue(someTxt.exists());
-		Assertions.assertTrue(includePhp.exists());
-		Assertions.assertTrue(someFilePhp.exists());
+		Assert.assertTrue(someTxt.exists());
+		Assert.assertTrue(includePhp.exists());
+		Assert.assertTrue(someFilePhp.exists());
 	}
 
 	private void delete(final File someTxt) {
 		if (someTxt.exists()) {
 			someTxt.delete();
 		}
-		Assertions.assertFalse(someTxt.exists());
+		Assert.assertFalse(someTxt.exists());
 	}
 
 }

@@ -17,7 +17,11 @@ This project is forked from various repositories by [php-maven](https://github.c
 
 ### Prerequisites
 
-You need at least **Java ${java-version}** to run or use this framework. You also must have at least **PHP 5.4** on your `PATH`, so that the command `php -v` returns something useful.
+You need at least these versions to run or use this framework:
+
+- **Java ${java-version}**
+- **PHP 5.4** on your `PATH` (so that the command `php -v` returns something useful)
+- **Maven ${maven-version}**
 
 To see the Java and PHP versions this project is tested against take a look at the [Travis config file](https://github.com/slothsoft/maven-php-plugin/blob/master/.travis.yml) or the [Travis builds](https://travis-ci.org/slothsoft/maven-php-plugin).
 

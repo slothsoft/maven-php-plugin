@@ -20,17 +20,17 @@ import java.io.File;
 
 import org.apache.maven.execution.MavenSession;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Rule;
+import org.junit.Test;
 import org.phpmaven.core.ExecutionUtils;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.exec.IPhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.PhpException;
 import org.phpmaven.phpexec.library.PhpVersion;
 import org.phpmaven.test.AbstractTestCase;
-import org.phpmaven.test.IgnoreWhen;
-import org.phpmaven.test.PhpMissing;
+import org.phpmaven.test.IgnoreIfPhpMissing;
 
 /**
  * test cases for PHP version detection.
@@ -41,6 +41,9 @@ import org.phpmaven.test.PhpMissing;
  */
 public class GetVersionTest extends AbstractTestCase {
 
+	@Rule
+	public IgnoreIfPhpMissing rule = new IgnoreIfPhpMissing();
+
 	/**
 	 * Tests if the version can be detected.
 	 *
@@ -48,7 +51,6 @@ public class GetVersionTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@IgnoreWhen(PhpMissing.class)
 	public void testGetVersion4() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -75,7 +77,7 @@ public class GetVersionTest extends AbstractTestCase {
 				new Xpp3Dom[]{dom},
 				session);
 
-		Assertions.assertEquals(PhpVersion.PHP4, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.PHP4, execConfig.getPhpExecutable().getVersion());
 	}
 
 	/**
@@ -85,8 +87,7 @@ public class GetVersionTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testGetVersion5() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -114,7 +115,7 @@ public class GetVersionTest extends AbstractTestCase {
 				session);
 
 
-		Assertions.assertEquals(PhpVersion.PHP5, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.PHP5, execConfig.getPhpExecutable().getVersion());
 	}
 
 	/**
@@ -124,8 +125,7 @@ public class GetVersionTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testGetVersion6() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -153,7 +153,7 @@ public class GetVersionTest extends AbstractTestCase {
 				session);
 
 
-		Assertions.assertEquals(PhpVersion.PHP6, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.PHP6, execConfig.getPhpExecutable().getVersion());
 	}
 	
 
@@ -164,8 +164,7 @@ public class GetVersionTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testGetVersion7() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -193,7 +192,7 @@ public class GetVersionTest extends AbstractTestCase {
 				session);
 
 
-		Assertions.assertEquals(PhpVersion.PHP7, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.PHP7, execConfig.getPhpExecutable().getVersion());
 	}
 
 	/**
@@ -203,8 +202,7 @@ public class GetVersionTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testGetVersionUnknown() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -232,7 +230,7 @@ public class GetVersionTest extends AbstractTestCase {
 				session);
 
 
-		Assertions.assertEquals(PhpVersion.UNKNOWN, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.UNKNOWN, execConfig.getPhpExecutable().getVersion());
 	}
 
 	/**
@@ -242,8 +240,7 @@ public class GetVersionTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testGetVersionIllegal() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -273,7 +270,7 @@ public class GetVersionTest extends AbstractTestCase {
 
 		try {
 			execConfig.getPhpExecutable().getVersion();
-			Assertions.fail("Expected exception not thrown");
+			Assert.fail("Expected exception not thrown");
 			// CHECKSTYLE:OFF
 			// checkstyle does not like empty catches
 		} catch (final PhpException ex) {
@@ -289,8 +286,7 @@ public class GetVersionTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testGetVersion4NotCached() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -319,7 +315,7 @@ public class GetVersionTest extends AbstractTestCase {
 		execConfig.setUseCache(false);
 
 
-		Assertions.assertEquals(PhpVersion.PHP4, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.PHP4, execConfig.getPhpExecutable().getVersion());
 	}
 
 	/**
@@ -329,8 +325,7 @@ public class GetVersionTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testGetVersion5NotCached() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -359,7 +354,7 @@ public class GetVersionTest extends AbstractTestCase {
 		execConfig.setUseCache(false);
 
 
-		Assertions.assertEquals(PhpVersion.PHP5, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.PHP5, execConfig.getPhpExecutable().getVersion());
 	}
 
 	/**
@@ -369,8 +364,7 @@ public class GetVersionTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testGetVersion6NotCached() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -399,7 +393,7 @@ public class GetVersionTest extends AbstractTestCase {
 		execConfig.setUseCache(false);
 
 
-		Assertions.assertEquals(PhpVersion.PHP6, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.PHP6, execConfig.getPhpExecutable().getVersion());
 	}
 	
 
@@ -410,8 +404,7 @@ public class GetVersionTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testGetVersion7NotCached() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -440,7 +433,7 @@ public class GetVersionTest extends AbstractTestCase {
 		execConfig.setUseCache(false);
 
 
-		Assertions.assertEquals(PhpVersion.PHP7, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.PHP7, execConfig.getPhpExecutable().getVersion());
 	}
 
 
@@ -451,8 +444,7 @@ public class GetVersionTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testGetVersionUnknownNotCached() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -481,7 +473,7 @@ public class GetVersionTest extends AbstractTestCase {
 		execConfig.setUseCache(false);
 
 
-		Assertions.assertEquals(PhpVersion.UNKNOWN, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.UNKNOWN, execConfig.getPhpExecutable().getVersion());
 	}
 
 	/**
@@ -491,8 +483,7 @@ public class GetVersionTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testGetVersionIllegalNotCached() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -523,7 +514,7 @@ public class GetVersionTest extends AbstractTestCase {
 
 		try {
 			execConfig.getPhpExecutable().getVersion();
-			Assertions.fail("Expected exception not thrown");
+			Assert.fail("Expected exception not thrown");
 			// CHECKSTYLE:OFF
 			// checkstyle does not like empty catches
 		} catch (final PhpException ex) {

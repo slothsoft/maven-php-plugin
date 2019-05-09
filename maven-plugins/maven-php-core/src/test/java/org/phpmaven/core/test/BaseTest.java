@@ -16,9 +16,9 @@
 
 package org.phpmaven.core.test;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.test.AbstractTestCase;
 
@@ -38,12 +38,12 @@ public class BaseTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
+	@Ignore
 	public void testCFCreation() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
 		// assert that it is not null
-		Assertions.assertNotNull(factory);
+		Assert.assertNotNull(factory);
 	}
 
 	/**
@@ -53,11 +53,11 @@ public class BaseTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
+	@Ignore
 	public void testConfigEmpty() throws Exception {
 		// assert that it is not null and empty
-		Assertions.assertNotNull(IComponentFactory.EMPTY_CONFIG);
-		Assertions.assertEquals(0, IComponentFactory.EMPTY_CONFIG.length);
+		Assert.assertNotNull(IComponentFactory.EMPTY_CONFIG);
+		Assert.assertEquals(0, IComponentFactory.EMPTY_CONFIG.length);
 	}
 
 }

@@ -18,8 +18,8 @@ package org.phpmaven.mojos.test;
 
 import org.apache.maven.it.VerificationException;
 import org.apache.maven.it.Verifier;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.phpmaven.test.it.AbstractTestCase;
 
 /**
@@ -31,7 +31,7 @@ import org.phpmaven.test.it.AbstractTestCase;
  * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 2.0.0
  */
-@Disabled
+@Ignore
 public class PhpUnitTest extends AbstractTestCase {
 
 	/**

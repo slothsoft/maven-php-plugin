@@ -1,15 +1,20 @@
 package org.phpmaven.test;
 
+import org.junit.rules.TestRule;
+import org.junit.runner.Description;
+import org.junit.runners.model.Statement;
+
 /**
  * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  */
 
-public class PhpMissing implements IgnoreWhenCondition {
+public class IgnoreIfPhpMissing implements TestRule {
 
 	private static boolean phpExePresent;
 
 	static {
-		// the php.exe does not magically come to be during the build, so we can calculate
+		// the php.exe does not magically come to be during the build, so we can
+		// calculate
 		// it's present once
 		try {
 			final Runtime runtime = Runtime.getRuntime();
@@ -23,13 +28,21 @@ public class PhpMissing implements IgnoreWhenCondition {
 	}
 
 	@Override
-	public boolean isDisabled() {
-		return !phpExePresent;
+	public Statement apply(Statement base, Description description) {
+		if (phpExePresent) {
+			return base;
+		}
+		return new Statement() {
+
+			@Override
+			public void evaluate() throws Throwable {
+				// skip
+			}
+		};
 	}
 
 	@Override
 	public String toString() {
-		return "PhpExeMissing [phpExePresent=" + phpExePresent + "]";
+		return "PhpMissingRule [phpExePresent=" + phpExePresent + "]";
 	}
-
 }

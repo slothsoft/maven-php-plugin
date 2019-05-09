@@ -21,9 +21,9 @@ import java.io.File;
 import org.apache.commons.io.FileUtils;
 import org.apache.maven.execution.MavenSession;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.phpmaven.plugin.build.PhpExtractDeps;
 import org.phpmaven.plugin.build.PhpResources;
 import org.phpmaven.plugin.build.PhpTestExtractDeps;
@@ -40,7 +40,7 @@ import org.phpmaven.test.AbstractTestCase;
  * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 2.0.0
  */
-@Disabled
+@Ignore
  public class SiteTest extends AbstractTestCase {
 
 	 /**
@@ -53,68 +53,61 @@ import org.phpmaven.test.AbstractTestCase;
 	 public void testSiteOnClean() throws Exception {
 		 final MavenSession session = this.createSessionForPhpMaven("mojos-sites/site-all");
 
-		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+		 final PhpResources resourcesMojo = createCurrentConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
-		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
+		 final PhpTestResources testResourcesMojo = createCurrentConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
 
 		 this.resolveProjectDependencies(session);
-		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
+		 final PhpExtractDeps extractDepsMojo = createCurrentConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
-		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
+		 final PhpTestExtractDeps extractTestDepsMojo = createCurrentConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
-		 final PhpUnit phpUnit = this.createConfiguredMojo(
+		 final PhpUnit phpUnit = createCurrentConfiguredMojo(
 				 PhpUnit.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "phpunit",
 				 new Xpp3Dom("configuration"));
 		 phpUnit.execute();
 
-		 final PhpDocumentor phpdocumentor = this.createConfiguredMojo(
+		 final PhpDocumentor phpdocumentor = createCurrentConfiguredMojo(
 				 PhpDocumentor.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "phpdocumentor",
 				 new Xpp3Dom("configuration"));
 		 phpdocumentor.execute();
 
-		 final PhpUnitCoverage coverage = this.createConfiguredMojo(
+		 final PhpUnitCoverage coverage = createCurrentConfiguredMojo(
 				 PhpUnitCoverage.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "phpunit-coverage",
 				 new Xpp3Dom("configuration"));
 		 coverage.execute();
 
 		 // phpdocumentor report
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/apidocs/phpdocumentor.html").exists());
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/apidocs/phpdocumentor/index.html").exists());
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/apidocs/phpdocumentor/packages.html").exists());
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/apidocs/phpdocumentor/default/_MyClass.php.html").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/apidocs/phpdocumentor.html").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/apidocs/phpdocumentor/index.html").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/apidocs/phpdocumentor/packages.html").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/apidocs/phpdocumentor/default/_MyClass.php.html").exists());
 
 		 // phpunit-coverage report
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/coverage.html").exists());
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/index.html").exists());
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/classes.html").exists());
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/classes_MyClass.php.html").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/coverage.html").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/index.html").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/classes.html").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/classes_MyClass.php.html").exists());
 
 		 // test report
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/report.html").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/report.html").exists());
 	 }
 
 
@@ -129,50 +122,43 @@ import org.phpmaven.test.AbstractTestCase;
 	 public void testSiteDuplicateTests() throws Exception {
 		 final MavenSession session = this.createSessionForPhpMaven("mojos-sites/site-all");
 
-		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+		 final PhpResources resourcesMojo = createCurrentConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
-		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
+		 final PhpTestResources testResourcesMojo = createCurrentConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
 
 		 this.resolveProjectDependencies(session);
-		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
+		 final PhpExtractDeps extractDepsMojo = createCurrentConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
-		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
+		 final PhpTestExtractDeps extractTestDepsMojo = createCurrentConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
-		 final PhpUnit phpUnit = this.createConfiguredMojo(
+		 final PhpUnit phpUnit = createCurrentConfiguredMojo(
 				 PhpUnit.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "phpunit",
 				 new Xpp3Dom("configuration"));
 		 phpUnit.execute();
 
-		 final PhpDocumentor phpdocumentor = this.createConfiguredMojo(
+		 final PhpDocumentor phpdocumentor = createCurrentConfiguredMojo(
 				 PhpDocumentor.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "phpdocumentor",
 				 new Xpp3Dom("configuration"));
 		 phpdocumentor.execute();
 
-		 final PhpUnitCoverage coverage = this.createConfiguredMojo(
+		 final PhpUnitCoverage coverage = createCurrentConfiguredMojo(
 				 PhpUnitCoverage.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "phpunit-coverage",
 				 new Xpp3Dom("configuration"));
 		 coverage.execute();
@@ -187,8 +173,8 @@ import org.phpmaven.test.AbstractTestCase;
 		 // <a name="Summary"></a><p>[<a href="#Summary">Zusammenfassung</a>] [<a href="#Package_List">Pakete</a>] [<a href="#Test_Cases">Testf&#xe4;lle</a>]</p><br />
 		 // <table border="0" class="bodyTable"><tr class="a"><th>Tests</th><th>Fehler</th><th>Fehlschl&#xe4;ge</th><th>Ausgelassen</th><th>Erfolgsrate</th><th>Zeit</th></tr><tr class="b"><td>1</td><td>0</td><td>0</td><td>0</td><td>100%</td><td>0,024</td></tr></table><br /><p>Hinweis: Fehlschl&#xe4;ge werden erwartet und durch Behauptungen &#xfc;berpr&#xfc;ft w&#xe4;hrend Fehler unerwartet sind.</p><br /></div><div class="section"><h2>Pakete<a name="Pakete"></a></h2><a name="Package_List"></a><p>[<a href="#Summary">Zusammenfassung</a>] [<a href="#Package_List">Pakete</a>] [<a href="#Test_Cases">Testf&#xe4;lle</a>]</p><br /><table border="0" class="bodyTable"><tr class="a"><th>Paket</th><th>Tests</th><th>Fehler</th><th>Fehlschl&#xe4;ge</th><th>Ausgelassen</th><th>Erfolgsrate</th><th>Zeit</th></tr><tr class="b"><td><a href="#"></a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>100%</td><td>0,024</td></tr></table><br /><p>Hinweis: Die Paketstatistiken werden nicht rekursiv berechnet, es werden lediglich die Ergebnisse aller enthaltenen Tests aufsummiert.</p><div class="section"><h3></h3><a name="a"></a><table border="0" class="bodyTable"><tr class="a"><th></th><th>Klasse</th><th>Tests</th><th>Fehler</th><th>Fehlschl&#xe4;ge</th><th>Ausgelassen</th><th>Erfolgsrate</th><th>Zeit</th></tr><tr class="b"><td><a href="#"><img src="images/icon_success_sml.gif" alt="" /></a></td><td><a href="#"></a></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0%</td><td>0,012</td></tr><tr class="a"><td><a href="#FooTest"><img src="images/icon_success_sml.gif" alt="" /></a></td><td><a href="#FooTest">FooTest</a></td><td>1</td><td>0</td><td>0</td><td>0</td><td>100%</td><td>0,012</td></tr></table></div><br /></div><div class="section"><h2>Testf&#xe4;lle<a name="Testflle"></a></h2><a name="Test_Cases"></a><p>[<a href="#Summary">Zusammenfassung</a>] [<a href="#Package_List">Pakete</a>] [<a href="#Test_Cases">Testf&#xe4;lle</a>]</p><div class="section"><h3>FooTest<a name="FooTest"></a></h3><a name="FooTest"></a><table border="0" class="bodyTable"><tr class="b"><td><img src="images/icon_success_sml.gif" alt="" /></td><td>testFoo</td><td>0,012</td></tr></table></div><br /></div>
 
-		 Assertions.assertFalse(content.matches("(?s).*<a name=\"Summary\"><\\/a><p>\\[<a href=\"#Summary\">[^<]+<\\/a>\\] \\[<a href=\"#Package_List\">[^<]+<\\/a>\\] \\[<a href=\"#Test_Cases\">[^<]+<\\/a>\\]<\\/p><br \\/><table border=\"0\" class=\"bodyTable\"><tr class=\"a\"><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><\\/tr><tr class=\"b\"><td>2<\\/td>(?s).*"));
-		 Assertions.assertTrue(content.matches("(?s).*<a name=\"Summary\"><\\/a><p>\\[<a href=\"#Summary\">[^<]+<\\/a>\\] \\[<a href=\"#Package_List\">[^<]+<\\/a>\\] \\[<a href=\"#Test_Cases\">[^<]+<\\/a>\\]<\\/p><br \\/><table border=\"0\" class=\"bodyTable\"><tr class=\"a\"><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><\\/tr><tr class=\"b\"><td>1<\\/td>(?s).*"));
+		 Assert.assertFalse(content.matches("(?s).*<a name=\"Summary\"><\\/a><p>\\[<a href=\"#Summary\">[^<]+<\\/a>\\] \\[<a href=\"#Package_List\">[^<]+<\\/a>\\] \\[<a href=\"#Test_Cases\">[^<]+<\\/a>\\]<\\/p><br \\/><table border=\"0\" class=\"bodyTable\"><tr class=\"a\"><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><\\/tr><tr class=\"b\"><td>2<\\/td>(?s).*"));
+		 Assert.assertTrue(content.matches("(?s).*<a name=\"Summary\"><\\/a><p>\\[<a href=\"#Summary\">[^<]+<\\/a>\\] \\[<a href=\"#Package_List\">[^<]+<\\/a>\\] \\[<a href=\"#Test_Cases\">[^<]+<\\/a>\\]<\\/p><br \\/><table border=\"0\" class=\"bodyTable\"><tr class=\"a\"><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><\\/tr><tr class=\"b\"><td>1<\\/td>(?s).*"));
 	 }
 
 	 /**
@@ -202,42 +188,37 @@ import org.phpmaven.test.AbstractTestCase;
 		 final MavenSession session = this.createSessionForPhpMaven("mojos-sites/site-all");
 		 session.getUserProperties().setProperty("outputClover", "true");
 
-		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+		 final PhpResources resourcesMojo = createCurrentConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
-		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
+		 final PhpTestResources testResourcesMojo = createCurrentConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
 
 		 this.resolveProjectDependencies(session);
-		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
+		 final PhpExtractDeps extractDepsMojo = createCurrentConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
-		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
+		 final PhpTestExtractDeps extractTestDepsMojo = createCurrentConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
-		 final PhpUnitCoverage coverage = this.createConfiguredMojo(
+		 final PhpUnitCoverage coverage = createCurrentConfiguredMojo(
 				 PhpUnitCoverage.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "phpunit-coverage",
 				 new Xpp3Dom("configuration"));
 		 coverage.execute();
 
 		 // clover xml
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/phpunit-reports/clover.xml").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/phpunit-reports/clover.xml").exists());
 	 }
 
 	 /**
@@ -250,55 +231,49 @@ import org.phpmaven.test.AbstractTestCase;
 	 public void testSiteBootstrap() throws Exception {
 		 final MavenSession session = this.createSessionForPhpMaven("mojos-sites/site-all");
 
-		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+		 final PhpResources resourcesMojo = createCurrentConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
-		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
+		 final PhpTestResources testResourcesMojo = createCurrentConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
 
 		 this.resolveProjectDependencies(session);
-		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
+		 final PhpExtractDeps extractDepsMojo = createCurrentConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
-		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
+		 final PhpTestExtractDeps extractTestDepsMojo = createCurrentConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
-		 final PhpUnit phpUnit = this.createConfiguredMojo(
+		 final PhpUnit phpUnit = createCurrentConfiguredMojo(
 				 PhpUnit.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "phpunit",
 				 new Xpp3Dom("configuration"));
 		 phpUnit.execute();
 
-		 final PhpUnitCoverage coverage = this.createConfiguredMojo(
+		 final PhpUnitCoverage coverage = createCurrentConfiguredMojo(
 				 PhpUnitCoverage.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "phpunit-coverage",
 				 new Xpp3Dom("configuration"));
 		 coverage.execute();
 
 		 final String content = FileUtils.readFileToString(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/report.html"));
-		 Assertions.assertTrue(content.matches("(?s).*<a name=\"Summary\"><\\/a><p>\\[<a href=\"#Summary\">[^<]+<\\/a>\\] \\[<a href=\"#Package_List\">[^<]+<\\/a>\\] \\[<a href=\"#Test_Cases\">[^<]+<\\/a>\\]<\\/p><br \\/><table border=\"0\" class=\"bodyTable\"><tr class=\"a\"><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><\\/tr><tr class=\"b\"><td>1<\\/td>(?s).*"));
+		 Assert.assertTrue(content.matches("(?s).*<a name=\"Summary\"><\\/a><p>\\[<a href=\"#Summary\">[^<]+<\\/a>\\] \\[<a href=\"#Package_List\">[^<]+<\\/a>\\] \\[<a href=\"#Test_Cases\">[^<]+<\\/a>\\]<\\/p><br \\/><table border=\"0\" class=\"bodyTable\"><tr class=\"a\"><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><th>[^<]+<\\/th><\\/tr><tr class=\"b\"><td>1<\\/td>(?s).*"));
 
 		 // phpunit-coverage report
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/coverage.html").exists());
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/index.html").exists());
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/classes.html").exists());
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/classes_MyClass.php.html").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/coverage.html").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/index.html").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/classes.html").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/phpunit/classes_MyClass.php.html").exists());
 	 }
 
 	 /**
@@ -311,45 +286,40 @@ import org.phpmaven.test.AbstractTestCase;
 	 public void testSitePhpdocPear() throws Exception {
 		 final MavenSession session = this.createSessionForPhpMaven("mojos-sites/site-phpdoc-pear");
 
-		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+		 final PhpResources resourcesMojo = createCurrentConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
-		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
+		 final PhpTestResources testResourcesMojo = createCurrentConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
 
 		 this.resolveProjectDependencies(session);
-		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
+		 final PhpExtractDeps extractDepsMojo = createCurrentConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
-		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
+		 final PhpTestExtractDeps extractTestDepsMojo = createCurrentConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
-		 final PhpDocumentor phpdocumentor = this.createConfiguredMojo(
+		 final PhpDocumentor phpdocumentor = createCurrentConfiguredMojo(
 				 PhpDocumentor.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "phpdocumentor",
 				 new Xpp3Dom("configuration"));
 		 phpdocumentor.execute();
 
 		 // phpdocumentor report
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/apidocs/phpdocumentor.html").exists());
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/apidocs/phpdocumentor/index.html").exists());
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/apidocs/phpdocumentor/packages.html").exists());
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/apidocs/phpdocumentor/default/_MyClass.php.html").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/apidocs/phpdocumentor.html").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/apidocs/phpdocumentor/index.html").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/apidocs/phpdocumentor/packages.html").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/site/apidocs/phpdocumentor/default/_MyClass.php.html").exists());
 	 }
 
  }

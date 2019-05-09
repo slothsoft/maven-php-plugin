@@ -24,9 +24,8 @@ import org.apache.maven.monitor.logging.DefaultLog;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.Xpp3DomBuilder;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.phar.IPharPackagerConfiguration;
 import org.phpmaven.plugin.phar.ConvertPharMojo;
@@ -56,19 +55,18 @@ import org.phpmaven.test.AbstractTestCase;
 		 final File zip = new File(session.getCurrentProject().getBasedir(), "phar-with-dep1-folders-0.0.1.zip");
 		 final File jar = new File(session.getCurrentProject().getBasedir(), "phar-with-dep1-folders-0.0.1.jar");
 
-		 Assertions.assertTrue(phar.exists());
-		 Assertions.assertFalse(phar2.exists());
-		 Assertions.assertFalse(zip.exists());
-		 Assertions.assertFalse(jar.exists());
+		 Assert.assertTrue(phar.exists());
+		 Assert.assertFalse(phar2.exists());
+		 Assert.assertFalse(zip.exists());
+		 Assert.assertFalse(jar.exists());
 
 		 Xpp3Dom config = Xpp3DomBuilder.build(new StringReader(
 				 "<configuration>" +
 						 "<from>"+phar.getAbsolutePath()+"</from>" +
 						 "<to>"+zip.getAbsolutePath()+"</to>" +
 				 "</configuration>"));
-		 ConvertPharMojo convertMojo = this.createConfiguredMojo(
+		 ConvertPharMojo convertMojo = createCurrentConfiguredMojo(
 				 ConvertPharMojo.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "convert-phar",
 				 config);
 		 convertMojo.execute();
@@ -78,28 +76,26 @@ import org.phpmaven.test.AbstractTestCase;
 						 "<from>"+zip.getAbsolutePath()+"</from>" +
 						 "<to>"+jar.getAbsolutePath()+"</to>" +
 				 "</configuration>"));
-		 convertMojo = this.createConfiguredMojo(
+		 convertMojo = createCurrentConfiguredMojo(
 				 ConvertPharMojo.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "convert-phar",
 				 config);
 		 convertMojo.execute();
 
-		 Assertions.assertTrue(jar.exists());
+		 Assert.assertTrue(jar.exists());
 
 		 config = Xpp3DomBuilder.build(new StringReader(
 				 "<configuration>" +
 						 "<from>"+jar.getAbsolutePath()+"</from>" +
 						 "<to>"+phar2.getAbsolutePath()+"</to>" +
 				 "</configuration>"));
-		 convertMojo = this.createConfiguredMojo(
+		 convertMojo = createCurrentConfiguredMojo(
 				 ConvertPharMojo.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "convert-phar",
 				 config);
 		 convertMojo.execute();
 
-		 Assertions.assertTrue(phar2.exists());
+		 Assert.assertTrue(phar2.exists());
 
 		 // list files
 		 final IPharPackagerConfiguration pharConfig = lookup(IComponentFactory.class).lookup(

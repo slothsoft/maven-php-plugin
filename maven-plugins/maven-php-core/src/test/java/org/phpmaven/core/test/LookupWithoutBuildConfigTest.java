@@ -20,8 +20,8 @@ import java.io.File;
 
 import org.apache.maven.execution.MavenSession;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.core.test.comp.ISomeComponentHint;
 import org.phpmaven.test.AbstractTestCase;
@@ -55,13 +55,13 @@ public class LookupWithoutBuildConfigTest extends AbstractTestCase {
 				"without-build-config",
 				(Xpp3Dom) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "fooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("default-foo", component.getFoo());
-		Assertions.assertEquals("default-bar", component.getBar());
+		Assert.assertEquals("default-foo", component.getFoo());
+		Assert.assertEquals("default-bar", component.getBar());
 	}
 
 	/**
@@ -80,13 +80,13 @@ public class LookupWithoutBuildConfigTest extends AbstractTestCase {
 				"without-build-config",
 				(Xpp3Dom[]) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "fooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("default-foo", component.getFoo());
-		Assertions.assertEquals("default-bar", component.getBar());
+		Assert.assertEquals("default-foo", component.getFoo());
+		Assert.assertEquals("default-bar", component.getBar());
 	}
 
 }

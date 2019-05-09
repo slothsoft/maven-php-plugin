@@ -22,9 +22,9 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.maven.it.Verifier;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.phpmaven.test.it.AbstractTestCase;
 
 /**
@@ -34,7 +34,7 @@ import org.phpmaven.test.it.AbstractTestCase;
  * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 2.0.0
  */
-@Disabled
+@Ignore
 public class SiteTest extends AbstractTestCase {
 
 	/**
@@ -108,8 +108,8 @@ public class SiteTest extends AbstractTestCase {
 		// check the phpunit report.
 		verifier.assertFilePresent("target/site/report.html");
 		final String content = FileUtils.readFileToString(new File(verifier.getBasedir() + "/target/site/report.html"));
-		Assertions.assertFalse(content.contains("<a name=\"Summary\"></a><p>[<a href=\"#Summary\">Summary</a>] [<a href=\"#Package_List\">Package List</a>] [<a href=\"#Test_Cases\">Test Cases</a>]</p><br /><table border=\"0\" class=\"bodyTable\"><tr class=\"a\"><th>Tests</th><th>Errors </th><th>Failures</th><th>Skipped</th><th>Success Rate</th><th>Time</th></tr><tr class=\"b\"><td>2</td>"));
-		Assertions.assertTrue(content.contains("<a name=\"Summary\"></a><p>[<a href=\"#Summary\">Summary</a>] [<a href=\"#Package_List\">Package List</a>] [<a href=\"#Test_Cases\">Test Cases</a>]</p><br /><table border=\"0\" class=\"bodyTable\"><tr class=\"a\"><th>Tests</th><th>Errors </th><th>Failures</th><th>Skipped</th><th>Success Rate</th><th>Time</th></tr><tr class=\"b\"><td>1</td>"));
+		Assert.assertFalse(content.contains("<a name=\"Summary\"></a><p>[<a href=\"#Summary\">Summary</a>] [<a href=\"#Package_List\">Package List</a>] [<a href=\"#Test_Cases\">Test Cases</a>]</p><br /><table border=\"0\" class=\"bodyTable\"><tr class=\"a\"><th>Tests</th><th>Errors </th><th>Failures</th><th>Skipped</th><th>Success Rate</th><th>Time</th></tr><tr class=\"b\"><td>2</td>"));
+		Assert.assertTrue(content.contains("<a name=\"Summary\"></a><p>[<a href=\"#Summary\">Summary</a>] [<a href=\"#Package_List\">Package List</a>] [<a href=\"#Test_Cases\">Test Cases</a>]</p><br /><table border=\"0\" class=\"bodyTable\"><tr class=\"a\"><th>Tests</th><th>Errors </th><th>Failures</th><th>Skipped</th><th>Success Rate</th><th>Time</th></tr><tr class=\"b\"><td>1</td>"));
 	}
 
 	/**
@@ -284,7 +284,7 @@ public class SiteTest extends AbstractTestCase {
 			}
 		}
 
-		Assertions.assertTrue(found);
+		Assert.assertTrue(found);
 	}
 
 	/**
@@ -327,7 +327,7 @@ public class SiteTest extends AbstractTestCase {
 			}
 		}
 
-		Assertions.assertFalse(found);
+		Assert.assertFalse(found);
 	}
 
 	/**
@@ -370,7 +370,7 @@ public class SiteTest extends AbstractTestCase {
 			}
 		}
 
-		Assertions.assertFalse(found);
+		Assert.assertFalse(found);
 	}
 
 	// alpha support dropped.

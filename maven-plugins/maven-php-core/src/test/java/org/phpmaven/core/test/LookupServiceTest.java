@@ -17,8 +17,8 @@
 package org.phpmaven.core.test;
 
 import org.apache.maven.execution.MavenSession;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.core.test.srv.ISomeService;
 import org.phpmaven.test.AbstractTestCase;
@@ -46,10 +46,10 @@ public class LookupServiceTest extends AbstractTestCase {
 		final MavenSession session = createSimpleEmptySession();
 		// lookup the sample
 		final ISomeService[] services = factory.getServiceImplementations(ISomeService.class, session);
-		Assertions.assertNotNull(services);
-		Assertions.assertEquals(2, services.length);
-		Assertions.assertTrue("foo".equals(services[0].getServiceName()) || "foo".equals(services[1].getServiceName()));
-		Assertions.assertTrue("bar".equals(services[0].getServiceName()) || "bar".equals(services[1].getServiceName()));
+		Assert.assertNotNull(services);
+		Assert.assertEquals(2, services.length);
+		Assert.assertTrue("foo".equals(services[0].getServiceName()) || "foo".equals(services[1].getServiceName()));
+		Assert.assertTrue("bar".equals(services[0].getServiceName()) || "bar".equals(services[1].getServiceName()));
 	}
 
 }

@@ -21,7 +21,7 @@
 		<rootDirectory>${session.executionRootDirectory}</rootDirectory>
 
 		<archetype-packaging-version>2.2</archetype-packaging-version>
-		<maven-version>3.0.4</maven-version>
+		<maven-version>3.2.2</maven-version>
 	</properties>
 
 	<dependencyManagement>
@@ -188,7 +188,7 @@
 			<dependency>
 				<groupId>org.apache.maven.plugin-testing</groupId>
 				<artifactId>maven-plugin-testing-harness</artifactId>
-				<version>2.0</version>
+				<version>3.2.0</version>
 			</dependency>
 
 			<dependency>
@@ -230,15 +230,15 @@
 			<dependency>
 				<groupId>org.codehaus.plexus</groupId>
 				<artifactId>plexus-utils</artifactId>
-				<version>3.0</version>
+				<version>3.2.0</version>
 			</dependency>
 
 			<!-- JUNIT -->
 
 			<dependency>
-				<groupId>org.junit.jupiter</groupId>
-				<artifactId>junit-jupiter-engine</artifactId>
-				<version>5.1.0</version>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.12</version>
 			</dependency>
 
 			<!-- MORTBAY JETTY -->

@@ -20,8 +20,8 @@ import java.io.File;
 
 import org.apache.maven.execution.MavenSession;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.core.test.comp.ISomeComponentHint;
 import org.phpmaven.core.test.comp.SomeComponentXpp3Dom;
@@ -64,15 +64,15 @@ public class LookupHintWithXpp3Test extends AbstractTestCase {
 		xpp.addChild(xppc);
 		dom.addChild(xpp);
 		final ISomeComponentHint component = factory.lookup(ISomeComponentHint.class, "xpp3dom", dom, session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("OtherFoo", component.getFoo());
-		Assertions.assertEquals("MyBarValue", component.getBar());
+		Assert.assertEquals("OtherFoo", component.getFoo());
+		Assert.assertEquals("MyBarValue", component.getBar());
 
-		Assertions.assertEquals(xpp, ((SomeComponentXpp3Dom) component).getXpp());
+		Assert.assertEquals(xpp, ((SomeComponentXpp3Dom) component).getXpp());
 	}
 
 }

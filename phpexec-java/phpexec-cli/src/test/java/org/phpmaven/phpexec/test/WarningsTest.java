@@ -19,14 +19,14 @@
 
 package org.phpmaven.phpexec.test;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Rule;
+import org.junit.Test;
 import org.phpmaven.phpexec.cli.PhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.phpexec.library.IPhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.PhpWarningException;
-import org.phpmaven.test.IgnoreWhen;
-import org.phpmaven.test.PhpMissing;
+import org.phpmaven.test.IgnoreIfPhpMissing;
 
 /**
  * test cases for detecting php warnings as warnings.
@@ -37,6 +37,8 @@ import org.phpmaven.test.PhpMissing;
  */
 public class WarningsTest {
 
+	@Rule
+	public IgnoreIfPhpMissing rule = new IgnoreIfPhpMissing();
 
 	/**
 	 * Tests if the execution is aware of detecting warnings.
@@ -44,14 +46,13 @@ public class WarningsTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
-	@IgnoreWhen(PhpMissing.class)
 	public void testFalse() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
 		try {
 			exec.executeCode("", "echo \"Warning: Some Warning\n\";");
-			Assertions.fail("Expected exception not thrown");
+			Assert.fail("Expected exception not thrown");
 		}
 		catch (final PhpWarningException ex) {
 			// expected exception

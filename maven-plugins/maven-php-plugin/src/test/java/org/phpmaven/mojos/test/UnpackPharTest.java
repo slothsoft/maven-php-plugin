@@ -22,9 +22,8 @@ import java.io.StringReader;
 import org.apache.maven.execution.MavenSession;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.Xpp3DomBuilder;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.plugin.phar.UnpackPharMojo;
 import org.phpmaven.test.AbstractTestCase;
 
@@ -51,24 +50,23 @@ import org.phpmaven.test.AbstractTestCase;
 		 final File fileA = new File(session.getCurrentProject().getBasedir(), "target/folderA/MyClassA.php");
 		 final File fileB = new File(session.getCurrentProject().getBasedir(), "target/folderB/MyClassB.php");
 
-		 Assertions.assertTrue(phar.exists());
-		 Assertions.assertFalse(fileA.exists());
-		 Assertions.assertFalse(fileB.exists());
+		 Assert.assertTrue(phar.exists());
+		 Assert.assertFalse(fileA.exists());
+		 Assert.assertFalse(fileB.exists());
 
 		 final Xpp3Dom config = Xpp3DomBuilder.build(new StringReader(
 				 "<configuration>" +
 						 "<phar>"+phar.getAbsolutePath()+"</phar>" +
 						 "<target>"+new File(session.getCurrentProject().getBasedir(), "target").getAbsolutePath()+"</target>" +
 				 "</configuration>"));
-		 final UnpackPharMojo unpackMojo = this.createConfiguredMojo(
+		 final UnpackPharMojo unpackMojo = createCurrentConfiguredMojo(
 				 UnpackPharMojo.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extract-phar",
 				 config);
 		 unpackMojo.execute();
 
-		 Assertions.assertTrue(fileA.exists());
-		 Assertions.assertTrue(fileB.exists());
+		 Assert.assertTrue(fileA.exists());
+		 Assert.assertTrue(fileB.exists());
 	 }
 
  }

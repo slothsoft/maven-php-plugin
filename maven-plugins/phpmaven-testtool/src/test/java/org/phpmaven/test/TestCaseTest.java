@@ -4,9 +4,9 @@ import java.io.File;
 
 import org.apache.maven.execution.MavenSession;
 import org.codehaus.plexus.PlexusContainer;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 /**
  * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>

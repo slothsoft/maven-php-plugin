@@ -21,17 +21,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.maven.execution.MavenSession;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.exec.IPhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.phpexec.library.PhpErrorException;
 import org.phpmaven.phpexec.library.PhpWarningException;
 import org.phpmaven.test.AbstractTestCase;
-import org.phpmaven.test.IgnoreWhen;
-import org.phpmaven.test.PhpMissing;
 
 /**
  * test cases for PHP support.
@@ -49,8 +47,7 @@ public class IncludesTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testExisting() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -67,7 +64,7 @@ public class IncludesTest extends AbstractTestCase {
 
 		// assert that the environment variable is mapped correctly
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assertions.assertEquals("SUCCESS_EXISTING\n", exec.execute(includeTestPhp));
+		Assert.assertEquals("SUCCESS_EXISTING\n", exec.execute(includeTestPhp));
 	}
 
 	/**
@@ -77,8 +74,7 @@ public class IncludesTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testExistingPut() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -97,7 +93,7 @@ public class IncludesTest extends AbstractTestCase {
 
 		// assert that the environment variable is mapped correctly
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assertions.assertEquals("SUCCESS_EXISTING\n", exec.execute(includeTestPhp));
+		Assert.assertEquals("SUCCESS_EXISTING\n", exec.execute(includeTestPhp));
 	}
 
 	/**
@@ -107,8 +103,7 @@ public class IncludesTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testFailing() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -127,13 +122,13 @@ public class IncludesTest extends AbstractTestCase {
 			// we will either expect a php warning or a php error.
 			// depends on php.ini and php version.
 			exec.execute(includeTestPhp);
-			Assertions.fail("Exception expected");
+			Assert.fail("Exception expected");
 		} catch (final PhpWarningException ex) {
 			// ignore; we expect this exception
-			Assertions.assertTrue(ex.getMessage().contains("Warning: require_once(existing.php)"));
+			Assert.assertTrue(ex.getMessage().contains("Warning: require_once(existing.php)"));
 		} catch (final PhpErrorException ex) {
 			// ignore; we expect this exception
-			Assertions.assertTrue(ex.getMessage().contains("Fatal error: require_once()"));
+			Assert.assertTrue(ex.getMessage().contains("Fatal error: require_once()"));
 		}
 	}
 //

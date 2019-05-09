@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -43,6 +44,7 @@ import org.apache.maven.lifecycle.internal.LifecycleDependencyResolver;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.plugin.Mojo;
 import org.apache.maven.plugin.PluginParameterExpressionEvaluator;
+import org.apache.maven.plugin.testing.MojoRule;
 import org.apache.maven.project.DefaultProjectBuildingRequest;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.project.ProjectBuilder;
@@ -56,59 +58,46 @@ import org.codehaus.plexus.component.configurator.ComponentConfigurator;
 import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluator;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 import org.codehaus.plexus.configuration.xml.XmlPlexusConfiguration;
+import org.codehaus.plexus.util.ReaderFactory;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.sonatype.aether.RepositorySystemSession;
-import org.sonatype.aether.impl.internal.SimpleLocalRepositoryManager;
-import org.sonatype.aether.util.DefaultRepositorySystemSession;
-import org.sonatype.aether.util.graph.transformer.ChainedDependencyGraphTransformer;
-import org.sonatype.aether.util.graph.transformer.ConflictMarker;
-import org.sonatype.aether.util.graph.transformer.JavaDependencyContextRefiner;
-import org.sonatype.aether.util.graph.transformer.JavaEffectiveScopeCalculator;
-import org.sonatype.aether.util.graph.transformer.NearestVersionConflictResolver;
+import org.codehaus.plexus.util.xml.Xpp3DomBuilder;
+import org.eclipse.aether.DefaultRepositorySystemSession;
+import org.eclipse.aether.RepositorySystemSession;
+import org.eclipse.aether.util.graph.transformer.ChainedDependencyGraphTransformer;
+import org.eclipse.aether.util.graph.transformer.ConflictMarker;
+import org.eclipse.aether.util.graph.transformer.JavaDependencyContextRefiner;
+import org.junit.Rule;
+import org.junit.Assert;
 
 /**
  * Abstract base class for testing the modules.
  *
- * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin Eisengardt</a>
+ * @author <a href="mailto:Martin.Eisengardt@googlemail.com">Martin
+ *         Eisengardt</a>
  * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 2.0.0
  */
 
 public abstract class AbstractTestCase {
 
-	private final MojoTestCase mojoTest = new MojoTestCase();
-
-	@BeforeEach
-	public void setUp() throws Exception {
-		this.mojoTest.setUp();
-	}
-
-	@AfterEach
-	public void tearDown() throws Exception {
-		this.mojoTest.tearDown();
-	}
+	@Rule
+	public MojoRule mojoRule = new MojoRule();
 
 	public PlexusContainer getContainer() {
-		return this.mojoTest.getContainer();
+		return this.mojoRule.getContainer();
 	}
 
 	public <T> T lookup(Class<T> componentClass) throws Exception {
-		return this.mojoTest.lookup(componentClass);
+		return this.mojoRule.lookup(componentClass);
 	}
 
 	public Mojo lookupMojo(String goal, String pluginPom) throws Exception {
-		return this.mojoTest.lookupMojo(goal, pluginPom);
-	}
-
-	public <T> T lookup(Class<T> componentClass, String roleHint) throws Exception {
-		return this.mojoTest.lookup(componentClass, roleHint);
+		return this.mojoRule.lookupMojo(goal, pluginPom);
 	}
 
 	/**
 	 * Local repository directory.
+	 * 
 	 * @return local repos dir
 	 * @throws VerificationException thrown on verififcation errors.
 	 */
@@ -118,14 +107,14 @@ public abstract class AbstractTestCase {
 	}
 
 	/**
-	 * Creates a maven session with given test directory (name relative to package org/phpmaven/test/projects).
+	 * Creates a maven session with given test directory (name relative to package
+	 * org/phpmaven/test/projects).
 	 *
 	 * @param strTestDir the relative folder containing the pom.xml to be used
 	 * @return the maven session
 	 * @throws Exception thrown on errors
 	 */
-	protected MavenSession createSimpleSession(final String strTestDir)
-			throws Exception {
+	protected MavenSession createSimpleSession(final String strTestDir) throws Exception {
 		final File testDir = prepareResources(strTestDir);
 		final RepositorySystemSession systemSession = null;
 		final MavenExecutionRequest request = new DefaultMavenExecutionRequest();
@@ -136,35 +125,62 @@ public abstract class AbstractTestCase {
 		return session;
 	}
 
+	protected <T extends Mojo> T createCurrentConfiguredMojo(Class<T> clazz, MavenSession session, String goal,
+			Xpp3Dom config) throws Exception {
+		File pluginPom = new File("pom.xml");
+		Xpp3Dom pluginPomDom = Xpp3DomBuilder.build(ReaderFactory.newXmlReader(pluginPom));
+		String artifactId = pluginPomDom.getChild("artifactId").getValue();
+		String groupId = resolveFromRootThenParent(pluginPomDom, "groupId");
+		String version = resolveFromRootThenParent(pluginPomDom, "version");
+		return createConfiguredMojo(clazz, session, groupId, artifactId, version, goal, config);
+	}
+
+	private String resolveFromRootThenParent(Xpp3Dom pluginPomDom, String element) throws Exception {
+		Xpp3Dom elementDom = pluginPomDom.getChild(element);
+		if (elementDom == null) {
+			Xpp3Dom pluginParentDom = pluginPomDom.getChild("parent");
+			if (pluginParentDom != null) {
+				elementDom = pluginParentDom.getChild(element);
+				if (elementDom == null) {
+					throw new Exception("unable to determine " + element);
+				}
+				return elementDom.getValue();
+			}
+			throw new Exception("unable to determine " + element);
+		}
+		return elementDom.getValue();
+	}
+
 	/**
 	 * Creates a mojo
+	 * 
 	 * @param clazz
 	 * @param groupId
 	 * @param config
 	 * @return mojo
 	 */
-	protected <T extends Mojo> T createConfiguredMojo(Class<T> clazz, MavenSession session, String groupId, String artifactId, String version, String goal, Xpp3Dom config) throws Exception {
+	private <T extends Mojo> T createConfiguredMojo(Class<T> clazz, MavenSession session, String groupId,
+			String artifactId, String version, String goal, Xpp3Dom config) throws Exception {
 		final PlexusConfiguration plexusConfig = new XmlPlexusConfiguration(config);
-		final T result = clazz.cast(this.mojoTest.lookupMojo(groupId, artifactId, version, goal, plexusConfig));
+		final T result = clazz.cast(this.mojoRule.lookupMojo(groupId, artifactId, version, goal, plexusConfig));
 
 		final ExpressionEvaluator evaluator = new PluginParameterExpressionEvaluator(session,
-				this.mojoTest.newMojoExecution(goal));
+				this.mojoRule.newMojoExecution(goal));
 
 		Xpp3Dom configuration = null;
-		final Plugin plugin = session.getCurrentProject().getPlugin( groupId + ":" + artifactId );
-		if ( plugin != null )
-		{
+		final Plugin plugin = session.getCurrentProject().getPlugin(groupId + ":" + artifactId);
+		if (plugin != null) {
 			configuration = (Xpp3Dom) plugin.getConfiguration();
 		}
-		if ( configuration == null )
-		{
-			configuration = new Xpp3Dom( "configuration" );
+		if (configuration == null) {
+			configuration = new Xpp3Dom("configuration");
 		}
-		configuration = Xpp3Dom.mergeXpp3Dom(this.mojoTest.newMojoExecution(goal).getConfiguration(), configuration);
+		configuration = Xpp3Dom.mergeXpp3Dom(this.mojoRule.newMojoExecution(goal).getConfiguration(), configuration);
 
-		final PlexusConfiguration pluginConfiguration = new XmlPlexusConfiguration( configuration );
+		final PlexusConfiguration pluginConfiguration = new XmlPlexusConfiguration(configuration);
 
-		getContainer().lookup( ComponentConfigurator.class, "basic" ).configureComponent( result, pluginConfiguration, evaluator, getContainer().getContainerRealm() );
+		getContainer().lookup(ComponentConfigurator.class, "basic").configureComponent(result, pluginConfiguration,
+				evaluator, getContainer().getContainerRealm());
 
 		return result;
 	}
@@ -174,35 +190,41 @@ public abstract class AbstractTestCase {
 		final ProjectBuildingRequest buildingRequest = new DefaultProjectBuildingRequest();
 		buildingRequest.setProcessPlugins(false);
 		buildingRequest.setResolveDependencies(false);
-		final MavenProject project = this.mojoTest.lookup(ProjectBuilder.class).build(projectFile, buildingRequest)
+
+		DefaultRepositorySystemSession repositorySession = new DefaultRepositorySystemSession();
+		repositorySession.setLocalRepositoryManager(new SimpleLocalRepositoryManager(getLocalReposDir()));
+		buildingRequest.setRepositorySession(repositorySession);
+
+		final MavenProject project = this.mojoRule.lookup(ProjectBuilder.class).build(projectFile, buildingRequest)
 				.getProject();
 		return project;
 	}
 
 	/**
 	 * Creates a maven session with an empty project pom.
+	 * 
 	 * @return the maven session
 	 * @throws Exception thrown on errors
 	 */
-	protected MavenSession createSimpleEmptySession()
-			throws Exception {
+	protected MavenSession createSimpleEmptySession() throws Exception {
 		return createSimpleSession("empty");
 	}
 
 	/**
-	 * Creates a maven session with given test directory (name relative to this class package).
+	 * Creates a maven session with given test directory (name relative to this
+	 * class package).
 	 *
 	 * @param strTestDir the relative folder containing the pom.xml to be used
 	 * @return the maven session
 	 * @throws Exception thrown on errors
 	 */
-	protected MavenSession createSessionForPhpMaven(final String strTestDir)
-			throws Exception {
+	protected MavenSession createSessionForPhpMaven(final String strTestDir) throws Exception {
 		return createSessionForPhpMaven(strTestDir, false);
 	}
 
 	/**
-	 * Creates a maven session with given test directory (name relative to this class package).
+	 * Creates a maven session with given test directory (name relative to this
+	 * class package).
 	 *
 	 * @param strTestDir the relative folder containing the pom.xml to be used
 	 * @return the maven session
@@ -221,19 +243,21 @@ public abstract class AbstractTestCase {
 	protected MavenData createProjectBuildingRequest() throws Exception {
 		final File localReposFile = this.getLocalReposDir();
 
-		final SimpleLocalRepositoryManager localRepositoryManager = new SimpleLocalRepositoryManager(
-				localReposFile);
+		final SimpleLocalRepositoryManager localRepositoryManager = new SimpleLocalRepositoryManager(localReposFile);
 
 		final DefaultRepositorySystemSession repositorySession = new DefaultRepositorySystemSession();
+
+		Map<String, String> systemProperties = new HashMap<>(repositorySession.getSystemProperties());
 		for (final Map.Entry<Object, Object> entry : System.getProperties().entrySet()) {
-			repositorySession.getSystemProperties().put(entry.getKey().toString(), entry.getValue().toString());
+			systemProperties.put(entry.getKey().toString(), entry.getValue().toString());
 		}
-		repositorySession.getSystemProperties().put("java.version", System.getProperty("java.version"));
-		repositorySession.setDependencyGraphTransformer(new ChainedDependencyGraphTransformer( new ConflictMarker(), new JavaEffectiveScopeCalculator(),
-				new NearestVersionConflictResolver(),
-				new JavaDependencyContextRefiner() ));
+		systemProperties.put("java.version", System.getProperty("java.version"));
+		repositorySession.setSystemProperties(systemProperties);
+
+		repositorySession.setDependencyGraphTransformer(
+				new ChainedDependencyGraphTransformer(new ConflictMarker(), new JavaDependencyContextRefiner()));
 		final MavenExecutionRequest request = new DefaultMavenExecutionRequest();
-		final MavenExecutionRequestPopulator populator = this.mojoTest.lookup(MavenExecutionRequestPopulator.class);
+		final MavenExecutionRequestPopulator populator = this.mojoRule.lookup(MavenExecutionRequestPopulator.class);
 		populator.populateDefaults(request);
 
 		final SettingsBuildingRequest settingsRequest = new DefaultSettingsBuildingRequest();
@@ -241,20 +265,16 @@ public abstract class AbstractTestCase {
 		settingsRequest.setUserSettingsFile(MavenCli.DEFAULT_USER_SETTINGS_FILE);
 		settingsRequest.setSystemProperties(request.getSystemProperties());
 		settingsRequest.setUserProperties(request.getUserProperties());
-		final SettingsBuilder settingsBuilder = this.mojoTest.lookup(SettingsBuilder.class);
+		final SettingsBuilder settingsBuilder = this.mojoRule.lookup(SettingsBuilder.class);
 		final SettingsBuildingResult settingsResult = settingsBuilder.build(settingsRequest);
-		final MavenExecutionRequestPopulator executionRequestPopulator = this.mojoTest
+		final MavenExecutionRequestPopulator executionRequestPopulator = this.mojoRule
 				.lookup(MavenExecutionRequestPopulator.class);
 		executionRequestPopulator.populateFromSettings(request, settingsResult.getEffectiveSettings());
 
-		final ArtifactRepositoryLayout layout = this.mojoTest.lookup(ArtifactRepositoryLayout.class);
+		final ArtifactRepositoryLayout layout = this.mojoRule.lookup(ArtifactRepositoryLayout.class);
 		final ArtifactRepositoryPolicy policy = new ArtifactRepositoryPolicy();
-		final MavenArtifactRepository repos = new MavenArtifactRepository(
-				"local",
-				localReposFile.toURI().toURL().toString(),
-				layout,
-				policy,
-				policy);
+		final MavenArtifactRepository repos = new MavenArtifactRepository("local",
+				localReposFile.toURI().toURL().toString(), layout, policy, policy);
 
 		request.setLocalRepository(repos);
 		request.setSystemProperties(new Properties(System.getProperties()));
@@ -279,17 +299,15 @@ public abstract class AbstractTestCase {
 	}
 
 	/**
-	 * Creates a maven session with given test directory (name relative to this class package).
+	 * Creates a maven session with given test directory (name relative to this
+	 * class package).
 	 *
 	 * @param strTestDir the relative folder containing the pom.xml to be used
 	 * @return the maven session
 	 * @throws Exception thrown on errors
 	 */
-	protected MavenSession createSessionForPhpMaven(
-			final String strTestDir,
-			boolean resolveDependencies,
-			boolean processPlugins)
-					throws Exception {
+	protected MavenSession createSessionForPhpMaven(final String strTestDir, boolean resolveDependencies,
+			boolean processPlugins) throws Exception {
 		final File testDir = preparePhpMavenLocalRepos(strTestDir);
 		final MavenExecutionResult result = null;
 		final MavenData data = this.createProjectBuildingRequest();
@@ -297,10 +315,11 @@ public abstract class AbstractTestCase {
 		final MavenExecutionRequest request = data.executionRequest;
 
 		final File projectFile = new File(testDir, "pom.xml");
-		final MavenProject project = this.mojoTest.lookup(ProjectBuilder.class).build(projectFile, buildingRequest)
+		final MavenProject project = this.mojoRule.lookup(ProjectBuilder.class).build(projectFile, buildingRequest)
 				.getProject();
 
-		final MavenSession session = new MavenSession(getContainer(), buildingRequest.getRepositorySession(), request, result);
+		final MavenSession session = new MavenSession(getContainer(), buildingRequest.getRepositorySession(), request,
+				result);
 		session.setCurrentProject(project);
 
 		return session;
@@ -308,34 +327,33 @@ public abstract class AbstractTestCase {
 
 	/**
 	 * Prepares a local repository and installs the php-maven projects.
+	 * 
 	 * @param strTestDir The local test directory for the project to be tested
 	 * @return the file path to the local test installation
 	 * @throws Exception
 	 */
-	private File preparePhpMavenLocalRepos(final String strTestDir)
-			throws Exception {
+	private File preparePhpMavenLocalRepos(final String strTestDir) throws Exception {
 		final File testDir = prepareResources(strTestDir);
 		return testDir;
 	}
 
 	private File prepareResources(final String strTestDir) throws IOException {
 
-		final String tempDirPath = System.getProperty(
-				"maven.test.tmpdir", System.getProperty("java.io.tmpdir"));
+		final String tempDirPath = System.getProperty("maven.test.tmpdir", System.getProperty("java.io.tmpdir"));
 		final File testDir = new File(tempDirPath, "org/phpmaven/test/projects/" + strTestDir);
-		// try to delete it 5 times (sometimes it silently failes but succeeds the second incovation)
+		// try to delete it 5 times (sometimes it silently fails but succeeds the
+		// second invocation)
 		for (int i = 0; i < 5; i++) {
 			try {
 				FileUtils.deleteDirectory(testDir);
 			} catch (final IOException ex) {
-				if (i == 5) throw ex;
+				if (i == 5)
+					throw ex;
 			}
 		}
-		ResourceExtractor.extractResourcePath(
-				getClass(),
-				"/org/phpmaven/test/projects/" + strTestDir,
-				new File(tempDirPath),
-				true);
+		System.out.println(testDir);
+		ResourceExtractor.extractResourcePath(getClass(), "/org/phpmaven/test/projects/" + strTestDir,
+				new File(tempDirPath), true);
 
 		return testDir;
 	}
@@ -345,12 +363,11 @@ public abstract class AbstractTestCase {
 		scopesToResolve.add(Artifact.SCOPE_COMPILE);
 		scopesToResolve.add(Artifact.SCOPE_TEST);
 		final List<String> scopesToCollect = new ArrayList<String>();
-		final LifecycleDependencyResolver lifeCycleDependencyResolver = this.mojoTest
+		final LifecycleDependencyResolver lifeCycleDependencyResolver = this.mojoRule
 				.lookup(LifecycleDependencyResolver.class);
 		session.getCurrentProject().setArtifacts(null);
 		lifeCycleDependencyResolver.resolveProjectDependencies(session.getCurrentProject(), scopesToCollect,
-				scopesToResolve, session, false,
-				Collections.<Artifact> emptySet());
+				scopesToResolve, session, false, Collections.<Artifact>emptySet());
 		session.getCurrentProject().setArtifactFilter(new CumulativeScopeArtifactFilter(scopesToResolve));
 	}
 
@@ -358,10 +375,11 @@ public abstract class AbstractTestCase {
 
 	protected void assertIterableCount(Iterable<?> iter, int count) {
 		int result = 0;
-		for (@SuppressWarnings("unused") final Object elm : iter) {
+		for (@SuppressWarnings("unused")
+		final Object elm : iter) {
 			result++;
 		}
-		Assertions.assertEquals(count, result);
+		Assert.assertEquals(count, result);
 	}
 
 	protected <T> void assertIterableContains(Iterable<T> iter, T element) {
@@ -373,7 +391,7 @@ public abstract class AbstractTestCase {
 			}
 		}
 		if (!found) {
-			Assertions.fail("Element " + element + " not found.");
+			Assert.fail("Element " + element + " not found.");
 		}
 	}
 

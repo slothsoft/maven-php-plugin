@@ -50,9 +50,9 @@
 	</build>
 	<dependencies>
 		<dependency>
-			<groupId>de.phpunit</groupId>
-			<artifactId>PHPUnit</artifactId>
-			<version>3.6.10</version>
+			<groupId>de.slothsoft.phars</groupId>
+			<artifactId>phpunit</artifactId>
+			<version>3.7.10</version>
 			<scope>test</scope>
 			<type>phar</type>
 		</dependency>

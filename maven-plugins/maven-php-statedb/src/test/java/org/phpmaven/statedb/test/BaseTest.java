@@ -17,8 +17,8 @@
 package org.phpmaven.statedb.test;
 
 import org.apache.maven.execution.MavenSession;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.statedb.IStateDatabase;
 import org.phpmaven.test.AbstractTestCase;
@@ -49,10 +49,10 @@ public class BaseTest extends AbstractTestCase {
 				IStateDatabase.class,
 				IComponentFactory.EMPTY_CONFIG,
 				session);
-		Assertions.assertNotNull(db);
-		Assertions.assertNotNull(db.getDbfile());
-		Assertions.assertNull(db.get("foo", "bar", "baz", String.class));
-		Assertions.assertFalse(db.getDbfile().exists());
+		Assert.assertNotNull(db);
+		Assert.assertNotNull(db.getDbfile());
+		Assert.assertNull(db.get("foo", "bar", "baz", String.class));
+		Assert.assertFalse(db.getDbfile().exists());
 	}
 
 	/**
@@ -71,17 +71,17 @@ public class BaseTest extends AbstractTestCase {
 				IStateDatabase.class,
 				IComponentFactory.EMPTY_CONFIG,
 				session);
-		Assertions.assertNotNull(db);
-		Assertions.assertNotNull(db.getDbfile());
-		Assertions.assertNull(db.get("foo", "bar", "baz", String.class));
-		Assertions.assertFalse(db.getDbfile().exists());
+		Assert.assertNotNull(db);
+		Assert.assertNotNull(db.getDbfile());
+		Assert.assertNull(db.get("foo", "bar", "baz", String.class));
+		Assert.assertFalse(db.getDbfile().exists());
 
 		db.set("foo", "bar", "baz", "persistence");
-		Assertions.assertTrue(db.getDbfile().exists());
-		Assertions.assertEquals("persistence", db.get("foo", "bar", "baz", String.class));
+		Assert.assertTrue(db.getDbfile().exists());
+		Assert.assertEquals("persistence", db.get("foo", "bar", "baz", String.class));
 
 		db.reload();
-		Assertions.assertEquals("persistence", db.get("foo", "bar", "baz", String.class));
+		Assert.assertEquals("persistence", db.get("foo", "bar", "baz", String.class));
 
 		db.remove("foo", "bar", "baz"); // not perfect but will do
 	}

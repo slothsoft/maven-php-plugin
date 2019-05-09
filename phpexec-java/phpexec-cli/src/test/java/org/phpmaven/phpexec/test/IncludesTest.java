@@ -23,15 +23,15 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Rule;
+import org.junit.Test;
 import org.phpmaven.phpexec.cli.PhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.phpexec.library.IPhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.PhpErrorException;
 import org.phpmaven.phpexec.library.PhpWarningException;
-import org.phpmaven.test.IgnoreWhen;
-import org.phpmaven.test.PhpMissing;
+import org.phpmaven.test.IgnoreIfPhpMissing;
 
 /**
  * test cases for PHP support.
@@ -42,6 +42,8 @@ import org.phpmaven.test.PhpMissing;
  */
 public class IncludesTest {
 
+	@Rule
+	public IgnoreIfPhpMissing rule = new IgnoreIfPhpMissing();
 
 	/**
 	 * Tests if the execution configuration can be created.
@@ -49,7 +51,6 @@ public class IncludesTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
-	@IgnoreWhen(PhpMissing.class)
 	public void testExisting() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
@@ -59,7 +60,7 @@ public class IncludesTest {
 
 		// assert that the environment variable is mapped correctly
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assertions.assertEquals("SUCCESS_EXISTING\n", exec.execute(includeTestPhp));
+		Assert.assertEquals("SUCCESS_EXISTING\n", exec.execute(includeTestPhp));
 	}
 
 	/**
@@ -68,7 +69,6 @@ public class IncludesTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
-	@IgnoreWhen(PhpMissing.class)
 	public void testExistingPut() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
@@ -80,7 +80,7 @@ public class IncludesTest {
 
 		// assert that the environment variable is mapped correctly
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assertions.assertEquals("SUCCESS_EXISTING\n", exec.execute(includeTestPhp));
+		Assert.assertEquals("SUCCESS_EXISTING\n", exec.execute(includeTestPhp));
 	}
 
 	/**
@@ -89,7 +89,6 @@ public class IncludesTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
-	@IgnoreWhen(PhpMissing.class)
 	public void testFailing() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
@@ -101,13 +100,13 @@ public class IncludesTest {
 			// we will either expect a php warning or a php error.
 			// depends on php.ini and php version.
 			exec.execute(includeTestPhp);
-			Assertions.fail("Exception expected");
+			Assert.fail("Exception expected");
 		} catch (final PhpWarningException ex) {
 			// ignore; we expect this exception
-			Assertions.assertTrue(ex.getMessage().contains("Warning: require_once(existing.php)"));
+			Assert.assertTrue(ex.getMessage().contains("Warning: require_once(existing.php)"));
 		} catch (final PhpErrorException ex) {
 			// ignore; we expect this exception
-			Assertions.assertTrue(ex.getMessage().contains("Fatal error: require_once()"));
+			Assert.assertTrue(ex.getMessage().contains("Fatal error: require_once()"));
 		}
 	}
 //

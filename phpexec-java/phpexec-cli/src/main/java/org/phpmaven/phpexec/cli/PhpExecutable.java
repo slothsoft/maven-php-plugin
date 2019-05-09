@@ -49,6 +49,7 @@ import org.phpmaven.phpexec.library.PhpWarningException;
  * @author Christian Wiedemann
  * @author Tobias Sarnowski
  * @author Martin Eisengardt
+ * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 0.1.8
  */
 public final class PhpExecutable implements IPhpExecutable {
@@ -256,7 +257,12 @@ public final class PhpExecutable implements IPhpExecutable {
                     	LOGGER.fine("php.out: " + line);
                     }
 
-                    stdout.consumeLine(line);
+                    try {
+						stdout.consumeLine(line);
+					} catch (IOException e) {
+						// TODO don't know if we can ignore, but willing to try
+						e.printStackTrace();
+					}
 
                     final boolean error = isError(line);
                     final boolean warning = isWarning(line);

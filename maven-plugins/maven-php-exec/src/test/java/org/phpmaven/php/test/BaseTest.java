@@ -17,16 +17,16 @@
 package org.phpmaven.php.test;
 
 import org.apache.maven.execution.MavenSession;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Rule;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.exec.IPhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.phpexec.library.PhpException;
 import org.phpmaven.test.AbstractTestCase;
-import org.phpmaven.test.IgnoreWhen;
-import org.phpmaven.test.PhpMissing;
+import org.phpmaven.test.IgnoreIfPhpMissing;
 
 /**
  * test cases for PHP support.
@@ -38,6 +38,9 @@ import org.phpmaven.test.PhpMissing;
 public class BaseTest extends AbstractTestCase {
 
 
+	@Rule
+	public IgnoreIfPhpMissing rule = new IgnoreIfPhpMissing();
+
 	/**
 	 * Tests if the execution configuration can be created.
 	 *
@@ -45,8 +48,7 @@ public class BaseTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testECCreation() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -57,11 +59,11 @@ public class BaseTest extends AbstractTestCase {
 				IComponentFactory.EMPTY_CONFIG,
 				session);
 		// assert that it is not null
-		Assertions.assertNotNull(execConfig);
+		Assert.assertNotNull(execConfig);
 		// assert that we are able to create the executable
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assertions.assertNotNull(exec.getStrVersion());
-		Assertions.assertNotNull(exec.getVersion());
+		Assert.assertNotNull(exec.getStrVersion());
+		Assert.assertNotNull(exec.getVersion());
 	}
 
 	/**
@@ -72,8 +74,7 @@ public class BaseTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testUnknownExecutable() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -88,7 +89,7 @@ public class BaseTest extends AbstractTestCase {
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
 		try {
 			exec.getStrVersion();
-			Assertions.fail("Exception expected");
+			Assert.fail("Exception expected");
 			// CHECKSTYLE:OFF
 			// checkstyle does not like empty catches
 		} catch (final PhpException ex) {
@@ -105,8 +106,7 @@ public class BaseTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testUnknownInterpreter() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -116,12 +116,12 @@ public class BaseTest extends AbstractTestCase {
 				IPhpExecutableConfiguration.class,
 				IComponentFactory.EMPTY_CONFIG,
 				session);
-		Assertions.assertEquals("PHP_EXE", execConfig.getInterpreter());
+		Assert.assertEquals("PHP_EXE", execConfig.getInterpreter());
 		execConfig.setInterpreter("foo-bar-php");
 		// assert that we are able to create the executable
 		try {
 			execConfig.getPhpExecutable();
-			Assertions.fail("Exception expected");
+			Assert.fail("Exception expected");
 			// CHECKSTYLE:OFF
 			// checkstyle does not like empty catches
 		} catch (final IllegalStateException ex) {
@@ -136,8 +136,7 @@ public class BaseTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testIsUseCacheActive() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -147,9 +146,9 @@ public class BaseTest extends AbstractTestCase {
 				IPhpExecutableConfiguration.class,
 				IComponentFactory.EMPTY_CONFIG,
 				session);
-		Assertions.assertTrue(execConfig.isUseCache());
+		Assert.assertTrue(execConfig.isUseCache());
 		execConfig.setUseCache(false);
-		Assertions.assertFalse(execConfig.isUseCache());
+		Assert.assertFalse(execConfig.isUseCache());
 	}
 
 	// TODO: test additionalPhpParameters

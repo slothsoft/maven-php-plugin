@@ -20,8 +20,8 @@ import java.io.File;
 
 import org.apache.maven.execution.MavenSession;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.core.test.comp.ISomeComponentWithChildren;
 import org.phpmaven.test.AbstractTestCase;
@@ -56,17 +56,17 @@ public class LookupRequirementsWithConfigsTest extends AbstractTestCase {
 		bar.setValue("MyBarValue");
 		dom.addChild(bar);
 		final ISomeComponentWithChildren component = factory.lookup(ISomeComponentWithChildren.class, dom, session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("OtherFoo", component.getFoo());
-		Assertions.assertEquals("MyBarValue", component.getBar());
-		Assertions.assertNotNull(component.getDeep());
-		Assertions.assertEquals("OtherFoo", component.getDeep().getFoo());
-		Assertions.assertEquals("default-bar", component.getDeep().getBar());
-		Assertions.assertEquals(new File(session.getCurrentProject().getBasedir(), "SomeFooBar"),
+		Assert.assertEquals("OtherFoo", component.getFoo());
+		Assert.assertEquals("MyBarValue", component.getBar());
+		Assert.assertNotNull(component.getDeep());
+		Assert.assertEquals("OtherFoo", component.getDeep().getFoo());
+		Assert.assertEquals("default-bar", component.getDeep().getBar());
+		Assert.assertEquals(new File(session.getCurrentProject().getBasedir(), "SomeFooBar"),
 				component.getDeep().getFooBar());
 	}
 

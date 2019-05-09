@@ -20,8 +20,8 @@ import java.io.File;
 import java.util.Iterator;
 
 import org.apache.maven.execution.MavenSession;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.dependency.IAction;
 import org.phpmaven.dependency.IActionBootstrap;
@@ -61,98 +61,98 @@ public class BaseTest extends AbstractTestCase {
 				IDependencyConfiguration.class,
 				IComponentFactory.EMPTY_CONFIG,
 				session);
-		Assertions.assertNotNull(depConfig);
+		Assert.assertNotNull(depConfig);
 
 		IDependency dep = this.findDep(depConfig, "org.group1", "classic1");
 		Iterator<IAction> actionIter = dep.getActions().iterator();
-		Assertions.assertTrue(actionIter.hasNext());
+		Assert.assertTrue(actionIter.hasNext());
 		IAction action = actionIter.next();
-		Assertions.assertEquals(action.getType(), IAction.ActionType.ACTION_CLASSIC);
-		Assertions.assertTrue(action instanceof IActionClassic);
-		Assertions.assertFalse(actionIter.hasNext());
+		Assert.assertEquals(action.getType(), IAction.ActionType.ACTION_CLASSIC);
+		Assert.assertTrue(action instanceof IActionClassic);
+		Assert.assertFalse(actionIter.hasNext());
 
 		dep = this.findDep(depConfig, "org.group1", "ignore1");
 		actionIter = dep.getActions().iterator();
-		Assertions.assertTrue(actionIter.hasNext());
+		Assert.assertTrue(actionIter.hasNext());
 		action = actionIter.next();
-		Assertions.assertEquals(action.getType(), IAction.ActionType.ACTION_IGNORE);
-		Assertions.assertTrue(action instanceof IActionIgnore);
-		Assertions.assertFalse(actionIter.hasNext());
+		Assert.assertEquals(action.getType(), IAction.ActionType.ACTION_IGNORE);
+		Assert.assertTrue(action instanceof IActionIgnore);
+		Assert.assertFalse(actionIter.hasNext());
 
 		dep = this.findDep(depConfig, "org.group1", "pear");
 		actionIter = dep.getActions().iterator();
-		Assertions.assertTrue(actionIter.hasNext());
+		Assert.assertTrue(actionIter.hasNext());
 		action = actionIter.next();
-		Assertions.assertEquals(action.getType(), IAction.ActionType.ACTION_PEAR);
-		Assertions.assertTrue(action instanceof IActionPear);
-		Assertions.assertFalse(actionIter.hasNext());
+		Assert.assertEquals(action.getType(), IAction.ActionType.ACTION_PEAR);
+		Assert.assertTrue(action instanceof IActionPear);
+		Assert.assertFalse(actionIter.hasNext());
 
 		dep = this.findDep(depConfig, "org.group1", "extract1");
 		actionIter = dep.getActions().iterator();
-		Assertions.assertTrue(actionIter.hasNext());
+		Assert.assertTrue(actionIter.hasNext());
 		action = actionIter.next();
-		Assertions.assertEquals(action.getType(), IAction.ActionType.ACTION_EXTRACT);
-		Assertions.assertTrue(action instanceof IActionExtract);
-		Assertions.assertEquals("/some/path", ((IActionExtract)action).getPharPath());
-		Assertions.assertEquals(session.getCurrentProject().getBuild().getDirectory() + "/somepath", ((IActionExtract)action).getTargetPath());
-		Assertions.assertFalse(actionIter.hasNext());
+		Assert.assertEquals(action.getType(), IAction.ActionType.ACTION_EXTRACT);
+		Assert.assertTrue(action instanceof IActionExtract);
+		Assert.assertEquals("/some/path", ((IActionExtract)action).getPharPath());
+		Assert.assertEquals(session.getCurrentProject().getBuild().getDirectory() + "/somepath", ((IActionExtract)action).getTargetPath());
+		Assert.assertFalse(actionIter.hasNext());
 
 		dep = this.findDep(depConfig, "org.group1", "extractAndInclude1");
 		actionIter = dep.getActions().iterator();
-		Assertions.assertTrue(actionIter.hasNext());
+		Assert.assertTrue(actionIter.hasNext());
 		action = actionIter.next();
-		Assertions.assertEquals(action.getType(), IAction.ActionType.ACTION_EXTRACT_INCLUDE);
-		Assertions.assertTrue(action instanceof IActionExtractAndInclude);
-		Assertions.assertEquals("/some/path", ((IActionExtractAndInclude)action).getPharPath());
-		Assertions.assertEquals(session.getCurrentProject().getBuild().getDirectory() + "/somepath", ((IActionExtractAndInclude)action).getTargetPath());
-		Assertions.assertEquals("/some/other/path", ((IActionExtractAndInclude)action).getIncludePath());
-		Assertions.assertFalse(actionIter.hasNext());
+		Assert.assertEquals(action.getType(), IAction.ActionType.ACTION_EXTRACT_INCLUDE);
+		Assert.assertTrue(action instanceof IActionExtractAndInclude);
+		Assert.assertEquals("/some/path", ((IActionExtractAndInclude)action).getPharPath());
+		Assert.assertEquals(session.getCurrentProject().getBuild().getDirectory() + "/somepath", ((IActionExtractAndInclude)action).getTargetPath());
+		Assert.assertEquals("/some/other/path", ((IActionExtractAndInclude)action).getIncludePath());
+		Assert.assertFalse(actionIter.hasNext());
 
 		dep = this.findDep(depConfig, "org.group1", "include1");
 		actionIter = dep.getActions().iterator();
-		Assertions.assertTrue(actionIter.hasNext());
+		Assert.assertTrue(actionIter.hasNext());
 		action = actionIter.next();
-		Assertions.assertEquals(action.getType(), IAction.ActionType.ACTION_INCLUDE);
-		Assertions.assertTrue(action instanceof IActionInclude);
-		Assertions.assertEquals("/some/path", ((IActionInclude)action).getPharPath());
-		Assertions.assertFalse(actionIter.hasNext());
+		Assert.assertEquals(action.getType(), IAction.ActionType.ACTION_INCLUDE);
+		Assert.assertTrue(action instanceof IActionInclude);
+		Assert.assertEquals("/some/path", ((IActionInclude)action).getPharPath());
+		Assert.assertFalse(actionIter.hasNext());
 
 		dep = this.findDep(depConfig, "org.group1", "extractDefaults");
 		actionIter = dep.getActions().iterator();
-		Assertions.assertTrue(actionIter.hasNext());
+		Assert.assertTrue(actionIter.hasNext());
 		action = actionIter.next();
-		Assertions.assertEquals(action.getType(), IAction.ActionType.ACTION_EXTRACT);
-		Assertions.assertTrue(action instanceof IActionExtract);
-		Assertions.assertEquals("/", ((IActionExtract)action).getPharPath());
-		Assertions.assertEquals("", ((IActionExtract)action).getTargetPath());
-		Assertions.assertFalse(actionIter.hasNext());
+		Assert.assertEquals(action.getType(), IAction.ActionType.ACTION_EXTRACT);
+		Assert.assertTrue(action instanceof IActionExtract);
+		Assert.assertEquals("/", ((IActionExtract)action).getPharPath());
+		Assert.assertEquals("", ((IActionExtract)action).getTargetPath());
+		Assert.assertFalse(actionIter.hasNext());
 
 		dep = this.findDep(depConfig, "org.group1", "extractAndIncludeDefaults");
 		actionIter = dep.getActions().iterator();
-		Assertions.assertTrue(actionIter.hasNext());
+		Assert.assertTrue(actionIter.hasNext());
 		action = actionIter.next();
-		Assertions.assertEquals(action.getType(), IAction.ActionType.ACTION_EXTRACT_INCLUDE);
-		Assertions.assertTrue(action instanceof IActionExtractAndInclude);
-		Assertions.assertEquals("/", ((IActionExtractAndInclude)action).getPharPath());
-		Assertions.assertEquals("", ((IActionExtractAndInclude)action).getTargetPath());
-		Assertions.assertEquals("/", ((IActionExtractAndInclude)action).getIncludePath());
-		Assertions.assertFalse(actionIter.hasNext());
+		Assert.assertEquals(action.getType(), IAction.ActionType.ACTION_EXTRACT_INCLUDE);
+		Assert.assertTrue(action instanceof IActionExtractAndInclude);
+		Assert.assertEquals("/", ((IActionExtractAndInclude)action).getPharPath());
+		Assert.assertEquals("", ((IActionExtractAndInclude)action).getTargetPath());
+		Assert.assertEquals("/", ((IActionExtractAndInclude)action).getIncludePath());
+		Assert.assertFalse(actionIter.hasNext());
 
 		dep = this.findDep(depConfig, "org.group1", "includeDefaults");
 		actionIter = dep.getActions().iterator();
-		Assertions.assertTrue(actionIter.hasNext());
+		Assert.assertTrue(actionIter.hasNext());
 		action = actionIter.next();
-		Assertions.assertEquals(action.getType(), IAction.ActionType.ACTION_INCLUDE);
-		Assertions.assertTrue(action instanceof IActionInclude);
-		Assertions.assertEquals("/", ((IActionInclude)action).getPharPath());
-		Assertions.assertFalse(actionIter.hasNext());
+		Assert.assertEquals(action.getType(), IAction.ActionType.ACTION_INCLUDE);
+		Assert.assertTrue(action instanceof IActionInclude);
+		Assert.assertEquals("/", ((IActionInclude)action).getPharPath());
+		Assert.assertFalse(actionIter.hasNext());
 	}
 
 	private IDependency findDep(IDependencyConfiguration config, String groupId, String artifactId) {
 		for (final IDependency dep : config.getDependencies()) {
 			if (dep.getGroupId().equals(groupId) && dep.getArtifactId().equals(artifactId)) return dep;
 		}
-		Assertions.fail("dependency " + groupId + ":" + artifactId + " not found");
+		Assert.fail("dependency " + groupId + ":" + artifactId + " not found");
 		return null;
 	}
 
@@ -172,17 +172,17 @@ public class BaseTest extends AbstractTestCase {
 				IDependencyConfiguration.class,
 				IComponentFactory.EMPTY_CONFIG,
 				session);
-		Assertions.assertNotNull(depConfig);
+		Assert.assertNotNull(depConfig);
 
 		final IDependency dep = this.findDep(depConfig, "org.group1", "bootstrap1");
 		final Iterator<IAction> actionIter = dep.getActions().iterator();
-		Assertions.assertTrue(actionIter.hasNext());
+		Assert.assertTrue(actionIter.hasNext());
 		final IAction action = actionIter.next();
-		Assertions.assertEquals(action.getType(), IAction.ActionType.ACTION_BOOTSTRAP);
-		Assertions.assertTrue(action instanceof IActionBootstrap);
-		Assertions.assertFalse(actionIter.hasNext());
+		Assert.assertEquals(action.getType(), IAction.ActionType.ACTION_BOOTSTRAP);
+		Assert.assertTrue(action instanceof IActionBootstrap);
+		Assert.assertFalse(actionIter.hasNext());
 
-		Assertions.assertEquals(new File(session.getCurrentProject().getBuild().getDirectory(), "/foo.php").getAbsolutePath(), depConfig.getBootstrapFile().getAbsolutePath());
+		Assert.assertEquals(new File(session.getCurrentProject().getBuild().getDirectory(), "/foo.php").getAbsolutePath(), depConfig.getBootstrapFile().getAbsolutePath());
 	}
 
 }

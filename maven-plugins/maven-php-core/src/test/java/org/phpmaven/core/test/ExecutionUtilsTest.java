@@ -24,8 +24,8 @@ import org.apache.maven.monitor.logging.DefaultLog;
 import org.apache.maven.plugin.logging.Log;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
 import org.codehaus.plexus.util.cli.CommandLineException;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.ExecutionUtils;
 import org.phpmaven.test.AbstractTestCase;
 
@@ -48,7 +48,7 @@ public class ExecutionUtilsTest extends AbstractTestCase {
 	public void testCtor() throws Exception {
 		final Constructor<ExecutionUtils> ctor = ExecutionUtils.class.getDeclaredConstructor();
 		ctor.setAccessible(true);
-		Assertions.assertNotNull(ctor.newInstance());
+		Assert.assertNotNull(ctor.newInstance());
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class ExecutionUtilsTest extends AbstractTestCase {
 		if (os2 != null && os2.toLowerCase().indexOf("windows") != -1) {
 			command = "dir";
 		}
-		Assertions.assertNotNull(ExecutionUtils.executeCommand(null, command));
+		Assert.assertNotNull(ExecutionUtils.executeCommand(null, command));
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class ExecutionUtilsTest extends AbstractTestCase {
 			command = "dir";
 		}
 		final Log log = new DefaultLog(new ConsoleLogger());
-		Assertions.assertNotNull(ExecutionUtils.executeCommand(log, command));
+		Assert.assertNotNull(ExecutionUtils.executeCommand(log, command));
 	}
 
 	/**
@@ -97,10 +97,10 @@ public class ExecutionUtilsTest extends AbstractTestCase {
 
 		final MavenSession session = createSimpleEmptySession();
 		final File dir = new File(session.getCurrentProject().getBasedir(), "some/other/dir");
-		Assertions.assertFalse(dir.exists());
+		Assert.assertFalse(dir.exists());
 		dir.mkdirs();
-		Assertions.assertTrue(dir.exists());
-		Assertions.assertNotNull(ExecutionUtils.executeCommand(null, command, dir));
+		Assert.assertTrue(dir.exists());
+		Assert.assertNotNull(ExecutionUtils.executeCommand(null, command, dir));
 	}
 
 	/**
@@ -118,9 +118,9 @@ public class ExecutionUtilsTest extends AbstractTestCase {
 
 		final MavenSession session = createSimpleEmptySession();
 		final File dir = new File(session.getCurrentProject().getBasedir(), "some/other/dir");
-		Assertions.assertFalse(dir.exists());
-		Assertions.assertNotNull(ExecutionUtils.executeCommand(null, command, dir));
-		Assertions.assertTrue(dir.exists());
+		Assert.assertFalse(dir.exists());
+		Assert.assertNotNull(ExecutionUtils.executeCommand(null, command, dir));
+		Assert.assertTrue(dir.exists());
 	}
 
 	/**
@@ -137,8 +137,8 @@ public class ExecutionUtilsTest extends AbstractTestCase {
 		}
 
 		try {
-			Assertions.assertNotNull(ExecutionUtils.executeCommand(null, command));
-			Assertions.fail("expected exception not thrown");
+			Assert.assertNotNull(ExecutionUtils.executeCommand(null, command));
+			Assert.fail("expected exception not thrown");
 			// CHECKSTYLE:OFF
 			// checkstyle does not like empty catches
 		} catch (final CommandLineException ex) {
@@ -162,8 +162,8 @@ public class ExecutionUtilsTest extends AbstractTestCase {
 		final Log log = new DefaultLog(new ConsoleLogger());
 
 		try {
-			Assertions.assertNotNull(ExecutionUtils.executeCommand(log, command));
-			Assertions.fail("expected exception not thrown");
+			Assert.assertNotNull(ExecutionUtils.executeCommand(log, command));
+			Assert.fail("expected exception not thrown");
 			// CHECKSTYLE:OFF
 			// checkstyle does not like empty catches
 		} catch (final CommandLineException ex) {

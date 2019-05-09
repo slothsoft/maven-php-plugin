@@ -19,8 +19,8 @@ package org.phpmaven.project.features.test;
 import java.util.Iterator;
 
 import org.apache.maven.execution.MavenSession;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.project.IPhpFeature;
 import org.phpmaven.project.IPhpFeatures;
@@ -54,7 +54,7 @@ public class BaseTest extends AbstractTestCase {
 				IComponentFactory.EMPTY_CONFIG,
 				session);
 		// assert that it is not null
-		Assertions.assertNotNull(features);
+		Assert.assertNotNull(features);
 	}
 
 	/**
@@ -76,19 +76,19 @@ public class BaseTest extends AbstractTestCase {
 				IComponentFactory.EMPTY_CONFIG,
 				session);
 		// assert that it is not null
-		Assertions.assertNotNull(features);
+		Assert.assertNotNull(features);
 
 		final Iterator<IPhpFeature> iter = features.getFeatures().iterator();
-		Assertions.assertTrue(iter.hasNext());
+		Assert.assertTrue(iter.hasNext());
 		final IPhpFeature feature = iter.next();
-		Assertions.assertFalse(iter.hasNext());
-		Assertions.assertTrue(feature instanceof TestFoo);
+		Assert.assertFalse(iter.hasNext());
+		Assert.assertTrue(feature instanceof TestFoo);
 
 		final Iterator<TestFoo> iter2 = features.getFeatures(TestFoo.class).iterator();
-		Assertions.assertTrue(iter2.hasNext());
+		Assert.assertTrue(iter2.hasNext());
 		final TestFoo foo = iter2.next();
-		Assertions.assertFalse(iter2.hasNext());
-		Assertions.assertNotNull(foo);
+		Assert.assertFalse(iter2.hasNext());
+		Assert.assertNotNull(foo);
 	}
 
 	/**
@@ -110,11 +110,11 @@ public class BaseTest extends AbstractTestCase {
 				IComponentFactory.EMPTY_CONFIG,
 				session);
 		// assert that it is not null
-		Assertions.assertNotNull(features);
+		Assert.assertNotNull(features);
 
 		try {
 			features.getFeatures();
-			Assertions.fail("Expected exception not thrown");
+			Assert.fail("Expected exception not thrown");
 		} catch (final IllegalStateException ex) {
 			// expected
 		}

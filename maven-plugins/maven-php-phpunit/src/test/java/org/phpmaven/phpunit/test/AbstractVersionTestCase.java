@@ -23,8 +23,8 @@ import org.apache.maven.execution.MavenSession;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.monitor.logging.DefaultLog;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
+import org.junit.Assert;
+import org.junit.Ignore;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.phar.IPharPackager;
 import org.phpmaven.phar.IPharPackagerConfiguration;
@@ -38,7 +38,7 @@ import org.phpmaven.test.AbstractTestCase;
  * @since 2.0.0
  */
 
-@Disabled
+@Ignore
 public abstract class AbstractVersionTestCase extends AbstractTestCase {
 
 	/**
@@ -135,7 +135,7 @@ public abstract class AbstractVersionTestCase extends AbstractTestCase {
 					"/" + p.getArtifactId() +
 					"/" + p.getVersion() +
 					"/" + p.getArtifactId() + "-" + p.getVersion() + ".phar");
-			Assertions.assertTrue(pharPackage.exists());
+			Assert.assertTrue(pharPackage.exists());
 			packager.extractPharTo(
 					pharPackage,
 					new File(session.getCurrentProject().getBasedir(), "target/php-test-deps"),

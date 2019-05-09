@@ -20,9 +20,8 @@ import java.io.File;
 
 import org.apache.maven.execution.MavenSession;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.plugin.build.PhpResources;
 import org.phpmaven.plugin.build.PhpTestResources;
 import org.phpmaven.test.AbstractTestCase;
@@ -47,14 +46,13 @@ import org.phpmaven.test.AbstractTestCase;
 	 public void testCompile() throws Exception {
 		 final MavenSession session = this.createSimpleSession("mojos-compile/source-copy");
 
-		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+		 final PhpResources resourcesMojo = createCurrentConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
 
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/classes/MyClass.php").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/classes/MyClass.php").exists());
 	 }
 
 	 /**
@@ -67,14 +65,13 @@ import org.phpmaven.test.AbstractTestCase;
 	 public void testTestCompile() throws Exception {
 		 final MavenSession session = this.createSimpleSession("mojos-compile/source-copy");
 
-		 final PhpTestResources resourcesMojo = this.createConfiguredMojo(
+		 final PhpTestResources resourcesMojo = createCurrentConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
 
-		 Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/test-classes/FooTest.php").exists());
+		 Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/test-classes/FooTest.php").exists());
 	 }
 
  }

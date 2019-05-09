@@ -21,9 +21,9 @@ import java.io.File;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.monitor.logging.DefaultLog;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.phpunit.IPhpunitConfiguration;
 import org.phpmaven.phpunit.IPhpunitSupport;
@@ -38,7 +38,7 @@ import org.phpmaven.phpunit.IPhpunitTestResult;
  * @since 2.0.0
  */
 
-@Disabled
+@Ignore
 public class ArgumentsV345Test extends AbstractVersionTestCase {
 
 	/**
@@ -86,11 +86,11 @@ public class ArgumentsV345Test extends AbstractVersionTestCase {
 		phpunit.setResultFolder(new File(session.getCurrentProject().getBasedir(), "target/phpunit"));
 		final IPhpunitTestResult testResult = phpunit.executeTests(request, logger);
 
-		Assertions.assertNotNull(testResult);
+		Assert.assertNotNull(testResult);
 		if (!testResult.isSuccess()) {
-			Assertions.fail(testResult.toString());
+			Assert.fail(testResult.toString());
 		}
-		Assertions.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/hbclover.xml").exists());
+		Assert.assertTrue(new File(session.getCurrentProject().getBasedir(), "target/hbclover.xml").exists());
 	}
 
 }

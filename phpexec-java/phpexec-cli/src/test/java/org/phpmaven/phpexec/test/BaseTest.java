@@ -19,14 +19,14 @@
 
 package org.phpmaven.phpexec.test;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Rule;
+import org.junit.Test;
 import org.phpmaven.phpexec.cli.PhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.phpexec.library.IPhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.PhpException;
-import org.phpmaven.test.IgnoreWhen;
-import org.phpmaven.test.PhpMissing;
+import org.phpmaven.test.IgnoreIfPhpMissing;
 
 /**
  * test cases for PHP support.
@@ -36,9 +36,10 @@ import org.phpmaven.test.PhpMissing;
  * @since 2.0.0
  */
 
-@IgnoreWhen(PhpMissing.class)
 public class BaseTest {
 
+	@Rule
+	public IgnoreIfPhpMissing rule = new IgnoreIfPhpMissing();
 
 	/**
 	 * Tests if the execution configuration can be created.
@@ -49,11 +50,11 @@ public class BaseTest {
 	public void testECCreation() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 		// assert that it is not null
-		Assertions.assertNotNull(execConfig);
+		Assert.assertNotNull(execConfig);
 		// assert that we are able to create the executable
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assertions.assertNotNull(exec.getStrVersion());
-		Assertions.assertNotNull(exec.getVersion());
+		Assert.assertNotNull(exec.getStrVersion());
+		Assert.assertNotNull(exec.getVersion());
 	}
 
 	/**
@@ -70,7 +71,7 @@ public class BaseTest {
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
 		try {
 			exec.getStrVersion();
-			Assertions.fail("Exception expected");
+			Assert.fail("Exception expected");
 			// CHECKSTYLE:OFF
 			// checkstyle does not like empty catches
 		} catch (final PhpException ex) {
@@ -86,9 +87,9 @@ public class BaseTest {
 	@Test
 	public void testIsUseCacheActive() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
-		Assertions.assertTrue(execConfig.isUseCache());
+		Assert.assertTrue(execConfig.isUseCache());
 		execConfig.setUseCache(false);
-		Assertions.assertFalse(execConfig.isUseCache());
+		Assert.assertFalse(execConfig.isUseCache());
 	}
 
 	// TODO: test additionalPhpParameters

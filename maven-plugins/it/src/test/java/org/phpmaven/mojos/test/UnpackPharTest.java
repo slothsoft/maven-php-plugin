@@ -19,9 +19,9 @@ package org.phpmaven.mojos.test;
 import java.io.File;
 
 import org.apache.maven.it.Verifier;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.phpmaven.test.it.AbstractTestCase;
 
 /**
@@ -31,7 +31,7 @@ import org.phpmaven.test.it.AbstractTestCase;
  * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 2.0.0
  */
-@Disabled
+@Ignore
 public class UnpackPharTest extends AbstractTestCase {
 
 	/**
@@ -58,7 +58,7 @@ public class UnpackPharTest extends AbstractTestCase {
 		verifierDep1.resetStreams();
 
 		final File phar = new File(new File(verifierDep1.getBasedir()), "target/phar-with-dep1-folders-0.0.1.phar");
-		Assertions.assertTrue(phar.exists());
+		Assert.assertTrue(phar.exists());
 
 		verifierDep1.setAutoclean(false);
 

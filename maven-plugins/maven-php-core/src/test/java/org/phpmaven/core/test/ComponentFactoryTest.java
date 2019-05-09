@@ -26,8 +26,8 @@ import org.codehaus.plexus.component.repository.exception.ComponentLifecycleExce
 import org.codehaus.plexus.component.repository.exception.ComponentLookupException;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.easymock.EasyMock;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.core.test.comp.ISomeComponent;
 import org.phpmaven.core.test.comp.ISomeComponentHint;
@@ -80,7 +80,7 @@ public class ComponentFactoryTest extends AbstractTestCase {
 		// create the session
 		final MavenSession session = createSimpleEmptySession();
 		// lookup the sample
-		Assertions.assertNotNull(factory.lookup(ISomeComponent.class, (Xpp3Dom[]) null, session));
+		Assert.assertNotNull(factory.lookup(ISomeComponent.class, (Xpp3Dom[]) null, session));
 
 		EasyMock.verify(container);
 	}
@@ -125,7 +125,7 @@ public class ComponentFactoryTest extends AbstractTestCase {
 		// create the session
 		final MavenSession session = createSimpleEmptySession();
 		// lookup the sample
-		Assertions.assertNotNull(factory.lookup(ISomeComponentHint.class, "hint1", (Xpp3Dom[]) null, session));
+		Assert.assertNotNull(factory.lookup(ISomeComponentHint.class, "hint1", (Xpp3Dom[]) null, session));
 
 		EasyMock.verify(container);
 	}
@@ -171,7 +171,7 @@ public class ComponentFactoryTest extends AbstractTestCase {
 		// lookup the sample
 		try {
 			factory.lookup(ISomeComponent.class, (Xpp3Dom) null, session);
-			Assertions.fail("expected exception not thrown");
+			Assert.fail("expected exception not thrown");
 			// CHECKSTYLE:OFF
 			// checkstyle does not like empty catches
 		} catch (final ComponentLookupException ex) {
@@ -224,7 +224,7 @@ public class ComponentFactoryTest extends AbstractTestCase {
 		final MavenSession session = createSimpleEmptySession();
 		// lookup the sample
 		final ISomeComponent comp = factory.lookup(ISomeComponent.class, (Xpp3Dom) null, session);
-		Assertions.assertNotNull(comp);
+		Assert.assertNotNull(comp);
 
 		EasyMock.verify(container);
 	}

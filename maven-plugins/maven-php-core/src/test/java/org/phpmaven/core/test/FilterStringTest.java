@@ -20,8 +20,8 @@ import java.io.File;
 
 import org.apache.maven.execution.MavenSession;
 import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluationException;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.test.AbstractTestCase;
 
@@ -53,7 +53,7 @@ public class FilterStringTest extends AbstractTestCase {
 				session,
 				"${project.basedir}/SomeFooBar",
 				File.class);
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				file.getAbsolutePath());
 	}
@@ -75,7 +75,7 @@ public class FilterStringTest extends AbstractTestCase {
 				session,
 				"${fooBarBaz}",
 				File.class);
-		Assertions.assertNull(file);
+		Assert.assertNull(file);
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class FilterStringTest extends AbstractTestCase {
 					session,
 					"${project.basedir}/SomeFooBar",
 					File[].class);
-			Assertions.fail("Expected exception not thrown");
+			Assert.fail("Expected exception not thrown");
 			// CHECKSTYLE:OFF
 			// checkstyle does not like empty catches
 		} catch (final ExpressionEvaluationException ex) {

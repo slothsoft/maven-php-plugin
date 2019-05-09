@@ -24,8 +24,8 @@ import java.util.Map;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.monitor.logging.DefaultLog;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.lint.ILintChecker;
 import org.phpmaven.lint.ILintExecution;
@@ -51,9 +51,9 @@ public class BaseTest extends AbstractTestCase {
 		final MavenSession session = this.createSimpleSession("lint/empty-pom");
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
-		Assertions.assertNotNull(factory);
+		Assert.assertNotNull(factory);
 		final ILintChecker checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
-		Assertions.assertNotNull(checker);
+		Assert.assertNotNull(checker);
 	}
 
 	/**
@@ -71,7 +71,7 @@ public class BaseTest extends AbstractTestCase {
 		final DefaultLog logger = new DefaultLog(new ConsoleLogger());
 		checker.addFileToCheck(new File(session.getCurrentProject().getBasedir(), "success.php"));
 		final Iterable<ILintExecution> result = checker.run(logger);
-		Assertions.assertFalse(result.iterator().hasNext());
+		Assert.assertFalse(result.iterator().hasNext());
 	}
 
 	/**
@@ -91,11 +91,11 @@ public class BaseTest extends AbstractTestCase {
 		checker.addFileToCheck(failedFile);
 		final Iterable<ILintExecution> result = checker.run(logger);
 		final Iterator<ILintExecution> iter = result.iterator();
-		Assertions.assertTrue(iter.hasNext());
+		Assert.assertTrue(iter.hasNext());
 		final ILintExecution failure = iter.next();
-		Assertions.assertFalse(iter.hasNext());
-		Assertions.assertEquals(failedFile, failure.getFile());
-		Assertions.assertNotNull(failure.getException());
+		Assert.assertFalse(iter.hasNext());
+		Assert.assertEquals(failedFile, failure.getFile());
+		Assert.assertNotNull(failure.getException());
 	}
 
 	/**
@@ -121,9 +121,9 @@ public class BaseTest extends AbstractTestCase {
 		for (final ILintExecution failure : result) {
 			failures.put(failure.getFile(), failure);
 		}
-		Assertions.assertEquals(2, failures.size());
-		Assertions.assertNotNull(failures.get(failedFile));
-		Assertions.assertNotNull(failures.get(failed2File));
+		Assert.assertEquals(2, failures.size());
+		Assert.assertNotNull(failures.get(failedFile));
+		Assert.assertNotNull(failures.get(failed2File));
 	}
 
 }

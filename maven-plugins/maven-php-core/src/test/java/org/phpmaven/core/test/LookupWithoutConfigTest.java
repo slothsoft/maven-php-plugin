@@ -18,8 +18,8 @@ package org.phpmaven.core.test;
 
 import org.apache.maven.execution.MavenSession;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.core.test.comp.ISomeComponentHint;
 import org.phpmaven.test.AbstractTestCase;
@@ -53,11 +53,11 @@ public class LookupWithoutConfigTest extends AbstractTestCase {
 				"without-config",
 				(Xpp3Dom) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertNull(component.getFooBar());
-		Assertions.assertNull(component.getFoo());
-		Assertions.assertNull(component.getBar());
+		Assert.assertNull(component.getFooBar());
+		Assert.assertNull(component.getFoo());
+		Assert.assertNull(component.getBar());
 	}
 
 	/**
@@ -76,11 +76,11 @@ public class LookupWithoutConfigTest extends AbstractTestCase {
 				"without-config",
 				(Xpp3Dom[]) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertNull(component.getFooBar());
-		Assertions.assertNull(component.getFoo());
-		Assertions.assertNull(component.getBar());
+		Assert.assertNull(component.getFooBar());
+		Assert.assertNull(component.getFoo());
+		Assert.assertNull(component.getBar());
 	}
 
 }

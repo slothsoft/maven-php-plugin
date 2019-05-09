@@ -20,8 +20,8 @@ import java.io.File;
 
 import org.apache.maven.execution.MavenSession;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.test.AbstractTestCase;
 
@@ -54,14 +54,14 @@ public class GetBuildConfigTest extends AbstractTestCase {
 				"de.slothsoft.phpmaven",
 				"maven-php-plugin-test");
 
-		Assertions.assertNotNull(dom);
-		Assertions.assertEquals(2, dom.getChildCount());
+		Assert.assertNotNull(dom);
+		Assert.assertEquals(2, dom.getChildCount());
 
-		Assertions.assertNotNull(dom.getChild("foo"));
-		Assertions.assertEquals("OtherFoo", dom.getChild("foo").getValue());
+		Assert.assertNotNull(dom.getChild("foo"));
+		Assert.assertEquals("OtherFoo", dom.getChild("foo").getValue());
 
-		Assertions.assertNotNull(dom.getChild("fooBar"));
-		Assertions.assertEquals(
+		Assert.assertNotNull(dom.getChild("fooBar"));
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				new File(dom.getChild("fooBar").getValue()).getAbsolutePath());
 	}

@@ -21,14 +21,14 @@ package org.phpmaven.phpexec.test;
 
 import java.io.File;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Rule;
+import org.junit.Test;
 import org.phpmaven.phpexec.cli.PhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.phpexec.library.IPhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.PhpErrorException;
-import org.phpmaven.test.IgnoreWhen;
-import org.phpmaven.test.PhpMissing;
+import org.phpmaven.test.IgnoreIfPhpMissing;
 
 /**
  * test cases for PHP error reporting support.
@@ -38,6 +38,9 @@ import org.phpmaven.test.PhpMissing;
  * @since 2.0.0
  */
 public class ErrorReportingTest {
+
+	@Rule
+	public IgnoreIfPhpMissing rule = new IgnoreIfPhpMissing();
 
 	// TODO [slothsoft]: The old testFalse() and testEALL() didn't expect an exception; I
 	// do (according to the API doc
@@ -50,7 +53,6 @@ public class ErrorReportingTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
-	@IgnoreWhen(PhpMissing.class)
 	public void testFalse() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
@@ -58,7 +60,13 @@ public class ErrorReportingTest {
 
 		// assert that the execution is aware of detecting the error
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assertions.assertThrows(PhpErrorException.class, () -> exec.execute(defineTestPhp));
+		
+		try {
+			exec.execute(defineTestPhp);
+			Assert.fail("There should have been an exception!");
+		} catch (PhpErrorException e) {
+			// nothing to check
+		}
 	}
 
 
@@ -68,7 +76,6 @@ public class ErrorReportingTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
-	@IgnoreWhen(PhpMissing.class)
 	public void testEALL() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 		execConfig.setErrorReporting("E_ALL");
@@ -77,7 +84,12 @@ public class ErrorReportingTest {
 
 		// assert that the execution is aware of detecting the error
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assertions.assertThrows(PhpErrorException.class, () -> exec.execute(defineTestPhp));
+		try {
+			exec.execute(defineTestPhp);
+			Assert.fail("There should have been an exception!");
+		} catch (PhpErrorException e) {
+			// nothing to check
+		}
 	}
 
 	/**
@@ -86,7 +98,6 @@ public class ErrorReportingTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
-	@IgnoreWhen(PhpMissing.class)
 	public void testEALLandNotEUSERDEPRECATED() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 		execConfig.setErrorReporting("E_ALL & !E_USER_DEPRECATED");
@@ -95,7 +106,7 @@ public class ErrorReportingTest {
 
 		// assert that the execution is aware of detecting the error
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assertions.assertEquals("", exec.execute(defineTestPhp));
+		Assert.assertEquals("", exec.execute(defineTestPhp));
 	}
 
 	/**
@@ -104,7 +115,6 @@ public class ErrorReportingTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
-	@IgnoreWhen(PhpMissing.class)
 	public void testNULL() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 		execConfig.setErrorReporting("0");
@@ -113,7 +123,7 @@ public class ErrorReportingTest {
 
 		// assert that the execution is aware of detecting the error
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assertions.assertEquals("", exec.execute(defineTestPhp));
+		Assert.assertEquals("", exec.execute(defineTestPhp));
 	}
 
 }

@@ -25,8 +25,8 @@ import java.util.Map;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.monitor.logging.DefaultLog;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.lint.ILintChecker;
 import org.phpmaven.lint.ILintExecution;
@@ -56,13 +56,13 @@ public class RecheckTest extends AbstractTestCase {
 		ILintChecker checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
 		checker.addFileToCheck(new File(session.getCurrentProject().getBasedir(), "success.php"));
 		Iterable<ILintExecution> result = checker.run(logger);
-		Assertions.assertFalse(result.iterator().hasNext());
+		Assert.assertFalse(result.iterator().hasNext());
 
 		// second check makes use of state db
 		checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
 		checker.addFileToCheck(new File(session.getCurrentProject().getBasedir(), "success.php"));
 		result = checker.run(logger);
-		Assertions.assertFalse(result.iterator().hasNext());
+		Assert.assertFalse(result.iterator().hasNext());
 	}
 
 	/**
@@ -82,22 +82,22 @@ public class RecheckTest extends AbstractTestCase {
 		checker.addFileToCheck(failedFile);
 		Iterable<ILintExecution> result = checker.run(logger);
 		Iterator<ILintExecution> iter = result.iterator();
-		Assertions.assertTrue(iter.hasNext());
+		Assert.assertTrue(iter.hasNext());
 		ILintExecution failure = iter.next();
-		Assertions.assertFalse(iter.hasNext());
-		Assertions.assertEquals(failedFile, failure.getFile());
-		Assertions.assertNotNull(failure.getException());
+		Assert.assertFalse(iter.hasNext());
+		Assert.assertEquals(failedFile, failure.getFile());
+		Assert.assertNotNull(failure.getException());
 
 		// second check makes use of state db
 		checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
 		checker.addFileToCheck(failedFile);
 		result = checker.run(logger);
 		iter = result.iterator();
-		Assertions.assertTrue(iter.hasNext());
+		Assert.assertTrue(iter.hasNext());
 		failure = iter.next();
-		Assertions.assertFalse(iter.hasNext());
-		Assertions.assertEquals(failedFile, failure.getFile());
-		Assertions.assertNotNull(failure.getException());
+		Assert.assertFalse(iter.hasNext());
+		Assert.assertEquals(failedFile, failure.getFile());
+		Assert.assertNotNull(failure.getException());
 	}
 
 	/**
@@ -123,9 +123,9 @@ public class RecheckTest extends AbstractTestCase {
 		for (final ILintExecution failure : result) {
 			failures.put(failure.getFile(), failure);
 		}
-		Assertions.assertEquals(2, failures.size());
-		Assertions.assertNotNull(failures.get(failedFile));
-		Assertions.assertNotNull(failures.get(failed2File));
+		Assert.assertEquals(2, failures.size());
+		Assert.assertNotNull(failures.get(failedFile));
+		Assert.assertNotNull(failures.get(failed2File));
 
 		// second check makes use of state db
 		checker = factory.lookup(ILintChecker.class, IComponentFactory.EMPTY_CONFIG, session);
@@ -137,9 +137,9 @@ public class RecheckTest extends AbstractTestCase {
 		for (final ILintExecution failure : result) {
 			failures.put(failure.getFile(), failure);
 		}
-		Assertions.assertEquals(2, failures.size());
-		Assertions.assertNotNull(failures.get(failedFile));
-		Assertions.assertNotNull(failures.get(failed2File));
+		Assert.assertEquals(2, failures.size());
+		Assert.assertNotNull(failures.get(failedFile));
+		Assert.assertNotNull(failures.get(failed2File));
 
 		// third check to test override of the state db with new source file
 		final FileOutputStream fos = new FileOutputStream(failedFile);
@@ -156,9 +156,9 @@ public class RecheckTest extends AbstractTestCase {
 		for (final ILintExecution failure : result) {
 			failures.put(failure.getFile(), failure);
 		}
-		Assertions.assertEquals(1, failures.size());
-		Assertions.assertNull(failures.get(failedFile));
-		Assertions.assertNotNull(failures.get(failed2File));
+		Assert.assertEquals(1, failures.size());
+		Assert.assertNull(failures.get(failedFile));
+		Assert.assertNotNull(failures.get(failed2File));
 	}
 
 }

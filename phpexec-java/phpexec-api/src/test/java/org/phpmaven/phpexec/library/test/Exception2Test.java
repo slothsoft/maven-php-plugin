@@ -21,8 +21,8 @@ package org.phpmaven.phpexec.library.test;
 
 import java.io.File;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.phpexec.library.PhpCoreException;
 import org.phpmaven.phpexec.library.PhpExecutionException;
 
@@ -43,11 +43,11 @@ public class Exception2Test {
 	@Test
 	public void testExecException() throws Exception {
 		PhpExecutionException ex = new PhpExecutionException(null, "FOO");
-		Assertions.assertEquals("\nFOO", ex.getMessage());
+		Assert.assertEquals("\nFOO", ex.getMessage());
 		final File fooFile = new File("foo.php");
 		ex = new PhpExecutionException(fooFile, "FOO");
-		Assertions.assertTrue(ex.getMessage().contains("FOO"));
-		Assertions.assertTrue(ex.getMessage().contains(fooFile.getAbsolutePath()));
+		Assert.assertTrue(ex.getMessage().contains("FOO"));
+		Assert.assertTrue(ex.getMessage().contains(fooFile.getAbsolutePath()));
 	}
 
 	/**
@@ -63,17 +63,17 @@ public class Exception2Test {
 		ex = new PhpCoreException(new Exception());
 
 		ex = new PhpCoreException("some meaningful error");
-		Assertions.assertNull(ex.getAppendedOutput());
-		Assertions.assertEquals("some meaningful error", ex.getMessage());
+		Assert.assertNull(ex.getAppendedOutput());
+		Assert.assertEquals("some meaningful error", ex.getMessage());
 		ex.appendOutput("FOOBAR");
-		Assertions.assertEquals("FOOBAR", ex.getAppendedOutput());
-		Assertions.assertTrue(ex.getMessage().contains("FOOBAR"));
-		Assertions.assertTrue(ex.getMessage().contains("some meaningful error"));
+		Assert.assertEquals("FOOBAR", ex.getAppendedOutput());
+		Assert.assertTrue(ex.getMessage().contains("FOOBAR"));
+		Assert.assertTrue(ex.getMessage().contains("some meaningful error"));
 		ex.appendOutput("BAZ");
-		Assertions.assertEquals("BAZ", ex.getAppendedOutput());
-		Assertions.assertFalse(ex.getMessage().contains("FOOBAR"));
-		Assertions.assertTrue(ex.getMessage().contains("BAZ"));
-		Assertions.assertTrue(ex.getMessage().contains("some meaningful error"));
+		Assert.assertEquals("BAZ", ex.getAppendedOutput());
+		Assert.assertFalse(ex.getMessage().contains("FOOBAR"));
+		Assert.assertTrue(ex.getMessage().contains("BAZ"));
+		Assert.assertTrue(ex.getMessage().contains("some meaningful error"));
 	}
 
 }

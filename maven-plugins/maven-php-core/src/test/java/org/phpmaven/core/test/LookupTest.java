@@ -21,8 +21,8 @@ import java.io.File;
 import org.apache.maven.execution.MavenSession;
 import org.codehaus.plexus.component.repository.exception.ComponentLookupException;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.core.test.comp.ISomeComponent;
 import org.phpmaven.test.AbstractTestCase;
@@ -53,7 +53,7 @@ public class LookupTest extends AbstractTestCase {
 		// lookup the sample
 		try {
 			factory.lookup(LookupTest.class, (Xpp3Dom) null, session);
-			Assertions.fail("Expected exception not thrown");
+			Assert.fail("Expected exception not thrown");
 			// CHECKSTYLE:OFF
 			// checkstyle does not like empty catches
 		} catch (final ComponentLookupException ex) {
@@ -76,13 +76,13 @@ public class LookupTest extends AbstractTestCase {
 		final MavenSession session = createSimpleEmptySession();
 		// lookup the sample
 		final ISomeComponent component = factory.lookup(ISomeComponent.class, (Xpp3Dom) null, session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "fooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("default-foo", component.getFoo());
-		Assertions.assertEquals("default-bar", component.getBar());
+		Assert.assertEquals("default-foo", component.getFoo());
+		Assert.assertEquals("default-bar", component.getBar());
 	}
 
 	/**
@@ -100,13 +100,13 @@ public class LookupTest extends AbstractTestCase {
 		final MavenSession session = createSimpleEmptySession();
 		// lookup the sample
 		final ISomeComponent component = factory.lookup(ISomeComponent.class, (Xpp3Dom[]) null, session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "fooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("default-foo", component.getFoo());
-		Assertions.assertEquals("default-bar", component.getBar());
+		Assert.assertEquals("default-foo", component.getFoo());
+		Assert.assertEquals("default-bar", component.getBar());
 	}
 
 	/**
@@ -123,13 +123,13 @@ public class LookupTest extends AbstractTestCase {
 		final MavenSession session = createSimpleSession("core/pom-with-buildconfig");
 		// lookup the sample
 		final ISomeComponent component = factory.lookup(ISomeComponent.class, (Xpp3Dom) null, session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("SpecialFoo", component.getFoo());
-		Assertions.assertEquals("default-bar", component.getBar());
+		Assert.assertEquals("SpecialFoo", component.getFoo());
+		Assert.assertEquals("default-bar", component.getBar());
 	}
 
 	/**
@@ -147,13 +147,13 @@ public class LookupTest extends AbstractTestCase {
 		final MavenSession session = createSimpleSession("core/pom-with-buildconfig");
 		// lookup the sample
 		final ISomeComponent component = factory.lookup(ISomeComponent.class, (Xpp3Dom[]) null, session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("SpecialFoo", component.getFoo());
-		Assertions.assertEquals("default-bar", component.getBar());
+		Assert.assertEquals("SpecialFoo", component.getFoo());
+		Assert.assertEquals("default-bar", component.getBar());
 	}
 
 	/**
@@ -168,13 +168,13 @@ public class LookupTest extends AbstractTestCase {
 		final MavenSession session = createSimpleSession("core/pom-with-buildconfig-child");
 		// lookup the sample
 		final ISomeComponent component = factory.lookup(ISomeComponent.class, (Xpp3Dom) null, session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("SpecialFoo", component.getFoo());
-		Assertions.assertEquals("default-bar", component.getBar());
+		Assert.assertEquals("SpecialFoo", component.getFoo());
+		Assert.assertEquals("default-bar", component.getBar());
 	}
 
 	/**
@@ -192,13 +192,13 @@ public class LookupTest extends AbstractTestCase {
 		final MavenSession session = createSimpleSession("core/pom-with-buildconfig-child");
 		// lookup the sample
 		final ISomeComponent component = factory.lookup(ISomeComponent.class, (Xpp3Dom[]) null, session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("SpecialFoo", component.getFoo());
-		Assertions.assertEquals("default-bar", component.getBar());
+		Assert.assertEquals("SpecialFoo", component.getFoo());
+		Assert.assertEquals("default-bar", component.getBar());
 	}
 
 	/**
@@ -216,13 +216,13 @@ public class LookupTest extends AbstractTestCase {
 		final MavenSession session = createSimpleSession("core/pom-with-buildconfig-childoverwrite");
 		// lookup the sample
 		final ISomeComponent component = factory.lookup(ISomeComponent.class, (Xpp3Dom) null, session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("OtherFoo", component.getFoo());
-		Assertions.assertEquals("default-bar", component.getBar());
+		Assert.assertEquals("OtherFoo", component.getFoo());
+		Assert.assertEquals("default-bar", component.getBar());
 	}
 
 	/**
@@ -241,13 +241,13 @@ public class LookupTest extends AbstractTestCase {
 		final MavenSession session = createSimpleSession("core/pom-with-buildconfig-childoverwrite");
 		// lookup the sample
 		final ISomeComponent component = factory.lookup(ISomeComponent.class, (Xpp3Dom[]) null, session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("OtherFoo", component.getFoo());
-		Assertions.assertEquals("default-bar", component.getBar());
+		Assert.assertEquals("OtherFoo", component.getFoo());
+		Assert.assertEquals("default-bar", component.getBar());
 	}
 
 }

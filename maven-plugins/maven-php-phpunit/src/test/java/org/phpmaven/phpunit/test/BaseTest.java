@@ -17,9 +17,9 @@
 package org.phpmaven.phpunit.test;
 
 import org.apache.maven.execution.MavenSession;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.phpunit.IPhpunitConfiguration;
 import org.phpmaven.phpunit.IPhpunitSupport;
@@ -41,7 +41,7 @@ public class BaseTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
+	@Ignore
 	public void testPhpunitCreation() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -52,10 +52,10 @@ public class BaseTest extends AbstractTestCase {
 				IComponentFactory.EMPTY_CONFIG,
 				session);
 		// assert that it is not null
-		Assertions.assertNotNull(config);
+		Assert.assertNotNull(config);
 		// assert that we are able to create the phpunit support
 		final IPhpunitSupport phpunit = config.getPhpunitSupport("3.3.0");
-		Assertions.assertNotNull(phpunit);
+		Assert.assertNotNull(phpunit);
 	}
 
 }

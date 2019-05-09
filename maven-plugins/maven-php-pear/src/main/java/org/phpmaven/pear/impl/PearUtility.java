@@ -161,14 +161,14 @@ public class PearUtility  extends org.phpmaven.pear.library.impl.PearUtility imp
                 project, session.getRepositorySession());
             final DependencyResolutionResult drres = this.dependencyResolver.resolve(drr);
             // dependencies may be duplicate. ensure we have only one version (the newest).
-            final Map<String, org.sonatype.aether.graph.Dependency> deps =
-                new HashMap<String, org.sonatype.aether.graph.Dependency>();
-            for (final org.sonatype.aether.graph.Dependency dep : drres.getDependencies()) {
+            final Map<String, org.eclipse.aether.graph.Dependency> deps =
+                new HashMap<String, org.eclipse.aether.graph.Dependency>();
+            for (final org.eclipse.aether.graph.Dependency dep : drres.getDependencies()) {
                 final String key = dep.getArtifact().getGroupId() + ":" + dep.getArtifact().getArtifactId();
                 if (!deps.containsKey(key)) {
                     deps.put(key, dep);
                 } else {
-                    final org.sonatype.aether.graph.Dependency dep2 = deps.get(key);
+                    final org.eclipse.aether.graph.Dependency dep2 = deps.get(key);
                     final org.sonatype.aether.version.Version ver =
                         SCHEME.parseVersion(dep.getArtifact().getVersion());
                     final org.sonatype.aether.version.Version ver2 =
@@ -187,7 +187,7 @@ public class PearUtility  extends org.phpmaven.pear.library.impl.PearUtility imp
 //                    version);
             this.resolveTgz(groupId, artifactId, version, filesToInstall, ignoreCore);
             this.resolveChannels(project);
-            for (final org.sonatype.aether.graph.Dependency dep : deps.values()) {
+            for (final org.eclipse.aether.graph.Dependency dep : deps.values()) {
 //                this.log.debug(
 //                        "resolving tgz and project for " +
 //                        dep.getArtifact().getGroupId() + ":" +

@@ -20,9 +20,9 @@ import java.util.List;
 
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.it.Verifier;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.exec.IPhpExecutableConfiguration;
 import org.phpmaven.project.IProjectPhpExecution;
@@ -35,7 +35,7 @@ import org.phpmaven.test.it.AbstractTestCase;
  * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 2.0.0
  */
-@Disabled
+@Ignore
 public class DefaultsTest extends AbstractTestCase {
 
 	/**
@@ -75,9 +75,9 @@ public class DefaultsTest extends AbstractTestCase {
 				IProjectPhpExecution.class,
 				IComponentFactory.EMPTY_CONFIG,
 				session);
-		Assertions.assertNotNull(prjConfig);
+		Assert.assertNotNull(prjConfig);
 		final IPhpExecutableConfiguration config = prjConfig.getExecutionConfiguration();
-		Assertions.assertNotNull(config);
+		Assert.assertNotNull(config);
 		final List<String> includePath = config.getIncludePath();
 		boolean found = false;
 		for (final String path : includePath) {
@@ -88,7 +88,7 @@ public class DefaultsTest extends AbstractTestCase {
 				break;
 			}
 		}
-		Assertions.assertTrue(found);
+		Assert.assertTrue(found);
 	}
 
 }

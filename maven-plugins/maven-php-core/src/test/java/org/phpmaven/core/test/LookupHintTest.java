@@ -20,8 +20,8 @@ import java.io.File;
 
 import org.apache.maven.execution.MavenSession;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.core.test.comp.ISomeComponentHint;
 import org.phpmaven.test.AbstractTestCase;
@@ -55,13 +55,13 @@ public class LookupHintTest extends AbstractTestCase {
 				"hint1",
 				(Xpp3Dom) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "fooBar-1").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("default-foo-1", component.getFoo());
-		Assertions.assertEquals("default-bar-1", component.getBar());
+		Assert.assertEquals("default-foo-1", component.getFoo());
+		Assert.assertEquals("default-bar-1", component.getBar());
 	}
 
 	/**
@@ -83,13 +83,13 @@ public class LookupHintTest extends AbstractTestCase {
 				"hint1",
 				(Xpp3Dom[]) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "fooBar-1").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("default-foo-1", component.getFoo());
-		Assertions.assertEquals("default-bar-1", component.getBar());
+		Assert.assertEquals("default-foo-1", component.getFoo());
+		Assert.assertEquals("default-bar-1", component.getBar());
 	}
 
 	/**
@@ -110,13 +110,13 @@ public class LookupHintTest extends AbstractTestCase {
 				"hint1",
 				(Xpp3Dom) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("SpecialFoo", component.getFoo());
-		Assertions.assertEquals("default-bar-1", component.getBar());
+		Assert.assertEquals("SpecialFoo", component.getFoo());
+		Assert.assertEquals("default-bar-1", component.getBar());
 	}
 
 	/**
@@ -138,13 +138,13 @@ public class LookupHintTest extends AbstractTestCase {
 				"hint1",
 				(Xpp3Dom[]) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("SpecialFoo", component.getFoo());
-		Assertions.assertEquals("default-bar-1", component.getBar());
+		Assert.assertEquals("SpecialFoo", component.getFoo());
+		Assert.assertEquals("default-bar-1", component.getBar());
 	}
 
 	/**
@@ -165,13 +165,13 @@ public class LookupHintTest extends AbstractTestCase {
 				"hint1",
 				(Xpp3Dom) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("SpecialFoo", component.getFoo());
-		Assertions.assertEquals("default-bar-1", component.getBar());
+		Assert.assertEquals("SpecialFoo", component.getFoo());
+		Assert.assertEquals("default-bar-1", component.getBar());
 	}
 
 	/**
@@ -193,13 +193,13 @@ public class LookupHintTest extends AbstractTestCase {
 				"hint1",
 				(Xpp3Dom[]) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("SpecialFoo", component.getFoo());
-		Assertions.assertEquals("default-bar-1", component.getBar());
+		Assert.assertEquals("SpecialFoo", component.getFoo());
+		Assert.assertEquals("default-bar-1", component.getBar());
 	}
 
 	/**
@@ -221,13 +221,13 @@ public class LookupHintTest extends AbstractTestCase {
 				"hint1",
 				(Xpp3Dom) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("OtherFoo", component.getFoo());
-		Assertions.assertEquals("default-bar-1", component.getBar());
+		Assert.assertEquals("OtherFoo", component.getFoo());
+		Assert.assertEquals("default-bar-1", component.getBar());
 	}
 
 	/**
@@ -250,13 +250,13 @@ public class LookupHintTest extends AbstractTestCase {
 				"hint1",
 				(Xpp3Dom[]) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("OtherFoo", component.getFoo());
-		Assertions.assertEquals("default-bar-1", component.getBar());
+		Assert.assertEquals("OtherFoo", component.getFoo());
+		Assert.assertEquals("default-bar-1", component.getBar());
 	}
 
 	/**
@@ -277,13 +277,13 @@ public class LookupHintTest extends AbstractTestCase {
 				"hint2",
 				(Xpp3Dom) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "fooBar-2").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("default-foo-2", component.getFoo());
-		Assertions.assertEquals("default-bar-2", component.getBar());
+		Assert.assertEquals("default-foo-2", component.getFoo());
+		Assert.assertEquals("default-bar-2", component.getBar());
 	}
 
 	/**
@@ -305,13 +305,13 @@ public class LookupHintTest extends AbstractTestCase {
 				"hint2",
 				(Xpp3Dom[]) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "fooBar-2").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("default-foo-2", component.getFoo());
-		Assertions.assertEquals("default-bar-2", component.getBar());
+		Assert.assertEquals("default-foo-2", component.getFoo());
+		Assert.assertEquals("default-bar-2", component.getBar());
 	}
 
 	/**
@@ -332,13 +332,13 @@ public class LookupHintTest extends AbstractTestCase {
 				"hint2",
 				(Xpp3Dom) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("SpecialFoo", component.getFoo());
-		Assertions.assertEquals("default-bar-2", component.getBar());
+		Assert.assertEquals("SpecialFoo", component.getFoo());
+		Assert.assertEquals("default-bar-2", component.getBar());
 	}
 
 	/**
@@ -360,13 +360,13 @@ public class LookupHintTest extends AbstractTestCase {
 				"hint2",
 				(Xpp3Dom[]) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("SpecialFoo", component.getFoo());
-		Assertions.assertEquals("default-bar-2", component.getBar());
+		Assert.assertEquals("SpecialFoo", component.getFoo());
+		Assert.assertEquals("default-bar-2", component.getBar());
 	}
 
 	/**
@@ -387,13 +387,13 @@ public class LookupHintTest extends AbstractTestCase {
 				"hint2",
 				(Xpp3Dom) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("SpecialFoo", component.getFoo());
-		Assertions.assertEquals("default-bar-2", component.getBar());
+		Assert.assertEquals("SpecialFoo", component.getFoo());
+		Assert.assertEquals("default-bar-2", component.getBar());
 	}
 
 	/**
@@ -415,13 +415,13 @@ public class LookupHintTest extends AbstractTestCase {
 				"hint2",
 				(Xpp3Dom[]) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("SpecialFoo", component.getFoo());
-		Assertions.assertEquals("default-bar-2", component.getBar());
+		Assert.assertEquals("SpecialFoo", component.getFoo());
+		Assert.assertEquals("default-bar-2", component.getBar());
 	}
 
 	/**
@@ -443,13 +443,13 @@ public class LookupHintTest extends AbstractTestCase {
 				"hint2",
 				(Xpp3Dom) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("OtherFoo", component.getFoo());
-		Assertions.assertEquals("default-bar-2", component.getBar());
+		Assert.assertEquals("OtherFoo", component.getFoo());
+		Assert.assertEquals("default-bar-2", component.getBar());
 	}
 
 	/**
@@ -472,13 +472,13 @@ public class LookupHintTest extends AbstractTestCase {
 				"hint2",
 				(Xpp3Dom[]) null,
 				session);
-		Assertions.assertNotNull(component);
+		Assert.assertNotNull(component);
 		// test defaults
-		Assertions.assertEquals(
+		Assert.assertEquals(
 				new File(session.getCurrentProject().getBasedir().getAbsolutePath(), "SomeFooBar").getAbsolutePath(),
 				component.getFooBar().getAbsolutePath());
-		Assertions.assertEquals("OtherFoo", component.getFoo());
-		Assertions.assertEquals("default-bar-2", component.getBar());
+		Assert.assertEquals("OtherFoo", component.getFoo());
+		Assert.assertEquals("default-bar-2", component.getBar());
 	}
 
 }

@@ -16,8 +16,8 @@
 
 package org.phpmaven.core.test;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.core.ExecutionUtils;
 
 
@@ -41,7 +41,7 @@ public class IsWindowsTest {
 		final String oldOs = System.getProperty("os.name");
 		try {
 			System.setProperty("os.name", "Windows");
-			Assertions.assertTrue(ExecutionUtils.isWindows());
+			Assert.assertTrue(ExecutionUtils.isWindows());
 		} finally {
 			System.setProperty("os.name", oldOs);
 		}
@@ -57,7 +57,7 @@ public class IsWindowsTest {
 		final String oldOs = System.getProperty("os.name");
 		try {
 			System.setProperty("os.name", "Unix/Linux");
-			Assertions.assertFalse(ExecutionUtils.isWindows());
+			Assert.assertFalse(ExecutionUtils.isWindows());
 		} finally {
 			System.setProperty("os.name", oldOs);
 		}

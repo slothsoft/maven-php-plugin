@@ -21,8 +21,8 @@ package org.phpmaven.phpexec.test;
 
 import java.io.File;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.phpexec.cli.PhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.PhpException;
@@ -68,7 +68,7 @@ public class GetVersionTest {
 			p.waitFor();
 			execConfig.setExecutable("target/test-classes/org/phpmaven/phpexec/test/version/php4");
 		}
-		Assertions.assertEquals(PhpVersion.PHP4, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.PHP4, execConfig.getPhpExecutable().getVersion());
 	}
 
 	/**
@@ -91,7 +91,7 @@ public class GetVersionTest {
 			p.waitFor();
 			execConfig.setExecutable("target/test-classes/org/phpmaven/phpexec/test/version/php5");
 		}
-		Assertions.assertEquals(PhpVersion.PHP5, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.PHP5, execConfig.getPhpExecutable().getVersion());
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class GetVersionTest {
 			p.waitFor();
 			execConfig.setExecutable("target/test-classes/org/phpmaven/phpexec/test/version/php6");
 		}
-		Assertions.assertEquals(PhpVersion.PHP6, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.PHP6, execConfig.getPhpExecutable().getVersion());
 	}
 
 	/**
@@ -137,7 +137,7 @@ public class GetVersionTest {
 			p.waitFor();
 			execConfig.setExecutable("target/test-classes/org/phpmaven/phpexec/test/version/php7");
 		}
-		Assertions.assertEquals(PhpVersion.PHP7, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.PHP7, execConfig.getPhpExecutable().getVersion());
 	}
 
 
@@ -161,7 +161,7 @@ public class GetVersionTest {
 			p.waitFor();
 			execConfig.setExecutable("target/test-classes/org/phpmaven/phpexec/test/version/phpUnknown");
 		}
-		Assertions.assertEquals(PhpVersion.UNKNOWN, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.UNKNOWN, execConfig.getPhpExecutable().getVersion());
 	}
 
 	/**
@@ -186,7 +186,7 @@ public class GetVersionTest {
 		}
 		try {
 			execConfig.getPhpExecutable().getVersion();
-			Assertions.fail("Expected exception not thrown");
+			Assert.fail("Expected exception not thrown");
 			// CHECKSTYLE:OFF
 			// checkstyle does not like empty catches
 		} catch (final PhpException ex) {
@@ -216,7 +216,7 @@ public class GetVersionTest {
 			execConfig.setExecutable("target/test-classes/org/phpmaven/phpexec/test/version/php4");
 		}
 		execConfig.setUseCache(false);
-		Assertions.assertEquals(PhpVersion.PHP4, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.PHP4, execConfig.getPhpExecutable().getVersion());
 	}
 
 	/**
@@ -240,7 +240,7 @@ public class GetVersionTest {
 			execConfig.setExecutable("target/test-classes/org/phpmaven/phpexec/test/version/php5");
 		}
 		execConfig.setUseCache(false);
-		Assertions.assertEquals(PhpVersion.PHP5, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.PHP5, execConfig.getPhpExecutable().getVersion());
 	}
 
 	/**
@@ -264,7 +264,7 @@ public class GetVersionTest {
 			execConfig.setExecutable("target/test-classes/org/phpmaven/phpexec/test/version/php6");
 		}
 		execConfig.setUseCache(false);
-		Assertions.assertEquals(PhpVersion.PHP6, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.PHP6, execConfig.getPhpExecutable().getVersion());
 	}
 
 	/**
@@ -288,7 +288,7 @@ public class GetVersionTest {
 			execConfig.setExecutable("target/test-classes/org/phpmaven/phpexec/test/version/php7");
 		}
 		execConfig.setUseCache(false);
-		Assertions.assertEquals(PhpVersion.PHP7, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.PHP7, execConfig.getPhpExecutable().getVersion());
 	}
 	/**
 	 * Tests if the version can be detected.
@@ -311,7 +311,7 @@ public class GetVersionTest {
 			execConfig.setExecutable("target/test-classes/org/phpmaven/phpexec/test/version/phpUnknown");
 		}
 		execConfig.setUseCache(false);
-		Assertions.assertEquals(PhpVersion.UNKNOWN, execConfig.getPhpExecutable().getVersion());
+		Assert.assertEquals(PhpVersion.UNKNOWN, execConfig.getPhpExecutable().getVersion());
 	}
 
 	/**
@@ -338,7 +338,7 @@ public class GetVersionTest {
 
 		try {
 			execConfig.getPhpExecutable().getVersion();
-			Assertions.fail("Expected exception not thrown");
+			Assert.fail("Expected exception not thrown");
 			// CHECKSTYLE:OFF
 			// checkstyle does not like empty catches
 		} catch (final PhpException ex) {

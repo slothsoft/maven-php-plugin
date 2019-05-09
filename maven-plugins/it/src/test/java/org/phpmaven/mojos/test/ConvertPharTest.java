@@ -20,9 +20,9 @@ import java.io.File;
 import java.util.List;
 
 import org.apache.maven.it.Verifier;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.phpmaven.test.it.AbstractTestCase;
 
 /**
@@ -32,7 +32,7 @@ import org.phpmaven.test.it.AbstractTestCase;
  * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 2.0.0
  */
-@Disabled
+@Ignore
 public class ConvertPharTest extends AbstractTestCase {
 
 	/**
@@ -59,7 +59,7 @@ public class ConvertPharTest extends AbstractTestCase {
 		verifierDep1.resetStreams();
 
 		final File phar = new File(new File(verifierDep1.getBasedir()), "target/phar-with-dep1-folders-0.0.1.phar");
-		Assertions.assertTrue(phar.exists());
+		Assert.assertTrue(phar.exists());
 
 		verifierDep1.setAutoclean(false);
 
@@ -134,8 +134,8 @@ public class ConvertPharTest extends AbstractTestCase {
 		// reset the streams
 		verifierDep1.resetStreams();
 
-		Assertions.assertTrue(found1);
-		Assertions.assertTrue(found2);
+		Assert.assertTrue(found1);
+		Assert.assertTrue(found2);
 	}
 
 }

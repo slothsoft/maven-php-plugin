@@ -21,15 +21,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.maven.execution.MavenSession;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Rule;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.exec.IPhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.test.AbstractTestCase;
-import org.phpmaven.test.IgnoreWhen;
-import org.phpmaven.test.PhpMissing;
+import org.phpmaven.test.IgnoreIfPhpMissing;
 
 /**
  * test cases for PHP support.
@@ -40,6 +40,9 @@ import org.phpmaven.test.PhpMissing;
  */
 public class EnvTest extends AbstractTestCase {
 
+	@Rule
+	public IgnoreIfPhpMissing rule = new IgnoreIfPhpMissing();
+
 	/**
 	 * Tests if the execution configuration can be created.
 	 *
@@ -47,8 +50,7 @@ public class EnvTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testEnvVar() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -64,7 +66,7 @@ public class EnvTest extends AbstractTestCase {
 
 		// assert that the environment variable is mapped correctly
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assertions.assertEquals("success: foo bar\n", exec.execute(envTestPhp));
+		Assert.assertEquals("success: foo bar\n", exec.execute(envTestPhp));
 	}
 
 	/**
@@ -74,8 +76,7 @@ public class EnvTest extends AbstractTestCase {
 	 */
 
 	@Test
-	@Disabled
-	@IgnoreWhen(PhpMissing.class)
+	@Ignore
 	public void testEnvVarSetter() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -93,7 +94,7 @@ public class EnvTest extends AbstractTestCase {
 
 		// assert that the environment variable is mapped correctly
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assertions.assertEquals("success: foo bar\n", exec.execute(envTestPhp));
+		Assert.assertEquals("success: foo bar\n", exec.execute(envTestPhp));
 	}
 
 }

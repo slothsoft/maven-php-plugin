@@ -20,8 +20,8 @@ package org.phpmaven.phpexec.library.test;
 
 import java.io.File;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.phpexec.library.PhpCoreException;
 import org.phpmaven.phpexec.library.PhpErrorException;
 import org.phpmaven.phpexec.library.PhpException;
@@ -41,16 +41,16 @@ public class ExceptionTest {
 		PhpException exc = null;
 
 		exc = new PhpCoreException();
-		Assertions.assertNotNull(exc);
+		Assert.assertNotNull(exc);
 
 		exc = new PhpCoreException("foo");
-		Assertions.assertNotNull(exc);
+		Assert.assertNotNull(exc);
 
 		exc = new PhpCoreException(exc);
-		Assertions.assertNotNull(exc);
+		Assert.assertNotNull(exc);
 
 		exc = new PhpCoreException("foo", exc);
-		Assertions.assertNotNull(exc);
+		Assert.assertNotNull(exc);
 	}
 
 	@Test
@@ -59,7 +59,7 @@ public class ExceptionTest {
 		PhpException exc = null;
 
 		exc = new PhpErrorException(new File("foo.php"), "foo");
-		Assertions.assertNotNull(exc);
+		Assert.assertNotNull(exc);
 	}
 
 	@Test
@@ -68,7 +68,7 @@ public class ExceptionTest {
 		PhpException exc = null;
 
 		exc = new PhpExecutionException(new File("foo.php"), "foo");
-		Assertions.assertNotNull(exc);
+		Assert.assertNotNull(exc);
 	}
 
 	@Test
@@ -77,7 +77,7 @@ public class ExceptionTest {
 		PhpException exc = null;
 
 		exc = new PhpWarningException(new File("foo.php"), "foo");
-		Assertions.assertNotNull(exc);
+		Assert.assertNotNull(exc);
 	}
 
 }

@@ -21,13 +21,13 @@ package org.phpmaven.phpexec.test;
 
 import java.io.File;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Rule;
+import org.junit.Test;
 import org.phpmaven.phpexec.cli.PhpExecutableConfiguration;
 import org.phpmaven.phpexec.library.IPhpExecutable;
 import org.phpmaven.phpexec.library.IPhpExecutableConfiguration;
-import org.phpmaven.test.IgnoreWhen;
-import org.phpmaven.test.PhpMissing;
+import org.phpmaven.test.IgnoreIfPhpMissing;
 
 /**
  * test cases for PHP support.
@@ -38,6 +38,8 @@ import org.phpmaven.test.PhpMissing;
  */
 public class ArgsTest {
 
+	@Rule
+	public IgnoreIfPhpMissing rule = new IgnoreIfPhpMissing();
 
 	/**
 	 * Tests if the execution configuration can be created.
@@ -45,7 +47,6 @@ public class ArgsTest {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
-	@IgnoreWhen(PhpMissing.class)
 	public void testArgs() throws Exception {
 		final IPhpExecutableConfiguration execConfig = new PhpExecutableConfiguration();
 
@@ -53,7 +54,7 @@ public class ArgsTest {
 
 		// assert that the environment variable is mapped correctly
 		final IPhpExecutable exec = execConfig.getPhpExecutable();
-		Assertions.assertEquals("success\n",
+		Assert.assertEquals("success\n",
 				exec.execute("\"" + envTestPhp.getAbsolutePath() + "\" JUNIT_ARG_TEST", envTestPhp));
 	}
 

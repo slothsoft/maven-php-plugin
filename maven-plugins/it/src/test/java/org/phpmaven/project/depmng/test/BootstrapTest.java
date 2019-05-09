@@ -19,9 +19,9 @@ package org.phpmaven.project.depmng.test;
 import java.util.List;
 
 import org.apache.maven.it.Verifier;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.phpmaven.test.it.AbstractTestCase;
 
 /**
@@ -31,7 +31,7 @@ import org.phpmaven.test.it.AbstractTestCase;
  * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 2.0.0
  */
-@Disabled
+@Ignore
 public class BootstrapTest extends AbstractTestCase {
 
 	/**
@@ -82,8 +82,8 @@ public class BootstrapTest extends AbstractTestCase {
 				found2 = true;
 			}
 		}
-		Assertions.assertTrue(found1);
-		Assertions.assertTrue(found2);
+		Assert.assertTrue(found1);
+		Assert.assertTrue(found2);
 	}
 
 }

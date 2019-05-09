@@ -44,8 +44,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import java.util.Map;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.phpexec.library.DeserializePhp;
 
 
@@ -69,7 +69,7 @@ public class SerializedPhpParserTest {
 		final String input = "N;";
 		final DeserializePhp serializedPhpParser = new DeserializePhp(input);
 		final Object result = serializedPhpParser.parse();
-		Assertions.assertEquals(DeserializePhp.NULL, result);
+		Assert.assertEquals(DeserializePhp.NULL, result);
 	}
 
 	/**
@@ -83,10 +83,10 @@ public class SerializedPhpParserTest {
 			final String input = "A;";
 			final DeserializePhp serializedPhpParser = new DeserializePhp(input);
 			serializedPhpParser.parse();
-			Assertions.fail("Expected exception not thrown");
+			Assert.fail("Expected exception not thrown");
 		} catch (final IllegalStateException ex) {
 			if (!ex.getMessage().startsWith("Encountered unknown type")) {
-				Assertions.fail("Expected exception message not thrown: " + ex.getMessage());
+				Assert.fail("Expected exception message not thrown: " + ex.getMessage());
 			}
 		}
 	}
@@ -171,9 +171,9 @@ public class SerializedPhpParserTest {
 		final String input = "a:1:{i:1;i:2;}";
 		final DeserializePhp serializedPhpParser = new DeserializePhp(input);
 		final Object result = serializedPhpParser.parse();
-		Assertions.assertTrue(result instanceof Map);
-		Assertions.assertEquals(1, ((Map) result).size());
-		Assertions.assertEquals(2, ((Map) result).get(1));
+		Assert.assertTrue(result instanceof Map);
+		Assert.assertEquals(1, ((Map) result).size());
+		Assert.assertEquals(2, ((Map) result).get(1));
 	}
 
 	/**
@@ -185,9 +185,9 @@ public class SerializedPhpParserTest {
 		final String input = "O:8:\"TypeName\":1:{s:3:\"foo\";s:3:\"bar\";}";
 		final DeserializePhp serializedPhpParser = new DeserializePhp(input);
 		final Object result = serializedPhpParser.parse();
-		Assertions.assertTrue(result instanceof DeserializePhp.PhpObject);
-		Assertions.assertEquals(1, ((DeserializePhp.PhpObject) result).attributes.size());
-		Assertions.assertEquals("bar", ((DeserializePhp.PhpObject) result).attributes.get("foo"));
+		Assert.assertTrue(result instanceof DeserializePhp.PhpObject);
+		Assert.assertEquals(1, ((DeserializePhp.PhpObject) result).attributes.size());
+		Assert.assertEquals("bar", ((DeserializePhp.PhpObject) result).attributes.get("foo"));
 
 	}
 
@@ -201,10 +201,10 @@ public class SerializedPhpParserTest {
 		final DeserializePhp serializedPhpParser = new DeserializePhp(input);
 		serializedPhpParser.setAcceptedAttributeNameRegex("foo");
 		final Object result = serializedPhpParser.parse();
-		Assertions.assertTrue(result instanceof DeserializePhp.PhpObject);
-		Assertions.assertEquals(1, ((DeserializePhp.PhpObject) result).attributes.size());
-		Assertions.assertEquals("bar", ((DeserializePhp.PhpObject) result).attributes.get("foo"));
-		Assertions.assertNull(((DeserializePhp.PhpObject) result).attributes.get("baz"));
+		Assert.assertTrue(result instanceof DeserializePhp.PhpObject);
+		Assert.assertEquals(1, ((DeserializePhp.PhpObject) result).attributes.size());
+		Assert.assertEquals("bar", ((DeserializePhp.PhpObject) result).attributes.get("foo"));
+		Assert.assertNull(((DeserializePhp.PhpObject) result).attributes.get("baz"));
 	}
 
 	/**
@@ -246,7 +246,7 @@ public class SerializedPhpParserTest {
 				"s:9:\"Thumbnail\";a:3:{s:3:\"Url\";s:42:\"http://sp1.mm-a2.yimg.com/image/2295545420\";" +
 				"s:6:\"Height\";s:3:\"111\";s:5:\"Width\";s:3:\"150\";}}}}}";
 		final Map results = (Map) new DeserializePhp(input).parse();
-		Assertions.assertEquals(2, ((Map) ((Map) results.get("ResultSet")).get("Result")).size());
+		Assert.assertEquals(2, ((Map) ((Map) results.get("ResultSet")).get("Result")).size());
 	}
 
 	/**
@@ -255,7 +255,7 @@ public class SerializedPhpParserTest {
 	 * @param expected the expected value
 	 */
 	private void assertPrimitive(String input, Object expected) {
-		Assertions.assertEquals(expected, new DeserializePhp(input).parse());
+		Assert.assertEquals(expected, new DeserializePhp(input).parse());
 	}
 
 	/**
@@ -289,7 +289,7 @@ public class SerializedPhpParserTest {
 				"s:20:\"1156837966_352721747\";s:11:\"extraFields\";a:1:{s:11:\"Description\";s:0:\"\";}" +
 				"s:4:\"rank\";N;s:7:\"version\";i:37;s:7:\"emailMe\";N;}}";
 		final Map results = (Map) new DeserializePhp(input, false).parse();
-		Assertions.assertTrue(results.toString().indexOf("supérb") > 0);
+		Assert.assertTrue(results.toString().indexOf("supérb") > 0);
 	}
 
 	/**
@@ -326,9 +326,9 @@ public class SerializedPhpParserTest {
 		serializedPhpParser.setAcceptedAttributeNameRegex("ResultSet|totalResultsReturned");
 		final Object result = serializedPhpParser.parse();
 		// available
-		Assertions.assertEquals(2, ((Map) ((Map) result).get("ResultSet")).get("totalResultsReturned"));
+		Assert.assertEquals(2, ((Map) ((Map) result).get("ResultSet")).get("totalResultsReturned"));
 		// not available
-		Assertions.assertNull(((Map) ((Map) result).get("ResultSet")).get("totalResultsAvailable"));
+		Assert.assertNull(((Map) ((Map) result).get("ResultSet")).get("totalResultsAvailable"));
 	}
 
 }

@@ -24,9 +24,9 @@ import org.apache.maven.artifact.repository.layout.ArtifactRepositoryLayout;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.monitor.logging.DefaultLog;
 import org.codehaus.plexus.logging.console.ConsoleLogger;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.phpmaven.core.IComponentFactory;
 import org.phpmaven.pear.IMavenPearUtility;
 import org.phpmaven.pear.IPearConfiguration;
@@ -61,7 +61,7 @@ public class LocalInstallTest extends AbstractTestCase {
 	 * @throws Exception thrown on errors
 	 */
 	@Test
-	@Disabled
+	@Ignore
 	public void ignoretestLocalInstall() throws Exception {
 		// look up the component factory
 		final IComponentFactory factory = lookup(IComponentFactory.class);
@@ -77,9 +77,9 @@ public class LocalInstallTest extends AbstractTestCase {
 		util.installPear(false);
 		util.installFromMavenRepository("net.php", "XML_fo2pdf", "0.98");
 
-		Assertions.assertTrue(new File(util.getPhpDir(), "XML/fo2pdf.php").exists());
-		Assertions.assertTrue(new File(util.getDocDir(), "XML_fo2pdf/README.fo2pdf").exists());
-		Assertions.assertTrue(new File(util.getDocDir(), "XML_fo2pdf/simple.fo").exists());
+		Assert.assertTrue(new File(util.getPhpDir(), "XML/fo2pdf.php").exists());
+		Assert.assertTrue(new File(util.getDocDir(), "XML_fo2pdf/README.fo2pdf").exists());
+		Assert.assertTrue(new File(util.getDocDir(), "XML_fo2pdf/simple.fo").exists());
 	}
 
 }

@@ -23,9 +23,9 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.Xpp3DomBuilder;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.phpmaven.plugin.build.PhpExtractDeps;
 import org.phpmaven.plugin.build.PhpResources;
 import org.phpmaven.plugin.build.PhpTest;
@@ -43,7 +43,7 @@ import org.phpmaven.test.AbstractTestCase;
  * @author <a href="mailto:s.schulz@slothsoft.de">Stef Schulz</a>
  * @since 2.0.0
  */
-@Disabled
+@Ignore
  public class PhpUnitTest extends AbstractTestCase {
 
 	 /**
@@ -56,36 +56,31 @@ import org.phpmaven.test.AbstractTestCase;
 	 public void testGoalTestWithAutoprependFile() throws Exception {
 		 final MavenSession session = this.createSessionForPhpMaven("mojos-phpunit/test-autoprepend");
 
-		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+		 final PhpResources resourcesMojo = createCurrentConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
-		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
+		 final PhpTestResources testResourcesMojo = createCurrentConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
 
 		 this.resolveProjectDependencies(session);
-		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
+		 final PhpExtractDeps extractDepsMojo = createCurrentConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
-		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
+		 final PhpTestExtractDeps extractTestDepsMojo = createCurrentConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
-		 final PhpTest test = this.createConfiguredMojo(
+		 final PhpTest test = createCurrentConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 test.execute();
@@ -101,29 +96,25 @@ import org.phpmaven.test.AbstractTestCase;
 	 public void testGoalTestWithBootstrapFile() throws Exception {
 		 final MavenSession session = this.createSessionForPhpMaven("mojos-phpunit/test-bootstrap");
 
-		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+		 final PhpResources resourcesMojo = createCurrentConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
-		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
+		 final PhpTestResources testResourcesMojo = createCurrentConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
 
 		 this.resolveProjectDependencies(session);
-		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
+		 final PhpExtractDeps extractDepsMojo = createCurrentConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
-		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
+		 final PhpTestExtractDeps extractTestDepsMojo = createCurrentConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
@@ -132,9 +123,8 @@ import org.phpmaven.test.AbstractTestCase;
 				 "<configuration>" +
 						 "<phpUnitArguments>--bootstrap maven-autoloader.php</phpUnitArguments>" +
 				 "</configuration>"));
-		 final PhpTest test = this.createConfiguredMojo(
+		 final PhpTest test = createCurrentConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 config);
 		 test.execute();
@@ -151,36 +141,31 @@ import org.phpmaven.test.AbstractTestCase;
 	 public void testGoalTestWithBootstrap2File() throws Exception {
 		 final MavenSession session = this.createSessionForPhpMaven("mojos-phpunit/test-bootstrap2");
 
-		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+		 final PhpResources resourcesMojo = createCurrentConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
-		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
+		 final PhpTestResources testResourcesMojo = createCurrentConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
 
 		 this.resolveProjectDependencies(session);
-		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
+		 final PhpExtractDeps extractDepsMojo = createCurrentConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
-		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
+		 final PhpTestExtractDeps extractTestDepsMojo = createCurrentConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
-		 final PhpTest test = this.createConfiguredMojo(
+		 final PhpTest test = createCurrentConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 test.execute();
@@ -196,36 +181,31 @@ import org.phpmaven.test.AbstractTestCase;
 	 public void testGoalTestWithTests() throws Exception {
 		 final MavenSession session = this.createSessionForPhpMaven("mojos-phpunit/test-oktests");
 
-		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+		 final PhpResources resourcesMojo = createCurrentConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
-		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
+		 final PhpTestResources testResourcesMojo = createCurrentConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
 
 		 this.resolveProjectDependencies(session);
-		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
+		 final PhpExtractDeps extractDepsMojo = createCurrentConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
-		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
+		 final PhpTestExtractDeps extractTestDepsMojo = createCurrentConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
-		 final PhpTest test = this.createConfiguredMojo(
+		 final PhpTest test = createCurrentConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 test.execute();
@@ -241,36 +221,31 @@ import org.phpmaven.test.AbstractTestCase;
 	 public void testGoalTestWith2Tests() throws Exception {
 		 final MavenSession session = this.createSessionForPhpMaven("mojos-phpunit/test-oktests-multiple");
 
-		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+		 final PhpResources resourcesMojo = createCurrentConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
-		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
+		 final PhpTestResources testResourcesMojo = createCurrentConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
 
 		 this.resolveProjectDependencies(session);
-		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
+		 final PhpExtractDeps extractDepsMojo = createCurrentConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
-		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
+		 final PhpTestExtractDeps extractTestDepsMojo = createCurrentConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
-		 final PhpTest test = this.createConfiguredMojo(
+		 final PhpTest test = createCurrentConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 test.execute();
@@ -286,36 +261,31 @@ import org.phpmaven.test.AbstractTestCase;
 	 public void testGoalTestWithNoTests() throws Exception {
 		 final MavenSession session = this.createSessionForPhpMaven("mojos-phpunit/test-notests");
 
-		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+		 final PhpResources resourcesMojo = createCurrentConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
-		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
+		 final PhpTestResources testResourcesMojo = createCurrentConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
 
 		 this.resolveProjectDependencies(session);
-		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
+		 final PhpExtractDeps extractDepsMojo = createCurrentConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
-		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
+		 final PhpTestExtractDeps extractTestDepsMojo = createCurrentConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
-		 final PhpTest test = this.createConfiguredMojo(
+		 final PhpTest test = createCurrentConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 test.execute();
@@ -332,43 +302,38 @@ import org.phpmaven.test.AbstractTestCase;
 		 final MavenSession session = this.createSessionForPhpMaven("mojos-phpunit/test-notests");
 		 session.getUserProperties().setProperty("failIfNoTests", "true");
 
-		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+		 final PhpResources resourcesMojo = createCurrentConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
-		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
+		 final PhpTestResources testResourcesMojo = createCurrentConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
 
 		 this.resolveProjectDependencies(session);
-		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
+		 final PhpExtractDeps extractDepsMojo = createCurrentConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
-		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
+		 final PhpTestExtractDeps extractTestDepsMojo = createCurrentConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
-		 final PhpTest test = this.createConfiguredMojo(
+		 final PhpTest test = createCurrentConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 try {
 			 test.execute();
-			 Assertions.fail("Build failure expected");
+			 Assert.fail("Build failure expected");
 		 } catch (final MojoFailureException ex) {
-			 Assertions.assertEquals(PhpUnitTestfileWalker.FAIL_ON_NO_TEST_TEXT, ex.getMessage());
+			 Assert.assertEquals(PhpUnitTestfileWalker.FAIL_ON_NO_TEST_TEXT, ex.getMessage());
 		 }
 	 }
 
@@ -383,36 +348,31 @@ import org.phpmaven.test.AbstractTestCase;
 		 final MavenSession session = this.createSessionForPhpMaven("mojos-phpunit/test-failing");
 		 session.getUserProperties().setProperty("skipTests", "true");
 
-		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+		 final PhpResources resourcesMojo = createCurrentConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
-		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
+		 final PhpTestResources testResourcesMojo = createCurrentConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
 
 		 this.resolveProjectDependencies(session);
-		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
+		 final PhpExtractDeps extractDepsMojo = createCurrentConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
-		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
+		 final PhpTestExtractDeps extractTestDepsMojo = createCurrentConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
-		 final PhpTest test = this.createConfiguredMojo(
+		 final PhpTest test = createCurrentConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 test.execute();
@@ -429,36 +389,31 @@ import org.phpmaven.test.AbstractTestCase;
 		 final MavenSession session = this.createSessionForPhpMaven("mojos-phpunit/test-failing");
 		 session.getUserProperties().setProperty("maven.test.skip", "true");
 
-		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+		 final PhpResources resourcesMojo = createCurrentConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
-		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
+		 final PhpTestResources testResourcesMojo = createCurrentConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
 
 		 this.resolveProjectDependencies(session);
-		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
+		 final PhpExtractDeps extractDepsMojo = createCurrentConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
-		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
+		 final PhpTestExtractDeps extractTestDepsMojo = createCurrentConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
-		 final PhpTest test = this.createConfiguredMojo(
+		 final PhpTest test = createCurrentConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 test.execute();
@@ -475,36 +430,31 @@ import org.phpmaven.test.AbstractTestCase;
 		 final MavenSession session = this.createSessionForPhpMaven("mojos-phpunit/test-failing");
 		 session.getUserProperties().setProperty("maven.test.failure.ignore", "true");
 
-		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+		 final PhpResources resourcesMojo = createCurrentConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
-		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
+		 final PhpTestResources testResourcesMojo = createCurrentConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
 
 		 this.resolveProjectDependencies(session);
-		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
+		 final PhpExtractDeps extractDepsMojo = createCurrentConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
-		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
+		 final PhpTestExtractDeps extractTestDepsMojo = createCurrentConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
-		 final PhpTest test = this.createConfiguredMojo(
+		 final PhpTest test = createCurrentConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 test.execute();
@@ -520,43 +470,38 @@ import org.phpmaven.test.AbstractTestCase;
 	 public void testGoalTestFailing() throws Exception {
 		 final MavenSession session = this.createSessionForPhpMaven("mojos-phpunit/test-failing");
 
-		 final PhpResources resourcesMojo = this.createConfiguredMojo(
+		 final PhpResources resourcesMojo = createCurrentConfiguredMojo(
 				 PhpResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "resources",
 				 new Xpp3Dom("configuration"));
 		 resourcesMojo.execute();
-		 final PhpTestResources testResourcesMojo = this.createConfiguredMojo(
+		 final PhpTestResources testResourcesMojo = createCurrentConfiguredMojo(
 				 PhpTestResources.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "testResources",
 				 new Xpp3Dom("configuration"));
 		 testResourcesMojo.execute();
 
 		 this.resolveProjectDependencies(session);
-		 final PhpExtractDeps extractDepsMojo = this.createConfiguredMojo(
+		 final PhpExtractDeps extractDepsMojo = createCurrentConfiguredMojo(
 				 PhpExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractDepsMojo.execute();
-		 final PhpTestExtractDeps extractTestDepsMojo = this.createConfiguredMojo(
+		 final PhpTestExtractDeps extractTestDepsMojo = createCurrentConfiguredMojo(
 				 PhpTestExtractDeps.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "extractTestDependencies",
 				 new Xpp3Dom("configuration"));
 		 extractTestDepsMojo.execute();
 
-		 final PhpTest test = this.createConfiguredMojo(
+		 final PhpTest test = createCurrentConfiguredMojo(
 				 PhpTest.class, session,
-				 "de.slothsoft.phpmaven", "maven-php-plugin", "0.9.0-SNAPSHOT",
 				 "test",
 				 new Xpp3Dom("configuration"));
 		 try {
 			 test.execute();
-			 Assertions.fail("Expected exception not thrown");
+			 Assert.fail("Expected exception not thrown");
 		 } catch (final MojoExecutionException ex) {
-			 Assertions.assertEquals("Test failures", ex.getMessage());
+			 Assert.assertEquals("Test failures", ex.getMessage());
 		 }
 	 }
 

@@ -20,9 +20,8 @@ import java.io.File;
 import java.io.FileInputStream;
 
 import org.apache.maven.execution.MavenSession;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.phpmaven.plugin.build.FileHelper;
 import org.phpmaven.test.AbstractTestCase;
 
@@ -50,8 +49,8 @@ import org.phpmaven.test.AbstractTestCase;
 
 		 FileHelper.unjar(new FileInputStream(pvJar), fileDir.getParentFile());
 
-		 Assertions.assertTrue(fileDir.exists());
-		 Assertions.assertTrue(new File(fileDir, "folderA/folderC/fileC.txt").exists());
+		 Assert.assertTrue(fileDir.exists());
+		 Assert.assertTrue(new File(fileDir, "folderA/folderC/fileC.txt").exists());
 	 }
 
  }

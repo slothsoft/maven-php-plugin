@@ -17,8 +17,8 @@
 package org.phpmaven.archetypes.test;
 
 import org.apache.maven.it.Verifier;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.phpmaven.test.it.AbstractTestCase;
 
 /**
@@ -29,7 +29,7 @@ import org.phpmaven.test.it.AbstractTestCase;
  * @since 2.0.0
  */
 
-@Disabled
+@Ignore
 public class DoctrineTest extends AbstractTestCase {
 
 	/**
